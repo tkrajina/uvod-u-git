@@ -1,0 +1,7 @@
+*.dvi
+*.log
+*.aux
+*.swp
+*.swo
+*.toc
+tmp/*

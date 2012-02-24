@@ -1,0 +1,47 @@
+\documentclass[11pt,oneside,a4paper]{report}
+
+\linespread{1.2}
+
+\title{Uvod u git}
+
+\usepackage[dvips]{color}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+% \usepackage{listings}
+% \lstset{
+%   literate={š}{\v s}1
+%   literate={Š}{\v S}1
+% }
+
+\addtolength{\hoffset}{-1cm}
+\addtolength{\voffset}{-3cm}
+\addtolength{\textwidth}{3cm}
+\addtolength{\textheight}{4cm}
+\pagestyle{empty}
+
+\begin{document}
+
+\large
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Sadržaj}
+
+\include{zasto-git}
+\include{verzioniranje-koda}
+\include{git-init}
+\include{git-config}
+\include{git-clone}
+\include{git-commit}
+\include{git-branch}
+\include{git-merge}
+\include{git-log}
+\include{git-tag}
+\include{git-push}
+\include{git-remote}
+\include{git-submodule}
+\include{git-gc}
+\include{git-hosting}
+%\include{}
+
+\end{document}
