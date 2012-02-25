@@ -8,6 +8,9 @@
 \usepackage[croatian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{epsfig}
+\usepackage{floatflt}
+\usepackage{makeidx}
+
 % \usepackage{listings}
 % \lstset{
 %   literate={š}{\v s}1
@@ -19,6 +22,8 @@
 \addtolength{\textwidth}{3cm}
 \addtolength{\textheight}{4cm}
 \pagestyle{empty}
+
+\makeindex
 
 \begin{document}
 
@@ -43,5 +48,7 @@
 \include{git-gc}
 \include{git-hosting}
 %\include{}
+
+\printindex
 
 \end{document}
