@@ -4,4 +4,5 @@
 *.swp
 *.swo
 *.toc
+*.idx
 tmp/*
