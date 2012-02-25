@@ -1,5 +1,5 @@
-\chapter*{Uvod}
-\addcontentsline{toc}{chapter}{Uvod}
+\chapter*{Verzioniranje koda i osnovni pojmovi}
+\addcontentsline{toc}{chapter}{Verzioniranje koda i osnovni pojmovi}
 
 \begin{itemize}
    \item instalacija
@@ -8,13 +8,45 @@
    \item komande
 \end{itemize}
 
+\section*{Što je to verzioniranje koda?}
+\addcontentsline{toc}{section}{Što je to verzioniranje koda?}
+
+S problemom verzioniranja koda ste se sreli kad ste ptrvi put napisali program koji riješava neki konkretan problem. 
+Bilo da je to neka jednostavna web aplikacija, CMS\footnote{Content Management System}, komandnolinijski pomoćni programčić ili kompleksni ERP\footnote{Enterprise Resource Planning}.
+
+Svaka aplikacija koja ima \textit{stvarnog} korisnika kojemu rješava neki \textit{stvarni} problem ima i \textbf{korisničke zahtjeve}.
+Taj korisnik možete biti Vi sami, može biti neko hipotetsko tržište (kojemu planirate prodati riješenje) ili može biti naručioc.
+Korisničke zahtjeve ne možete nikad točno procijeniti u trenutku kad krenete pisati program.
+Možete satima, danima i mjesecima sjediti s budućim korisnicima i planirati što će sve Vaša aplikacija imati, ali kad korisnik sjedne pred prvu verziju aplikacije, čak i ako je pisana točno prema njegovim specifikacijama, on će naći nešto što ne valja. 
+Radi li se o nekoj maloj izmjeni -- možda ćete ju napraviti na licu mjesta. No, možda ćete trebati otići doma, potrošiti nekoliko dana i napraviti \textbf{novu verziju}.
+
+Desiti će se, na primjer, da korisniku date da isproba verziju \texttt{1.0}.
+On će to isprobati, naći nekoliko sitnih stvari koje treba ispraviti.
+Otići ćete kući, ispraviti ih, napraviti verziju \texttt{1.1} s kojom će klijent biti zadovoljan.
+Nekoliko dana kasnije, s malo više iskustva u radu s aplikacijom, on zaključuje kako sad ima \textit{bolju} ideju kako je trebalo ispraviti verziju \texttt{1.0}.
+Vi sad, dakle, trebate "baciti u smeće" posao koji ste radili za \texttt{1.1}, vratiti se na \texttt{1.0} i od nje napraviti, npr. \texttt{1.1b}.
+
+Grafički bi to izgledalo ovako nekako:
+
+TODO
+
+I to je samo jedan od scenarija
+
 \section*{Linearno verzioniranje koda}
 \addcontentsline{toc}{section}{Linearno verzioniranje koda}
 
-\epsfig{figure=linearni-model.eps}
+Linearni pristup verzioniranju koda se najbolje može opisati sljedećom ilustracijom:
 
-\section*{"Fork"}
-\addcontentsline{toc}{section}{"Fork"}
+% \begin{floatingfigure}[c]{5cm}
+\epsfig{figure=linearni-model.eps}
+% \end{floatingfigure}
+
+% \begin{floatingfigure}[lrp]{5cm}
+% \centering
+% \epsfig{figure=linearni-model.eps}
+% \caption{fig:default}
+% \label{fig:figlabel}end
+% \end{floatingfigure}
 
 \section*{Distribuirano verzioniranje koda}
 \addcontentsline{toc}{section}{Distribuirano verzioniranje koda}
