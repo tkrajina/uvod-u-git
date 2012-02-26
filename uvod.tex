@@ -1,7 +1,23 @@
 \chapter*{Uvod}
 \addcontentsline{toc}{chapter}{Uvod}
 
-Git nije jednostavan.
+Git je alat kojeg je razvio Linus Torvalds da bi mu olakšao vođenje jednog velikog i kompleksnog projekta -- linux kernela.
+U početku to \textit{nije} bio alat kojemu je namjena bila današnja; Linus je zamislio da git bude osnova \textit{drugim sustavima za razvijanje koda}.
+Dakle, drugi alati bi trebali razvijati svoje sučelje na osnovu gita.
+Međutim, kao s mnogim drugim projektima otvorenog koda, ljudi su ga počeli koristiti takvog kakav jest, on git je organski rastao onako kako su ga ljudi koristili.
+
+Rezultat je program koji ima drukčiju terminologiju i, nerijetko, malo neintuitivnu sintaksu. 
+
+Tome usprkos, milijuni programera diljem svijeta su prihvatili git. 
+Nastali su brojne platforme za \textit{hosting} projekata, kao što je github\footnote{http://github.com}, a drugi su morali dodati git jednostavno zato što su to njihovi korisnici tražili (Google Code\footnote{http://code.google.com}, Bitbucket\footnote{http://bitbucket.com}, Sourceforge\footnote{http://sourceforge.net}.
+
+Tome je nekoliko razloga:
+
+\begin{itemize}
+	\item distribuirani sustavi za razvoj koda omogućuju da na istom projektu radi više ljudi. Postojeći sustavi su obično zahtijevali da na istom kodu radi točno određeni broj programera, a novi bi eventualno mogli predlagati poboljšanja. S distribuiranim sustavima, bilo tko je mogao "forkati" repozitorij, isprogramirati izmjenu i predložiti vlasniku originalnog repozitorija da preuzme svoje izmjene. (TODO: ovo malo razraditi i napisati kao posebno poglavlje, preseliti ovo u drugo poglavlje),
+	\item git je izuzetno brz,
+	\item vrlo je lako granati, isprobavati izmjene koje su radili drugi ljudi i preuzeti ih u svoj kod,
+\end{itemize}
 
 \section*{Format ove knjige}
 \addcontentsline{toc}{section}{Format ove knjige}
@@ -13,7 +29,7 @@ Uspijem li u tom naumu -- nakon što pročitate knjigu, trebali biste biti sposo
 \section*{Pretpostavke}
 \addcontentsline{toc}{section}{Pretpostavke}
 
-Da biste uredno "probavili" ovaj knjižuljak, pretpostavljam da
+Da biste uredno "probavili" ovaj knjižuljak, pretpostavljam da:
 
 \begin{itemize}
 	\item znate programirati s nekim programskim jezikom,
@@ -23,10 +39,9 @@ Da biste uredno "probavili" ovaj knjižuljak, pretpostavljam da
 \end{itemize}
 
 Par riječi o zadnje dvije stavke.
-Iako git nije nužno ograničen na unix/linux operativne sustave, njegovo komandnolinijsko sučelje je tamo nastalo i drži se tih osnovnih principa.
+Iako git nije nužno ograničen na unix/linux operativne sustave, njegovo komandnolinijsko sučelje je tamo nastalo i drži se istih principa.
 Git nije nužno komandnolinijski alat, međutim mnoge iole složenije stvari je teško uopće implementirari u nekom grafičkom sučelju. 
-Moj prijedlog je da git naučite koristiti u komandnoj liniji, a tek onda krenete s nekim grafičkim alatom. 
-Tek tako ćete ga zaista savladati.
+Moj prijedlog je da git naučite koristiti u komandnoj liniji, a tek onda krenete s nekim grafičkim alatom -- tek tako ćete ga zaista savladati.
 
 % \section*{}
 % \addcontentsline{toc}{section}{}
