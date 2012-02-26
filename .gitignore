@@ -5,4 +5,5 @@
 *.swo
 *.toc
 *.idx
+*.pdf
 tmp/*
