@@ -70,6 +70,8 @@ class Graph:
 		for branch in self.__branches:
 			result += branch.to_latex_string()
 
+		result += '\\end{picture}\n'
+
 		return result
 
 if __name__ == '__main__':
@@ -77,17 +79,45 @@ if __name__ == '__main__':
 
 	master_branch = Branch( title = 'master' )
 	master_branch.add_node( Node( 'a' ) )
+	"""
 	master_branch.add_node( Node( 'b' ) )
 	master_branch.add_node( Node( 'c' ) )
+	"""
 	graph.add_branch( master_branch )
 
+	"""
 	branch1 = Branch( title = 'experiment', start_node = master_branch.get_node( 1 ) )
 	master_branch.add_node( Node( 'x' ) )
 	master_branch.add_node( Node( 'y' ) )
 	master_branch.add_node( Node( 'z' ) )
 	graph.add_branch( branch1 )
+	"""
+
+	print """\\documentclass[11pt,oneside,a4paper]{report}
+
+\\linespread{1.2}
+
+\\title{test fig}
+
+\\usepackage[dvips]{color}
+\\usepackage[croatian]{babel}
+\\usepackage[utf8]{inputenc}
+\\usepackage{epsfig}
+\\usepackage{makeidx}
+
+\\addtolength{\\hoffset}{-1cm}
+\\addtolength{\\voffset}{-3cm}
+\\addtolength{\\textwidth}{3cm}
+\\addtolength{\\textheight}{4cm}
+\\pagestyle{empty}
+
+\\begin{document}
+"""
 
 	print graph.to_latex_string()
+
+	print "\\end{document}"
+
 
 """
 \setlength{\unitlength}{4144sp}%
