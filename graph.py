@@ -48,9 +48,12 @@ class Branch:
 
 	__nodes = None
 
+	start_node = None
+
 	def __init__( self, title = None, start_node = None ):
 		self.title = title
 		self.__nodes = []
+		self.start_node = start_node
 
 	def add_node( self, node ):
 		self.__nodes.append( node )
@@ -58,12 +61,15 @@ class Branch:
 	def get_node( self, index ):
 		return self.__nodes[ index ]
 
-	def to_latex_string( self, x, y ):
+	def to_latex_string( self, y ):
 		result = ''
 
-		mod_logging.debug( 'Branch starting at {0}, {0}'.format( x, y ) )
+		mod_logging.debug( 'Branch starting at {0}'.format( y ) )
 
-		start_x = x
+		if self.start_node:
+			start_x = self.start_node.x
+		else:
+			start_x = 0
 		start_y = y
 
 		# Nodes:
@@ -92,6 +98,9 @@ class Graph:
 		return self.__branches[ index ]
 
 	def to_latex_string( self ):
+		width = 2000
+		height = len( self.__branches ) * 500
+
 		result = '\\setlength{\\unitlength}{4144sp}%\n'
 		result += '\\begingroup\\makeatletter\\ifx\\SetFigFont\\undefined%\n'
 		result += '\\gdef\\SetFigFont#1#2#3#4#5{%\n'
@@ -99,13 +108,12 @@ class Graph:
 		result += '  \\fontfamily{#3}\\fontseries{#4}\\fontshape{#5}%\n'
 		result += '  \\selectfont}%\n'
 		result += '\\fi\\endgroup%\n'
-		result += '\\begin{picture}(2455,634)(0,0)%\n'
+		result += '\\begin{picture}(' + str( width ) + ',' + str( height ) + ')(0,0)%\n'
 
-		start_x = 0
-		start_y = 0
+		start_y = height
 
 		for index, branch in enumerate( self.__branches ):
-			result += branch.to_latex_string( start_x, start_y + index * 500 )
+			result += branch.to_latex_string( y = start_y - index * 500 )
 
 		result += '\\end{picture}\n'
 
@@ -123,13 +131,13 @@ if __name__ == '__main__':
 	master_branch.add_node( Node( 'd' ) )
 	graph.add_branch( master_branch )
 
-	branch1 = Branch( title = 'experiment', start_node = master_branch.get_node( 0 ) )
+	branch1 = Branch( title = 'experiment', start_node = master_branch.get_node( 1 ) )
 	branch1.add_node( Node( 'x' ) )
 	branch1.add_node( Node( 'y' ) )
 	branch1.add_node( Node( 'z' ) )
 	graph.add_branch( branch1 )
 
-	branch2 = Branch( title = 'experiment', start_node = master_branch.get_node( 0 ) )
+	branch2 = Branch( title = 'experiment', start_node = branch1.get_node( 2 ) )
 	branch2.add_node( Node( 'š' ) )
 	branch2.add_node( Node( 'č' ) )
 	branch2.add_node( Node( 'ć' ) )
@@ -157,6 +165,8 @@ if __name__ == '__main__':
 """
 
 	print graph.to_latex_string()
+
+	print 'OK'
 
 	print "\\end{document}"
 
