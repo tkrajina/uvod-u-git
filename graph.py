@@ -16,9 +16,17 @@ def get_latex_arrow( node1, node2 ):
 	y1 = node1.y
 	x2 = node2.x
 	y2 = node2.y
+	"""
 	node_distance = distance( x1, y1, x2, y2 )
-	length = node_distance - NODE_RADIUS - 50
-	return '\\thicklines {\\color[rgb]{0,0,0}\\put(' + str( x1 + 50 ) + ',' + str( y1 ) + '){\\vector(1,0){' + str( length ) + '}}}%\n'
+	length = node_distance - NODE_RADIUS
+	"""
+	length = ROW_COLUMN_SIZE - 100
+	#mod_logging.debug( 'x2, x1 = {0}, {1}'.format( x2, x1 ) )
+	#mod_logging.debug( 'y2, y1 = {0}, {1}'.format( y2, y1 ) )
+	vector_x = ( x2 - x1 ) / ROW_COLUMN_SIZE
+	vector_y = ( y2 - y1 ) / ROW_COLUMN_SIZE
+	#mod_logging.debug( 'vector: {0}, {1}'.format( vector_x, vector_y ) )
+	return '\\thicklines{\\color[rgb]{0,0,0}\\put(' + str( x1 + 50 ) + ',' + str( y1 ) + '){\\vector(' + str( vector_x ) + ',' + str( vector_y ) + '){' + str( length ) + '}}}%\n'
 
 class Node:
 	
@@ -37,12 +45,15 @@ class Node:
 		self.x = x
 		self.y = y
 
-		mod_logging.debug( 'Node at {0}, {0}'.format( x, y ) )
+		mod_logging.debug( 'Node {0} to ({1},{2})'.format( self.text, self.x, self.y ) )
 
 		result = '\\put(' + str( x - 50 ) + ',' + str( y + 140 ) + '){\\makebox(0,0)[lb]{\\smash{{\\SetFigFont{12}{14.4}{\\rmdefault}{\\mddefault}{\\updefault}{\\textit{' + self.text + '}}}}}}%\n'
 		result += '{\\color[rgb]{0,0,0}\\put(' + str( x ) + ',' + str( y ) + '){\\circle*{' + str( NODE_RADIUS ) + '}}}%\n'
 
 		return result
+
+	def __str__( self ):
+		return '[node:{0},{1}]'.format( self.x, self.y )
 
 class Branch:
 
@@ -69,10 +80,13 @@ class Branch:
 		mod_logging.debug( 'Branch starting at {0}'.format( y ) )
 
 		if self.start_node:
-			start_x = self.start_node.x
+			start_x = self.start_node.x + ROW_COLUMN_SIZE
 		else:
 			start_x = 0
 		start_y = y
+
+		if self.title:
+			result = '\\put(' + str( 0 ) + ',' + str( y ) + '){\\makebox(0,0)[lb]{\\smash{{\\SetFigFont{12}{14.4}{\\rmdefault}{\\mddefault}{\\updefault}{\\textit{' + self.title + '}}}}}}%\n'
 
 		# Nodes:
 		for index, node in enumerate( self.__nodes ):
@@ -84,14 +98,22 @@ class Branch:
 				next_node = self.__nodes[ index + 1 ]
 				result += get_latex_arrow( node, next_node )
 
+		if self.start_node:
+			mod_logging.debug( "start node:" + str( self.start_node ) )
+			mod_logging.debug( "first node:" + str( self.__nodes[ 0 ] ) )
+			result += get_latex_arrow( self.start_node, self.__nodes[ 0 ] )
+
 		return result
 
 class Graph:
 
 	__branches = None
 
-	def __init__( self ):
+	left_padding = None
+
+	def __init__( self, left_padding = None ):
 		self.__branches = []
+		self.left_padding = left_padding
 
 	def add_branch( self, branch ):
 		self.__branches.append( branch )
