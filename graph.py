@@ -11,7 +11,7 @@ ROW_COLUMN_SIZE = 500
 def distance( x1, y1, x2, y2 ):
 	return mod_math.sqrt( ( x2 - x1 ) ** 2 + ( y2 - y1 ) ** 2 )
 
-def get_latex_arrow( node1, node2 ):
+def get_latex_arrow( node1, node2, left_padding ):
 	x1 = node1.x
 	y1 = node1.y
 	x2 = node2.x
@@ -26,7 +26,7 @@ def get_latex_arrow( node1, node2 ):
 	vector_x = ( x2 - x1 ) / ROW_COLUMN_SIZE
 	vector_y = ( y2 - y1 ) / ROW_COLUMN_SIZE
 	#mod_logging.debug( 'vector: {0}, {1}'.format( vector_x, vector_y ) )
-	return '\\thicklines{\\color[rgb]{0,0,0}\\put(' + str( x1 + 50 ) + ',' + str( y1 ) + '){\\vector(' + str( vector_x ) + ',' + str( vector_y ) + '){' + str( length ) + '}}}%\n'
+	return '\\thicklines{\\color[rgb]{0,0,0}\\put(' + str( left_padding + x1 + 50 ) + ',' + str( y1 ) + '){\\vector(' + str( vector_x ) + ',' + str( vector_y ) + '){' + str( length ) + '}}}%\n'
 
 class Node:
 	
@@ -41,14 +41,14 @@ class Node:
 		self.x = None
 		self.y = None
 
-	def to_latex_string( self, x, y ):
+	def to_latex_string( self, x, y, left_padding ):
 		self.x = x
 		self.y = y
 
 		mod_logging.debug( 'Node {0} to ({1},{2})'.format( self.text, self.x, self.y ) )
 
-		result = '\\put(' + str( x - 50 ) + ',' + str( y + 140 ) + '){\\makebox(0,0)[lb]{\\smash{{\\SetFigFont{12}{14.4}{\\rmdefault}{\\mddefault}{\\updefault}{\\textit{' + self.text + '}}}}}}%\n'
-		result += '{\\color[rgb]{0,0,0}\\put(' + str( x ) + ',' + str( y ) + '){\\circle*{' + str( NODE_RADIUS ) + '}}}%\n'
+		result = '\\put(' + str( left_padding + x - 50 ) + ',' + str( y + 140 ) + '){\\makebox(0,0)[lb]{\\smash{{\\SetFigFont{12}{14.4}{\\rmdefault}{\\mddefault}{\\updefault}{\\textit{' + self.text + '}}}}}}%\n'
+		result += '{\\color[rgb]{0,0,0}\\put(' + str( left_padding + x ) + ',' + str( y ) + '){\\circle*{' + str( NODE_RADIUS ) + '}}}%\n'
 
 		return result
 
@@ -74,7 +74,7 @@ class Branch:
 	def get_node( self, index ):
 		return self.__nodes[ index ]
 
-	def to_latex_string( self, y ):
+	def to_latex_string( self, y, left_padding ):
 		result = ''
 
 		mod_logging.debug( 'Branch starting at {0}'.format( y ) )
@@ -90,18 +90,18 @@ class Branch:
 
 		# Nodes:
 		for index, node in enumerate( self.__nodes ):
-			result += node.to_latex_string( x = start_x + index * ROW_COLUMN_SIZE, y = start_y )
+			result += node.to_latex_string( x = start_x + index * ROW_COLUMN_SIZE, y = start_y, left_padding = left_padding )
 
 		#Arrows
 		for index, node in enumerate( self.__nodes ):
 			if index < len( self.__nodes ) - 1:
 				next_node = self.__nodes[ index + 1 ]
-				result += get_latex_arrow( node, next_node )
+				result += get_latex_arrow( node, next_node, left_padding = left_padding )
 
 		if self.start_node:
 			mod_logging.debug( "start node:" + str( self.start_node ) )
 			mod_logging.debug( "first node:" + str( self.__nodes[ 0 ] ) )
-			result += get_latex_arrow( self.start_node, self.__nodes[ 0 ] )
+			result += get_latex_arrow( self.start_node, self.__nodes[ 0 ], left_padding = left_padding )
 
 		return result
 
@@ -113,7 +113,7 @@ class Graph:
 
 	def __init__( self, left_padding = None ):
 		self.__branches = []
-		self.left_padding = left_padding
+		self.left_padding = left_padding if left_padding else 0
 
 	def add_branch( self, branch ):
 		self.__branches.append( branch )
@@ -137,31 +137,41 @@ class Graph:
 		start_y = height
 
 		for index, branch in enumerate( self.__branches ):
-			result += branch.to_latex_string( y = start_y - index * ROW_COLUMN_SIZE )
+			result += branch.to_latex_string( y = start_y - index * ROW_COLUMN_SIZE, left_padding = self.left_padding )
 
 		result += '\\end{picture}\n'
 
 		return result
 
+	def get_latex_arrow( self, node1, node2 ):
+		return get_latex_arrow( node1, node2, left_padding = self.left_padding )
+
 if __name__ == '__main__':
 	mod_logging.basicConfig( level = mod_logging.DEBUG, format = '%(asctime)s %(name)-12s %(levelname)-8s %(message)s' )
 
-	graph = Graph()
+	padding = 1200
 
-	master_branch = Branch( title = 'master' )
+	graph = Graph( left_padding = padding )
+
+	master_branch = Branch( title = 'master:' )
 	master_branch.add_node( Node( 'a' ) )
 	master_branch.add_node( Node( 'b' ) )
 	master_branch.add_node( Node( 'c' ) )
 	master_branch.add_node( Node( 'd' ) )
+	master_branch.add_node( Node( 'e' ) )
+	master_branch.add_node( Node( 'f' ) )
+	master_branch.add_node( Node( 'g' ) )
+	master_branch.add_node( Node( 'h' ) )
+	master_branch.add_node( Node( 'i' ) )
 	graph.add_branch( master_branch )
 
-	branch1 = Branch( title = 'experiment', start_node = master_branch.get_node( 1 ) )
+	branch1 = Branch( title = 'experiment:', start_node = master_branch.get_node( 1 ) )
 	branch1.add_node( Node( 'x' ) )
 	branch1.add_node( Node( 'y' ) )
 	branch1.add_node( Node( 'z' ) )
 	graph.add_branch( branch1 )
 
-	branch2 = Branch( title = 'experiment', start_node = branch1.get_node( 2 ) )
+	branch2 = Branch( title = 'experiment:', start_node = branch1.get_node( 2 ) )
 	branch2.add_node( Node( 'š' ) )
 	branch2.add_node( Node( 'č' ) )
 	branch2.add_node( Node( 'ć' ) )
@@ -190,33 +200,8 @@ if __name__ == '__main__':
 
 	print graph.to_latex_string()
 
+	# print graph.get_latex_arrow( branch1.get_node( 2 ), master_branch.get_node( 2 ) )
+
 	print 'OK'
 
 	print "\\end{document}"
-
-
-"""
-\setlength{\unitlength}{4144sp}%
-\begingroup\makeatletter\ifx\SetFigFont\undefined%
-\gdef\SetFigFont#1#2#3#4#5{%
-  \reset@font\fontsize{#1}{#2pt}%
-  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
-  \selectfont}%
-\fi\endgroup%
-\begin{picture}(2000,2000)(0,0)
-
-\put(-50,140){\makebox(0,0)[lb]{\smash{{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}{\textit{a}}}}}}
-{\color[rgb]{0,0,0}\put(0,0){\circle*{150}}}
-\thicklines {\color[rgb]{0,0,0}\put(50,0){\vector(1,0){340}}}
-\put(450,140){\makebox(0,0)[lb]{\smash{{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}{\textit{b}}}}}}
-{\color[rgb]{0,0,0}\put(500,0){\circle*{150}}}
-\thicklines {\color[rgb]{0,0,0}\put(550,0){\vector(1,0){340}}}
-\put(950,140){\makebox(0,0)[lb]{\smash{{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}{\textit{c}}}}}}
-{\color[rgb]{0,0,0}\put(1000,0){\circle*{150}}}
-\thicklines {\color[rgb]{0,0,0}\put(1050,0){\vector(1,0){340}}}
-\put(1450,140){\makebox(0,0)[lb]{\smash{{\SetFigFont{12}{14.4}{\rmdefault}{\mddefault}{\updefault}{\textit{d}}}}}}
-{\color[rgb]{0,0,0}\put(1500,0){\circle*{150}}}
-
-\end{picture}
-
-"""
