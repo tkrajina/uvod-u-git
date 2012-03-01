@@ -6,6 +6,8 @@ import math as mod_math
 
 NODE_RADIUS = 150
 
+ROW_COLUMN_SIZE = 500
+
 def distance( x1, y1, x2, y2 ):
 	return mod_math.sqrt( ( x2 - x1 ) ** 2 + ( y2 - y1 ) ** 2 )
 
@@ -74,7 +76,7 @@ class Branch:
 
 		# Nodes:
 		for index, node in enumerate( self.__nodes ):
-			result += node.to_latex_string( x = start_x + index * 500, y = start_y )
+			result += node.to_latex_string( x = start_x + index * ROW_COLUMN_SIZE, y = start_y )
 
 		#Arrows
 		for index, node in enumerate( self.__nodes ):
@@ -99,7 +101,7 @@ class Graph:
 
 	def to_latex_string( self ):
 		width = 2000
-		height = len( self.__branches ) * 500
+		height = len( self.__branches ) * ROW_COLUMN_SIZE
 
 		result = '\\setlength{\\unitlength}{4144sp}%\n'
 		result += '\\begingroup\\makeatletter\\ifx\\SetFigFont\\undefined%\n'
@@ -113,7 +115,7 @@ class Graph:
 		start_y = height
 
 		for index, branch in enumerate( self.__branches ):
-			result += branch.to_latex_string( y = start_y - index * 500 )
+			result += branch.to_latex_string( y = start_y - index * ROW_COLUMN_SIZE )
 
 		result += '\\end{picture}\n'
 
