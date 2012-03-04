@@ -23,7 +23,7 @@ Grafički bi to izgledalo ovako nekako:
 
 \input{graphs/primjer_s_klijentom}
 
-U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara -- Vi ju trebate "baciti u smeće", vratiti se jedan korak unazad u povijest projekta i započeti tu verziju iznova. I nastaviti projekt s tom izmjenom.
+U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara -- trebate ju "baciti u smeće", vratiti se jedan korak unazad u povijest projekta i započeti novu verziju -- odnosno novu |textbf{granu projekta}. I nastaviti projekt s tom izmjenom.
 
 I to je samo jedan od mnogih složenih scenarija kakvi se dešavaju s aplikacijama koje korisnici koriste.
 
@@ -42,7 +42,7 @@ Postoje mnoge varijacije ovog lineranog modela, jedna česta je:
 \input{graphs/linearni_model_2}
 
 Ona je česta u situacijama kad nemate kontrolu time koja je točno verzija programa instalirana kod klijenta. 
-S web aplikacijama to nije problem, jer Vi imate potpunu kontrolu nad time koja je aplikacija na serveru i kojoj verziji aplikacija klijenti pristupaju.
+S web aplikacijama to nije problem, jer Vi jednostavno možete aplikaciju prebaciti nas serveru i odmah svi klijenti koriste novu verziju.
 Međutim, ukoliko je Vaš program klijentima "spržen" na CD-u i kao takav poslan klijentu -- može se desiti da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
 
 I sad, što ako klijent koji je zadovoljan sa starijom verzijom programa otkrije \textbf{bug}?
@@ -61,18 +61,18 @@ Zato ćemo se na trenutak zadržati na jednom takvom grafu:
 
 Svaka točka grafa je stanje projekta. 
 Projekt s gornjim grafom je započeo s nekim početnim stanjem \emph a.
-Programer je napravio nekoliko izmjena i \emph{snimio} novo stanje \emph b, zatim \emph c, pa sve do \emph d.
+Programer je napravio nekoliko izmjena i \emph{snimio} novo stanje \emph b, zatim \emph c, pa sve do \emph h.
 Važno je napomenuti da je ovakav graf stanje povijesti projekta, ali iz njega ne možete zaključiti kojim redosljedom je nastao.
 
 Evo, na primjer, jedan scenarij kako je navedeni graf mogao nastati:
 
 \input{graphs/primjer_s_granama_i_spajanjima_1}
 
-Programer je započeo aplikaciju, snimio stanje \emph a, \emph b i \emph c i tada se sjetio da ima neki problem kojeg može riješiti na dva načina, vratio se na \emph b i napravio novu \textbf{granu}:
+Programer je započeo aplikaciju, snimio stanje \emph a, \emph b i \emph c i tada se sjetio da ima neki problem kojeg može riješiti na dva načina, vratio se na \emph b i napravio novu granu:
 
 \input{graphs/primjer_s_granama_i_spajanjima_2}
 
-Sjetio se jedne sitnice koju je mogao napraviti u originalnoj verziji; vratio se tamo i dodao \emph d:
+Zatim se sjetio jedne sitnice koju je mogao napraviti u \emph{originalnoj} verziji; vratio se tamo i dodao \emph d:
 
 \input{graphs/primjer_s_granama_i_spajanjima_3}
 
@@ -82,11 +82,10 @@ Tada je \emph{preuzeo} te izmjene u svoju granu:
 \input{graphs/primjer_s_granama_i_spajanjima_4}
 
 Vratio se na svoju eksperimentalnu granu, napravio još jednu izmjenu \emph q, vratio se na originalnu granu i tamo napredovao s \emph e i \emph f. 
-Sjetio se da bi mu sve izmjene iz eksperimentalne grane odgovarale u originalnoj, \emph{preuzeo} ih:
 
 \input{graphs/primjer_s_granama_i_spajanjima_5}
 
-Preuzeo je sve izmjene iz eksperimentalne grane u originalnu:
+Sjetio se da bi mu sve izmjene iz eksperimentalne grane odgovarale u originalnoj, \emph{preuzeo} ih u početnu granu:
 
 \input{graphs/primjer_s_granama_i_spajanjima_6}
 
@@ -110,7 +109,7 @@ Kad novu funkcionalnost završite, treba samo u glavnoj granu preuzeti sve izmje
 Na taj način ćete često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
 Imati ćete posebne grane za različite nove funkcionalnosti, posebne grane za eksperimente, posebne grane u kojima ćete isprobavati izmjene koje su napravili drugi programeri, \dots
 
-Osnovna ideja ove knjižice \emph{nije} da vas uči kako je najbolje organizirati povijest projekta, odnosno kako granati, kad i kako preuzimati izmjene iz pojedinih grana. Osnovna ideja je da vas nauči \emph{kako} to napraviti s gitom. Zato sad krećemo s nečim konkretnim\dots
+Osnovna ideja ove knjižice \emph{nije} da vas uči kako je najbolje organizirati povijest projekta, odnosno kako granati, kad i kako preuzimati izmjene iz pojedinih grana. Osnovna ideja je da vas nauči \emph{kako} to napraviti s gitom. Zato sad krećemo s nečim konkretnim.
 
 % \section*{}
 % \addcontentsline{toc}{section}{}
