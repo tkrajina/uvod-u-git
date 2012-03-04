@@ -57,10 +57,21 @@ I zbog nekog razloga ne želi preći na novu verziju?
 U tom slučaju, morate imati neki mehanizam da se privremeno vratite na staru verziju, ispravite problem, izdate novu verziju stare verzije. 
 Pošaljete je klijentu i nakon toga, vratite se na najnoviju verziju i tamo nastavite rad na svoj projektu.
 
-\section*{Grananje i spajanje grana}
-\addcontentsline{toc}{section}{Grananje i spajanje grana}
+\section*{Grafovi, grananje i spajanje grana}
+\addcontentsline{toc}{section}{Grafovi, grananje i spajanje grana}
+
+Prije nego nastavimo s gitom, par riječi o grafovima. 
+U ovoj njizi će vidjeti puno grafova kao što su u primjerima s linearnim verzioniranjem koda. 
+Zato ćemo se na trenutak zadržati na jednom takvom grafu:
 
 \input{graphs/primjer_s_granama_i_spajanjima}
+
+Svaka točka grafa je stanje projekta. 
+Projekt s gornjim grafom je započeo s nekim početnim stanjem \emph a.
+Programer je napravio nekoliko izmjena i \emph{snimio} novo stanje \emph b, zatim \emph c, pa sve do \emph d.
+Važno je napomenuti da je ovakav graf stanje povijesti projekta, ali iz njega ne možete zaključiti kojim redosljedom je nastao.
+
+Evo, na primjer, jedan scenarij kako je došlo do navedenog grafa.
 
 % \section*{}
 % \addcontentsline{toc}{section}{}
