@@ -7,6 +7,11 @@ mod_sys.path.append( 'submodules/vcgraphtex' )
 
 import vcgraphtex as mod_graph
 
+RED = ( 1, 0, 0 )
+GREEN = ( 0, 1, 0 )
+BLUE = ( 0, 0, 1 )
+GRAY = ( .6, .6, .6 )
+
 def graph_primjer_s_klijentom():
 	graph = mod_graph.Graph()
 
@@ -15,16 +20,39 @@ def graph_primjer_s_klijentom():
 
 	graph.add_branch( mod_graph.Branch(
 			branch_from = graph.find_node( '1.0' ),
-			color = ( .5, .5, .5 ),
+			color = GRAY,
 			row = 1,
-			nodes = [ '1.1\'' ] ) )
+			nodes = [ '1.1\'', '1.2\'' ] ) )
 
 	return graph
 
 def graph_linearni_model():
 	graph = mod_graph.Graph()
 
-	graph.add_branch( mod_graph.Branch( nodes = 'abcdefgh' ) )
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', '1.0', 'f', 'g', 'h', 'i', '2.0', '...' ] ) )
+
+	return graph
+
+def graph_linearni_model_2():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', '1.0', 'f', 'g', 'h', 'i', '2.0', '...' ] ) )
+
+	graph.add_branch(
+		mod_graph.Branch(
+			row = 1,
+			nodes = [ 'x', 'y', '1.1' ],
+			color = GRAY,
+			branch_from = graph.find_node( '1.0' ) ) )
+
+	graph.add_branch(
+		mod_graph.Branch(
+			row = 1,
+			nodes = [ 'q', '2.1' ],
+			color = GRAY,
+			branch_from = graph.find_node( '2.0' ) ) )
 
 	return graph
 
@@ -39,18 +67,16 @@ def graph_primjer_s_granama_i_spajanjima():
 			label = 'zadatak-1',
 			row = 2,
 			nodes = 'xyzqw',
-			color = ( 0, 0, 1 ),
 			branch_from = graph.find_node( 'b' ) ) )
 
 	graph.add_branch( mod_graph.Branch(
 			label = 'eksperiment',
 			row = 1,
 			nodes = '1234',
-			color = ( 1, 0, 0 ),
 			branch_from = graph.find_node( 'g' ) ) )
 
-	graph.add_arrow( 'd', 'z', color = ( 0, 1, 0 ) )
-	graph.add_arrow( 'q', 'g' )
+	graph.add_arrow( 'd', 'z', color = GRAY )
+	graph.add_arrow( 'q', 'g', color = GRAY )
 
 	return graph
 
