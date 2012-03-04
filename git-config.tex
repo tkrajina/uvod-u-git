@@ -21,6 +21,28 @@ Važno je napomenuti da su to samo \emph{osnovni paketi}.
 Oni će biti dovoljni za primjere koji slijede. 
 No, za mnoge specifične scenarije postoje dodaci s kojima se git naredbe "obogaćuju" i omogućavaju nove stvari.
 
+\section*{Prvi git repozitorij}
+\addcontentsline{toc}{section}{Prvi git repozitorij}
+
+Ukoliko ste naviknuti na TFS, subversion ili CVS onda si vjerojatno zamišljate da je za ovaj korak potrebno neko računalo na kojem je instaliran poseban servis ("daemon") i kojemu je potrebno nekako dati do znanja da želite imati novi repozitorij na njemu.
+Osim toga, vjerojatno mislite kako je drugi korak nekako preuzeti taj projekt s tog udaljenog računala/servisa.
+
+S gitom je jednostavnije. 
+\emph{Apsolutno svaki direktorij može mostati git repozitorij.}
+Ne mora \emph{uopće} postojati udaljeni server i neki centralni repozitorij kojeg koriste (i) ostali koji rade na projektu.
+
+Na primjer, stvoriti ćemo novi direktorij \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
+
+\begin{verbatim}
+$ mkdir moj-prvi-projekt
+$ cd moj-prvi-projekt
+$ git init
+Initialized empty Git repository in /home/user/moj-prvi-projekt/.git/
+$ 
+\end{verbatim}
+
+I to je to. 
+
 %\section*{}
 %\addcontentsline{toc}{section}{}
 
