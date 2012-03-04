@@ -1,13 +1,6 @@
 \chapter*{Verzioniranje koda i osnovni pojmovi}
 \addcontentsline{toc}{chapter}{Verzioniranje koda i osnovni pojmovi}
 
-\begin{itemize}
-   \item instalacija
-   \item .git
-   \item .gitignore
-   \item komande
-\end{itemize}
-
 \section*{Što je to verzioniranje koda?}
 \addcontentsline{toc}{section}{Što je to verzioniranje koda?}
 
@@ -71,11 +64,53 @@ Projekt s gornjim grafom je započeo s nekim početnim stanjem \emph a.
 Programer je napravio nekoliko izmjena i \emph{snimio} novo stanje \emph b, zatim \emph c, pa sve do \emph d.
 Važno je napomenuti da je ovakav graf stanje povijesti projekta, ali iz njega ne možete zaključiti kojim redosljedom je nastao.
 
-Evo, na primjer, jedan scenarij kako je navedeni graf mogao nastati.
+Evo, na primjer, jedan scenarij kako je navedeni graf mogao nastati:
 
 \input{graphs/primjer_s_granama_i_spajanjima_1}
 
+Programer je započeo aplikaciju, snimio stanje \emph a, \emph b i \emph c i tada se sjetio da ima neki problem kojeg može riješiti na dva načina, vratio se na \emph b i napravio novu \textbf{granu}:
 
+\input{graphs/primjer_s_granama_i_spajanjima_2}
+
+Sjetio se jedne sitnice koju je mogao napraviti u originalnoj verziji; vratio se tamo i dodao \emph d:
+
+\input{graphs/primjer_s_granama_i_spajanjima_3}
+
+Nakon toga se vratio na svoj prvotni eksperiment, i odlučio se da bi bilo dobro tamo imati izmjene koje je napravio u \emph c i \emph d.
+Tada je \emph{preuzeo} te izmjene u svoju granu:
+
+\input{graphs/primjer_s_granama_i_spajanjima_4}
+
+Vratio se na svoju eksperimentalnu granu, napravio još jednu izmjenu \emph q, vratio se na originalnu granu i tamo napredovao s \emph e i \emph f. 
+Sjetio se da bi mu sve izmjene iz eksperimentalne grane odgovarale u originalnoj, \emph{preuzeo} ih:
+
+\input{graphs/primjer_s_granama_i_spajanjima_5}
+
+Preuzeo je sve izmjene iz eksperimentalne grane u originalnu:
+
+\input{graphs/primjer_s_granama_i_spajanjima_6}
+
+I, zatim je nastavio, stvorio još jednu eksperimentalnu granu(\emph 1, \emph 2, \emph 3, \dots)\dots I tako dalje\dots
+
+\input{graphs/primjer_s_granama_i_spajanjima}
+
+Uočite da izmjena \emph w nije nikad završila u glavnoj grani. 
+Jedna od velikih prednosti gita je lakoća stvaranja novih grana i preuzimanja izmjena iz jedne u drugu granu. 
+Tako je programerima jednostavno u nekom trenutku odlučiti ovako \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušati ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
+
+Druga velika prednost čestog grananja u programima je kad se dodaje neka nova funkcionalnost koja će zahtijevati puno izmjena, a ne želime te izmjene odmah stavljati u glavnu granu programa:
+
+\input{graphs/primjer_s_dugotrajnom_granom}
+
+Jedino na što trebate pripaziti da redovito izmjene iz glavne grane programa preuzimate u sporednu, tako da razlike u kodu ne budu prevelike. 
+Te izmjene su na grafu označene sivim strelicama.
+
+Kad novu funkcionalnost završite, treba samo u glavnoj granu preuzeti sve izmjene iz sporedbne (crvena strelica).
+
+Na taj način ćete često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
+Imati ćete posebne grane za različite nove funkcionalnosti, posebne grane za eksperimente, posebne grane u kojima ćete isprobavati izmjene koje su napravili drugi programeri, \dots
+
+Osnovna ideja ove knjižice \emph{nije} da vas uči kako je najbolje organizirati povijest projekta, odnosno kako granati, kad i kako preuzimati izmjene iz pojedinih grana. Osnovna ideja je da vas nauči \emph{kako} to napraviti s gitom. Zato sad krećemo s nečim konkretnim\dots
 
 % \section*{}
 % \addcontentsline{toc}{section}{}

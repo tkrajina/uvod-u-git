@@ -85,6 +85,98 @@ def graph_primjer_s_granama_i_spajanjima_1():
 
 	return graph
 
+def graph_primjer_s_granama_i_spajanjima_2():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abc' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = 'xy',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	return graph
+
+def graph_primjer_s_granama_i_spajanjima_3():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcd' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = 'xy',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	return graph
+
+def graph_primjer_s_granama_i_spajanjima_4():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcdefgh' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = 'xyz',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	graph.add_arrow( 'd', 'z', color = GRAY )
+
+	return graph
+
+def graph_primjer_s_granama_i_spajanjima_5():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcdef' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = 'xyzq',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	graph.add_arrow( 'd', 'z', color = GRAY )
+
+	return graph
+
+def graph_primjer_s_dugotrajnom_granom():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcdefghijklmnopq' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = '1234567890xyz',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	graph.add_arrow( 'e', '4', color = GRAY )
+	graph.add_arrow( 'h', '7', color = GRAY )
+	graph.add_arrow( 'i', '8', color = GRAY )
+	graph.add_arrow( 'l', 'x', color = GRAY )
+	graph.add_arrow( 'n', 'z', color = GRAY )
+	graph.add_arrow( 'z', 'p', color = RED )
+
+	return graph
+
+def graph_primjer_s_granama_i_spajanjima_6():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			row = 1,
+			nodes = 'xyzq',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	graph.add_arrow( 'd', 'z', color = GRAY )
+	graph.add_arrow( 'q', 'g', color = GRAY )
+
+	return graph
+
 for v in vars().keys():
 	if v.startswith( 'graph_' ):
 		method = vars()[ v ]
