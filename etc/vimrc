@@ -1,0 +1,3 @@
+map <F1> :!latex git.tex
+map <F2> :!python create_graphs.py
+map <F3> :!bin/clean
