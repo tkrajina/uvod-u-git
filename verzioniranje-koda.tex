@@ -16,12 +16,12 @@ Bilo da je to neka jednostavna web aplikacija, CMS\footnote{Content Management S
 
 Svaka aplikacija koja ima \textit{stvarnog} korisnika kojemu rješava neki \textit{stvarni} problem ima i \textbf{korisničke zahtjeve}.
 Taj korisnik možete biti Vi sami, može biti neko hipotetsko tržište (kojemu planirate prodati riješenje) ili može biti naručioc.
-Korisničke zahtjeve ne možete nikad točno procijeniti u trenutku kad krenete pisati program.
+Korisničke zahtjeve ne možete nikad točno predvidjeti u trenutku kad krenete pisati program.
 Možete satima, danima i mjesecima sjediti s budućim korisnicima i planirati što će sve Vaša aplikacija imati, ali kad korisnik sjedne pred prvu verziju aplikacije, čak i ako je pisana točno prema njegovim specifikacijama, on će naći nešto što ne valja. 
 Radi li se o nekoj maloj izmjeni -- možda ćete ju napraviti na licu mjesta. No, možda ćete trebati otići doma, potrošiti nekoliko dana i napraviti \textbf{novu verziju}.
 
 Desiti će se, na primjer, da korisniku date da isproba verziju \texttt{1.0}.
-On će to isprobati, naći nekoliko sitnih stvari koje treba ispraviti.
+On će istestirati i, naravno, naći nekoliko sitnih stvari koje treba ispraviti.
 Otići ćete kući, ispraviti ih, napraviti verziju \texttt{1.1} s kojom će klijent biti zadovoljan.
 Nekoliko dana kasnije, s malo više iskustva u radu s aplikacijom, on zaključuje kako sad ima \textit{bolju} ideju kako je trebalo ispraviti verziju \texttt{1.0}.
 Vi sad, dakle, trebate "baciti u smeće" posao koji ste radili za \texttt{1.1}, vratiti se na \texttt{1.0} i od nje napraviti, npr. \texttt{1.1b}.
@@ -30,7 +30,9 @@ Grafički bi to izgledalo ovako nekako:
 
 \input{graphs/primjer_s_klijentom}
 
-I to je samo jedan od scenarija
+U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara -- Vi ju trebate "baciti u smeće", vratiti se jedan korak unazad u povijest projekta i započeti tu verziju iznova. I nastaviti projekt s tom izmjenom.
+
+I to je samo jedan od mnogih složenih scenarija kakvi se dešavaju s aplikacijama koje korisnici koriste.
 
 \section*{Linearno verzioniranje koda}
 \addcontentsline{toc}{section}{Linearno verzioniranje koda}
@@ -38,6 +40,22 @@ I to je samo jedan od scenarija
 Linearni pristup verzioniranju koda se najbolje može opisati sljedećom ilustracijom:
 
 \input{graphs/linearni_model}
+
+To je idealna situacija u kojoj točno unaprijed znate kako aplikacija treba izgledati, počete projekt s nekim početnim stanjem \emph{a}, pa napravite izmjene \emph{b}, \emph{c}, \dots sve dok ne zaključite kako ste spremni izdati prvu verziju za javnost.
+Proglasite to verzijom \texttt{1.0}. 
+
+Postoje mnoge varijacije ovog lineranog modela, jedna česta je:
+
+\input{graphs/linearni_model_2}
+
+Ona je česta u situacijama kad nemate kontrolu time koja je točno verzija programa instalirana kod klijenta. 
+S web aplikacijama to nije problem, jer Vi imate potpunu kontrolu nad time koja je aplikacija na serveru i kojoj verziji aplikacija klijenti pristupaju.
+Međutim, ukoliko je Vaš program klijentima "spržen" na CD-u i kao takav poslan klijentu -- može se desiti da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
+
+I sad, što ako klijent koji je zadovoljan sa starijom verzijom programa otkrije \textbf{bug}?
+I zbog nekog razloga ne želi preći na novu verziju?
+U tom slučaju, morate imati neki mehanizam da se privremeno vratite na staru verziju, ispravite problem, izdate novu verziju stare verzije. 
+Pošaljete je klijentu i nakon toga, vratite se na najnoviju verziju i tamo nastavite rad na svoj projektu.
 
 \section*{Grananje i spajanje grana}
 \addcontentsline{toc}{section}{Grananje i spajanje grana}
