@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys as mod_sys
+import os as mod_os
 
 mod_sys.path.append( 'submodules/vcgraphtex' )
 
@@ -178,6 +179,12 @@ def graph_primjer_s_granama_i_spajanjima_6():
 	return graph
 
 for v in vars().keys():
+	# create graphs/ director if not exists:
+	try:
+		mod_os.mkdir( 'graphs' )
+	except:
+		pass
+
 	if v.startswith( 'graph_' ):
 		method = vars()[ v ]
 		file_name = 'graphs/' + v.replace( 'graph_', '' ) + '.tex'
