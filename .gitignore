@@ -8,3 +8,4 @@
 *.pdf
 tmp/*
 graphs/*
+git_output/*.tex
