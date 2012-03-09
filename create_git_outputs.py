@@ -68,7 +68,7 @@ def execute_git_status_rules( string, type_rules ):
 				assert len( groups ) == 1
 				assert len( groups ) == len( rule_template )
 
-				result += to_latex_string( process_groups_and_roules( unnest( groups ), unnest( rule_template ) ) ) + '\\\\%\n'
+				result += to_latex_string( process_groups_and_roules( unnest( groups ), unnest( rule_template ) ) ) + '\\\\\n'
 
 				found = True
 		if not found:
@@ -79,14 +79,17 @@ def execute_git_status_rules( string, type_rules ):
 def to_latex( string ):
 	for type_regex, type_rules in types.items():
 		if mod_re.match( type_regex, string ):
-			return '\\noindent%\n\\texttt{%\n' + execute_git_status_rules( string, type_rules ) + '}\n'
+			return """\\gitoutput{%
+\\noindent%
+\\texttt{%
+""" + execute_git_status_rules( string, type_rules )[ : -3 ] + '}}'
 	raise Exception( 'Unknown git output for {0}'.format( string ) )
 
 if __name__ == '__main__':
 	for file_name in mod_os.listdir( 'git_output' ):
 		if file_name.endswith( '.txt' ):
 			with file( 'git_output/{0}'.format( file_name ) ) as f:
-				content = f.read()
+				content = f.read().strip()
 			latex = to_latex( content )
 			latex_file_name = file_name.replace( '.txt', '.tex' )
 			with file( 'git_output/{0}'.format( latex_file_name ), 'w' ) as f:
