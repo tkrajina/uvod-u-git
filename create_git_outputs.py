@@ -6,6 +6,7 @@ BLACK = '\\textcolor{{black}}{{{0}}}'
 RED = '\\textcolor{{red}}{{{0}}}'
 GREEN = '\\textcolor{{green}}{{{0}}}'
 GRAY = '\\textcolor{{gray}}{{{0}}}'
+ORANGE = '\\textcolor{{orange}}{{{0}}}'
 
 class GitOutputSyntaxRule:
 
@@ -29,9 +30,20 @@ types = [
 					( '^(\$\s+)(.*)$', ( GRAY, BLUE ) ),
 			]
 	),
+	GitOutputSyntaxRule( 
+			detection_regex = 'diff\s+\-\-git.*',
+			line_rules = [ 
+					( '^(index.*)$', ( ORANGE ) ),
+					( '^(@@.*)$', ( ORANGE ) ),
+					( '^(\-.*)$', ( RED ) ),
+					( '^(\+.*)$', ( BLUE ) ),
+					( '^(diff.*)$', ( BLACK ) ),
+			]
+	),
 ]
 
 def to_latex_string( string ):
+	string = string.replace( '\\', '\\textbackslash{}' )
 	string = string.replace( ' ', '\\ ' )
 	string = string.replace( '$', '\\$' )
 	string = string.replace( '#', '\\#' )
@@ -51,7 +63,7 @@ def unnest( list_or_tuple ):
 	else:
 		return [ list_or_tuple ]
 
-def process_groups_and_roules( groups, rules ):
+def process_groups_and_rules( groups, rules ):
 	result = ''
 
 	#print 'groups:', groups
@@ -64,7 +76,7 @@ def process_groups_and_roules( groups, rules ):
 		#print 'group:', group
 		#print 'rule:', rule
 
-		result += rule.format( group )
+		result += rule.format( to_latex_string( group ) )
 
 	return result
 
@@ -86,7 +98,7 @@ def execute_git_status_rules( string, type_rules ):
 				assert len( groups ) == 1
 				assert len( groups ) == len( rule_template )
 
-				result += to_latex_string( process_groups_and_roules( unnest( groups ), unnest( rule_template ) ) ) + '\\\\\n'
+				result += process_groups_and_rules( unnest( groups ), unnest( rule_template ) ) + '\\\\\n'
 
 				found = True
 		if not found:
