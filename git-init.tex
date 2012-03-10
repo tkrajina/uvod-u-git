@@ -98,17 +98,17 @@ Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (
 
 Ukoliko ne želite \verb+class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target+ -- vaša će \verb+.gitignore+ datoteka izgledati ovako:
 
-\begin{verbatim}
-# Vim privremene datoteke:
-*.swp
-*.swo
-# Java kompajlirane klase:
-*.class
-# Output direktorij s rezultatima kompajliranja i builda:
-target/*
-\end{verbatim}
+\gitoutputcommand{%
+\color{gray}{\# Vim privremene datoteke:}\\
+\color{black}{*.swp}\\
+\color{black}{*.swo}\\
+\color{gray}{\# Java kompajlirane klase:}\\
+\color{black}{*.class}\\
+\color{gray}{\# Output direktorij s rezultatima kompajliranja i builda:}\\
+\color{black}{target/*}%
+}
 
-Sve one linije koje započinju sa znakom \verb # su komentari i ignoriraju se.
+Sve one linije koje započinju sa znakom \verb+#+ su komentari i git će se ponašati kao da ne postoje.
 
 \dots{}i sad smo spremni početi nešto i raditi s našim projektom\dots
 

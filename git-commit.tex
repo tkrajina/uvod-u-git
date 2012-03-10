@@ -27,34 +27,13 @@ Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozi
 Da biste provjerili imate li uopće nešto za spremati, koristi se naredba \verb+git status+.
 Na primjer, kad na projektu na kojem trenutno radim (a to je upravo \emph{ova knjiga}), dobijem ovakav ispis:
 
-\begin{verbatim}
-puzz@puzz:~/projects/uvod-u-git$ git status
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   git-commit.tex
-#
-no changes added to commit (use "git add" and/or "git commit -a")
-\end{verbatim}
+\input{git_output/git_status_1}
 
 Najbitniji podatak je linija u kojoj piše \verb+modified: git-commit.tex+, jer to je datoteka koju sam \emph{mijenjao}, ali ne još snimio.
 
 Promijenim li još jednu datoteku, tada će rezultat biti:
 
-\begin{verbatim}
-puzz@puzz:~/projects/uvod-u-git$ git status
-# On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   git-commit.tex
-#	modified:   git.tex
-#
-no changes added to commit (use "git add" and/or "git commit -a")
-\end{verbatim}
+\input{git_output/git_status_2}
 
 Dakle, sad su izmijenjene datoteke \verb+git-commit.tex+ i \verb+git.tex+.
 
