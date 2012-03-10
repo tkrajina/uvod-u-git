@@ -40,38 +40,7 @@ Dakle, sad su izmijenjene datoteke \verb+git-commit.tex+ i \verb+git.tex+.
 Želite li pogledati \emph{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \emph{zadnjoj verziji} repozitorija, to ćete dobiti s \verb+git diff+. 
 Opet, u slučaju moje knjige, taj ispis izgleda ovako nekako:
 
-\begin{verbatim}
-diff --git a/git-commit.tex b/git-commit.tex
-index a08646e..4989c76 100755
---- a/git-commit.tex
-+++ b/git-commit.tex
-@@ -21,8 +21,44 @@ Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a
- Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij.
- Interakcija s udaljenim repozitorijem ¿e biti tema poglavlja o udaljenim repozitorijima\ref{udaljeni_repozitoriji}.
- 
--\section*{TODO}
--\addcontentsline{toc}{section}{TODO}
-+\section*{Status}
-+\addcontentsline{toc}{section}{Status}
-+
-+Da biste provjerili 
- 
- \begin{itemize}
-    \item add, remote
-diff --git a/git.tex b/git.tex
-index 7ea5243..34d23d6 100755
---- a/git.tex
-+++ b/git.tex
-@@ -24,6 +24,7 @@
- 
- \makeindex
- 
-+
- \begin{document}
- 
- \large
-
-\end{verbatim}
+\input{git_output/git_diff_1}
 
 Ako vam ovo izgleda zbunjujuće -- postoji i način kako da se to ljepše prikaže, no, čisto za vježbu, nije loše pokušati interpretirati što ovo znači.
 Najvažniji dijelovi su linije oni koji počinju si \verb+diff+, jer one govore o kojim datotekama se radi.
