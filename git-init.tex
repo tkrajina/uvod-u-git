@@ -25,13 +25,7 @@ Ako Vam je to neobično, stvar je još čudnija -- ako već postoji udaljeni rep
 
 No, idemo sad na prvi i najjednostavniji korak -- stvoriti ćemo novi direktorij \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
 
-\begin{verbatim}
-$ mkdir moj-prvi-projekt
-$ cd moj-prvi-projekt
-$ git init
-Initialized empty Git repository in /home/user/moj-prvi-projekt/.git/
-$ 
-\end{verbatim}
+\input{git_output/git_init}
 
 I to je to. 
 
@@ -45,17 +39,17 @@ Zatreba vam ikad sigurnosna kopija cijelog repozitorija -- sve što trebate napr
 U prethodnom primjeru smo u našem direktoriju inicijalizirali git repozitorij s naredbom \verb+git ini+.
 Općenito, git naredbe uvijek imaju sljedeći format:
 
-\begin{verbatim}
-git <komanda> <opcija1> <opcija2> ...
-\end{verbatim}
+\gitoutput{
+\color{blue}{git $<$komanda$>$ $<$opcija1$>$ $<$opcija2$>$ \dots}
+}
 
 Izuzetak je pomoćni grafički program s kojim se može pregledavati povijest projekta, a koji dolazi u instalaciji s gitom -- \verb+gitk+.
 
 Za svaku git naredbu možete dobiti \emph{help} s:
 
-\begin{verbatim}
-git help <komanda>
-\end{verbatim}
+\gitoutputcommand{
+git help $<$komanda$>$
+}
 
 Na primjer, \verb+git help init+ ili \verb+git help config+.
 
@@ -68,9 +62,9 @@ Postavke mogu biti \emph{lokalne} (odnosno vezane uz jedan jedini projekt) ili \
 
 Globalne postavke se postavljaju s:
 
-\begin{verbatim}
-git config --global <naziv> <vrijednost>
-\end{verbatim}
+\gitoutputcommand{
+git config --global $<$naziv$>$ $<$vrijednost$>$
+}
 
 \dots{}i one se spremaju u datoteku \verb+.gitconfig+ u vašem \emph{home} direktoriju.
 
@@ -78,31 +72,21 @@ Lokalne postavke se spremaju u \verb+.git+ direktorij u direktoriju koji sadrži
 
 Za normalan rad na nekom projektu, drugi korisnici trebaju znati tko je točno radio izmjene na kodu (\emph{commit}ove), zato trebate postaviti ime i prezime i email adresu:
 
-\begin{verbatim}
-$ git config --global user.name "Ana Anić"
-$ git config --global user.email "ana.anic@privatna.domena.com"
-\end{verbatim}
+\input{git_output/git_config_1}
 
 Imate li neki repozitorij koji je vezan za posao, i možda ne želite da se identificirate sa svojom privatnom domenom, tada \emph{u tom direktoriju} trebate postaviti drukčije postavke:
 
-\begin{verbatim}
-$ git config user.name "Ana Anić"
-$ git config user.email "ana.anic@poslodavac.hr"
-\end{verbatim}
+\input{git_output/git_config_2}
 
 Postoje mnoge druge konfiguracijske postavke, no ja vam preporučam da za početak postavite barem dvije:
 
 S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 
-\begin{verbatim}
-$ git config --global color.ui auto
-\end{verbatim}
+\input{git_output/git_config_3}
 
 \verb+merge.tool+ određuje koji će se program koristiti u slučaju da \emph{konflikta} (o tome više kasnije). Ja koristim \verb+gvimdiff+:
 
-\begin{verbatim}
-$ git config --global merge.tool gvimdiff
-\end{verbatim}
+\input{git_output/git_config_4}
 
 \section*{.gitignore}
 \addcontentsline{toc}{section}{.gitignore}

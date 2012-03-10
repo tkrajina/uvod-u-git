@@ -1,0 +1,5 @@
+$ mkdir moj-prvi-projekt
+$ cd moj-prvi-projekt
+$ git init
+Initialized empty Git repository in /home/user/moj-prvi-projekt/.git/
+$

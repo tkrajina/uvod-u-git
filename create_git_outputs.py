@@ -7,11 +7,29 @@ RED = '\\textcolor{{red}}{{{0}}}'
 GREEN = '\\textcolor{{green}}{{{0}}}'
 GRAY = '\\textcolor{{gray}}{{{0}}}'
 
-types = {
-		'\$\s+git\s+status.*': (
-				( '^(#\t)(.*)$', ( GRAY, BLUE ) ),
-		),
-}
+class GitOutputSyntaxRule:
+
+	detection_regex = None
+	line_rules = None
+
+	def __init__( self, detection_regex, line_rules ):
+		self.detection_regex = detection_regex
+		self.line_rules = line_rules
+
+types = [
+	GitOutputSyntaxRule( 
+			detection_regex = '\$\s+git\s+status.*',
+			line_rules = [ 
+					( '^(#\t)(.*)$', ( GRAY, BLUE ) ),
+			]
+	),
+	GitOutputSyntaxRule( 
+			detection_regex = '\$.*',
+			line_rules = [ 
+					( '^(\$\s+)(.*)$', ( GRAY, BLUE ) ),
+			]
+	),
+]
 
 def to_latex_string( string ):
 	string = string.replace( ' ', '\\ ' )
@@ -77,12 +95,12 @@ def execute_git_status_rules( string, type_rules ):
 	return result
 
 def to_latex( string ):
-	for type_regex, type_rules in types.items():
-		if mod_re.match( type_regex, string ):
+	for rule in types:
+		if mod_re.match( rule.detection_regex, string ):
 			return """\\gitoutput{%
 \\noindent%
 \\texttt{%
-""" + execute_git_status_rules( string, type_rules )[ : -3 ] + '}}'
+""" + execute_git_status_rules( string, rule.line_rules )[ : -3 ] + '}}'
 	raise Exception( 'Unknown git output for {0}'.format( string ) )
 
 if __name__ == '__main__':

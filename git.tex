@@ -29,13 +29,20 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 
 \newcommand{\gitoutput}[1]{%
+	\vspace{3mm}%
 	\begin{tabular}{|l}%
 		\begin{minipage}[b]{150mm}%
 			\vspace{3mm}%
-			#1%
+			\noindent
+			\texttt{#1}
 			\vspace{3mm}%
 		\end{minipage}%
 	\end{tabular}%
+	\vspace{3mm}%
+}
+
+\newcommand{\gitoutputcommand}[1]{%
+	\gitoutput{\color{blue}{#1}}%
 }
 
 \begin{document}
