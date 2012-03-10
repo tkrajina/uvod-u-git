@@ -44,22 +44,20 @@ Opet, u slučaju moje knjige, taj ispis izgleda ovako nekako:
 
 Ako vam ovo izgleda zbunjujuće -- postoji i način kako da se to ljepše prikaže, no, čisto za vježbu, nije loše pokušati interpretirati što ovo znači.
 Najvažniji dijelovi su linije oni koji počinju si \verb+diff+, jer one govore o kojim datotekama se radi.
-Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \emph{oko} dijela koji je izmijenjen i onda ono najvažnije:
+Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \emph{oko} dijela koji je izmijenjen i onda ono najvažnije -- linije obojane u crveno i one obojane u plavo.
 
-\begin{verbatim}
--\section*{TODO}
--\addcontentsline{toc}{section}{TODO}
-+\section*{Status}
-+\addcontentsline{toc}{section}{Status}
-+
-+Da biste provjerili 
-\end{verbatim}
-
-Linije koje započinju s "-" su linije koje su \emph{obrisane}, a one koje počinju s "+" su one koje su \emph{dodane}. 
+Linije koje započinju s "-" (crvene) su linije koje su \emph{obrisane}, a one koje počinju s "+" (u plavom) su one koje su \emph{dodane}. 
 Primijetite da git ne zna da ste neku liniju izmijenili. 
 Ukoliko jeste -- on se ponaša kao da ste staru obrisalu, a novu dodali.
 
 U drugoj datoteci \verb+git.tex+, samo je jedna linije \emph{dodana}, i to prazan redak.
+
+\section*{Međuprostor za commit}
+\addcontentsline{toc}{section}{Međuprostor za commit}
+
+U gitu postoji poseban "prostor" u koje se "stavljaju" datoteke koje ćete spremiti (\emph{commit}ati):
+
+\input{git_output/git_add_1}
 
 \begin{itemize}
    \item add, remote

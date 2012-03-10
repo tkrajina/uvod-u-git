@@ -4,7 +4,7 @@ index a08646e..4989c76 100755
 +++ b/git-commit.tex
 @@ -21,8 +21,44 @@ Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a
  Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij.
- Interakcija s udaljenim repozitorijem ¿e biti tema poglavlja o udaljenim repozitorijima\ref{udaljeni_repozitoriji}.
+ Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozitorijima\ref{udaljeni_repozitoriji}.
  
 -\section*{TODO}
 -\addcontentsline{toc}{section}{TODO}
