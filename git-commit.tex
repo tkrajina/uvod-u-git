@@ -71,6 +71,12 @@ Nakon toga, rezultat od \verb+git status+ je:
 
 \input{git_output/git_status_2}
 
+Ukoliko ima neka datoteka koju ste staviti u međuprostor za \emph{commit}, ali ste se kasnije predomislili. 
+Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njemu napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
+To se može naredbom:
+
+\gitoutputcommand{git rm --cached <ime\_datoteke>}
+
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
 
@@ -102,7 +108,7 @@ Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
 
 Ukoliko provjerite s \verb+git log+ šte se desilo, otkriti ćete da zadnji \emph{commit} sad ima novi komentar.
-U stvari, ispravno bi bilo kazati da je promijenjen i cijeli commit.
+U stvari, ispravno bi bilo kazati da je promijenjen i cijeli taj \emph{commit}.
 
 %\begin{itemize}
 %   \item add, remote
