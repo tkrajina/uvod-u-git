@@ -25,6 +25,12 @@ types = [
 			]
 	),
 	GitOutputSyntaxRule( 
+			detection_regex = '\$\s+git\s+log.*',
+			line_rules = [ 
+					( '^(commit.*)$', ( BLUE ) ),
+			]
+	),
+	GitOutputSyntaxRule( 
 			detection_regex = '\$.*',
 			line_rules = [ 
 					( '^(\$\s+)(.*)$', ( GRAY, BLUE ) ),
