@@ -89,6 +89,21 @@ Sad je status projekta opet:
 
 \input{git_output/git_log_0}
 
+\section*{Ispravljanje zadnje izmjene}
+\addcontentsline{toc}{section}{Ispravljanje zadnje izmjene}
+
+Dogoditi će vam se da spremite neku izmjenu u repozitorij, gledate još malo projekt i shvatite da ste mogli još jednu sitnicu napraviti.
+I, nekako vam se čini da bi bilo logično da ta sitnica bude dio prethodnog \emph{commit}a.
+
+Bilo bi lijepo, pomislit' ćete kad biste mogli izmijeniti zadnji \emph{commit} tako da sadrži i ovu novu, sitnu, ispravku koju ste dodali.
+S gitom se to može.
+Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README.md+, dodate tu datoteku u naš međuprostor za izmjene s \verb+git add README.md+ i izvršite sljedeće:
+
+\gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
+
+Ukoliko provjerite s \verb+git log+ šte se desilo, otkriti ćete da zadnji \emph{commit} sad ima novi komentar.
+U stvari, ispravno bi bilo kazati da je promijenjen i cijeli commit.
+
 %\begin{itemize}
 %   \item add, remote
 %   \item git gui
