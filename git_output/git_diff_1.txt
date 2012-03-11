@@ -1,30 +1,34 @@
-diff --git a/git-commit.tex b/git-commit.tex
-index a08646e..4989c76 100755
---- a/git-commit.tex
-+++ b/git-commit.tex
-@@ -21,8 +21,44 @@ Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a
- Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij.
- Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozitorijima\ref{udaljeni_repozitoriji}.
+diff --git a/README.md b/README.md
+index 80b2f4b..faaac11 100644
+--- a/README.md
++++ b/README.md
+@@ -32,8 +32,7 @@ Usage
+     	for point in route:
+     		print 'Point at ({0},{1}) -> {2}'.format( point.latitude, point.longitude, point.elevation )
+     
+-    # There are more utility methods and functions...
+-    
++    # There are many more utility methods and functions:
+     # You can manipulate/add/remove tracks, segments, points, waypoints and routes and
+     # get the GPX XML file from the resulting object:
+     
+diff --git a/TODO.txt b/TODO.txt
+deleted file mode 100644
+index d528b19..0000000
+--- a/TODO.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-- remove extreemes (options in smooth() remove_elevation_extreemes, remove_latlon_extreemes, default False for both)
+diff --git a/setup.py b/setup.py
+index c9bbb18..01a08a9 100755
+--- a/setup.py
++++ b/setup.py
+@@ -17,7 +17,7 @@
+ import distutils.core as mod_distutilscore
  
--\section*{TODO}
--\addcontentsline{toc}{section}{TODO}
-+\section*{Status}
-+\addcontentsline{toc}{section}{Status}
-+
-+Da biste provjerili 
- 
- \begin{itemize}
-    \item add, remote
-diff --git a/git.tex b/git.tex
-index 7ea5243..34d23d6 100755
---- a/git.tex
-+++ b/git.tex
-@@ -24,6 +24,7 @@
- 
- \makeindex
- 
-+
- \begin{document}
- 
- \large
-
+ mod_distutilscore.setup( name = 'gpxpy',
+-	version = '0.6.0',
++	version = '0.6.1',
+ 	description = 'GPX file parser and GPS track manipulation library',
+ 	license = 'Apache License, Version 2.0',
+ 	author = 'Tomo Krajina',

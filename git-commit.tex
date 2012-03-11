@@ -25,17 +25,17 @@ Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozi
 \addcontentsline{toc}{section}{Status}
 
 Da biste provjerili imate li uopće nešto za spremati, koristi se naredba \verb+git status+.
-Na primjer, kad na projektu na kojem trenutno radim (a to je upravo \emph{ova knjiga}), dobijem ovakav ispis:
+Na primjer, kad na projektu koji nema lokalnih izmjena za spremanje utipkate \verb+git status+, dobiti ćete:
+
+\input{git_output/git_status_0}
+
+Pretpostavimo da ste odlučili napraviti tri izmjene na projektu. i
+Izmijenili ste liniju u datoteci \verb+README.md+ i \verb+setup.py+ i obrisali \verb+TODO.txt+:
+Sad će rezultat od \verb+git status+ izgledati ovako:
 
 \input{git_output/git_status_1}
 
 Najbitniji podatak je linija u kojoj piše \verb+modified: git-commit.tex+, jer to je datoteka koju sam \emph{mijenjao}, ali ne još snimio.
-
-Promijenim li još jednu datoteku, tada će rezultat biti:
-
-\input{git_output/git_status_2}
-
-Dakle, sad su izmijenjene datoteke \verb+git-commit.tex+ i \verb+git.tex+.
 
 Želite li pogledati \emph{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \emph{zadnjoj verziji} repozitorija, to ćete dobiti s \verb+git diff+. 
 Opet, u slučaju moje knjige, taj ispis izgleda ovako nekako:
@@ -50,7 +50,11 @@ Linije koje započinju s "-" (crvene) su linije koje su \emph{obrisane}, a one k
 Primijetite da git ne zna da ste neku liniju izmijenili. 
 Ukoliko jeste -- on se ponaša kao da ste staru obrisalu, a novu dodali.
 
-U drugoj datoteci \verb+git.tex+, samo je jedna linije \emph{dodana}, i to prazan redak.
+Rezultat git naredbe su samo dijelovi koje ste izmijenili i nekoliko linija \emph{oko njih}.
+Ukoliko želite malo veću tu "okolinu" oko vaših izmjena, možete ju izmijeniti s opcijom \verb+-U<broj_linija>+.
+Na primjer, ukoliko želite 10 linija oko izmjenjenih dijelova koda, to ćete dobiti sa:
+
+\gitoutputcommand{git diff -U10}
 
 \section*{Međuprostor za commit}
 \addcontentsline{toc}{section}{Međuprostor za commit}
@@ -59,14 +63,39 @@ U gitu postoji poseban "prostor" u koje se "stavljaju" datoteke koje ćete sprem
 
 \input{git_output/git_add_1}
 
-\begin{itemize}
-   \item add, remote
-   \item git gui
-   \item Ammend
-   \item Stash?
-   \item Pointeri na commit (hash, HEAD, HEAD~1, HEAD~2, ... master~1, master~2, master~3 )
-   \item Brisanje fajla iz repozitrija (ali ne i lokalnog filesystema)
-\end{itemize}
+Ili jednostavnije:
+
+\input{git_output/git_add_2}
+
+Nakon toga, rezultat od \verb+git status+ je:
+
+\input{git_output/git_status_2}
+
+\section*{Prvi commit}
+\addcontentsline{toc}{section}{Prvi commit}
+
+Izmjene možete spremiti s:
+
+\gitoutputcommand{git commit -m "Nova verzija"}
+
+U stringu nakon \verb+-m+ \emph{morate} unijeti komentar uz svaku promjenu koju spremate na projektu.
+
+Sad je status projekta opet:
+
+\input{git_output/git_status_0}
+
+\dots{}a sve prethodne izmjene možete pogledati s:
+
+\input{git_output/git_log_0}
+
+%\begin{itemize}
+%   \item add, remote
+%   \item git gui
+%   \item Ammend
+%   \item Stash?
+%   \item Pointeri na commit (hash, HEAD, HEAD~1, HEAD~2, ... master~1, master~2, master~3 )
+%   \item Brisanje fajla iz repozitrija (ali ne i lokalnog filesystema)
+%\end{itemize}
 
 %\section*{}
 %\addcontentsline{toc}{section}{}

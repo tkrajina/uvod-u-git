@@ -1,10 +1,9 @@
 $ git status
 # On branch master
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
 #
-#	modified:   git-commit.tex
-#	modified:   git.tex
+#	modified:   README.md
+#	deleted:    TODO.txt
+#	modified:   setup.py
 #
-no changes added to commit (use "git add" and/or "git commit -a")
