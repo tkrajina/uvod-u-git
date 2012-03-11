@@ -10,7 +10,7 @@ Vratimo se na trenutak na naša dva primjera, linerani model verzioniranja koda:
 \input{graphs/primjer_s_granama_i_spajanjima}
 
 U oba slučaja, čvorovi tih grafova su stanje projekta u nekom trenutku.
-Na primjer, kad ste prvi put inicirali projekt s \emph+git init+, dodali ste nekoliko datoteka i \emph{spremili ih}. 
+Na primjer, kad ste prvi put inicirali projekt s \verb+git init+, dodali ste nekoliko datoteka i \emph{spremili ih}. 
 U tom trenutku je nastao čvor \emph a.
 Nakon toga ste možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali i opet -- spremili novo stanje i dobili stanje \emph b.
 
@@ -79,12 +79,13 @@ Izmjene možete spremiti s:
 \gitoutputcommand{git commit -m "Nova verzija"}
 
 U stringu nakon \verb+-m+ \emph{morate} unijeti komentar uz svaku promjenu koju spremate na projektu.
+Git ne dopušta spremanje izmjena bez komentara.
 
 Sad je status projekta opet:
 
 \input{git_output/git_status_0}
 
-\dots{}a sve prethodne izmjene možete pogledati s:
+\dots{}a sve prethodne izmjene možete pogledati s \verb+git log+:
 
 \input{git_output/git_log_0}
 
