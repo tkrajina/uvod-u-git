@@ -110,6 +110,32 @@ Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README
 Ukoliko provjerite s \verb+git log+ šte se desilo, otkriti ćete da zadnji \emph{commit} sad ima novi komentar.
 U stvari, ispravno bi bilo kazati da je promijenjen i cijeli taj \emph{commit}.
 
+\section*{Git gui}
+\addcontentsline{toc}{section}{Git gui}
+
+Kad spremate neku izmjenu koja ima puno datoteka, onda je gnjavaža non stop tipkati \verb+git add+.
+Zbog toga postoji poseban grafički program kojemu je glavna namjena upravo to.
+Kad u komandnoj liniji utipkate:
+
+\gitoutputcommand{git gui}
+
+Otvoriti će se sljedeće:
+
+\includegraphics[width=14cm]{images/git-gui.png}
+
+Program se sastoji od četiri polja. 
+
+\begin{itemize}
+	\item Polje za datoteke koje su izmijenjene, ali nisu još u međuprostoru za snimanje izmjena (gore lijevo).
+	\item Polje za prikaz izmjena u pojedinim datotekama (gore desno). 
+	\item Polje za datoteke koje su izmijenjene i stavljene su u međuprostor za \emph{commit} (dolje lijevo).
+	\item Polje za \emph{commit} (dolje lijevo).
+\end{itemize}
+
+Kad kliknete na neku datoteku, prikazati će se sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
+Format je isti kao i kod \verb+git diff+.
+Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotke u polje izmijenjenih i spremnih za \emph{commit} i suprotno.
+
 %\begin{itemize}
 %   \item add, remote
 %   \item git gui
