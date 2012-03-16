@@ -135,6 +135,14 @@ Program se sastoji od četiri polja.
 Kad kliknete na neku datoteku, prikazati će se sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
 Format je isti kao i kod \verb+git diff+.
 Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotke u polje izmijenjenih i spremnih za \emph{commit} i suprotno.
+Upišite komentar i kliknite na \emph{Commit} za snimanje izmjene.
+
+Ovdje, kao i u radu s komandnom linijom ne morati sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
+Možete dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
+Koristite li \verb+git gui+ onda ovdje imati još jednu korisnu opciju, možete u međuprostor za commit dodati ne \emph{cijelu} datoteku, nego samo \emph{nekoliko izmijenjenih linija}.
+Odaberite datoteku, u polju s izmijenjenim linijama odaberite samo linije koje želite spremite, desni klik i:
+
+\includegraphics[width=14cm]{images/git-gui-stage-lines-to-commit.png}
 
 %\begin{itemize}
 %   \item add, remote
@@ -143,6 +151,7 @@ Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotke
 %   \item Stash?
 %   \item Pointeri na commit (hash, HEAD, HEAD~1, HEAD~2, ... master~1, master~2, master~3 )
 %   \item Brisanje fajla iz repozitrija (ali ne i lokalnog filesystema)
+%   \item Logoff objasniti
 %\end{itemize}
 
 %\section*{}
