@@ -75,7 +75,15 @@ Ukoliko ima neka datoteka koju ste staviti u međuprostor za \emph{commit}, ali 
 Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njemu napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
 To se može naredbom:
 
-\gitoutputcommand{git rm --cached <ime\_datoteke>}
+\gitoutputcommand{git rm --cached <datoteka1> <datoteka2> \dots}
+
+Događati će vam se da ste promijenili neku datoteku, no kasnije se ispostavilo da ta izmjena nije bila potrebna. 
+I sad ju ne želite spremiti nego vratiti u prethodno stanje.
+To se može ovako:
+
+\gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
+
+Više detalja o \verb+git checkout+ i zašto ova gornja naredba radi to što radi biti će u poglavlju o granama grananju.
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
@@ -144,10 +152,13 @@ Odaberite datoteku, u polju s izmijenjenim linijama odaberite samo linije koje �
 
 \includegraphics[width=14cm]{images/git-gui-stage-lines-to-commit.png}
 
+Više puta će vam se dogoditi da ste na nekoj datoteci napravili izmjenu koju \emph{ne} želite snimiti. 
+Takvu datoteku možete resetirati, odnosno vratiti u početno stanje tako da ju odaberete u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
+
+Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
+Preporučam van da nađete vremena i proučite sve menije i kratice s tastaturom u radu s \verb+git gui+ jer to će vam drastično ubrzati rad s ovim korisnim programčićem.
+
 %\begin{itemize}
-%   \item add, remote
-%   \item git gui
-%   \item Ammend
 %   \item Stash?
 %   \item Pointeri na commit (hash, HEAD, HEAD~1, HEAD~2, ... master~1, master~2, master~3 )
 %   \item Brisanje fajla iz repozitrija (ali ne i lokalnog filesystema)
