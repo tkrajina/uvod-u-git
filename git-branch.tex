@@ -6,13 +6,43 @@ I opet, početi ćemo s ovim, već viđenim, grafom:
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
 Ovaj put s jednom izmjenom, svaga "grana" ima svoj naziv.
-U uvodnom poglavlju je opisan scenarij kakav bi otprilike mogao scenarij kojim je ovaj graf mogao nastati.
+U uvodnom poglavlju je opisan scenarij koji bi, otprilike, mogao dovesti do ovog grafa.
 Ono što je ovdje važno još jednom spomenuti je sljedeće; svaki čvor grafa je nekakvo stanje projekta. 
 Svaka strelica iz jednog u drugi čvor je neka izmjena koju je programer napravio i snimio u nadi da će ona dovesti do željenog ponašanja aplikacije.
 
-Git vam omogućuje da jednostavno i brzo radite višestruke grane projekta.
+\section*{Spisak grana projekta}
+\addcontentsline{toc}{section}{Spisak grana projekta}
 
-Želite li vidjeti koje točno grane vašeg projekta postoje u nekom trenutku, probajte s:
+Jedna od velikih prednosti gita je što omogućuje jednostavan i brz rad s višestrukim granama projekta.
+Želite li vidjeti koje točno grane vašeg projekta postoje u nekom trenutku, probajte s \verb+git branch+.
+U većini slučajeva, rezultat te naredbe će biti:
+
+\input{git_output/git_branch_s_jednom_granom}
+
+To znači da graf vašeg projekta \emph{nema} višestrukih grana. 
+Ukoliko ste naslijedili projekt kojeg je netko prethodno već granao, dobiti ćete nešto kao:
+
+\input{git_output/git_branch_s_vise_grana}
+
+Ili, na primjer ovako:
+
+\input{git_output/git_branch_s_vise_grana_2}
+
+Svaki redak predstavlja jednu granu, a redak koji počinje sa zvjezdicom (*) je \emph{grana u kojoj se trenutno nalazite}.
+
+\section*{Nova grana}
+\addcontentsline{toc}{section}{Nova grana}
+
+Ukoliko je trenutni ispis komande \verb+git branch+ ovakav:
+
+\input{git_output/git_branch_s_jednom_granom}
+
+\dots{} to znači da je graf vašeg projekta ovakav:
+
+\input{graphs/linearni_model}
+
+\section*{Prebacivanje s grane na granu}
+\addcontentsline{toc}{section}{Prebacivanje s grane na granu}
 
 %\begin{itemize}
 %   \item Kako se grana
