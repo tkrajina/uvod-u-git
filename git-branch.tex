@@ -39,10 +39,26 @@ Ukoliko je trenutni ispis komande \verb+git branch+ ovakav:
 
 \dots{} to znači da je graf vašeg projekta ovakav:
 
-\input{graphs/linearni_model}
+\input{graphs/kreiranje_grane_1}
+
+I sad se može desiti da nakon stanja \emph c želite isprobati dva različita pristupa.
+Novu granu možete kreirati naredbom \verb+git branch <naziv_grane>+.
+Na primjer:
+
+\gitoutputcommand{git branch eksperimentalna-grana}
+
+Sad je stanje vašeg projekta:
+
+\input{graphs/kreiranje_grane_2}
 
 \section*{Prebacivanje s grane na granu}
 \addcontentsline{toc}{section}{Prebacivanje s grane na granu}
+
+Primijetite da se i dalje "nalazite" na master grani:
+
+\input{git_output/git_branch_primjer}
+
+Prebacivanje s jedne grane na drugu granu se radi s komandom \verb+...+:
 
 %\begin{itemize}
 %   \item Kako se grana

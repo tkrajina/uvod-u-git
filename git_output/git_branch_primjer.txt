@@ -1,0 +1,4 @@
+$ git branch
+  eksperimentalna-grana
+* master
+

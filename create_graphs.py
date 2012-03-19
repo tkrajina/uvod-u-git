@@ -219,6 +219,29 @@ def graph_linearni_sa_zadnjim_cvorom():
 
 	return graph
 
+def graph_kreiranje_grane_1():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', mod_graph.Node( label = '', color = WHITE ) ] ) )
+
+	return graph
+
+def graph_kreiranje_grane_2():
+	graph = mod_graph.Graph( column = 6 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = [ 'a', 'b', 'c', mod_graph.Node( label = '', color = WHITE ) ] ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'eksperimentalna-grana',
+			branch_from = graph.find_node( 'c' ),
+			row = 1,
+			nodes = [ mod_graph.Node( label = '', color = WHITE ) ] ) )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
