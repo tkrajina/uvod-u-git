@@ -8,6 +8,7 @@ mod_sys.path.append( 'submodules/vcgraphtex' )
 
 import vcgraphtex as mod_graph
 
+WHITE = ( 1, 1, 1 )
 RED = ( 1, 0, 0 )
 GREEN = ( 0, 1, 0 )
 BLUE = ( 0, 0, 1 )
@@ -199,6 +200,22 @@ def graph_primjer_s_granama_i_spajanjima_6():
 
 	graph.add_arrow( 'd', 'z', color = GRAY )
 	graph.add_arrow( 'q', 'g', color = GRAY )
+
+	return graph
+
+def graph_linearni_bez_zadnjeg_cvora():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', mod_graph.Node( label = ' ', color = WHITE ) ] ) )
+
+	return graph
+
+def graph_linearni_sa_zadnjim_cvorom():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', mod_graph.Node( label = 'd', color = BLUE ) ] ) )
 
 	return graph
 

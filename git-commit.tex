@@ -99,9 +99,23 @@ Sad je status projekta opet:
 
 \input{git_output/git_status_0}
 
+Kad ste napravili izmjene na projektu, a \emph{niste} ih još snimili, graf projekta izgleda ovako nekako:
+
+\input{graphs/linearni_bez_zadnjeg_cvora}
+
+Dakle, zadnji čvor nema "nasljednika".
+Tek kad napravite taj zadnji commit vaše izmjene postaju dio projekta i tada je graf:
+
+\input{graphs/linearni_sa_zadnjim_cvorom}
+
+\section*{Povijest projeka}
+\addcontentsline{toc}{section}{Povijest projeka}
+
 \dots{}a sve prethodne izmjene možete pogledati s \verb+git log+:
 
 \input{git_output/git_log_0}
+
+Više o tome u posebnom poglavlju.
 
 \section*{Ispravljanje zadnje izmjene}
 \addcontentsline{toc}{section}{Ispravljanje zadnje izmjene}
@@ -156,7 +170,7 @@ Više puta će vam se dogoditi da ste na nekoj datoteci napravili izmjenu koju \
 Takvu datoteku možete resetirati, odnosno vratiti u početno stanje tako da ju odaberete u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
 
 Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
-Preporučam van da nađete vremena i proučite sve menije i kratice s tastaturom u radu s \verb+git gui+ jer to će vam drastično ubrzati rad s ovim korisnim programčićem.
+Preporučam van da nađete vremena i proučite sve menije i kratice s tastaturom u radu, jer to će vam drastično ubrzati rad s ovim korisnim programčićem.
 
 %\begin{itemize}
 %   \item Tipični scenarij
