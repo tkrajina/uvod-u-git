@@ -58,11 +58,23 @@ Primijetite da se i dalje "nalazite" na master grani:
 
 \input{git_output/git_branch_primjer}
 
-Prebacivanje s jedne grane na drugu granu se radi s komandom \verb+...+:
+Naime, \verb+git branch+ će vam sam kreirati novu granu.
+Prebacivanje s jedne grane na drugu granu se radi s komandom \verb+git checkout <naziv_grane>+:
+
+\input{git_output/git_checkout}
+
+Analogno, na glavnu granu se vraćate s \verb+git checkout master+.
+
+Sad, kad ste se prebacili na novu granu, možete tamo uredno \emph{commit}ati svoje izmjene. 
+I sve što tu spremite, neće biti vidljivo u \verb+master+ grani.
+
+\input{graphs/kreiranje_grane_3}
+
+I, kad god želite, možete se prebaciti na \verb+master+ i tamo nastaviti rad koji nije nužno vezan uz izmjene u drugoj grani:
+
+\input{graphs/kreiranje_grane_4}
 
 %\begin{itemize}
-%   \item Kako se grana
-%   \item prebacivanje s jedne grane na drugu granu
 %   \item preuzimanje samo jednog fajla iz drugog brancha
 %\end{itemize}
 

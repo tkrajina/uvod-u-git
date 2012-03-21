@@ -1,0 +1,2 @@
+$ git checkout eksperimentalna-grana
+Switched to branch 'eksperimentalna-grana'
