@@ -20,6 +20,8 @@ U većini slučajeva, rezultat te naredbe će biti:
 \input{git_output/git_branch_s_jednom_granom}
 
 To znači da graf vašeg projekta \emph{nema} višestrukih grana. 
+Zapamtite i ovo -- svaki git repozitorij na početku ima jednu jedinu granu i ona se uvijek zove \verb+master+.
+
 Ukoliko ste naslijedili projekt kojeg je netko prethodno već granao, dobiti ćete nešto kao:
 
 \input{git_output/git_branch_s_vise_grana}
@@ -29,6 +31,7 @@ Ili, na primjer ovako:
 \input{git_output/git_branch_s_vise_grana_2}
 
 Svaki redak predstavlja jednu granu, a redak koji počinje sa zvjezdicom (*) je \emph{grana u kojoj se trenutno nalazite}.
+U toj grani tada možete raditi sve što i na \verb+master+; commitati, gledati njenu povijest, \dots
 
 \section*{Nova grana}
 \addcontentsline{toc}{section}{Nova grana}
@@ -54,7 +57,7 @@ Sad je stanje vašeg projekta:
 \section*{Prebacivanje s grane na granu}
 \addcontentsline{toc}{section}{Prebacivanje s grane na granu}
 
-Primijetite da se i dalje "nalazite" na master grani:
+Primijetite da se i dalje "nalazite" na \verb+master+ grani:
 
 \input{git_output/git_branch_primjer}
 
@@ -74,9 +77,34 @@ I, kad god želite, možete se prebaciti na \verb+master+ i tamo nastaviti rad k
 
 \input{graphs/kreiranje_grane_4}
 
-%\begin{itemize}
-%   \item preuzimanje samo jednog fajla iz drugog brancha
-%\end{itemize}
+Ako ste ikad radili grane na nekom drugom, klasičnom, sustavu za verzioniranje koda, onda ste vjerojatno naviknuti da to grananje potraje malo duže (od nekoliko sekundi do nekoliko minuta).
+Stvar je u tome što je, u većini ostalih sustava, \emph{proces} grananja u stvari podradzumijeva \textbf{kopiranje svih datoteka} na mjesto gdje se čuva nova grana.
+To, em traje neko vrijeme, em zauzima više memorije na diskovima.
+
+Kod gita to je puno jednostavnije, kad kreirate novi granu, nema nikakvog kopiranja na disku. 
+Čuva se samo informacija da ste kreirali novu granu (o tome više u poglavlju o git indeksu).
+I svaki put kad spremite izmjenu, čuva se samo ta izmjena.
+Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na disku.
+
+\section*{Brisanje grane}
+\addcontentsline{toc}{section}{Brisanje grane}
+
+Zato što je grananje memorijski nezahtjevno i brzo, desiti će vam se da se u jednom trenutku nađete s \emph{previše} grana.
+Možda ste neke grane napravili da bi isprobali nešto novo, što se na kraju pokazalo kao loša ideja pa ste ju napustili.
+Ili ste neku granu kreirali da bi započeli nešto novo u aplikaciji, ali na kraju je to riješio netko drugi ili se pokazalo da to nije potrebno.
+
+U tom slučaju, granu možete obrisati s \verb+git branch -D <naziv_grane>+. 
+Dakle, ako je stanje grana na vašem projektu:
+
+\input{git_output/git_branch_primjer}
+
+\dots{}nakon:
+
+\input{git_output/git_branch_D}
+
+Stanje će biti:
+
+\input{git_output/git_branch_s_jednom_granom}
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
