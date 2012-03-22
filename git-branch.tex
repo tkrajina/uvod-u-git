@@ -8,7 +8,7 @@ I opet, početi ćemo s ovim, već viđenim, grafom:
 Ovaj put s jednom izmjenom, svaga "grana" ima svoj naziv.
 U uvodnom poglavlju je opisan scenarij koji bi, otprilike, mogao dovesti do ovog grafa.
 Ono što je ovdje važno još jednom spomenuti je sljedeće; svaki čvor grafa je nekakvo stanje projekta. 
-Svaka strelica iz jednog u drugi čvor je neka izmjena koju je programer napravio i snimio u nadi da će ona dovesti do željenog ponašanja aplikacije.
+Svaka strelica iz jednog u drugi čvor je izmjena koju je programer napravio i snimio u nadi da će ona dovesti do željenog ponašanja aplikacije.
 
 \section*{Spisak grana projekta}
 \addcontentsline{toc}{section}{Spisak grana projekta}
@@ -77,13 +77,16 @@ I, kad god želite, možete se prebaciti na \verb+master+ i tamo nastaviti rad k
 
 \input{graphs/kreiranje_grane_4}
 
+Kad se prebacite na \verb+master+, izmjene koje ste napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g vam neće biti dostupne.
+Istko, kad se prebacite na \verb+eksperimentalna-grana+ -- neće vam biti dostupne izmjene iz \emph x, \emph y i \emph z.
+
 Ako ste ikad radili grane na nekom drugom, klasičnom, sustavu za verzioniranje koda, onda ste vjerojatno naviknuti da to grananje potraje malo duže (od nekoliko sekundi do nekoliko minuta).
 Stvar je u tome što je, u većini ostalih sustava, \emph{proces} grananja u stvari podradzumijeva \textbf{kopiranje svih datoteka} na mjesto gdje se čuva nova grana.
 To, em traje neko vrijeme, em zauzima više memorije na diskovima.
 
 Kod gita to je puno jednostavnije, kad kreirate novi granu, nema nikakvog kopiranja na disku. 
 Čuva se samo informacija da ste kreirali novu granu (o tome više u poglavlju o git indeksu).
-I svaki put kad spremite izmjenu, čuva se samo ta izmjena.
+Svaki put kad spremite izmjenu, čuva se samo ta izmjena.
 Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na disku.
 
 \section*{Brisanje grane}

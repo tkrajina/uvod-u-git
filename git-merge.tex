@@ -1,15 +1,53 @@
 \chapter*{Preuzimanje izmjena iz jedne grane u drugu}
 \addcontentsline{toc}{chapter}{Preuzimanje izmjena iz jedne grane u drugu}
 
-\begin{itemize}
-   \item mergeanje znači mergeanje svih izmjena u povijesti, sve od mjesta gdje su se dvije grane bifucirale
-   \item izuzetak je git cherry-pick (grafovi s obojanim čvorovima)
-   \item --no-ff --no-commit
-   \item rebase
-   \item cherry-pick
-   \item preuzimanje samo jednog fajla iz drugog brancha
-   \item kreiranje privremenog brancha za eksperimentalni merge
-\end{itemize}
+Vratimo se opet na jednu viđenu ilustraciju:
+
+\input{graphs/git_merge_1}
+
+Da ponovoimo, prebacivanjem na granu \verb+master+, izmjene koje ste napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g vam neće biti dostupne.
+Istko, kad se prebacite na \verb+eksperimentalna-grana+ -- neće vam biti dostupne izmjene iz \emph x, \emph y i \emph z.
+
+To je sve divno i krasno dok svoje izmjene želite raditi u relativnoj izolaciji od ostatka izmjena u kodu. 
+No, što ako ste u \verb+master+ riješili neki gadan bug i htjeli biste sad tu ispravku preuzeti u \verb+eksperimentalna-grana+.
+
+Ili, što ako zaključite kako je rezultat eksperimenta kojeg ste isprobali u \verb+eksperimentalna-grana+ uspješan i želite to sad imati u \verb+master+?
+Ono što vam sad treba je da nekako \emph{izmjene iz jedne grane preuzmete u drugu granu}.
+U gitu, to se naziva \textbf{merge}.
+Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
+Rezultat spajanja bi bila samo jedna grana. 
+No, \emph{merge}anjem dvije grane -- one nastavljaju svoj život. 
+Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzimaju u drugoj grani.
+
+\section*{Git merge}
+\addcontentsline{toc}{section}{Git merge}
+
+Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želite u \verb+master+. 
+To se radi s naredbom \verb+git merge+.
+Zapamtite, da bi to napravili kako treba, trebate u onoj grani u koju želite preuzeti izmjene (u našem slučaju \verb+master+), i onda:
+
+\input{git_output/git_merge_1}
+
+Ovaj ispis je ukratko opisan rezultat procesa preuzimanja izmjena; koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko oduzeto, i tako dalje\dots
+
+Grafički se \verb+git merge+ može prikazati ovako:
+
+\input{graphs/git_merge_2}
+
+Neka bude jasno -- kad ste preuzeli izmjene iz jednog grafa u drugi, nitko vas ne prisiljava da onaj prvi obrišete. 
+I dalje možete uredno u njega \emph{commit}ati.
+
+TODO
+
+% \begin{itemize}
+%    \item mergeanje znači mergeanje svih izmjena u povijesti, sve od mjesta gdje su se dvije grane bifucirale
+%    \item izuzetak je git cherry-pick (grafovi s obojanim čvorovima)
+%    \item --no-ff --no-commit
+%    \item rebase
+%    \item cherry-pick
+%    \item preuzimanje samo jednog fajla iz drugog brancha
+%    \item kreiranje privremenog brancha za eksperimentalni merge
+% \end{itemize}
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
