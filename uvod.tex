@@ -12,9 +12,10 @@ Nastali su brojne platforme za \emph{hosting} projekata, kao što je github\foot
 Nekoliko je razloga zašto je to tako:
 
 \begin{itemize}
-	\item distribuirani sustavi za razvoj koda omogućuju da na istom projektu radi više ljudi. Postojeći sustavi su obično zahtijevali da na istom kodu radi točno određeni broj programera, a novi bi eventualno mogli predlagati poboljšanja. S distribuiranim sustavima, bilo tko je mogao "forkati" repozitorij, isprogramirati izmjenu i predložiti vlasniku originalnog repozitorija da preuzme svoje izmjene. (TODO: ovo malo razraditi i napisati kao posebno poglavlje, preseliti ovo u drugo poglavlje),
-	\item git je izuzetno brz,
-	\item vrlo je lako granati, isprobavati izmjene koje su radili drugi ljudi i preuzeti ih u svoj kod,
+	\item Postojeći sustavi za verzioniranje su obično zahtijevali da na istom kodu radi točno određeni broj programera. Točno se znalo tko je \emph{comitter}, a tko nije. S distribuiranim sustavima, bilo tko je mogao "forkati" repozitorij, isprogramirati izmjenu i predložiti vlasniku originalnog repozitorija da preuzme svoje izmjene. Rezultat je da je broj ljudi koji su potencijalni mogli pomoći projektu puno veći. A vlasnik projekta je ionako imao kontrolu nad time čije će izmjene prihvatiti, a čije neće.
+	\item git je \emph{brz},
+	\item vrlo je lako i brzo granati, isprobavati izmjene koje su radili drugi ljudi i preuzeti ih u svoj kod,
+	\item Linux kernel se razvijao na gitu, tako da je u svijetu otvorenog koga (\emph{open source}) git stekao nekakvu auru važnosti.
 \end{itemize}
 
 \section*{Format ove knjige}
@@ -24,16 +25,18 @@ Ova knjiga nije zamišljena kao detaljan uvod u to kako git funkcionira i kao op
 Osnovna ideja mi je bila da se za svaku "radnju" s gitom opiše problem, ilustriram ga grafikonom, malo razradi teorija, potkrijepi primjerima i onda opiše nekoliko osnovnih git naredbi koje se najčešće koriste.
 Uspijem li u tom naumu -- nakon što pročitate knjigu, trebali biste biti sposobni git koristiti u svakodnevnom radu. 
 
+Za bilo kakvo dodatno pitanje, uvijek postoje forumi, blogovi i, naravno, \verb+git help+.
+
 \section*{Pretpostavke}
 \addcontentsline{toc}{section}{Pretpostavke}
 
 Da biste uredno "probavili" ovaj knjižuljak, pretpostavljam da:
 
 \begin{itemize}
-	\item znate programirati s nekim programskim jezikom,
+	\item znate programirati u nekim programskom jeziku,
 	\item poznajete princip funkcioniranja klasičnih sustava za verzioniranje koda (CVS, SVN, ...),
 	\item ne bojite se komandne linije,
-	\item poznajete osnove rada s unix naredbama.
+	\item poznajete osnove rada s unixoidnim operativnim sustavima.
 \end{itemize}
 
 Nekoliko riječi o zadnje dvije stavke.
