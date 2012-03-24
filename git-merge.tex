@@ -24,7 +24,7 @@ Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzi
 
 Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želite u \verb+master+. 
 To se radi s naredbom \verb+git merge+.
-Zapamtite, da bi to napravili kako treba, trebate u onoj grani u koju želite preuzeti izmjene (u našem slučaju \verb+master+), i onda:
+Zapamtite, da bi to napravili kako treba, trebate se nalaziti u onoj grani u koju želite preuzeti izmjene (u našem slučaju \verb+master+), i onda:
 
 \input{git_output/git_merge_1}
 
@@ -34,10 +34,20 @@ Grafički se \verb+git merge+ može prikazati ovako:
 
 \input{graphs/git_merge_2}
 
-Neka bude jasno -- kad ste preuzeli izmjene iz jednog grafa u drugi, nitko vas ne prisiljava da onaj prvi obrišete. 
-I dalje možete uredno u njega \emph{commit}ati.
+Kad ste preuzeli izmjene iz jednog grafa u drugi, nitko vas ne prisiljava da onaj prvi obrišete. 
+Grana može uredno nastaviti svoj život; dalje možete uredno u nju \emph{commit}ati, preuzimati izmjene iz jedne grane u drugu.
+I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obrisati.
 
-TODO
+\input{graphs/git_merge_3}
+
+\section*{Git merge i povijest projekta}
+\addcontentsline{toc}{section}{Git merge i povijest projekta}
+
+\section*{Fast forward}
+\addcontentsline{toc}{section}{Fast forward}
+
+\section*{Rebase}
+\addcontentsline{toc}{section}{Rebase}
 
 % \begin{itemize}
 %    \item mergeanje znači mergeanje svih izmjena u povijesti, sve od mjesta gdje su se dvije grane bifucirale
