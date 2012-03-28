@@ -43,6 +43,110 @@ I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obris
 \section*{Git merge i povijest projekta}
 \addcontentsline{toc}{section}{Git merge i povijest projekta}
 
+Kad se budete familijarizirali s grananjem u gitu, 
+
+\input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
+
+\section*{Merge primjer}
+\addcontentsline{toc}{section}{Merge primjer}
+
+Vjerojatno to i sami slutite -- stvar nije uvijek tako jednostavna.
+Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugoj grani napravite izmjenu na \emph{istoj} datoteci.
+I što onda?
+
+Pokušat ću to ilustrirati na jednom jednostavnom primjeru\dots
+Uzmimo jedan malo vjerojatan scenarij, pretpostavimo da je Antun Branko Šimić još živ i da da piše pjesme.
+Napiše pjesmu, pa s njome nije baš zadovoljan, pa malo križa po papiru, pa izmijeni prvi stih, pa izmijeni zadnji stih.
+Ponekad mu se rezultat sviđa, ponekad ne.
+Ponekad krene iznova.
+Ponekad ima ideju, napiše nešto nabrzinu, i onda kasnije napravi dvije verzije iste pjesme.
+Ponekad\dots
+
+Scenarij kao stvoren za git, nije li?
+
+Pretpostavimo da je autor krenuo sa sljedećom verzijom pjesme:
+
+\begin{verbatim}
+PJESNICI U SVIJETU
+
+Pjesnici su čuđenje u svijetu
+
+Oni idu zemljom i njihove oči
+velike i nijeme rastu pored stvari
+
+Naslonivši uho
+na ćutanje sto ih okružuje i muči
+oni su vječno treptanje zemlje
+\end{verbatim}
+
+I sad ovdje nije baš bio zadovoljan sa cjelinom i htio je isprobati dvije varijante.
+Budući da ga je netko naučio git, napravio je dvije varijante iste pjesme:
+
+\input{graphs/ab_simic_1}
+
+U prvoj varijanti (\emph a), izmijenio je naslov, tako da je sad pjesma glasila:
+
+\begin{verbatim}
+PJESNICI U SVIJETU
+
+Pjesnici su čuđenje u svijetu
+
+Oni idu zemljom i njihove oči
+velike i nijeme rastu pored stvari
+
+Naslonivši uho
+na ćutanje sto ih okružuje i muči
+oni su vječno treptanje zemlje
+\end{verbatim}
+
+\dots{}dok je u drugoj varijanti izmijenio zadnji stih:
+
+\begin{verbatim}
+PJESNICI
+
+Pjesnici su čuđenje u svijetu
+
+Oni idu zemljom i njihove oči
+velike i nijeme rastu pored stvari
+
+Naslonivši uho
+na ćutanje sto ih okružuje i muči
+pjesnici su vječno treptanje u svijetu
+\end{verbatim}
+
+U principu, bio je zadovoljan i s jednim i s drugim riješenjem.
+Odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
+Nakon \verb+get checkout master+ i \verb+git merge varijanta+, rezultat je bio:
+
+\input{graphs/ab_simic_2}
+
+\dots{}odnosno, pjesnikovim riječima:
+
+\begin{verbatim}
+PJESNICI
+
+Pjesnici su čuđenje u svijetu
+
+Oni idu zemljom i njihove oči
+velike i nijeme rastu pored stvari
+
+Naslonivši uho
+na ćutanje sto ih okružuje i muči
+pjesnici su vječno treptanje u svijetu
+\end{verbatim}
+
+I to je jednostavno.
+U obje grane je mijenjao istu datoteku, ali u jednoj je dirao početak, a u drugoj kraj.
+I rezultat \emph{merge}anja je bio očekivan -- datoteka u kojoj je izmijenjen i početak i kraj.
+
+\section*{Konflikti}
+\addcontentsline{toc}{section}{Konflikti}
+
+Kao što slutite, stvar nije uvijek tako jednostavna.
+
+\section*{Merge, branch i povijest projekta}
+\addcontentsline{toc}{section}{Merge, branch i povijest projekta}
+
 \section*{Fast forward}
 \addcontentsline{toc}{section}{Fast forward}
 

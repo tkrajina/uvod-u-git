@@ -328,6 +328,38 @@ def graph_git_merge_3():
 
 	return graph
 
+def graph_ab_simic_1():
+	graph = mod_graph.Graph( column = 6 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'ab' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'a' ),
+			row = 1,
+			nodes = 'c' ) )
+
+	return graph
+
+def graph_ab_simic_2():
+	graph = mod_graph.Graph( column = 6 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abd' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'a' ),
+			row = 1,
+			nodes = 'c' ) )
+
+	graph.add_arrow( 'c', 'd', color = GRAY )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
