@@ -40,11 +40,6 @@ I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obris
 
 \input{graphs/git_merge_3}
 
-\section*{Git merge i povijest projekta}
-\addcontentsline{toc}{section}{Git merge i povijest projekta}
-
-Kad se budete familijarizirali s grananjem u gitu, 
-
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
 \section*{Merge primjer}
@@ -55,7 +50,7 @@ Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugo
 I što onda?
 
 Pokušat ću to ilustrirati na jednom jednostavnom primjeru\dots
-Uzmimo jedan malo vjerojatan scenarij, pretpostavimo da je Antun Branko Šimić još živ i da da piše pjesme.
+Uzmimo jedan malo vjerojatan scenarij; neka je Antun Branko Šimić još živ i piše pjesme, naravno.
 Napiše pjesmu, pa s njome nije baš zadovoljan, pa malo križa po papiru, pa izmijeni prvi stih, pa izmijeni zadnji stih.
 Ponekad mu se rezultat sviđa, ponekad ne.
 Ponekad krene iznova.
@@ -64,8 +59,9 @@ Ponekad\dots
 
 Scenarij kao stvoren za git, nije li?
 
-Pretpostavimo da je autor krenuo sa sljedećom verzijom pjesme:
+Recimo da je autor krenuo sa sljedećom verzijom pjesme:
 
+\vspace{5mm}
 \noindent\texttt{%
 PJESNICI U SVIJETU\\%
 \\%
@@ -77,13 +73,14 @@ velike i nijeme rastu pored stvari\\%
 Naslonivši uho\\%
 na tišinu sto ih okružuje i muči\\%
 oni su vječno treptanje u svijetu}
+\vspace{5mm}
 
 I sad ovdje nije baš bio zadovoljan sa cjelinom i htio je isprobati dvije varijante.
-Budući da ga je netko naučio git, napravio je dvije varijante iste pjesme:
+Budući da ga je netko naučio git, iz početnog stanja (\emph a) napravio je dvije verzije.
 
 \input{graphs/ab_simic_1}
 
-U prvoj varijanti (\emph a), izmijenio je naslov, tako da je sad pjesma glasila:
+U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 
 \vspace{5mm}
 \noindent\texttt{%
@@ -99,7 +96,7 @@ na tišinu sto ih okružuje i muči\\%
 oni su vječno treptanje u svijetu}
 \vspace{5mm}
 
-\dots{}dok je u drugoj varijanti izmijenio zadnji stih:
+\dots{}dok je u drugoj varijanti (\emph c) izmijenio zadnji stih:
 
 \vspace{5mm}
 \noindent\texttt{%
@@ -115,7 +112,7 @@ Naslonivši uho\\%
 pjesnici su vječno treptanje u svijetu}}
 \vspace{5mm}
 
-U principu, bio je zadovoljan i s jednim i s drugim riješenjem.
+\dots{}i bio je zadovoljan i s jednim i s drugim riješenjem.
 Odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
 Nakon \verb+get checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
