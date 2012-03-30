@@ -66,18 +66,17 @@ Scenarij kao stvoren za git, nije li?
 
 Pretpostavimo da je autor krenuo sa sljedećom verzijom pjesme:
 
-\begin{verbatim}
-PJESNICI U SVIJETU
-
-Pjesnici su čuđenje u svijetu
-
-Oni idu zemljom i njihove oči
-velike i nijeme rastu pored stvari
-
-Naslonivši uho
-na ćutanje sto ih okružuje i muči
-oni su vječno treptanje zemlje
-\end{verbatim}
+\noindent\texttt{%
+PJESNICI U SVIJETU\\%
+\\%
+Pjesnici su čuđenje u svijetu\\%
+\\%
+Oni idu zemljom i njihove oči\\%
+velike i nijeme rastu pored stvari\\%
+\\%
+Naslonivši uho\\%
+na tišinu sto ih okružuje i muči\\%
+oni su vječno treptanje u svijetu}
 
 I sad ovdje nije baš bio zadovoljan sa cjelinom i htio je isprobati dvije varijante.
 Budući da ga je netko naučio git, napravio je dvije varijante iste pjesme:
@@ -86,33 +85,35 @@ Budući da ga je netko naučio git, napravio je dvije varijante iste pjesme:
 
 U prvoj varijanti (\emph a), izmijenio je naslov, tako da je sad pjesma glasila:
 
-\begin{verbatim}
-PJESNICI U SVIJETU
-
-Pjesnici su čuđenje u svijetu
-
-Oni idu zemljom i njihove oči
-velike i nijeme rastu pored stvari
-
-Naslonivši uho
-na ćutanje sto ih okružuje i muči
-oni su vječno treptanje zemlje
-\end{verbatim}
+\vspace{5mm}
+\noindent\texttt{%
+\textcolor{blue}{PJESNICI}\\%
+\\%
+Pjesnici su čuđenje u svijetu\\%
+\\%
+Oni idu zemljom i njihove oči\\%
+velike i nijeme rastu pored stvari\\%
+\\%
+Naslonivši uho\\%
+na tišinu sto ih okružuje i muči\\%
+oni su vječno treptanje u svijetu}
+\vspace{5mm}
 
 \dots{}dok je u drugoj varijanti izmijenio zadnji stih:
 
-\begin{verbatim}
-PJESNICI
-
-Pjesnici su čuđenje u svijetu
-
-Oni idu zemljom i njihove oči
-velike i nijeme rastu pored stvari
-
-Naslonivši uho
-na ćutanje sto ih okružuje i muči
-pjesnici su vječno treptanje u svijetu
-\end{verbatim}
+\vspace{5mm}
+\noindent\texttt{%
+PJESNICI U SVIJETU\\%
+\\%
+Pjesnici su čuđenje u svijetu\\%
+\\%
+Oni idu zemljom i njihove oči\\%
+velike i nijeme rastu pored stvari\\%
+\\%
+Naslonivši uho\\%
+\color{blue}{na ćutanje sto ih okružuje i muči\\%
+pjesnici su vječno treptanje u svijetu}}
+\vspace{5mm}
 
 U principu, bio je zadovoljan i s jednim i s drugim riješenjem.
 Odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
@@ -122,18 +123,19 @@ Nakon \verb+get checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
 \dots{}odnosno, pjesnikovim riječima:
 
-\begin{verbatim}
-PJESNICI
-
-Pjesnici su čuđenje u svijetu
-
-Oni idu zemljom i njihove oči
-velike i nijeme rastu pored stvari
-
-Naslonivši uho
-na ćutanje sto ih okružuje i muči
-pjesnici su vječno treptanje u svijetu
-\end{verbatim}
+\vspace{5mm}
+\noindent\texttt{%
+\textcolor{blue}{PJESNICI}\\%
+\\%
+Pjesnici su čuđenje u svijetu\\%
+\\%
+Oni idu zemljom i njihove oči\\%
+velike i nijeme rastu pored stvari\\%
+\\%
+Naslonivši uho\\%
+\color{blue}{na ćutanje sto ih okružuje i muči\\%
+pjesnici su vječno treptanje u svijetu}}
+\vspace{5mm}
 
 I to je jednostavno.
 U obje grane je mijenjao istu datoteku, ali u jednoj je dirao početak, a u drugoj kraj.
