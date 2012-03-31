@@ -42,6 +42,36 @@ I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obris
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
+\section*{Što merge radi kad\dots}
+\addcontentsline{toc}{section}{Što merge radi kad\dots}
+
+Možda vas zanima što merge radi u raznim varijantama.
+Recimo, u eksperimentalnoj grani ste dodali novu datoteku, a u glavnoj ste na toj datoteci napravili neku izmjenu.
+
+U principu, vjerujte mi, git napravi točno ono što treba. 
+Kad sam ga ja počeo koristiti imao sam neku malu tremu i nesigurnosti s tim \verb+git merge+.
+Svaki put sam išao pogledati je li napravio ono što treba i provjeravati da mi nije možda pregazio neku datoteku ili važan komad koda.
+I nije, uvijek radi točno onako kako bi intuicija govorila da \emph{merge} treba izgledati.
+
+Umjesto beskonačnih primjera što radi, najbolje je da to jednostavno isprobate, a ja ću ovdje samo ukratko popisati što radi i zadržati se na jednoj varijanti. Dakle, 
+Uzmimo poznati slučaj:
+
+\input{graphs/git_merge_2}
+
+Dakle, što će biti rezultat \emph{merge}anja, ako ste\dots
+
+\begin{itemize}
+	\item \dots{}u eksperimentalnoj grani izmijenili datoteku, a u \verb+master+ niste -- izmjene iz eksperimentalne će se dodati u \verb+master+.
+	\item \dots{}u eksperimentalnoj grani dodali datoteku -- ta datoteka će biti dodana i u \verb+master+.
+	\item \dots{}u eksperimentalnoj grani izbrisali datoteku -- datoteka će biti obrisana u glavnoj.
+	\item \dots{}u eksperimentalnoj grani \textbf{izmijenili i preimenovali} datoteku, a u \verb+master+ ste samo izmijenili datoteku -- ako izmjene na kodu nisu bile \textbf{konfliktne}, onda će se u \verb+master+ datoteka preimenovati i sadržavati će izmjene iz obje grane.
+	\item \dots{}u eksperimentaloj grani obrisali datoteku, a u glavnoj ju izmijenili -- \textbf{konflikt}.
+	\item itd\dots
+\end{itemize}
+
+Vjerujte mi, treba probati.
+No u $99.99\%$ slučajeva, rezultat će biti točno ono što očekujete.
+
 \section*{Merge primjer}
 \addcontentsline{toc}{section}{Merge primjer}
 
