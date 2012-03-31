@@ -252,6 +252,34 @@ Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda 
 \section*{Merge, branch i povijest projekta}
 \addcontentsline{toc}{section}{Merge, branch i povijest projekta}
 
+Kad radimo s nekim projektom, onda nam je uvijek važno da imamo sačuvanu povijest projekta.
+To nam omogućava da saznamo tko je originalni autor nekog koda kojeg možda slabije razumijemo.
+Ili želimo vidjeti kojim redosljedom je neka datoteka rasla.
+
+Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
+Grananje i preuzimanje izmjena iz jedne u drugu granu je bilo komplicirano i rijetko se radilo. 
+Posljedica je da su projekti \emph{uvijek} imali linearnu povijest.
+
+\input{graphs/linearni_model}
+
+S gitom, uvijek se tu nalaze mnoge grane.
+Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako ih je teško održavati. 
+I zato mnogi programeri grane koje više ne koriste brišu.
+
+No, tu sad imamo mali problem.
+Pogledajte, na primjer, ovakav projekt:
+
+\input{graphs/git_merge_2}
+
+Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
+Kad bi obrisali \verb+eksperimentalna-grana+ -- izgubili bi cijelu povijest te grane.
+Sve međukorake kako je ona nastajala, sve bi nestalo.
+
+Nekome to nije problem, ali desiti će vam se situacija da to ne želite.
+Drugim riječim, ne biste htjeli da imate previše grana (jer vam to otežava organizaciju projekta), a ne želite gubiti povijest nastajanja svake od tih grana.
+To se može riješiti nečime što se zove \verb+rebase+.
+No, da ti to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
+
 \section*{Fast forward}
 \addcontentsline{toc}{section}{Fast forward}
 

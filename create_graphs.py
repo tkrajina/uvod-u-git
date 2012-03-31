@@ -296,7 +296,7 @@ def graph_git_merge_2():
 	graph.add_branch( mod_graph.Branch(
 			label = 'master',
 			color = BLUE,
-			nodes = 'abcxyzq ' ) )
+			nodes = 'abcxyzqd' ) )
 
 	graph.add_branch( mod_graph.Branch(
 			label = 'eksperimentalna-grana',
@@ -304,7 +304,7 @@ def graph_git_merge_2():
 			row = 1,
 			nodes = 'defg' ) )
 
-	graph.add_arrow( 'g', ' ', color = GRAY )
+	graph.add_arrow( 'g', 'd', color = GRAY )
 
 	return graph
 
