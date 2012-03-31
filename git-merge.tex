@@ -69,11 +69,13 @@ Dakle, što će biti rezultat \emph{merge}anja, ako ste\dots
 	\item itd\dots
 \end{itemize}
 
-Vjerujte mi, treba probati.
-No u $99.99\%$ slučajeva, rezultat će biti točno ono što očekujete.
+Vjerojatno slutite što znači ova riječ koja je ispisana masnim slovima: \textbf{konflikt}.
+Postoje slučajevi u kojima git ne zna što napraviti. 
+I tada se očekuje od korisnika da on riješi problem. 
+Pokušati ću to ilustrirati tako da opišem jedan od gornjih slučajeva; što se desi kad\dots
 
-\section*{Merge primjer}
-\addcontentsline{toc}{section}{Merge primjer}
+\section*{Što se desi kad\dots}
+\addcontentsline{toc}{section}{Što se desi kad\dots}
 
 Vjerojatno to i sami slutite -- stvar nije uvijek tako jednostavna.
 Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugoj grani napravite izmjenu na \emph{istoj} datoteci.
@@ -91,19 +93,17 @@ Scenarij kao stvoren za git, nije li?
 
 Recimo da je autor krenuo sa sljedećom verzijom pjesme:
 
-\vspace{5mm}
-\noindent\texttt{%
-PJESNICI U SVIJETU\\%
-\\%
-Pjesnici su čuđenje u svijetu\\%
-\\%
-Oni idu zemljom i njihove oči\\%
-velike i nijeme rastu pored stvari\\%
-\\%
-Naslonivši uho\\%
-na tišinu sto ih okružuje i muči\\%
-oni su vječno treptanje u svijetu}
-\vspace{5mm}
+	\gitoutput{%
+	PJESNICI U SVIJETU\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	Oni idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored stvari\\%
+	\\%
+	Naslonivši uho\\%
+	na tišinu sto ih okružuje i muči\\%
+	oni su vječno treptanje u svijetu}
 
 I sad ovdje nije baš bio zadovoljan sa cjelinom i htio je isprobati dvije varijante.
 Budući da ga je netko naučio git, iz početnog stanja (\emph a) napravio je dvije verzije.
@@ -112,57 +112,51 @@ Budući da ga je netko naučio git, iz početnog stanja (\emph a) napravio je dv
 
 U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 
-\vspace{5mm}
-\noindent\texttt{%
-\textcolor{blue}{PJESNICI}\\%
-\\%
-Pjesnici su čuđenje u svijetu\\%
-\\%
-Oni idu zemljom i njihove oči\\%
-velike i nijeme rastu pored stvari\\%
-\\%
-Naslonivši uho\\%
-na tišinu sto ih okružuje i muči\\%
-oni su vječno treptanje u svijetu}
-\vspace{5mm}
+	\gitoutput{%
+	\textcolor{blue}{PJESNICI}\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	Oni idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored stvari\\%
+	\\%
+	Naslonivši uho\\%
+	na tišinu sto ih okružuje i muči\\%
+	oni su vječno treptanje u svijetu}
 
 \dots{}dok je u drugoj varijanti (\emph c) izmijenio zadnji stih:
 
-\vspace{5mm}
-\noindent\texttt{%
-PJESNICI U SVIJETU\\%
-\\%
-Pjesnici su čuđenje u svijetu\\%
-\\%
-Oni idu zemljom i njihove oči\\%
-velike i nijeme rastu pored stvari\\%
-\\%
-Naslonivši uho\\%
-\color{blue}{na ćutanje sto ih okružuje i muči\\%
-pjesnici su vječno treptanje u svijetu}}
-\vspace{5mm}
+	\gitoutput{%
+	PJESNICI U SVIJETU\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	Oni idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored stvari\\%
+	\\%
+	Naslonivši uho\\%
+	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
+	pjesnici su vječno treptanje u svijetu}}
 
 \dots{}i bio je zadovoljan i s jednim i s drugim riješenjem.
 Odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
-Nakon \verb+get checkout master+ i \verb+git merge varijanta+, rezultat je bio:
+Nakon \verb+git checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
 \input{graphs/ab_simic_2}
 
 \dots{}odnosno, pjesnikovim riječima:
 
-\vspace{5mm}
-\noindent\texttt{%
-\textcolor{blue}{PJESNICI}\\%
-\\%
-Pjesnici su čuđenje u svijetu\\%
-\\%
-Oni idu zemljom i njihove oči\\%
-velike i nijeme rastu pored stvari\\%
-\\%
-Naslonivši uho\\%
-\color{blue}{na ćutanje sto ih okružuje i muči\\%
-pjesnici su vječno treptanje u svijetu}}
-\vspace{5mm}
+	\gitoutput{%
+	\textcolor{blue}{PJESNICI}\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	Oni idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored stvari\\%
+	\\%
+	Naslonivši uho\\%
+	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
+	pjesnici su vječno treptanje u svijetu}}
 
 I to je jednostavno.
 U obje grane je mijenjao istu datoteku, ali u jednoj je dirao početak, a u drugoj kraj.
