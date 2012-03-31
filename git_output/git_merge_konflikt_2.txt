@@ -1,0 +1,8 @@
+$ git status
+# On branch master
+# Unmerged paths:
+#   (use "git add/rm <file>..." as appropriate to mark resolution)
+#
+#	both modified:      pjesma.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")

@@ -30,6 +30,10 @@ Zapamtite, da bi to napravili kako treba, trebate se nalaziti u onoj grani u koj
 
 Ovaj ispis je ukratko opisan rezultat procesa preuzimanja izmjena; koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko oduzeto, i tako dalje\dots
 
+Uočite još jednu važnu stvar, ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
+Ne morate "ručno" \emph{commit}ati.
+Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja"; jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
+
 Grafički se \verb+git merge+ može prikazati ovako:
 
 \input{graphs/git_merge_2}
@@ -222,6 +226,28 @@ Idete li sad editirati datoteku s pjesmom naći ćete ovakvo nešto:
 	\\%
 	Naslonivši uho na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
+
+Dakle, dogodio se \textbf{konflikt}. 
+U crveno je obojan dio za kojeg git ne zna kako ga \emph{merge}ati.
+S \verb+HEAD+ je označeno stanje iz trenutne grane, a s \verb+eksperimentalna-grana+ iz druge grane.
+
+Za razliku od standardnog \emph{merge}, ovdje niti jedna datoteka nije \emph{commit}ana. 
+To možete lako provjeriti sa \verb+git status+:
+
+\input{git_output/git_merge_konflikt_2}
+
+Sad se od autora očekuje da sam odluči kako će izgledati datoteka nakon \emph{merge}a.
+Jednostavan način je da editira tu datoteku i sam ju editira.
+Nakon toga treba ju \emph{commit}ati na standardan način.
+
+Drugi način je da koristite \verb+git mergetool+.
+Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
+Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše riješavate ovakve konflikte.
+Iako to nije nužnost (možete uvijek sami editirati konfliktnu datoteku) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
+
+Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda ovako:
+
+\includegraphics[width=14cm]{images/mergetool.png}
 
 \section*{Merge, branch i povijest projekta}
 \addcontentsline{toc}{section}{Merge, branch i povijest projekta}
