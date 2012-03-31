@@ -49,7 +49,8 @@ Možda vas zanima što merge radi u raznim varijantama.
 Recimo, u eksperimentalnoj grani ste dodali novu datoteku, a u glavnoj ste na toj datoteci napravili neku izmjenu.
 
 U principu, vjerujte mi, git napravi točno ono što treba. 
-Kad sam ga ja počeo koristiti imao sam neku malu tremu i nesigurnosti s tim \verb+git merge+.
+Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
+Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja u to da ijedan sustav za verzioniranje koda zna ovu radnju izvršiti kako treba.
 Svaki put sam išao pogledati je li napravio ono što treba i provjeravati da mi nije možda pregazio neku datoteku ili važan komad koda.
 I nije, uvijek radi točno onako kako bi intuicija govorila da \emph{merge} treba izgledati.
 
@@ -138,8 +139,7 @@ U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
 
-\dots{}i bio je zadovoljan i s jednim i s drugim riješenjem.
-Odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
+S obzirom da je bio zadovoljan s oba riješenja, odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
 Nakon \verb+git checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
 \input{graphs/ab_simic_2}
@@ -199,7 +199,7 @@ U verziji \emph a je pjesma sad glasila:
 	na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}
 
-Sad je rezultat naredbe \verb+git merge eksperimentalna-grana+ ovakav:
+Sad je rezultat naredbe \verb+git merge varijanta+ ovakav:
 
 \input{git_output/git_merge_konflikt}
 
