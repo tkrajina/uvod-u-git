@@ -1,0 +1,4 @@
+$ git merge eksperimentalna-grana 
+Auto-merging pjesma.txt
+CONFLICT (content): Merge conflict in pjesma.txt
+Automatic merge failed; fix conflicts and then commit the result.

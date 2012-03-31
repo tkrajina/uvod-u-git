@@ -171,7 +171,63 @@ I rezultat \emph{merge}anja je bio očekivan -- datoteka u kojoj je izmijenjen i
 \section*{Konflikti}
 \addcontentsline{toc}{section}{Konflikti}
 
-Kao što slutite, stvar nije uvijek tako jednostavna.
+No, što da je u obje grane dirao isti dio pjesme?
+Što da je stanje nakon:
+
+\input{graphs/ab_simic_1}
+
+\dots{} stanje bilo ovakvo:
+U verziji \emph a je pjesma sad glasila:
+
+	\gitoutput{%
+	PJESNICI\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	\textcolor{blue}{Pjesnici idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored ljudi}\\%
+	\\%
+	Naslonivši uho\\%
+	na ćutanje sto ih okružuje i muči\\%
+	pjesnici su vječno treptanje u svijetu}
+
+\dots{}a u verziji \emph b ovako:
+
+	\gitoutput{%
+	PJESNICI\\%
+	\\%
+	Pjesnici su čuđenje u svijetu\\%
+	\\%
+	\textcolor{blue}{Oni idu zemljom i njihova srca\\%
+	velika i nijema rastu pored stvari}\\%
+	\\%
+	Naslonivši uho\\%
+	na ćutanje sto ih okružuje i muči\\%
+	pjesnici su vječno treptanje u svijetu}
+
+Sad je rezultat naredbe \verb+git merge eksperimentalna-grana+ ovakav:
+
+\input{git_output/git_merge_konflikt}
+
+To znači da git nije znao kako da \emph{automatski} preuzme izmjene iz \emph b u \emph a.
+I sad se od autora očekuje da ispravi gitovu nedoumicu.
+Idete li sad editirati datoteku s pjesmom naći ćete ovakvo nešto:
+
+	\gitoutput{%
+	PJESNICI U SVIJETU\\%
+	\\%
+	Pjesnici su čudenje u svijetu\\%
+	\\%
+	\textcolor{red}{<<<<<<< HEAD\\%
+	Oni idu zemljom i njihova srca\\%
+	velika i nijema rastu pored stvari\\%
+	=======\\%
+	Pjesnici idu zemljom i njihove oči\\%
+	velike i nijeme rastu pored ljudi\\%
+	>>>>>>> eksperimentalna-grana}\\%
+	\\%
+	Naslonivši uho na tišinu sto ih okružuje i muči\\%
+	oni su vječno treptanje u svijetu}
 
 \section*{Merge, branch i povijest projekta}
 \addcontentsline{toc}{section}{Merge, branch i povijest projekta}
