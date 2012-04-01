@@ -360,6 +360,92 @@ def graph_ab_simic_2():
 
 	return graph
 
+def graph_bez_fast_forward():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdef' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'c' ),
+			row = 1,
+			nodes = 'xyz' ) )
+
+	return graph
+
+def graph_bez_fast_forward_rebase():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdef' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'f' ),
+			row = 1,
+			nodes = [ 'x\'', 'y\'', 'z\'' ] ) )
+
+	return graph
+
+def graph_bez_fast_forward_rebase_2():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'x\'', 'y\'', 'z\'' ] ) )
+
+	return graph
+
+def graph_fast_forward():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abc' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'c' ),
+			row = 1,
+			nodes = 'xyz' ) )
+
+	return graph
+
+def graph_fast_forward_2():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abc---d' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'c' ),
+			row = 1,
+			nodes = 'xyz' ) )
+
+	graph.add_arrow( 'z', 'd', color = GRAY )
+
+	return graph
+
+def graph_fast_forward_3():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcxyz' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'c' ),
+			row = 1,
+			nodes = 'xyz' ) )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:

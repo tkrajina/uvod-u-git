@@ -283,8 +283,78 @@ No, da ti to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu
 \section*{Fast forward}
 \addcontentsline{toc}{section}{Fast forward}
 
+Nakon objašnjenja s prethodnih nekoliko stranica, trebalo bi biti jasno što će se desiti ako želimo preuzeti izmjene iz \verb+varijanta+ u \verb+master+ u projektu koji ima ovakvu povijest:
+
+\input{graphs/bez_fast_forward}
+
+To je najobičniji \emph{merge} dvije grane.
+Razmislimo samo, na trenutak, o jednom očitom detalju;
+osnovna pretpostavka i smisao preuzimanja izmjena iz jedne grane u drugu je to što uopće imamo dvije grane.
+To su ove dvije crte u gornjem grafu.
+Dakle, sve to ima smisla u projektu koji ima nelinearnu povijest (više grana).
+
+No, postoji jedan poseban slučaj koji zahtijeva malo objašnjenje.
+Uzmimo da je povijest projekta bila slična gornjem grafu, ali s jednom malo izmjenom:
+
+\input{graphs/fast_forward}
+
+Programer je napravio novu granu \verb+varijanta+ i na njoj je nastavio rad.
+I svo to vrijeme nije radio nikakve izmjene na \verb+master+.
+Što kad sad želi preizeti sve izmjene u \verb+master+.
+
+Nije li ovdje nešto neobično?
+Iako imamo dvije grane, \emph{smisao} \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u drugu.
+Međutim, iako ovdje imamo dvije grane, \textbf{one čine jednu crtu}. 
+Te dvije grane imaju jednu povijest. 
+I to linearnu povijest.
+
+Tako su razmišljali i originalni autori gita, i zato git danas automatski detektira ovakvu situaciju.
+I zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
+
+\input{graphs/fast_forward_2}
+
+\dots{}git izvršava takozvani \emph{fast-forward merge}:
+
+\input{graphs/fast_forward_3}
+
+Dakle, doslovno kopira cijelu povijest u novu granu (ovdje je to \emph x, \emph y i \emph z).
+Čak i ako sad obrišete \verb+varijanta+, cijela njega povijest se nalazi u \verb+master+.
+
+Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želite izbjeći -- to se radi s:
+
+\gitoutputcommand{git merge --no-ff varijanta}
+
 \section*{Rebase}
 \addcontentsline{toc}{section}{Rebase}
+
+Po $n$-ti put, pogledajmo linearni model:
+
+\input{graphs/linearni_model}
+
+Do sada bi svima trebalo biti jasno da on ima svoje mane.
+No, ima i nešto korisno -- jednostavnost povijesti projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
+Korak po korak, do trenutne verzije.
+
+Git vas ne tjera da radite grane, no postupak grananja čini bezbolnim. 
+U zbog toga povijest projekta \emph{može} postati cirkus kojeg je teško pratiti organizirati.
+To zahtijeva malo veću pažnju kad imate puno grana.
+
+Postoji, ipak, način kako se može od puno grana stvoriti linearna povijest.
+Kad bi postojao trik kako da iz ovakvog stanja:
+
+\input{graphs/bez_fast_forward}
+
+\dots{}stvorimo ovo:
+
+\input{graphs/bez_fast_forward_rebase}
+
+To jest, da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
+Tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
+Kad bi obrisali \verb+varijanta+, povijest bi odjednom postala linerna:
+
+\input{graphs/bez_fast_forward_rebase_2}
+
+Taj trik postoji i zove se \emph{rebase}.
 
 \section*{Cherry-pick}
 \addcontentsline{toc}{section}{Cherry-pick}

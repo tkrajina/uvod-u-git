@@ -115,11 +115,16 @@ Primijetite samo da sad ne možete obrisati \verb+master+:
 
 I to vrijedi općenito -- ne možete obrisati granu na kojoj se trenutno nalazite.
 
-%\section*{}
-%\addcontentsline{toc}{section}{}
+\section*{Preuzimanje datoteke iz druge grane}
+\addcontentsline{toc}{section}{Preuzimanje datoteke iz druge grane}
 
-TODO:
+S puno grana, dešavati će vam se svakakvi scenariji.
+Jedan od relativno čestih je situacija kad biste htjeli preuzeti samo jednu ili više datoteka iz druge grane, ali ne želite \emph{preći} na tu drugu granu.
+Samo datoteke.
+To se može ovako:
 
-\begin{itemize}
-    \item preuzimanje samo jednog fajla iz drugog brancha
-\end{itemize}
+\gitoutputcommand{git checkout <naziv\_grane> -- <datoteka1> <datoteka2> ...}
+
+Na primjer, ako ste u \verb+master+, a treba sam datoteka \verb+.classpath+ koju ste izmijenili u \verb+eksperiment+, onda ćete ju dobiti s:
+
+\gitoutputcommand{git checkout eksperiment -- .classpath}
