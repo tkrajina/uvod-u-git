@@ -110,7 +110,7 @@ Recimo da je autor krenuo sa sljedećom verzijom pjesme:
 	na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
 
-I sad ovdje nije baš bio zadovoljan sa cjelinom i htio je isprobati dvije varijante.
+I sad ovdje nije baš bio zadovoljan sa cjelinom i htio bi isprobati dvije varijante.
 Budući da ga je netko naučio git, iz početnog stanja (\emph a) napravio je dvije verzije.
 
 \input{graphs/ab_simic_1}
@@ -208,7 +208,6 @@ Sad je rezultat naredbe \verb+git merge varijanta+ ovakav:
 \input{git_output/git_merge_konflikt}
 
 To znači da git nije znao kako da \emph{automatski} preuzme izmjene iz \emph b u \emph a.
-I sad se od autora očekuje da ispravi gitovu nedoumicu.
 Idete li sad editirati datoteku s pjesmom naći ćete ovakvo nešto:
 
 	\gitoutput{%
@@ -237,13 +236,13 @@ To možete lako provjeriti sa \verb+git status+:
 \input{git_output/git_merge_konflikt_2}
 
 Sad se od autora očekuje da sam odluči kako će izgledati datoteka nakon \emph{merge}a.
-Jednostavan način je da editira tu datoteku i sam ju editira.
+Jednostavan način je da editira tu datoteku i sam ju izmijeni kako želi.
 Nakon toga treba ju \emph{commit}ati na standardan način.
 
 Drugi način je da koristite \verb+git mergetool+.
 Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
 Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše riješavate ovakve konflikte.
-Iako to nije nužnost (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
+Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
 
 Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda ovako:
 
@@ -382,7 +381,7 @@ Naš cilj je preseliti \textcolor{gray}{sivi} tako da postane \textcolor{blue}{p
 Drugim riječim, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
 I tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
 
-Git će automatski napraviti sve što zna kako.
+Git će automatski napraviti koliko može.
 No, kad dođe konflikt (kao što je u primjeru kojeg trenutno obrađujemo), to trebate napraviti vi.
 
 Ako koristite \verb+mergetool+, to ćete izvesti\dots
@@ -400,6 +399,7 @@ Nakon toga, slobodni ste izvesti \emph{merge}, koji će u ovom slučaju sigurno 
 
 \section*{Rebase ili ne?}
 \addcontentsline{toc}{section}{Rebase ili ne?}
+
 
 
 \section*{Cherry-pick}
