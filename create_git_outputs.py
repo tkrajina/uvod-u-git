@@ -25,13 +25,19 @@ types = [
 			]
 	),
 	GitOutputSyntaxRule( 
+			detection_regex = '\$\s+git\s+rebase.*',
+			line_rules = [ 
+					( '^(CONFLICT.*)$', ( RED ) ),
+			]
+	),
+	GitOutputSyntaxRule( 
 			detection_regex = '\$\s+git\s+branch.*',
 			line_rules = [ 
 					( '^(\s*\*.*)$', ( BLUE ) ),
 			]
 	),
 	GitOutputSyntaxRule( 
-			detection_regex = '\$\s+git\s+merge.*',
+			detection_regex = '\$\s+git\s+merge(?!t).*',
 			line_rules = [ 
 					( '^([^\$].*?)(\+*)(\-*)$', ( BLUE, GREEN, RED ) ),
 			]

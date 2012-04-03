@@ -1,0 +1,2 @@
+$ git rebase --continue 
+Applying: test

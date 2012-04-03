@@ -1,0 +1,9 @@
+$ git mergetool
+Merging:
+pjesma.txt
+
+Normal merge conflict for 'pjesma.txt':
+  {local}: modified file
+  {remote}: modified file
+Hit return to start merge resolution tool (gvimdiff): 
+4 files to edit

@@ -446,6 +446,29 @@ def graph_fast_forward_3():
 
 	return graph
 
+def graph_fast_forward_4():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdef' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'c' ),
+			color = GRAY,
+			row = 1,
+			nodes = 'xyz' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'varijanta',
+			branch_from = graph.find_node( 'f' ),
+			color = BLUE,
+			row = 1,
+			nodes = [ 'x\'', 'y\'', 'z\'' ] ) )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:

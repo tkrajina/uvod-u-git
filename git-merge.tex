@@ -169,8 +169,8 @@ I rezultat \emph{merge}anja je bio očekivan -- datoteka u kojoj je izmijenjen i
 \section*{Konflikti}
 \addcontentsline{toc}{section}{Konflikti}
 
-No, što da je u obje grane dirao isti dio pjesme?
-Što da je stanje nakon:
+Što da je u obje grane dirao isti dio pjesme?
+Što da je nakon:
 
 \input{graphs/ab_simic_1}
 
@@ -243,7 +243,7 @@ Nakon toga treba ju \emph{commit}ati na standardan način.
 Drugi način je da koristite \verb+git mergetool+.
 Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
 Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše riješavate ovakve konflikte.
-Iako to nije nužnost (možete uvijek sami editirati konfliktnu datoteku) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
+Iako to nije nužnost (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
 
 Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda ovako:
 
@@ -263,7 +263,7 @@ Posljedica je da su projekti \emph{uvijek} imali linearnu povijest.
 \input{graphs/linearni_model}
 
 S gitom, uvijek se tu nalaze mnoge grane.
-Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako ih je teško održavati. 
+Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako organizacija projekta postaje veći izazov.
 I zato mnogi programeri grane koje više ne koriste brišu.
 
 No, tu sad imamo mali problem.
@@ -293,23 +293,23 @@ osnovna pretpostavka i smisao preuzimanja izmjena iz jedne grane u drugu je to �
 To su ove dvije crte u gornjem grafu.
 Dakle, sve to ima smisla u projektu koji ima nelinearnu povijest (više grana).
 
-No, postoji jedan poseban slučaj koji zahtijeva malo objašnjenje.
+No, postoji jedan poseban slučaj koji zahtijeva malo pojašnjenje.
 Uzmimo da je povijest projekta bila slična gornjem grafu, ali s jednom malo izmjenom:
 
 \input{graphs/fast_forward}
 
 Programer je napravio novu granu \verb+varijanta+ i na njoj je nastavio rad.
 I svo to vrijeme nije radio nikakve izmjene na \verb+master+.
-Što kad sad želi preizeti sve izmjene u \verb+master+.
+Što kad sad želi preuzeti sve izmjene u \verb+master+?
 
-Nije li ovdje nešto neobično?
+Uočavate li š1to je ovdje neobično?
 Iako imamo dvije grane, \emph{smisao} \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u drugu.
 Međutim, iako ovdje imamo dvije grane, \textbf{one čine jednu crtu}. 
 Te dvije grane imaju jednu povijest. 
 I to linearnu povijest.
 
-Tako su razmišljali i originalni autori gita, i zato git danas automatski detektira ovakvu situaciju.
-I zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
+Tako su razmišljali i originalni autori gita.
+U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
 
 \input{graphs/fast_forward_2}
 
@@ -317,10 +317,10 @@ I zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
 
 \input{graphs/fast_forward_3}
 
-Dakle, doslovno kopira cijelu povijest u novu granu (ovdje je to \emph x, \emph y i \emph z).
+Dakle, doslovno kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu.
 Čak i ako sad obrišete \verb+varijanta+, cijela njega povijest se nalazi u \verb+master+.
 
-Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želite izbjeći -- to se radi s:
+Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želite izbjeći -- to se radi tako da dodate opciju \verb+--no-ff+ naredbi \verb+git merge+:
 
 \gitoutputcommand{git merge --no-ff varijanta}
 
@@ -332,7 +332,7 @@ Po $n$-ti put, pogledajmo linearni model:
 \input{graphs/linearni_model}
 
 Do sada bi svima trebalo biti jasno da on ima svoje mane.
-No, ima i nešto korisno -- jednostavnost povijesti projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
+No, ima i nešto korisno -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
 Korak po korak, do trenutne verzije.
 
 Git vas ne tjera da radite grane, no postupak grananja čini bezbolnim. 
@@ -355,6 +355,52 @@ Kad bi obrisali \verb+varijanta+, povijest bi odjednom postala linerna:
 \input{graphs/bez_fast_forward_rebase_2}
 
 Taj trik postoji i zove se \emph{rebase}.
+
+Radi se na sljedeći način; trebate biti postavljeni u grani koju želite "pomaknuti". Onda upišite \verb+git rebase <grana>+, gdje je \verb+<grana>+ ona grana na koju kasnije želite napraviti \emph{fast-forward}. 
+Dakle, želite li granu \verb+test+ "pomaknuti" na kraj grane \verb+master+, \emph{rebase} utipkati ćete:
+
+\gitoutputcommand{git rebase master}
+
+U idealnoj situaciji, git će znati riješiti sve probleme i ispis bi mogao izgledati ovako nekako:
+
+\input{git_output/git_rebase}
+
+Međutim, ovdje mogu nastati problemi slični klasičnom \emph{merge}u.
+Tako da će se češće dogoditi:
+
+\input{git_output/git_rebase_konflikt}
+
+Idete li pogledati datoteke, vidjeti ćete da je format konfliktne datoteke isti kao kod konflikta pri \emph{merge}u.
+I opet, od nas se očekuje da te konflikte riješimo.
+Bilo koristeći \verb+git mergetool+, bilo tako da editirate datoteku i ispravite je u željeno stanje. 
+
+Promotrimo još jednom grafički prikaz onoga što ovdje pokušavamo napraviti:
+
+\input{graphs/fast_forward_4}
+
+Naš cilj je preseliti \textcolor{gray}{sivi} tako da postane \textcolor{blue}{plavi}.
+Drugim riječim, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
+I tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
+
+Git će automatski napraviti sve što zna kako.
+No, kad dođe konflikt (kao što je u primjeru kojeg trenutno obrađujemo), to trebate napraviti vi.
+
+Ako koristite \verb+mergetool+, to ćete izvesti\dots
+
+\input{git_output/git_rebase_konflikt_mergetool}
+
+Važno je napomenuti da, nakon što se konflikt ispravili, \textbf{ne smijete izmjene \emph{commit}ati}, nego samo spremiti u međuprostor za \emph{commit} s \verb+git add+.
+Nakon toga, utipkajte \verb+git rebase --continue+.
+Ponekad će git znati izvršiti ostatak procesa automatski, a može se dogoditi i da ne zna i opet od vas traži da ispravite sljedeći konflikt.
+U boljem slučaju (sve automatski), rezultat će biti ovakav:
+
+\input{git_output/git_rebase_konflikt_continue}
+
+Nakon toga, slobodni ste izvesti \emph{merge}, koji će u ovom slučaju sigurno biti \emph{fast-forward}, a to je upravo ono što smo htjeli.
+
+\section*{Rebase ili ne?}
+\addcontentsline{toc}{section}{Rebase ili ne?}
+
 
 \section*{Cherry-pick}
 \addcontentsline{toc}{section}{Cherry-pick}
