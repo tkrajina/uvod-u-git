@@ -1,0 +1,18 @@
+$ git log eksperimentalna-grana
+commit 5c843fbfb09382c272ae88315eea9d77ed699083
+Author: Tomo Krajina <tkrajina@gmail.com>
+Date:   Tue Apr 3 21:57:08 2012 +0200
+
+    Komentar uz zadnji commit
+
+commit 33e88c88dcad48992670ff7e06cebb0e469baa60
+Author: Tomo Krajina <tkrajina@gmail.com>
+Date:   Tue Apr 3 13:38:24 2012 +0200
+
+    Komentar uz predzadnji commit
+
+commit 2b9ef6d02e51a890d508413e83495c11184b37fb
+Author: Tomo Krajina <tkrajina@gmail.com>
+Date:   Sun Apr 1 14:02:14 2012 +0200
+
+...

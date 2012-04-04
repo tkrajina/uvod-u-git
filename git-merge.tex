@@ -400,20 +400,50 @@ Nakon toga, slobodni ste izvesti \emph{merge}, koji će u ovom slučaju sigurno 
 \section*{Rebase ili ne?}
 \addcontentsline{toc}{section}{Rebase ili ne?}
 
+Rebase ne morate nužno raditi.
+Na vama je odluka želite li izmjene iz neke grane sačuvati u povijesti projekta ili prepustiti zaboravu (za trenutak kad i ako granu obrišete).
 
+Ponekad će vam se dogoditi da sam \emph{rebase} ima previše konflikata pa ćete odustati.
+U svakom slučaju, ukoliko ste ga i započeli, uvijek ga možete prekinuti s:
+
+\gitoutputcommand{git rebase --abort}
 
 \section*{Cherry-pick}
 \addcontentsline{toc}{section}{Cherry-pick}
 
-TODO
+Ima još jedna posebna vrsta \emph{merge}a, a nosi malo neobičan naziv \emph{cherry-pick}\footnote{Engleski: branje trešanja. U prenesenom značenju: ispričati priču samo sa onim detaljima koji su pripovjedaču važni. Iliti, izbjegavanje onih dijelova priče koje pripovjedač ne želi.}.
 
-\begin{itemize}
-   \item mergeanje znači mergeanje svih izmjena u povijesti, sve od mjesta gdje su se dvije grane bifucirale
-   \item izuzetak je git cherry-pick (grafovi s obojanim čvorovima)
-   \item --no-ff --no-commit
-   \item kreiranje privremenog brancha za eksperimentalni merge
-\end{itemize}
+Radi se o sljedećem, zamislite da imate dvije grane:
 
-%\section*{}
-%\addcontentsline{toc}{section}{}
+\input{graphs/git_merge_1}
+
+U \verb+eksperimentalna-grana+ ste nappravili nekoliko izmjena i sve te izmjene \emph{nisu} još spremne da biste ih prebacili u \verb+master+.
+
+Međutim, ima jedan \emph{commit} (recimo da je to \emph g) s kojim ste ispravili mali bug koji se manifestirao i u \verb+master+ grani.
+Klasični \emph{merge} oblika:
+
+\input{graphs/git_merge_2}
+
+\dots{}ne dolazi u obzir, jer bi on u \verb+master+ prebacio i sve izmjene koje ste napravili u \emph d, \emph e, \emph f i \emph g.
+Mi želimo samo i isključivo \emph g.
+To se, naravno, može i to je (naravno) taj \emph{cherry-pick}.
+
+Postupak je sljedeći; prvo pogledajte povijest grane \verb+eksperimentalna-grana+:
+
+\input{git_output/git_log_za_cherry_pick}
+
+Kao što ste vjerojatno već primijetili, svaki \emph{commit} u povijesti ima neki čudan string kao \verb+5c843fbfb09382c272ae88315eea9d77ed699083+.
+Taj string jedinstveno određuje svaki \emph{commit} (više riječi o tome u posebnom poglavlju).
+
+Sad trebate naći takav identifikator za onaj commit kojeg želite prebaciti u \verb+master+. Recimo da je to \verb+2b9ef6d02e51a890d508413e83495c11184b37fb+.
+
+Prebacite se u granu u koju želite preuzeti samo izmjene it tog \emph{commit}a i utipkajte \verb+git cherry-pick <commit>+.
+Ako nema konflikata, rezultat će biti otprilike:
+
+\input{git_output/git_cherry_pick}
+
+\dots{}a, ako imate konflikata onda\dots
+
+\section*{Merge bez \emph{commit}a}
+\addcontentsline{toc}{section}{Merge bez \emph{commit}a}
 
