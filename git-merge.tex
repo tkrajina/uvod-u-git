@@ -447,3 +447,28 @@ Ako nema konflikata, rezultat će biti otprilike:
 \section*{Merge bez \emph{commit}a}
 \addcontentsline{toc}{section}{Merge bez \emph{commit}a}
 
+Vratimo se open na klasični \emph{merge}.
+Ukoliko je prošao bez ikakvih problema, onda ćete nakon\dots
+
+\input{graphs/git_merge_2}
+
+\dots{}u povijesti projekta vidjeti nešto kao:
+
+\input{git_output/git_merge_log}
+
+Vratimo se opet na cijelu onu priču oko \emph{rebase}.
+Poanta cijele priče je bila u tome što, ako obrišemo granu, brišemo i cijelu njenu povijest.
+Ako se već odlučimo da ne želimo \emph{rebase} onda bi bilo lijepo u povijesti projekta umjesto \texttt{Merge branch 'eksperimentalna-grana'} imati smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
+Na taj način će, čak i ako izgubimo cijelu granu, ostati jedan commit u kojem je opisano što je taj \emph{merge} riješiriješio
+
+To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge} izvršimo s:
+
+\gitoutputcommand{git merge eksperimentalna-grana --no-commit}
+
+Na taj naćin če se \emph{merge} izvršiti, ali neće se sve \emph{commit}ati. 
+Sad vi možete spremiti sve izmjene i staviti neki svoj komentar.
+
+Jedini detalj na kojeg treba pripaziti je što, ako je došlo do \emph{fast-forward} \emph{merge}anja, onda \verb+--no-commit+ nema efekta.
+Zato, a za svaki slučaj, je bolje koristiti sljedeću sintaksu:
+
+\gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
