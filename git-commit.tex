@@ -56,23 +56,41 @@ Na primjer, ukoliko želite 10 linija oko izmjenjenih dijelova koda, to ćete do
 
 \gitoutputcommand{git diff -U10}
 
-\section*{Međuprostor za commit}
-\addcontentsline{toc}{section}{Međuprostor za commit}
+\section*{Indeks}
+\addcontentsline{toc}{section}{Indeks}
 
-U gitu postoji poseban "prostor" u koje se "stavljaju" datoteke koje ćete spremiti (\emph{commit}ati):
+U gitu postoji poseban "međuprostor" u koje se "stavljaju" datoteke koje ćete spremiti (\emph{commit}ati).
+Svako stanje neke datoteke se može nalaziti u tri različita stanja:
 
-\input{git_output/git_add_1}
+\begin{itemize}
+	\item datoteka je već spremljena negdje u git repozitoriju,
+	\item datoteku ste tek izmijenili i niste ju još \emph{commit}ali u repozitorij,
+	\item datoteku ste stavili u taj "međuprostor" tako da biste pripremili \emph{commit}.
+\end{itemize}
 
-Ili jednostavnije:
+Ovo zadnje stanje, odnosno, taj "međuprostor za \emph{commit}" se zove \emph{index} iliti indeks.
+I naredba \verb+git status+ je upravo namijenjena pregledavanju statusa indeksa.
+Na primjer, u trenutku pisanja ovog poglavlja, \verb+git status+ je\footnote{Da, i ova knjiga je pisana koristeći git. Detalji na https://github.com/tkrajina/uvod-u-git}:
 
-\input{git_output/git_add_2}
+\input{git_output/git_status_prije_indeksa}
 
-Nakon toga, rezultat od \verb+git status+ je:
+Ovaj ispis govori kako je jedna datoteka izmijenjena, ali nije još \emph{commit}ana niti stavljena u indeks.
+Idemo ju staviti u indeks s:
 
-\input{git_output/git_status_2}
+\gitoutputcommand{git add git-commit.tex}
 
-Ukoliko ima neka datoteka koju ste staviti u međuprostor za \emph{commit}, ali ste se kasnije predomislili. 
-Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njemu napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
+\dots{}i sad je status:
+
+\input{git_output/git_status_nakon_indeksa}
+
+Primijetiti ćete dio u kojem piše, \texttt{Changes to be committed} -- e to je spisak datoteka koje ste stavili u indeks.
+
+Čak i ako ste datoteku \emph{obrisali} -- morate ju dodati u indeks naredbom \verb+git add+.
+Zamislite to kao da u indeks ne stavljate u stvari datoteku neko neko njeno (izmijenjeno) stanje.
+Kad ste datoteku obrisali -- u indeks treba spremiti novo stanje te datoteke ("izbrisano stanje").
+
+Dogoditi će se da ste neku datoteku stavili u indeks, ali ste se kasnije predomislili. 
+Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
 To se može naredbom:
 
 \gitoutputcommand{git rm --cached <datoteka1> <datoteka2> \dots}
@@ -83,7 +101,7 @@ To se može ovako:
 
 \gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
 
-Više detalja o \verb+git checkout+ i zašto ova gornja naredba radi to što radi biti će u poglavlju o granama grananju.
+Više detalja o \verb+git checkout+ i zašto ova gornja naredba radi to što radi biti će u kasnije.
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
@@ -125,7 +143,7 @@ I, nekako vam se čini da bi bilo logično da ta sitnica bude dio prethodnog \em
 
 Bilo bi lijepo, pomislit' ćete kad biste mogli izmijeniti zadnji \emph{commit} tako da sadrži i ovu novu, sitnu, ispravku koju ste dodali.
 S gitom se to može.
-Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README.md+, dodate tu datoteku u naš međuprostor za izmjene s \verb+git add README.md+ i izvršite sljedeće:
+Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README.md+, dodate tu datoteku u indeks s \verb+git add README.md+ i izvršite sljedeće:
 
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
 
@@ -166,7 +184,7 @@ Upišite komentar i kliknite na \emph{Commit} za snimanje izmjene.
 Ovdje, kao i u radu s komandnom linijom ne morati sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
 Možete dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
 Drugim riječima, izmjene možete snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
-Koristite li \verb+git gui+ onda ovdje imati još jednu korisnu opciju, možete u međuprostor za commit dodati ne \emph{cijelu} datoteku, nego samo \emph{nekoliko izmijenjenih linija}.
+Koristite li \verb+git gui+ onda ovdje imati još jednu korisnu opciju, možete u indeks dodati ne \emph{cijelu} datoteku, nego samo \emph{nekoliko izmijenjenih linija}.
 Odaberite datoteku, u polju s izmijenjenim linijama odaberite samo linije koje želite spremite, desni klik i:
 
 \includegraphics[width=14cm]{images/git-gui-stage-lines-to-commit.png}
