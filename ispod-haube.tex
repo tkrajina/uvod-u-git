@@ -1,6 +1,9 @@
 \chapter*{Ispod haube}
 \addcontentsline{toc}{chapter}{Ispod haube}
 
+\section*{Kako biste vi\dots}
+\addcontentsline{toc}{section}{Kako biste vi\dots}
+
 Da kojim slučajem danas morate dizajnirati i implementirati sustav za verzioniranje koda, kako biste to napravili?
 Kako biste čuvali povijest svake datoteke?
 
@@ -61,6 +64,9 @@ Ako i niste, nije bitno.
 To su funkcije koje je lako izračunati, ali je izuzetno teško iz rezultat zaključiti kakav je mogao biti rezultat.
 Takve su, na primjer, \emph{hash} funkcije, a jedna od njih je SHA1.
 
+\section*{SHA1}
+\addcontentsline{toc}{section}{SHA1}
+
 Sa SHA1 možete uzeti bilo koji string i on će vam iz njega dati novi string duljine 40 znakova.
 Primjer takvog stringa je \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
 Izgleda poznato?
@@ -72,7 +78,9 @@ SHA1 ima sljedeća svojstva:
 	\item Kad dobijete rezultat funkcije (npr. \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+) is njega je \textbf{praktički nemoguće izračunati string iz kojeg je nastala}.
 \end{itemize}
 
-Git nije ništa drugo nego graf SHA1 stringova koji identificiraju neko stanje projekta \textbf{i izračunati su iz tog stanja projekta}.
+Takvih $40-$znamenkastih stringova ćete vidjeti cijelu gomilu u \verb+.git+ direktoriju.
+
+Git nije ništa drugo nego graf SHA1 stringova, od kojih svaki jedinstveno identificira neko stanje projekta \textbf{i izračunati su iz tog stanja}.
 Osim SHA1 identifikatora git uz svaki \emph{commit} čuva i neke metapodatke kao, na primjer:
 
 \begin{itemize}
@@ -82,6 +90,9 @@ Osim SHA1 identifikatora git uz svaki \emph{commit} čuva i neke metapodatke kao
 	\item SHA1 \emph{commit}a iz kojeg su preuzete izmjene za \emph{merge} (\textbf{ako} je taj \emph{commit} rezultat \emph{merge}a).
 	\item \dots
 \end{itemize}
+
+\section*{Grane}
+\addcontentsline{toc}{section}{Grane}
 
 Razmislimo o još jednom detalju, uz poznati graf:
 
@@ -94,23 +105,28 @@ Sad kad znamo ovo malo pozadine oko toga kako git interno pamti podatke, mogli j
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima_suprotne_strelice}
 
+Sve strelice su ovdje usmjerene suprogno negoli u grafovima kakve smo do sada imali.
 Naime, čvor \emph g ima referencu na na \emph g ($\vec{hg}$), \emph g ima reference na \emph f ($\vec{gh}$) i na \emph q ($\vec{gq}$), itd.
 Uočite da nam uopće nije potrebno znati da se grana \verb+novi-feature+ sastoji od \emph x, \emph y, \emph z, \emph q i \emph w.
 Dovoljan nam je $w$.
 Iz njega možemo, prateći reference "unazad" (suprotno od kronološkog reda nastajanja) doći sve do mjesta gdje je grana nastala.
 
-Zato gitu interno grane i nisu ništa drugo 
+Zato gitu interno grane i nisu ništa drugo neki reference na njihove zadnje \emph{commit}ove.
 
-TODO:
-
-Svaki commit i SHA1, koji ima jedan, koji dva, a koji nijednog sljedbenika.
-Potreban nam je samo jedan commit da bi imali sve informacije o grani.
+\section*{.git direktorij}
+\addcontentsline{toc}{section}{.git direktorij}
 
 \input{git_output/dot_git_folder}
 
-\begin{itemize}
-   \item Kratko objašnjenje o git indexu, commitovima kao pointerima, referencama, "nazivima" commitova, hashevima, .git direktoriju isl.
-\end{itemize}
+\input{git_output/find_dot_git_refs}
+
+.git/refs
+
+HEAD
+
+.git/objects
+
+.git/hooks
 
 %\section*{}
 %\addcontentsline{toc}{section}{}

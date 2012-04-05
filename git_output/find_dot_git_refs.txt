@@ -1,0 +1,5 @@
+$ find .git/refs/
+.git/refs/
+.git/refs/heads
+.git/refs/heads/master
+.git/refs/tags
