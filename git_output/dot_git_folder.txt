@@ -1,0 +1,12 @@
+$ ls .git
+branches/
+COMMIT_EDITMSG
+config
+description
+HEAD
+hooks/
+index
+info/
+logs/
+objects/
+refs/

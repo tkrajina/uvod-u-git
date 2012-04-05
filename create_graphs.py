@@ -82,6 +82,33 @@ def graph_primjer_s_imenovanim_granama_i_spajanjima():
 
 	return graph
 
+def graph_primjer_s_imenovanim_granama_i_spajanjima_suprotne_strelice():
+	graph = mod_graph.Graph( column = 5 )
+
+	graph.add_branch( mod_graph.Branch(
+			reverse_arrows = True,
+			label = 'master',	
+			nodes = 'abcdefgh' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			reverse_arrows = True,
+			label = 'novi-feature',	
+			row = 2,
+			nodes = 'xyzqw',
+			branch_from = graph.find_node( 'b' ) ) )
+
+	graph.add_branch( mod_graph.Branch(
+			reverse_arrows = True,
+			label = 'ispravak-problema-x',	
+			row = 1,
+			nodes = '1234',
+			branch_from = graph.find_node( 'g' ) ) )
+
+	graph.add_arrow( 'z', 'd', color = GRAY )
+	graph.add_arrow( 'g', 'q', color = GRAY )
+
+	return graph
+
 def graph_primjer_s_granama_i_spajanjima():
 	graph = mod_graph.Graph()
 

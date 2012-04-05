@@ -1,6 +1,113 @@
 \chapter*{Ispod haube}
 \addcontentsline{toc}{chapter}{Ispod haube}
 
+Da kojim slučajem danas morate dizajnirati i implementirati sustav za verzioniranje koda, kako biste to napravili?
+Kako biste čuvali povijest svake datoteke?
+
+Prije nego što ste počeli koristiti takve sustave, vjerojatno ste radili sljedeće: kad bi zaključili da ste došli do nekog važnog stanja u projektu, kopirali bi cijeli projekt u direktorij naziva \verb+projekt_backup+ ili \verb+projekt_2012_04_05+ ili neko drugo slično ime.
+Rezultat je da ste imali gomilu sličnih "backup" projekata.
+Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}.
+I to je nekakvo verzioniranje koda, no puno toga nedostaje.
+
+Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tako da u svaki direktorij spremite datoteku naziva \verb+komentar.txt+.
+Nemate niti nekakav graf, odnosno redosljed kako su direktorij nastajali jedan iz drugog.
+I to bi se moglo riješit tako da u svakom direktoriju u nekoj posebnoj datoteci, npr. \verb+parents+ nabrojite nazive direktorija koji su "roditelji" trenutnom direktoriju.
+
+No, sve je to prilično neefikasno što se tiče diskovnog prostora. 
+Imate li u repozitoriju jednu datoteku veličine 100 kilobajta koju \emph{nikad} ne mijenjate, njena kopija će opet zauzimati 100 kilobajta u svakoj kopiji projekta.
+To je gnjavaža.
+
+Zato bi možda bilo bolje da umjesto \textbf{kopije direktorija} za \emph{commit} napravimo novi u kojeg ćemo staviti \textbf{samo one datoteke koje su izmijenjene}.
+Zahtijevalo bi malo više posla jer morate točno znati koje su datoteke izmijenjene, ali i to se može riješiti.
+Mogli bi napraviti neku jednostavno \emph{shell} skriptu koja će to napraviti a nas. 
+
+S time bi se problem diskovnog prostora drastično smanjio. 
+Rezultat bi mogli još malo poboljšati tako da datoteke kompresiramo.
+
+Još jedna varijanta bi bila da ne čuvate izmijenjene datoteke, nego samo izmijenjene linije koda.
+Tako bi, vaše datoteke, umjesto cijelog sadržaja imale nešto tipa "Peta linija izmijenjena iz 'def suma\_brojeva()' u 'def zbroj\_brojeva()'".
+To su takozvane "delte".
+Još jedna varijanta bi bila da ne radite kopije direktorija, nego sve snimate u jednom tako da za svaku datoteku čuvate originalnu verziju i nakon toga (u istoj datoteci) dodajete delte.
+Onda će vam trebati nekakav pomoćni programčić kako iz povijesti izvući zadnju verziju bilo koje datoteke, jer on mora izračunati sve delte od početne verzije.
+
+Sve te varijante imaju jedan suptilni, ali neugodan, problem.
+Problem konzistencije.
+
+Vratimo se na trenutak na ideju s kopiranjem direktorija sa izmijenjenim datotekama.
+Ako svaki direktorij sadrži samo izmijenjene datoteke, onda prvi direktorij mora sadržavati \emph{sve} datoteke.
+Pretpostavite da imate jednu datoteku koja nije nikad izmijenjena od prve do zadnje verzije. 
+Ona će se nalaziti samo u prvom (originalnom) direktoriju.
+
+Što ako neki haker upadne u vaš sustav i izmijeni takvu datoteku?
+Razmislimo malo, on je upravo izmijenio ne samo početno stanje takve datoteke nego je \textbf{promijenio cijelu njenu povijest}!
+Kad bi vi svoj sustav pitali "daj mi zadnju verziju projekta", on bi protrčao kroz sva stanja projekta i dao bi vam hakerovu varijantu.
+Jeste li sigurni da bi primijetili podvaljenu datoteku?
+
+Riješenje je da je vaš sustav nekako dizajniran tako da sam prepoznaje takve izmijenjene datoteke. 
+Odnosno, da je tako dizajniran da, ako bilo tko promijeni nešto u povijesti -- sam sustav prepozna da nešto s njime ne valja.
+To se može na sljedeći način: neka jedinstveni identifikator svakog \emph{commit}a bude neki podatak koji je \textbf{izračunat} iz sadržaja i koji jedinstveno određuje sadržaj.
+Takav jedinstveni identifikator će se nalaziti u grafu projekta, i sljedeći \emph{commit}ovi će znati da im je on prethodnik.
+
+Ukoliko bilo tko promijeni sadržaj nekog \emph{commit}a, onda on više neće odgovarati tom identifikatoru.
+Promijeni li i identifikator, onda graf više neće biti konzistentan -- sljedeći \emph{commit} će sadržavati identifikator koji više ne postoji.
+Dakle, haker bi trebao promijeniti sve \emph{commit}ove do zadnjeg. 
+U biti, trebao bi promijeniti previše stvari da bi mu cijeli poduhvat mogao proći nezapaženo.
+
+Još ako je naš sustav distribuiran (dakle i drugi korisnici imaju povijest cijelog projekta) onda mu je još teže -- jer tu radnju mora ponoviti na računalima svih ljudi koji imaju kopije.
+S distribuiranim sustavima, nitko nikad niti ne zna tko sve ima kopije.
+
+Znate li malo matematike čuli ste za jednosmerne funkcije.
+Ako i niste, nije bitno. 
+To su funkcije koje je lako izračunati, ali je izuzetno teško iz rezultat zaključiti kakav je mogao biti rezultat.
+Takve su, na primjer, \emph{hash} funkcije, a jedna od njih je SHA1.
+
+Sa SHA1 možete uzeti bilo koji string i on će vam iz njega dati novi string duljine 40 znakova.
+Primjer takvog stringa je \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
+Izgleda poznato?
+
+SHA1 ima sljedeća svojstva:
+
+\begin{itemize}
+	\item \emph{Nije} jedinstvena. Dakle, sigurno postoje različiti ulazni stringovi koji daju isti rezultat, no \textbf{praktički ih je nemoguće naći}. 
+	\item Kad dobijete rezultat funkcije (npr. \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+) is njega je \textbf{praktički nemoguće izračunati string iz kojeg je nastala}.
+\end{itemize}
+
+Git nije ništa drugo nego graf SHA1 stringova koji identificiraju neko stanje projekta \textbf{i izračunati su iz tog stanja projekta}.
+Osim SHA1 identifikatora git uz svaki \emph{commit} čuva i neke metapodatke kao, na primjer:
+
+\begin{itemize}
+	\item Datum i vrijeme kad je nastao.
+	\item Komentar
+	\item SHA1 \emph{commit}a koji mu je prethodio
+	\item SHA1 \emph{commit}a iz kojeg su preuzete izmjene za \emph{merge} (\textbf{ako} je taj \emph{commit} rezultat \emph{merge}a).
+	\item \dots
+\end{itemize}
+
+Razmislimo o još jednom detalju, uz poznati graf:
+
+\input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
+
+Graf kao ovaj gore matematičari zovu usmjereni graf jer su veze između čvorova usmjerene: $\vec{ab}$, $\vec{bc}$, itd.
+Znamo već da svaki čvor tov grafa predstavlja stanje nekog projekta, a svaka strelica neku izmjenu u novo stanje.
+
+Sad kad znamo ovo malo pozadine oko toga kako git interno pamti podatke, mogli jednako tako ovaj gornji graf prikazati ovako:
+
+\input{graphs/primjer_s_imenovanim_granama_i_spajanjima_suprotne_strelice}
+
+Naime, čvor \emph g ima referencu na na \emph g ($\vec{hg}$), \emph g ima reference na \emph f ($\vec{gh}$) i na \emph q ($\vec{gq}$), itd.
+Uočite da nam uopće nije potrebno znati da se grana \verb+novi-feature+ sastoji od \emph x, \emph y, \emph z, \emph q i \emph w.
+Dovoljan nam je $w$.
+Iz njega možemo, prateći reference "unazad" (suprotno od kronološkog reda nastajanja) doći sve do mjesta gdje je grana nastala.
+
+Zato gitu interno grane i nisu ništa drugo 
+
+TODO:
+
+Svaki commit i SHA1, koji ima jedan, koji dva, a koji nijednog sljedbenika.
+Potreban nam je samo jedan commit da bi imali sve informacije o grani.
+
+\input{git_output/dot_git_folder}
+
 \begin{itemize}
    \item Kratko objašnjenje o git indexu, commitovima kao pointerima, referencama, "nazivima" commitova, hashevima, .git direktoriju isl.
 \end{itemize}
