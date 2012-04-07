@@ -1,0 +1,11 @@
+$ find .git/objects
+.git/objects/
+.git/objects/d7
+.git/objects/d7/3aabba2b969b2ff2cbff18f1dc4e254d2a2af3
+.git/objects/fc
+.git/objects/fc/b8e595cf8e2ff6007f0780774542b79044ed4d
+.git/objects/33
+.git/objects/33/39354cbbe6be2bc79d8a5b0c2a8b179febfd7d
+.git/objects/9c
+.git/objects/9c/55a9bbd5463627d9e05621e9d655e66f2acb98
+.git/objects/2c
