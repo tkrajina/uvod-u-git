@@ -120,6 +120,9 @@ Iz njega možemo, prateći reference "unazad" (suprotno od kronološkog reda nas
 
 Zato gitu interno grane i nisu ništa drugo neki reference na njihove zadnje \emph{commit}ove.
 
+\section*{Reference}
+\addcontentsline{toc}{section}{Reference}
+
 \section*{.git direktorij}
 \addcontentsline{toc}{section}{.git direktorij}
 
@@ -133,7 +136,22 @@ Samo ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/objects+, \ver
 \subsection*{.git/objects}
 \addcontentsline{toc}{subsection}{.git/objects}
 
+Sadržaj direktorija \verb+.git/objects+ izgleda ovako nekako:
+
 \input{git_output/git_objects}
+
+I to je onaj direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
+
+Uočite, na primjer, datoteku \verb+d7/3aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
+Ona se odnosi na git objekt s referencom \verb+d73aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
+Sadržaj tog objekta se može pogledati koristeći \verb+git cat-file <referenca>+.
+Na primjer, tip objekta se može pogledati s:
+
+\input{git_output/git_cat_file_type}
+
+Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
+
+\TODO
 
 \subsection*{.git/refs}
 \addcontentsline{toc}{subsection}{.git/refs}

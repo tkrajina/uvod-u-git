@@ -1,0 +1,2 @@
+$ git cat-file -t d73aab
+commit
