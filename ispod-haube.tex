@@ -9,7 +9,8 @@ Kako biste čuvali povijest svake datoteke?
 
 Prije nego što ste počeli koristiti takve sustave, vjerojatno ste radili sljedeće: kad bi zaključili da ste došli do nekog važnog stanja u projektu, kopirali bi cijeli projekt u direktorij naziva \verb+projekt_backup+ ili \verb+projekt_2012_04_05+ ili neko drugo slično ime.
 Rezultat je da ste imali gomilu sličnih "backup" projekata.
-Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}.
+Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}).
+
 I to je nekakvo verzioniranje koda, no puno toga nedostaje.
 
 Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tako da u svaki direktorij spremite datoteku naziva \verb+komentar.txt+.
@@ -204,7 +205,7 @@ Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{
 Drugim riječima, sve potrebno da bi znali od čega se \emph{commit} sastojao i da bi znali gdje je njegovo mjesto na grafu povijesti projekta.
 
 Stvar se može zakomplicirati kad broj objekata poraste.
-Tada se u blob objekte može zapakirati više datoteka ili samo dijelova datoteka, ovisno o gitovom algoritmo za pakiranje (\emph{pack}).
+Tada se u \verb{blob} objekte može zapakirati više datoteka ili samo dijelova datoteka, ovisno o gitovom algoritmo za pakiranje (\emph{pack}).
 
 \subsection*{.git/refs}
 \addcontentsline{toc}{subsection}{.git/refs}
@@ -226,7 +227,7 @@ Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve gran
 \addcontentsline{toc}{subsection}{HEAD}
 
 Datoteka \verb+.git/HEAD+ u stvari nije obična datoteka nego samo simbolički link na neku od datoteka unutar \verb+git/refs+.
-I to na onu od tih datoteka koja sadrži referencu na onu granu u kojoj se trenutno nalazimo.
+I to na onu od tih datoteka koja sadrži referencu na granu u kojoj se trenutno nalazimo.
 Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/heads/master+, što znači da se nalazim na \verb+master+ grani.
 
 \subsection*{.git/hooks}
