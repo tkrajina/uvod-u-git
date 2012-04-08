@@ -123,6 +123,34 @@ Zato gitu interno grane i nisu ništa drugo neki reference na njihove zadnje \em
 \section*{Reference}
 \addcontentsline{toc}{section}{Reference}
 
+SHA1 stringovi su računalu praktični, no ljudima u mrvicu nezgodni za pamćenje :)
+Zbog toga git ima par zgodnih sitnica vezanih uz reference.
+
+Pogledajmo SHA1 string \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
+Takav string je teško namjerno ponoviti. I vjerojatno je mala vjerojatnost da postoji neki drugi string koji započinje s \verb+974ef0a+ ili \verb+974e+.
+Zbog toga se u gitu može slobodno koristiti i samo prvih nekoliko znakova SHA1 referenci umjesto cijelog $40$-znamenkastog stringa.
+
+Dakle, 
+
+\gitoutputcommand{git cherry-pick 974ef0ad8351ba7b4d402b8ae3942c96d667e199}
+
+\dots{}je isto što i:
+
+\gitoutputcommand{git cherry-pick 974ef0}
+
+Referenca \verb+HEAD+ je uvijek referenca na zadnji \emph{commit} u grani u kojoj se nalazimo.
+Ukoliko nam treba referenca na predzadnji \emph{commit}, mogli bi pogledati \verb+git log+ i tamo naći njegov SHA1.
+Postoji i lakši način: \verb+HEAD~1+.
+Analogno, pred-predzadnji commit je \verb+HEAD~2+, i tako dalje.
+
+Na primjer, želimo li pogledati koje su se izmjene dogodile između sadašnjeg stanja grana i stanja od prije $10$ \emph{commit}ova, to će ići ovako:
+
+\gitoutputcommand{git diff HEAD HEAD\textasciitilde{}10}
+
+Notacija kojom dodajemo \verb+~1+, \verb+~2+, \dots vrijedi i za reference na grane i na pojedine SHA1.
+Imate li granu \verb+test+ -- već znamo da je to referenca samo na njen zadnji \emph{commit}, a referenca na predzadnji je \verb+test~1+.
+Analogno, \verb+974ef0a~11+ je referenca na $11$-ti \emph{commit} prije \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
+
 \section*{.git direktorij}
 \addcontentsline{toc}{section}{.git direktorij}
 
