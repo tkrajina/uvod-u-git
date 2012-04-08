@@ -151,18 +151,54 @@ Na primjer, tip objekta se može pogledati s:
 
 Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
 
-\TODO
+Postoje četiri vrste objekata: \emph{commit}, \emph{tag}, \emph{tree} i \emph{blob}. 
+\emph{Commit} i \emph{tag} sadrže metapodatke vezane uz ono što im sam naziv kaže.
+\emph{Blob} sadrži binarne podatke neke datoteke, dok je \emph{tree} spisak datoteka.
+
+Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{commit} objekti sadrže:
+
+\begin{itemize}
+	\item Referencu na prethodni \emph{commit},
+	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako smo to učinili u tom \emph{commit}u,
+	\item Datum i vrijeme kad je nastao,
+	\item Autora,
+	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži spisak svih datoteka koje su sudjelovale u tom \emph{commit}u.
+\end{itemize}
+
+Stvar se može zakomplicirati kad broj objekata poraste.
+Tada se u blob objekte može zapakirati više datoteka ili samo dijelova datoteka, ovisno o gitovom algoritmo za pakiranje (\emph{pack}).
 
 \subsection*{.git/refs}
 \addcontentsline{toc}{subsection}{.git/refs}
 
+Bacimo pogleda kako izgleda direktorij \verb+.git/refs+:
+
 \input{git_output/find_dot_git_refs}
+
+Pogledajmo i sadržaj tih datoteka:
+
+\input{git_output/cat_git_refs_tag}
+
+Svaki od tih fajlova sarži referencu na jedan od objekata iz \verb+.git/objects+. 
+Poigrajte se s \verb+git cat-file+ i otkriti ćete da su to uvijek \emph{commit} objekti.
+
+Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija.
 
 \subsection*{HEAD}
 \addcontentsline{toc}{subsection}{HEAD}
 
+Datoteka \verb+.git/HEAD+ u stvari nije obična datoteka nego samo simbolički link na neku od datoteka unutar \verb+git/refs+.
+I to na onu od tih datoteka koja sadrži referencu na onu granu u kojoj se trenutno nalazimo.
+Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/heads/master+, što znači da se nalazim na \verb+master+ grani.
+
 \subsection*{.git/hooks}
 \addcontentsline{toc}{subsection}{.git/hooks}
+
+Ovaj direktorij sadrži \emph{shell} skripte koje želimo izvršiti u trenutku kad se dogode neki važni događaji na našem repozitoriju.
+Svaki git repozitorij več sadrži primjere takvih skripti s ekspenzijom \verb+.sample+.
+Ukoliko taj sample maknete, one će se početi izvršavati na tim događajima.
+
+Na primjer, želite li da se prije svakog \emph{commit}a izvrše \emph{unit} testovi i pošalje mejl s rezultatima, napraviti ćete skriptu \verb+pre-commit+ koja to radi.
 
 %\section*{}
 %\addcontentsline{toc}{section}{}

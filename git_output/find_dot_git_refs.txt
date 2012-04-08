@@ -2,4 +2,12 @@ $ find .git/refs/
 .git/refs/
 .git/refs/heads
 .git/refs/heads/master
+.git/refs/heads/test
 .git/refs/tags
+.git/refs/tags/test
+.git/refs/remotes
+.git/refs/remotes/puzz
+.git/refs/remotes/puzz/master
+.git/refs/remotes/github
+.git/refs/remotes/github/master
+
