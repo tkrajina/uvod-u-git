@@ -123,7 +123,7 @@ Zato gitu interno grane i nisu ništa drugo neki reference na njihove zadnje \em
 \section*{Reference}
 \addcontentsline{toc}{section}{Reference}
 
-SHA1 stringovi su računalu praktični, no ljudima u mrvicu nezgodni za pamćenje :)
+SHA1 stringovi su računalu praktični, no ljudima su mrvicu nezgodni za pamćenje :)
 Zbog toga git ima par zgodnih sitnica vezanih uz reference.
 
 Pogledajmo SHA1 string \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
@@ -138,6 +138,9 @@ Dakle,
 
 \gitoutputcommand{git cherry-pick 974ef0}
 
+Dogodi li se, kojim slučajem, da postoje dvije reference koje počinju s \verb+974ef0a+, git će vam javiti grešku da ne zna na koju od njih se naredba odnosi.
+Tada samo dodajte jedan ili dva znaka više (\verb+974ef0ad+ ili \verb+974ef0ad8+), sve dok nova skraćenica reference ne postane jedinstvena.
+
 Referenca \verb+HEAD+ je uvijek referenca na zadnji \emph{commit} u grani u kojoj se nalazimo.
 Ukoliko nam treba referenca na predzadnji \emph{commit}, mogli bi pogledati \verb+git log+ i tamo naći njegov SHA1.
 Postoji i lakši način: \verb+HEAD~1+.
@@ -151,10 +154,12 @@ Notacija kojom dodajemo \verb+~1+, \verb+~2+, \dots vrijedi i za reference na gr
 Imate li granu \verb+test+ -- već znamo da je to referenca samo na njen zadnji \emph{commit}, a referenca na predzadnji je \verb+test~1+.
 Analogno, \verb+974ef0a~11+ je referenca na $11$-ti \emph{commit} prije \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
 
+Zapamtite ove trikove s referencama, jer to ćete često koristiti!
+
 \section*{.git direktorij}
 \addcontentsline{toc}{section}{.git direktorij}
 
-Pogledajmo, na trenutak, onaj \verb+.git+ direktorij. 
+Pogledajmo na trenutak \verb+.git+ direktorij. 
 Vjerojatno ste to već učinili, i vjerojatno ste otkrili da je njegov sadržaj otprilike ovakav:
 
 \input{git_output/dot_git_folder}
@@ -170,7 +175,7 @@ Sadržaj direktorija \verb+.git/objects+ izgleda ovako nekako:
 
 I to je onaj direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
 Dakle, to git koristi umjesto onih višestrukih direktorija koje smo spomenuli u našem hipotetskom sustavu za verzioniranje, na početku ovog poglavlja.
-Sve verzije svih datoteka, \emph{commit}ova i svega ostaloga se ovdje čuva.
+Apsolutno sve se ovdje čuva.
 
 Uočite, na primjer, datoteku \verb+d7/3aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
 Ona se odnosi na git objekt s referencom \verb+d73aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
@@ -184,7 +189,7 @@ Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
 
 Postoje četiri vrste objekata: \emph{commit}, \emph{tag}, \emph{tree} i \emph{blob}. 
 \emph{Commit} i \emph{tag} sadrže metapodatke vezane uz ono što im sam naziv kaže.
-\emph{Blob} sadrži binarne podatke neke datoteke, dok je \emph{tree} spisak datoteka.
+\emph{Blob} sadrži binarni sadržaj neke datoteke, dok je \emph{tree} spisak datoteka.
 
 Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{commit} objekti sadrže:
 
@@ -215,7 +220,7 @@ Pogledajmo i sadržaj tih datoteka:
 Svaki od tih fajlova sarži referencu na jedan od objekata iz \verb+.git/objects+. 
 Poigrajte se s \verb+git cat-file+ i otkriti ćete da su to uvijek \emph{commit} objekti.
 
-Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija.
+Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija, a koji se nalaze u \verb+.git/objects+.
 
 \subsection*{HEAD}
 \addcontentsline{toc}{subsection}{HEAD}
@@ -228,7 +233,7 @@ Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/h
 \addcontentsline{toc}{subsection}{.git/hooks}
 
 Ovaj direktorij sadrži \emph{shell} skripte koje želimo izvršiti u trenutku kad se dogode neki važni događaji na našem repozitoriju.
-Svaki git repozitorij več sadrži primjere takvih skripti s ekspenzijom \verb+.sample+.
+Svaki git repozitorij već sadrži primjere takvih skripti s ekspenzijom \verb+.sample+.
 Ukoliko taj sample maknete, one će se početi izvršavati na tim događajima.
 
 Na primjer, želite li da se prije svakog \emph{commit}a izvrše \emph{unit} testovi i pošalje mejl s rezultatima, napraviti ćete skriptu \verb+pre-commit+ koja to radi.
