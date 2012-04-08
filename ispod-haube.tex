@@ -70,7 +70,7 @@ Ako i niste, nije bitno.
 To su funkcije koje je lako izračunati, ali je izuzetno teško iz rezultata zaključiti kakav je mogao biti početni argument.
 Takve su, na primjer, \emph{hash} funkcije, a jedna od njih je SHA1.
 
-SHA1 kao argument uzima string i iz njega izračunava drugi string duljine 40 znakova.
+SHA1 kao argument uzima string i iz njega izračunava drugi string duljine $40$ znakova.
 Primjer takvog stringa je \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
 
 Izgleda poznato?
@@ -141,6 +141,8 @@ Sadržaj direktorija \verb+.git/objects+ izgleda ovako nekako:
 \input{git_output/git_objects}
 
 I to je onaj direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
+Dakle, to git koristi umjesto onih višestrukih direktorija koje smo spomenuli u našem hipotetskom sustavu za verzioniranje, na početku ovog poglavlja.
+Sve verzije svih datoteka, \emph{commit}ova i svega ostaloga se ovdje čuva.
 
 Uočite, na primjer, datoteku \verb+d7/3aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
 Ona se odnosi na git objekt s referencom \verb+d73aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
@@ -149,6 +151,7 @@ Na primjer, tip objekta se može pogledati s:
 
 \input{git_output/git_cat_file_type}
 
+\dots{}što znači da je to objekta tipa \emph{commit}.
 Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
 
 Postoje četiri vrste objekata: \emph{commit}, \emph{tag}, \emph{tree} i \emph{blob}. 
@@ -164,6 +167,8 @@ Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{
 	\item Autora,
 	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži spisak svih datoteka koje su sudjelovale u tom \emph{commit}u.
 \end{itemize}
+
+Drugim riječima, sve potrebno da bi znali od čega se \emph{commit} sastojao i da bi znali gdje je njegovo mjesto na grafu povijesti projekta.
 
 Stvar se može zakomplicirati kad broj objekata poraste.
 Tada se u blob objekte može zapakirati više datoteka ili samo dijelova datoteka, ovisno o gitovom algoritmo za pakiranje (\emph{pack}).
