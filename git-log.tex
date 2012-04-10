@@ -1,15 +1,43 @@
 \chapter*{Povijest}
 \addcontentsline{toc}{chapter}{Povijest}
 
-\begin{itemize}
-	\item Projekt, direktorij, datoteka
-	\item Svaki čvor "sadrži" stanje projekta u nekom trenutku, komentar, \emph{hash}, \emph{pointer} na prethodni \emph{commit} i, u slučaju da je to rezultat preuzimanja izmjena iz neke druge grane -- pokazivač na čvor iz neke druge grane.
-	\item git blame
-	\item Kreiranje grane iz nekog mjesta u povijesti
-	\item git whatchanged
-	\item "Vraćanje" u povijest (reset)
-	\item Undo commita (revert)
-\end{itemize}
+Već smo se poznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona zasigurno nije dovoljna za proučavanje povijesti projekta.
+Posebno s git projektima, čija povijest zna biti dosta kompleksna (puno grana, \emph{merge}anja, isl.).
+
+Sigurno će vam se ponekad desiti da želite vidjeti koje se se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_xizse+ u projektu\dots 
+Čak i ako vam se neki od navedenih scenarija, vjerujte mi -- trebati će vam.
+
+U ovom poglavlju ćemo proći samo neke od često korištenih varijanti naredbi za proučavanje povijesti projekta.
+
+\section*{Diff}
+\addcontentsline{toc}{section}{Diff}
+
+Važna naredba je i \verb+git diff+. 
+S njome provjeravate razlike između dva \emph{commit}a.
+Na primjer:
+
+\gitoutputcommand{git diff master tesna-grana}
+
+\dots{}će nam ispisati razliku između dvije grane. Pripazite, jer redosljed je ovdje bitan.
+Ukoliko isprobate s:
+
+\gitoutputcommand{git diff tesna-grana master}
+
+\dots{}dobiti ćete suprotan ispis. 
+Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati da ste ga dodali, a u drugom oduzeli.
+
+Želite li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg commita:
+
+\gitoutputcommand{git diff HEAD\textasciitilde{}2 HEAD\textasciitilde{}1}
+
+\dots{}ili između pred-predzadnjeg i sadašnjeg:
+
+\gitoutputcommand{git diff HEAD\textasciitilde{}2}
+
+\dots{}ili izmjene između \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+ i \verb+testna-grana+:
+
+\gitoutputcommand{git diff 974ef testna-grana}
+
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
