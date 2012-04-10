@@ -75,6 +75,7 @@ types = [
 def to_latex_string( string ):
 	string = string.replace( '\\', '\\textbackslash{}' )
 	string = string.replace( ' ', '\\ ' )
+	string = string.replace( '^', '\\^' )
 	string = string.replace( '$', '\\$' )
 	string = string.replace( '#', '\\#' )
 	string = string.replace( '_', '\\_' )
