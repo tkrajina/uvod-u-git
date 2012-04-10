@@ -38,6 +38,31 @@ Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+
 
 \gitoutputcommand{git diff 974ef testna-grana}
 
+\section*{Log}
+\addcontentsline{toc}{section}{Log}
+
+Standardno s \verb+git log <naziv_grane>+ će vam ispisati povijest te grane.
+Sad kad znamo da je grana u biti samo referenca na zadnji \emph{commit}, znamo i da bi bilo preciznije kazati da je ispravna sintaksa \verb+git log <referenca_na_commit>+.
+Za git nije previše bitno jeste li mu dali naziv grane ili referencu na \emph{commit}, on će jednostavno krenuti "unazad" po grafu i dati vam povijest koju na taj način nađe.
+Pa tako, ako želimo povijest trenutne grane, ali bez zadnjih pet unosa, pitati ćemo jednostavno:
+
+\gitoutputcommand{git log HEAD\textasciitilde{}5}
+
+Ili, ako želimo povijest grane \verb+testna-grana+ bez zadnjih 10 unosa:
+
+\gitoutputcommand{git log testna-grana\textasciitilde{}10}
+
+Želimo li povijest sa \emph{samo} nekoliko zadjnih unosa, koristimo \verb+git log -n+ sintaksu:
+
+\gitoutputcommand{git log -10 testna-grana}
+
+\dots{}ili, ako to želimo za trenutnu granu, jednostavno:
+
+\gitoutputcommand{git log -10}
+
+\subsection*{Pretraživanje povijesti}
+\addcontentsline{toc}{subsection}{Pretraživanje povijesti}
+
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
