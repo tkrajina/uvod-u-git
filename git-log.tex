@@ -63,6 +63,28 @@ Ili, ako želimo povijest grane \verb+testna-grana+ bez zadnjih 10 unosa:
 \subsection*{Pretraživanje povijesti}
 \addcontentsline{toc}{subsection}{Pretraživanje povijesti}
 
+Vrlo često će vam se dogoditi da tražite neki \emph{commit} iz povijesti.
+Ovdje ćemo proći samo dva najčešća slučaja.
+Prvi je kad pretražujete prema tekstu \emph{commit}a, tada se koristi \verb+git log --grep=<regularni_izraz>+.
+Na primjer, tražim li sve \emph{commit}ove koji u sebi sadrže riječ \verb+graph+:
+
+\gitoutputcommand{git log --grep=graph}
+
+Drugi česti scenarij je odgovor na pitanje "Kad se u kodu prvi put spomenuo string 'x'"? Tada se koristi \verb+git log -S<string>+.
+Recimo da tražite tko je prvi napisao funkciju \verb+get_image_width+:
+
+\gitoutputcommand{git log -Sget\_image\_width}
+
+Treba li pretraživati za string s razmacima:
+
+\gitoutputcommand{git log -S"get image width"}
+
+Zapamtite, ovo će vam samo naći \emph{commit}ove.
+Kad ih nađete, sigurno ćete htjeti pogledati koje su točno bile izmjene.
+Ako vam pretraživanje nađe da je \emph{commit} \verb+76cf802d23834bc74473370ca81993c5b07c2e35+, detalji izmjena koje su se njime dogodile su:
+
+\gitoutputcommand{git diff 76cf8 76cf8\textasciitilde{}1}
+
 \section*{Blame}
 \addcontentsline{toc}{section}{Blame}
 
