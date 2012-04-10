@@ -93,7 +93,7 @@ Dogoditi će se da ste neku datoteku stavili u indeks, ali ste se kasnije predom
 Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
 To se može naredbom:
 
-\gitoutputcommand{git reset HEAD <datoteka1> <datoteka2> \dots}
+\gitoutputcommand{git reset HEAD -- <datoteka1> <datoteka2> \dots}
 
 Nakon toga, izmjene treba \emph{commit}ati.
 
@@ -101,7 +101,7 @@ Još jedan scenarij kad se \verb+git rm --cached+ često koristi je sljedeći:
 Greškom ste u repozitorij spremili fajl koji tamo ne treba biti. 
 Taj fajl ste sad dodali u \verb+.gitignore+, ali on je i dalje u repozitoriju. 
 Ne želite ga obrisati, ali ne želite ga više u povijesti projekta.
-Neka je to, na primjer, \verb+text.pyc+:
+Neka je to, na primjer, \verb+test.pyc+:
 
 \gitoutputcommand{git rm --cached test.pyc}
 
