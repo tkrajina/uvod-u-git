@@ -102,6 +102,18 @@ Naredba \verb+git whatchanged+ je vrlo slična \verb+git log+, jedino što uz sv
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
+Znamo već da s \verb+git checkout <naziv_grane> -- <datoteka1> <datoteka2>...+ možemo lokalno dobiti stanje datoteke iz te grane.
+Odnedavno znamo i da naziv grane nije ništa drugo nego referenca na njen zadnji \emph{commit}.
+Analogno, ako umjesto grane, tamo stavimo referencu na neki drugi \emph{commit} dobiti ćemo stanje datoteke iz tog trenutka u povijesti.
+
+Dakle, s:
+
+\gitoutputcommand{git checkout HEAD\textasciitilde{}10 -- pjesma.txt}
+
+\dots{}dobijamo točno stanje datoteke \verb+pjesma.txt+ od prije $10$ \emph{commit}ova.
+
+Isto tako i s bilo kojom drugom referencom na neki \emph{commit} iz povijesti.
+
 \section*{Reset}
 \addcontentsline{toc}{section}{Reset}
 
