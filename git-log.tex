@@ -138,7 +138,18 @@ Ništa lakše:
 \section*{Reset}
 \addcontentsline{toc}{section}{Reset}
 
-Krećemo sad s dva pojma koja ponekad ljude malo zbunjuju \emph{reset} i \emph{revert}.
+Uzmimo ovakav scenarij; radite na nekoj grani.
+U jednom trenutku stanje je ovakvo:
+
+\input{graphs/linearni_model_za_reset}
+
+I sad zaključite kako tu nešto ne valja -- svi ovi \emph{commit}ovi od $f$ pa na dalje su krenuli krivim smjerom.
+Htjeli bi se nekako vratiti na:
+
+\input{graphs/linearni_model_za_reset_2}
+
+E sad, lako je "teleportirati se" s \verb+git checkout ...+, to to ne mijenja stanje grafa. 
+Mi bi ovdje htjeli baš obrisati dio grafa, odnosno zadnjih nekoliko \emph{commit}ova.
 
 \section*{Revert}
 \addcontentsline{toc}{section}{Revert}

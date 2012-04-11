@@ -496,6 +496,38 @@ def graph_fast_forward_4():
 
 	return graph
 
+def graph_linearni_model_za_reset():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), mod_graph.Node( label = '...', color = RED ) ] ) )
+
+	return graph
+
+def graph_linearni_model_za_reset():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), mod_graph.Node( label = '...', color = RED ) ] ) )
+
+	return graph
+
+def graph_linearni_model_za_reset_2():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = 'abcde' ) )
+
+	return graph
+
+def graph_linearni_model_za_reset():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), mod_graph.Node( label = '...', color = RED ) ] ) )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
