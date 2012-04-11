@@ -102,20 +102,43 @@ Naredba \verb+git whatchanged+ je vrlo slična \verb+git log+, jedino što uz sv
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
+Ponekad nam se svima dešava da smo izmijenili datoteku i kasnije se sjetili da ta izmjena ne valja. 
+Verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
+Kako da ju vratimo iz povijesti i \emph{commit}amo u novo stanje projekta?
+
 Znamo već da s \verb+git checkout <naziv_grane> -- <datoteka1> <datoteka2>...+ možemo lokalno dobiti stanje datoteke iz te grane.
 Odnedavno znamo i da naziv grane nije ništa drugo nego referenca na njen zadnji \emph{commit}.
 Analogno, ako umjesto grane, tamo stavimo referencu na neki drugi \emph{commit} dobiti ćemo stanje datoteke iz tog trenutka u povijesti.
 
-Dakle, s:
+Dakle, \verb+git checkout+ se, osim za prebacivanje s grane na granu, može koristiti i za pruzimanje neke datoteke iz prošlosti:
 
-\gitoutputcommand{git checkout HEAD\textasciitilde{}10 -- pjesma.txt}
+\gitoutputcommand{git checkout HEAD\textasciitilde{5} -- pjesma.txt}
 
-\dots{}dobijamo točno stanje datoteke \verb+pjesma.txt+ od prije $10$ \emph{commit}ova.
+\dots{}dobijamo točno stanje datoteke \verb+pjesma.txt+ od prije $5$ \emph{commit}ova.
+
+Treba li nam da datoteka kakva je bila u predzadnjem \emph{commit}u grane \verb+test+?
+
+\gitoutputcommand{git checkout test\textasciitilde{}1 -- pjesma.txt}
 
 Isto tako i s bilo kojom drugom referencom na neki \emph{commit} iz povijesti.
 
+\section*{"Teleportiranje" u povijest}
+\addcontentsline{toc}{section}{"Teleportiranje" u povijest}
+
+Isto razmatranje kao u prethodnom odjeljku vrijedi i za vraćanje stanja cijelog repozitorija u neki trenutak iz prošlosti.
+
+Na primjer, otkrili ste bug, ne znate gdje točno u kodu, ali znate da se taj bug nije prije manifestirao. 
+Bilo bi zgodno kad bismo cijeli projekt mogli teleportirati na neko sanje kakvo je bilo prije $n$ \emph{commit}ova.
+Ništa lakše:
+
+\gitoutputcommand{git checkout HEAD\textasciitilde{}10}
+
+\dots{}i za trenutak imate stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možete s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+.
+
 \section*{Reset}
 \addcontentsline{toc}{section}{Reset}
+
+Krećemo sad s dva pojma koja ponekad ljude malo zbunjuju \emph{reset} i \emph{revert}.
 
 \section*{Revert}
 \addcontentsline{toc}{section}{Revert}
