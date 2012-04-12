@@ -508,7 +508,7 @@ def graph_linearni_model_za_reset():
 	graph = mod_graph.Graph()
 
 	graph.add_branch( mod_graph.Branch(
-			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), mod_graph.Node( label = '...', color = RED ) ] ) )
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), ] ) )
 
 	return graph
 
@@ -520,11 +520,21 @@ def graph_linearni_model_za_reset_2():
 
 	return graph
 
-def graph_linearni_model_za_reset():
+def graph_linearni_model_za_reset_HEAD_1():
 	graph = mod_graph.Graph()
 
 	graph.add_branch( mod_graph.Branch(
-			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), mod_graph.Node( label = '...', color = RED ) ] ) )
+			reverse_arrows = True,
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i(HEAD)', color = RED ), ] ) )
+
+	return graph
+
+def graph_linearni_model_za_reset_HEAD_2():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			reverse_arrows = True,
+			nodes = [ 'a', 'b', 'c', 'd', 'e(HEAD)', '-', '-', mod_graph.Node( label = 'f', color = RED ), mod_graph.Node( label = 'g', color = RED ), mod_graph.Node( label = 'h', color = RED ), mod_graph.Node( label = 'i', color = RED ), ] ) )
 
 	return graph
 
