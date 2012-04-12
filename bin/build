@@ -1,0 +1,7 @@
+git log -1 --format=\\verb+%H+ > current_commit.tex
+
+python create_graphs.py
+python create_git_outputs.py
+pdflatex git.tex
+
+echo "git.pdf created"
