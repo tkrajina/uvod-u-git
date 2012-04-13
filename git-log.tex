@@ -26,7 +26,7 @@ Ukoliko isprobate s:
 \dots{}dobiti ćete suprotan ispis. 
 Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati da ste ga dodali, a u drugom oduzeli.
 
-Želite li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg commita:
+Želite li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg \emph{commit}a:
 
 \gitoutputcommand{git diff HEAD\textasciitilde{}2 HEAD\textasciitilde{}1}
 
@@ -168,7 +168,7 @@ S tom varijantom se isto gube \emph{commit}ovi nakon onog kojeg ste specificiral
 
 Cijela poanta naredbe \verb+git reset+ je da \textbf{pomiče HEAD}.
 Kao što znamo, HEAD je referenca na zadnji \emph{commit} u trenutnoj grani.
-Kad se "vratimo u povijest" s \\ \verb+git checkout HEAD~2+ -- mi \emph{nismo} dirali HEAD.
+Za razliku od nje, kad se "vratimo u povijest" s \\ \verb+git checkout HEAD~2+ -- mi \emph{nismo} dirali HEAD.
 Git i dalje zna koji mu je \emph{commit} HEAD i, posljedično, i dalje zna kako izgleda cijela grana.
 
 U našem primjeru od početka, mi želimo maknuti \textcolor{red}{crvene} \emph{commit}ove. 
@@ -184,10 +184,49 @@ I to je upravo ono što git čini s \verb+git reset+:
 
 Iako su ovi čvorovi ovdje prikazani na grafu, git do njih nikad ne može doći.
 Da bi rekonstruirao svoj graf, on uvijek kreće od HEAD, dakle $f$, $g$, $h$ i $i$ su izgubljeni.
-I upravo to je ono što u stvari radi \verb+git reset+.
 
 \section*{Revert}
 \addcontentsline{toc}{section}{Revert}
+
+Treba imati na umu jednu stvari -- \verb+git reset+ \textbf{mijenja povijest projekta retrogradno}.
+Svaki \emph{commit} mijenja povijest projekta, no on to čini tako da \textbf{dodaje na kraju grane}.
+To ponekad može biti problem (posebno u situacijama kad radite s drugim ljudima, o tome više u sljedećem poglavlju).
+
+To se može riješiti s \verb+git revert+. Uzmimo, na primjer, ovakvu situaciju:
+
+\input{graphs/linearni_model_za_revert_1}
+
+Došli ste do zaključka da je \emph{commit} $f$ neispravan i treba vratiti na stanje kakvo je bilo u $e$.
+\verb+git reset+ bi $f$ jednostavno maknuo s grafa, ali recimo da to ne želimo.
+Tada se može napraviti sljedeće \verb+git revert <commit>+. 
+Na primjer, ako želimo \emph{revert}ati samo zadnji \emph{commit}:
+
+\gitoutputcommand{git revert HEAD}
+
+Rezultat će biti da je dosadašnji graf ostao potpuno isti, no \textbf{dodan je novi commit} koji miče sve izmjene iz $f$:
+
+\input{graphs/linearni_model_za_revert_1_revertano}
+
+Dakle, stanje u $g$ će biti isto kao i u $e$.
+
+To se može i sa \emph{commit}om koji nije zadnji u grani:
+
+\input{graphs/linearni_model_za_revert_2}
+
+Ako je SHA1 referenca \emph{commit}a $f$ \verb+402b8ae3942c96d667e199974ef0ad8351ba7b4d+, onda ćemo s:
+
+\gitoutputcommand{git revert 402b8ae39}
+
+\dots{}dobiti:
+
+\input{graphs/linearni_model_za_revert_2_revertano}
+
+\dots{}gdje \emph{commit} $j$ ima stanje kao u $i$, ali bez izmjena koje su uvedene u $f$.
+
+Naravno, ako malo o tome razmislite, doći ćete do zaključka da sve to radi idealno samo ako $g$, $h$ i $i$ \textbf{nisu dirali isti kod kao i $f$}.
+
+\verb+git revert+ uredno radi ako revertate \emph{commit}ove koji su bliži kraju grane.
+Ne možete \emph{revert}ati stvari koje ste mijenjali prije dvije godine u kodu koji je, nakon toga, puno puta bio mijenjan.
 
 \section*{Gitk}
 \addcontentsline{toc}{section}{Gitk}

@@ -538,6 +538,38 @@ def graph_linearni_model_za_reset_HEAD_2():
 
 	return graph
 
+def graph_linearni_model_za_revert_1():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ) ] ) )
+
+	return graph
+
+def graph_linearni_model_za_revert_1_revertano():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), 'g' ] ) )
+
+	return graph
+
+def graph_linearni_model_za_revert_2():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), 'g', 'h', 'i' ] ) )
+
+	return graph
+
+def graph_linearni_model_za_revert_2_revertano():
+	graph = mod_graph.Graph()
+
+	graph.add_branch( mod_graph.Branch(
+			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), 'g', 'h', 'i', 'j' ] ) )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
