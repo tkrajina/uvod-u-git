@@ -1,0 +1,8 @@
+$ git clone git://github.com/tkrajina/uvod-u-git.git
+Cloning into uvod-u-git...
+remote: Counting objects: 643, done.
+remote: Compressing objects: 100% (346/346), done.
+remote: Total 643 (delta 384), reused 530 (delta 271)
+Receiving objects: 100% (643/643), 337.00 KiB | 56 KiB/s, done.
+Resolving deltas: 100% (384/384), done.
+
