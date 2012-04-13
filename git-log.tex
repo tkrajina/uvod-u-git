@@ -65,12 +65,13 @@ Ili, ako želimo povijest grane \verb+testna-grana+ bez zadnjih 10 unosa:
 
 Vrlo često će vam se dogoditi da tražite neki \emph{commit} iz povijesti.
 Ovdje ćemo proći samo dva najčešća slučaja.
-Prvi je kad pretražujete prema tekstu \emph{commit}a, tada se koristi \verb+git log --grep=<regularni_izraz>+.
-Na primjer, tražim li sve \emph{commit}ove koji u sebi sadrže riječ \verb+graph+:
+Prvi je kad pretražujete prema tekstu \emph{commit}a, tada se koristi \\\verb+git log --grep=<regularni_izraz>+.
+Na primjer, tražim li sve \emph{commit}ove koji \textbf{u \emph{commit} komentarima sadrže riječ} \verb+graph+:
 
 \gitoutputcommand{git log --grep=graph}
 
-Drugi česti scenarij je odgovor na pitanje "Kad se u kodu prvi put spomenuo string 'x'"? Tada se koristi \verb+git log -S<string>+.
+Drugi česti scenarij je odgovor na pitanje "Kad se \textbf{u kodu} prvi put spomenuo string 'x'"? Tada se koristi \verb+git log -S<string>+.
+Dakle, ne u komentaru \emph{commit}a nego \textbf{u sadržaju datoteka}.
 Recimo da tražite tko je prvi napisao funkciju \verb+get_image_width+:
 
 \gitoutputcommand{git log -Sget\_image\_width}
@@ -80,8 +81,8 @@ Treba li pretraživati za string s razmacima:
 \gitoutputcommand{git log -S"get image width"}
 
 Zapamtite, ovo će vam samo naći \emph{commit}ove.
-Kad ih nađete, sigurno ćete htjeti pogledati koje su točno bile izmjene.
-Ako vam pretraživanje nađe da je \emph{commit} \verb+76cf802d23834bc74473370ca81993c5b07c2e35+, detalji izmjena koje su se njime dogodile su:
+Kad ih nađete, htjeti ćete vjerojatno pogledati koje su točno bile izmjene.
+Ako vam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc74473370ca81993c5b07c2e35+, detalji izmjena koje su se njime dogodile su:
 
 \gitoutputcommand{git diff 76cf8 76cf8\textasciitilde{}1}
 
@@ -225,11 +226,44 @@ Ako je SHA1 referenca \emph{commit}a $f$ \verb+402b8ae3942c96d667e199974ef0ad835
 
 Naravno, ako malo o tome razmislite, doći ćete do zaključka da sve to radi idealno samo ako $g$, $h$ i $i$ \textbf{nisu dirali isti kod kao i $f$}.
 
-\verb+git revert+ uredno radi ako revertate \emph{commit}ove koji su bliži kraju grane.
-Ne možete \emph{revert}ati stvari koje ste mijenjali prije dvije godine u kodu koji je, nakon toga, puno puta bio mijenjan.
+\verb+git revert+ uredno radi ako revertamo \emph{commit}ove koji su bliži kraju grane.
+Teško će, ako ikako, \emph{revert}ati stvari koje smo mijenjali prije dvije godine u kodu koji je, nakon toga, puno puta bio mijenjan.
+Ukoliko to i pokušamo, git će javiti grešku i tražiti nas da mu samo damo do znanja kako bi \emph{revert} trebao izgledati.
 
 \section*{Gitk}
 \addcontentsline{toc}{section}{Gitk}
+
+Git, standardno, sadrži i jedan pomoćni programčić koji vam grafički prikazuje povijest trenutne grane:
+
+\includegraphics[width=14cm]{images/gitk.png}
+
+Prikazani dijelovi su, redom s lijeva na desno od gore prema dolje:
+
+\begin{itemize}
+	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom (bilo zbog grananja, \emph{merge}anja ili \emph{cherry-pick} \emph{merge}),
+	\item spisak ljudi koji su \emph{commit}ali,
+	\item datum i vrijeme, 
+	\item pregled svih izmjena,
+	\item pregled datoteka koje su izmijenjene.
+\end{itemize}
+
+Kad odaberete \emph{commit} dobiti ćete sve izmjene i datoteke koje su sudjelovale.
+Kad odaberete na datoteku, \verb+gitk+ će u dijelu sa izmjenama "skočiti" na izmjene koje su se dogodile na toj datoteci.
+
+Gitk vam može i pregledati povijest samo do nekog \emph{commit}a u povijesti:
+
+\gitoutputcommand{gitk HEAD\textasciitilde{}10}
+
+\dots{}ili:
+
+\gitoutputcommand{gitk 974ef0ad8351ba7b4d402b8ae3942c96d667e199}
+
+\dots{}ili određene grane:
+
+\gitoutputcommand{gitk testna-grana}
+
+Kao i \verb+git gui+, tako i \verb+gitk+ na prvi pogled možda baš i nije jako intuitivan.
+No, brz je i praktičan za rad kad se naučite na njegovo grafičko sučelje.
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
