@@ -84,7 +84,9 @@ Tada je \emph{preuzeo} te izmjene u svoju granu:
 
 \input{graphs/primjer_s_granama_i_spajanjima_4}
 
-Vratio se na svoju eksperimentalnu granu, napravio još jednu izmjenu \emph q, vratio se na originalnu granu i tamo napredovao s \emph e i \emph f. 
+Na eksperimentalnoj grani je napravio još jednu izmjenu \emph q.
+I tada je odlučio pustiti taj eksperiment malo sa strane i raditi malo na glavnoj grani.
+Vratio se na originalnu granu i tamo napredovao s \emph e i \emph f. 
 
 \input{graphs/primjer_s_granama_i_spajanjima_5}
 
@@ -99,19 +101,19 @@ I, zatim je nastavio, stvorio još jednu eksperimentalnu granu(\emph 1, \emph 2,
 Uočite da izmjena \emph w nije nikad završila u glavnoj grani. 
 
 Jedna od velikih prednosti gita je lakoća stvaranja novih grana i preuzimanja izmjena iz jedne u drugu granu. 
-Tako je programerima jednostavno u nekom trenutku odlučiti ovako \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušati ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
+Tako je programerima jednostavno u nekom trenutku ovako razmišljati i postupiti: \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušati ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
 
 Druga velika prednost čestog grananja u programima je kad se dodaje neka nova funkcionalnost koja će zahtijevati puno izmjena, a ne želime te izmjene odmah stavljati u glavnu granu programa:
 
 \input{graphs/primjer_s_dugotrajnom_granom}
 
-Jedino na što trebate pripaziti da redovito izmjene iz glavne grane programa preuzimate u sporednu, tako da razlike u kodu ne budu prevelike. 
+Jedino na što trebamo pripaziti da redovito izmjene iz glavne grane programa preuzimamo u sporednu, tako da razlike u kodu ne budu prevelike. 
 Te izmjene su na grafu označene sivim strelicama.
 
-Kad novu funkcionalnost završite, treba samo u glavnoj granu preuzeti sve izmjene iz sporedbne (crvena strelica).
+Kad novu funkcionalnost završimo, treba samo u glavnoj granu preuzeti sve izmjene iz sporedbne (crvena strelica).
 
-Na taj način ćete često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
-Imati ćete posebne grane za različite nove funkcionalnosti, posebne grane za eksperimente, posebne grane u kojima ćete isprobavati izmjene koje su napravili drugi programeri, \dots
+Na taj način ćemo često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
+Imati ćemo posebne grane za različite nove funkcionalnosti, posebne grane za eksperimente, posebne grane u kojima ćete isprobavati izmjene koje su napravili drugi programeri, posebne grane za ispravljanje pojedinih \emph{bug}ova, \dots
 
 Osnovna ideja ove knjižice \emph{nije} da vas uči kako je najbolje organizirati povijest projekta, odnosno kako granati, kad i kako preuzimati izmjene iz pojedinih grana. Osnovna ideja je da vas nauči \emph{kako} to napraviti s gitom. 
 

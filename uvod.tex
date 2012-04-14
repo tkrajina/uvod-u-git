@@ -7,13 +7,13 @@ Dakle, drugi alati bi trebali razvijati svoje sučelje na osnovu gita.
 Međutim, kao s mnogim drugim projektima otvorenog koda, ljudi su ga počeli koristiti takvog kakav jest, on je organski rastao onako kako su ga ljudi koristili.
 
 Rezultat je program koji ima drukčiju terminologiju i, nerijetko, malo neintuitivnu sintaksu. Usprkos tome, milijuni programera diljem svijeta su prihvatili git. 
-Nastali su brojne platforme za \emph{hosting} projekata, kao što je github\footnote{http://github.com}, a drugi su morali dodati git jednostavno zato što su to njihovi korisnici tražili (Google Code\footnote{http://code.google.com}, Bitbucket\footnote{http://bitbucket.com}, Sourceforge\footnote{http://sourceforge.net}).
+Nastali su brojne platforme za \emph{hosting} projekata, kao što je Github\footnote{http://github.com}, a drugi su morali dodati git jednostavno zato što su to njihovi korisnici tražili (Google Code\footnote{http://code.google.com}, Bitbucket\footnote{http://bitbucket.com}, Sourceforge\footnote{http://sourceforge.net}).
 
 Nekoliko je razloga zašto je to tako:
 
 \begin{itemize}
-	\item Postojeći sustavi za verzioniranje su obično zahtijevali da na istom kodu radi točno određeni broj programera. Točno se znalo tko je \emph{comitter}, a tko nije. S distribuiranim sustavima, bilo tko je mogao "forkati" repozitorij, isprogramirati izmjenu i predložiti vlasniku originalnog repozitorija da preuzme svoje izmjene. Rezultat je da je broj ljudi koji su potencijalni mogli pomoći projektu puno veći. A vlasnik projekta je ionako imao kontrolu nad time čije će izmjene prihvatiti, a čije neće.
-	\item git je \emph{brz},
+	\item Postojeći sustavi za verzioniranje su obično zahtijevali da se točno se zna tko sudjeluje u projektu (tj. tko je \emph{comitter}). To je automatski demoraliziralo puno ljudi koji bi možda pokušali pomoći projektima kad mi imali priliku. S distribuiranim sustavima, bilo tko je mogao "forkati" repozitorij, isprogramirati izmjenu i predložiti vlasniku originalnog repozitorija da preuzme svoje izmjene. Rezultat je da je broj ljudi koji su potencijalni mogli pomoći projektu puno veći. A vlasnik projekta je ionako imao kontrolu nad time čije će izmjene prihvatiti, a čije neće.
+	\item git je \textbf{brz},
 	\item vrlo je lako i brzo granati, isprobavati izmjene koje su radili drugi ljudi i preuzeti ih u svoj kod,
 	\item Linux kernel se razvijao na gitu, tako da je u svijetu otvorenog koga (\emph{open source}) git stekao nekakvu auru važnosti.
 \end{itemize}
@@ -25,7 +25,8 @@ Ova knjiga nije zamišljena kao detaljan uvod u to kako git funkcionira i kao op
 Osnovna ideja mi je bila da se za svaku "radnju" s gitom opiše problem, ilustriram ga grafikonom, malo razradi teorija, potkrijepi primjerima i onda opiše nekoliko osnovnih git naredbi koje se najčešće koriste.
 Uspijem li u tom naumu -- nakon što pročitate knjigu, trebali biste biti sposobni git koristiti u svakodnevnom radu. 
 
-Za bilo kakvo dodatno pitanje, uvijek postoje forumi, blogovi i, naravno, \verb+git help+.
+Zapnete li, a odgovora ne nađete ovdje, pravac Stackoverflow\footnote{http://stackoverflow.com}, Google\footnote{Nemojte me zafrkavati da ne znate URL?!}, 
+forumi, blogovi i, naravno, \verb+git help+.
 
 \section*{Pretpostavke}
 \addcontentsline{toc}{section}{Pretpostavke}
@@ -48,6 +49,5 @@ Moj prijedlog je da git naučite koristiti u komandnoj liniji, a tek onda krenet
 \addcontentsline{toc}{section}{Naredbe i operativni sustavi}
 
 Sve naredbe koje nisu git-specifične, kao na primjer "stvaranje novog direktorija", "ispis datoteka u direktoriju", isl. će biti prema POSIX standardu\footnote{http://en.wikipedia.org/wiki/POSIX}.
-Dakle, naredbe koje se koriste na UNIX, OSX i linux. 
-No, i za korisnike Microsoft Windowsa to ne bi trebao biti problem jer ću koristiti samo mali dio takvih naredbi. 
-Na primjer, \verb+mkdir+ umjesto \verb+md+, \verb+ls+ umjesto \verb+dir+, i slično.
+Dakle, u primjerima će se koristiti naredbe koje se koriste na UNIX, OSX i linux operativnim sustavima. 
+No, i za korisnike Microsoft Windowsa to ne bi trebao biti problem jer se radi o malo broju naredbi kao što su \verb+mkdir+ umjesto \verb+md+, \verb+ls+ umjesto \verb+dir+, i slično.

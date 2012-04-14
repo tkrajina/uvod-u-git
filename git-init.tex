@@ -20,11 +20,15 @@ Neki sustavi taj korak nazivaju \emph{checkout}, neki \emph{import}, a u gitu je
 S gitom je jednostavnije. 
 \emph{Apsolutno svaki direktorij može postati git repozitorij.}
 Ne mora \emph{uopće} postojati udaljeni server i neki centralni repozitorij kojeg koriste (i) ostali koji rade na projektu.
-Ako Vam je to neobično, stvar je još čudnija -- ako već postoji udaljeni repozitorij s kojeg preuzimate izmjene od drugih programera on ne mora biti jedan jedini.
-\emph{Mogu postojati deseci takvih udaljenih repozitorija, sami ćete odlučiti na koje ćete "slati" svoje izmjene i s kojih preuzimati izmjene.}
+Ako vam je to neobično, onda se spremite, jer stvar je još čudnija -- ako već postoji udaljeni repozitorij s kojeg preuzimate izmjene od drugih programera on ne mora biti jedan jedini.
+\textbf{Mogu postojati deseci takvih udaljenih repozitorija}, sami ćete odlučiti na koje ćete "slati" svoje izmjene i s kojih preuzimati izmjene.
 I vlasnici tih udaljenih repozitorija imaju istu slobodu kao i vi, mogu samo odlučiti čije izmjene će preuzimati kod sebe i kome slati svoje izmjene.
 
-No, idemo sad na prvi i najjednostavniji korak -- stvoriti ćemo novi direktorij \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
+Pomisliti ćete da je rezultat anarhija u kojoj se ne zna tko pije, tko plače i tko plaća. 
+Nije tako.
+Stvari, uglavnom, funkcioniraju bez većih problema.
+
+No, idemo sad na prvi i najjednostavniji korak -- stvoriti ćemo novi direktorij \\ \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
 
 \input{git_output/git_init}
 
@@ -32,7 +36,7 @@ I to je to.
 
 Ukoliko idete pogledati kakva se to čarolija desila u s tim \verb+git init+, otkriti ćete da je stvoren direktorij \verb+.git+.
 U principu, cijela povijest, sve grane, čvorovi i komentari, apsolutno sve vezano uz repozitorij se čuva u tom direktoriju.
-Zatreba vam ikad sigurnosna kopija cijelog repozitorija -- sve što trebate napraviti je da sve lokalne promjene spremite (\emph{commitate}) u git i spremite negdje arhivu s tim \verb+.git+ direktorijem.
+Zatreba li nam ikad sigurnosna kopija cijelog repozitorija -- sve što treba napraviti je da sve lokalne promjene spremimo (\emph{commit}amo) u git i spremimo negdje arhivu (\verb+.zip+, \verb+.bz2+, \dots) s tim \verb+.git+ direktorijem.
 
 \section*{Git naredbe}
 \addcontentsline{toc}{section}{Git naredbe}
