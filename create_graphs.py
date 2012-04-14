@@ -168,7 +168,7 @@ def graph_primjer_s_granama_i_spajanjima_4():
 	graph = mod_graph.Graph()
 
 	graph.add_branch( mod_graph.Branch(
-			nodes = 'abcdefgh' ) )
+			nodes = 'abcd' ) )
 
 	graph.add_branch( mod_graph.Branch(
 			row = 1,
