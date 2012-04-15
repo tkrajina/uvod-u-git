@@ -61,9 +61,9 @@ Na primjer, \verb+git help init+ ili \verb+git help config+.
 \section*{Osnovna konfiguracija}
 \addcontentsline{toc}{section}{Osnovna konfiguracija}
 
-Ima nekoliko osnovnih stvari koje \emph{morate} konfigurirati da bi ste nastavili normalan rad. 
+Ima nekoliko osnovnih stvari koje moramo konfigurirati da bi ste nastavili normalan rad. 
 Sva git konfiguracija se postavlja pomoću naredbe \verb+git config+. 
-Postavke mogu biti \emph{lokalne} (odnosno vezane uz jedan jedini projekt) ili \emph{globalne} (vezane uz korisnika na računalu).
+Postavke mogu biti \textbf{lokalne} (odnosno vezane uz jedan jedini projekt) ili \textbf{globalne} (vezane uz korisnika na računalu).
 
 Globalne postavke se postavljaju s:
 
@@ -76,15 +76,17 @@ Lokalne postavke se spremaju u \verb+.git+ direktorij u direktoriju koji sadrži
 \gitoutputcommand{git config $<$naziv$>$ $<$vrijednost$>$}
 
 Za normalan rad na nekom projektu, drugi korisnici trebaju znati tko je točno radio koje izmjene na kodu (\emph{commit}ove).
-Zato trebate postaviti ime i email adresu koja će u povijesti projekta biti "zapamćena" uz svaku vašu spremljenu izmjenu:
+Zato trebamo postaviti ime i email adresu koja će u povijesti projekta biti "zapamćena" uz svaku našu spremljenu izmjenu:
 
 \input{git_output/git_config_1}
 
-Imate li neki repozitorij koji je vezan za posao, i možda ne želite da se identificirate sa svojom privatnom domenom, tada \emph{u tom direktoriju} trebate postaviti drukčije postavke:
+Imamo li neki repozitorij koji je vezan za posao, i možda se ne želimo identificirati sa svojom privatnom domenom, tada \emph{u tom direktoriju} trebamo postaviti drukčije postavke:
 
 \input{git_output/git_config_2}
 
-Postoje mnoge druge konfiguracijske postavke, no ja vam preporučam da za početak postavite barem dvije:
+Na taj način će \emph{email} adresa \verb+ana.anic@poslodavac.hr+ figurirati samo u povijesti tog projekta.
+
+Postoje mnoge druge konfiguracijske postavke, no ja vam preporučam da za početak postavite barem dvije \verb+color.ui+ i \verb+merge.tool+.
 
 S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 
@@ -97,12 +99,12 @@ S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 \section*{.gitignore}
 \addcontentsline{toc}{section}{.gitignore}
 
-Desiti će vam se situacija da u direktoriju s repozitorijem imate datoteke koje ne želite spremati u povijest projekta.
-To su, na primjer, konfiguracijske datoteke za različite editore, ili rezultat kompajliranja (\verb+.class+ za javu, \verb+.pyc+ za python, \verb+.o+ za C, isl.).
-U tom slučaju, trebate nekako gitu dati do znanja da takve datoteke ne treba nikad snimati.
-Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (ne nekom od poddirektorija) i jednostavno unesite sve ono što ne treba biti dio povijesti projekta.
+Prije ili kasnije će se dogoditi situacija da u direktoriju s repozitorijem imamo datoteke koje ne želimo spremati u povijest projekta.
+To su, na primjer, konfiguracijske datoteke za različite editore ili klase koje nastaju kompajliranjem (\verb+.class+ za javu, \verb+.pyc+ za python, \verb+.o+ za C, isl.).
+U tom slučaju, trebamo nekako gitu dati do znanja da takve datoteke ne treba nikad snimati.
+Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (ne nekom od poddirektorija) i jednostavno unesimo sve ono što ne treba biti dio povijesti projekta.
 
-Ukoliko ne želite \verb+class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target+ -- vaša će \verb+.gitignore+ datoteka izgledati ovako:
+Ukoliko ne želimo \verb+.class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target/+ -- naša \verb+.gitignore+ datoteka će izgledati ovako:
 
 \gitoutputcommand{%
 \color{gray}{\# Vim privremene datoteke:}\\
