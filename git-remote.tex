@@ -73,14 +73,40 @@ No, postoji trik.
 
 To će biti puno brže, no nećete imati pristup cijeloj povijesti, nego samo zadnjih $5$ \emph{commit}ova.
 
+\section*{Kloniranje i povijest udaljenog repozitorija}
+\addcontentsline{toc}{section}{Kloniranje i povijest udaljenog repozitorija}
+
+Naš lokalni repozitorij može imati svoje grane, a onaj udaljeni svoje.
+Već znamo koristiti naredbu za rad s granama -- \verb+git branch+, ali ona nam daje samo spisak grana u našem repozitoriju.
+Ništa nam ne govori o granama na udaljenom repozitoriju, barem ne ako ga koristimo onako kako smo ga sad koristili.
+S \verb+git branch -a+ dobiti ćemo spisak svih grana kojima imamo trenutno pristup.
+
+To su sve \textbf{naše grane}, ali \textbf{i grane udaljenih repozitorija} koje trenutno imamo konfigurirane.
+Za sada je jedini takav udaljeni repozitorij naš \verb+origin+:
+
+\input{git_output/git_branch_all_1}
+
+Ovaj ispis znači da u \textbf{našem lokalnom} repozitoriju imamo samo jednu granu -- \verb+master+, dok u udaljenom \verb+origin+ (onom kojeg smo klonirali) imamo isto \verb+master+.
+Zapamtite, udaljene grane se uvijek referenciraju s \verb+<naziv_repozitorija>/<naziv_grane>+. 
+Zatrebamo li raditi nešto s udaljenim \verb+master+ repozitorijem, onda ćemo ga pisati kao \verb+origin/master+.
+
+%\input{git_output/git_branch_all_2}
+
 \section*{Fetch}
 \addcontentsline{toc}{section}{Fetch}
+
+Treba imati na umu jednu stvar, svaki git repozitorij ima jednog ili više vlasnika.
+Kad kloniramo repozitorij, dobili smo njegovu kopiju na našem računalu i sad u njega možemo \emph{commit}ati.
+Ta kopija neće uvijek biti ažurna.
 
 \section*{Push}
 \addcontentsline{toc}{section}{Push}
 
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
+
+\section*{Rad s granama}
+\addcontentsline{toc}{section}{Rad s granama}
 
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}

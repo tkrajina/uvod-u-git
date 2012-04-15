@@ -1,0 +1,12 @@
+$ git branch -a
+  development
+  generators
+* master
+  remotes/esplorio/gh-pages
+  remotes/esplorio/master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/development
+  remotes/origin/generators
+  remotes/origin/gh-pages
+  remotes/origin/master
+
