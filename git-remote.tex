@@ -67,14 +67,14 @@ I zato \verb+git clone+ ponekad može potrajati dosta dugo.
 Posebno ako imate sporu vezu.
 
 No, postoji trik.
-Želimo li skinuti projekt samo zato da bi pogledali njegov kod, a ne i zato da bi s njime nastavili normalnu interakciju, možemo skinuti nekoliko njegovih zadnjih \emph{commit}ova s:
+Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela njegova povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
 To će biti puno brže, no nećete imati pristup cijeloj povijesti, nego samo zadnjih $5$ \emph{commit}ova.
 
-\section*{Kloniranje i povijest udaljenog repozitorija}
-\addcontentsline{toc}{section}{Kloniranje i povijest udaljenog repozitorija}
+\section*{Kloniranje, grane i povijest udaljenog repozitorija}
+\addcontentsline{toc}{section}{Kloniranje, grane i povijest udaljenog repozitorija}
 
 Naš lokalni repozitorij može imati svoje grane, a onaj udaljeni svoje.
 Već znamo koristiti naredbu za rad s granama -- \verb+git branch+, ali ona nam daje samo spisak grana u našem repozitoriju.
@@ -89,6 +89,8 @@ Za sada je jedini takav udaljeni repozitorij naš \verb+origin+:
 Ovaj ispis znači da u \textbf{našem lokalnom} repozitoriju imamo samo jednu granu -- \verb+master+, dok u udaljenom \verb+origin+ (onom kojeg smo klonirali) imamo isto \verb+master+.
 Zapamtite, udaljene grane se uvijek referenciraju s \verb+<naziv_repozitorija>/<naziv_grane>+. 
 Zatrebamo li raditi nešto s udaljenim \verb+master+ repozitorijem, onda ćemo ga pisati kao \verb+origin/master+.
+
+U trenutku kad kloniramo udaljeni repozitorij, git će lokalno upamtiti sve grane koje se na njemu nalaze.
 
 %\input{git_output/git_branch_all_2}
 
