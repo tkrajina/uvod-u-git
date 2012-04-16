@@ -14,6 +14,8 @@ GREEN = ( 0, 1, 0 )
 BLUE = ( 0, 0, 1 )
 GRAY = ( .6, .6, .6 )
 
+REMOTE_COLOR = ( 0, 0, 1 )
+
 def graph_primjer_s_klijentom():
 	graph = mod_graph.Graph()
 
@@ -567,6 +569,26 @@ def graph_linearni_model_za_revert_2_revertano():
 
 	graph.add_branch( mod_graph.Branch(
 			nodes = [ 'a', 'b', 'c', 'd', 'e', mod_graph.Node( label = 'f', color = RED ), 'g', 'h', 'i', 'j' ] ) )
+
+	return graph
+
+def graph_origin_master():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			color = REMOTE_COLOR,
+			row = 3,
+			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
 
 	return graph
 
