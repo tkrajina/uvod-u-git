@@ -18,7 +18,7 @@ To što ste radili između svaka dva stanja je vaša stvar.
 No, trenutak kad se odlučite spremiti novo stanje projekta u vaš repozitorij -- to je gitu jedino važno i to se zove \emph{commit}.
 
 Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a \emph{nikad ne commitate u udaljeni repozitorij}. 
-Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij.
+Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij na vašem računalu.
 Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozitorijima.
 
 \section*{Status}
@@ -29,16 +29,16 @@ Na primjer, kad na projektu koji nema lokalnih izmjena za spremanje utipkate \ve
 
 \input{git_output/git_status_0}
 
-Pretpostavimo da ste odlučili napraviti tri izmjene na projektu. i
+Pretpostavimo da ste odlučili napraviti tri izmjene na projektu.
 Izmijenili ste liniju u datoteci \verb+README.md+ i \verb+setup.py+ i obrisali \verb+TODO.txt+:
 Sad će rezultat od \verb+git status+ izgledati ovako:
 
 \input{git_output/git_status_1}
 
-Najbitniji podatak je linija u kojoj piše \verb+modified: git-commit.tex+, jer to je datoteka koju sam \emph{mijenjao}, ali ne još snimio.
+Najbitniji podatak je linija u kojoj piše \verb+modified: git-commit.tex+, jer to je datoteka koju smo \emph{mijenjali}, ali ne još \emph{commit}ali.
 
 Želite li pogledati \emph{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \emph{zadnjoj verziji} repozitorija, to ćete dobiti s \verb+git diff+. 
-Opet, u slučaju moje knjige, taj ispis izgleda ovako nekako:
+Primjer jednog ispisa te naredbe je:
 
 \input{git_output/git_diff_1}
 
@@ -47,25 +47,25 @@ Najvažniji dijelovi su linije oni koji počinju si \verb+diff+, jer one govore 
 Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \emph{oko} dijela koji je izmijenjen i onda ono najvažnije -- linije obojane u crveno i one obojane u plavo.
 
 Linije koje započinju s "-" (crvene) su linije koje su \emph{obrisane}, a one koje počinju s "+" (u plavom) su one koje su \emph{dodane}. 
-Primijetite da git ne zna da ste neku liniju izmijenili. 
-Ukoliko jeste -- on se ponaša kao da ste staru obrisalu, a novu dodali.
+Primijetimo da git ne zna da ste neku liniju izmijenili. 
+Ukoliko jesmo -- on se ponaša kao da smo staru obrisalu, a novu dodali.
 
 Rezultat git naredbe su samo dijelovi koje ste izmijenili i nekoliko linija \emph{oko njih}.
-Ukoliko želite malo veću tu "okolinu" oko vaših izmjena, možete ju izmijeniti s opcijom \verb+-U<broj_linija>+.
-Na primjer, ukoliko želite 10 linija oko izmjenjenih dijelova koda, to ćete dobiti sa:
+Ukoliko želimo malo veću tu "okolinu" oko naših izmjena, možemo ju izmijeniti s opcijom \\ \verb+-U<broj_linija>+.
+Na primjer, ukoliko želimo $10$ linija oko izmjenjenih dijelova koda, to ćemo dobiti sa:
 
 \gitoutputcommand{git diff -U10}
 
 \section*{Indeks}
 \addcontentsline{toc}{section}{Indeks}
 
-U gitu postoji poseban "međuprostor" u koje se "stavljaju" datoteke koje ćete spremiti (\emph{commit}ati).
-Svako stanje neke datoteke se može nalaziti u tri različita stanja:
+U gitu postoji poseban "međuprostor" u koje se "stavljaju" datoteke koje ćemo spremiti (\emph{commit}ati).
+Svaka stanje neke datoteke se može nalaziti u tri različita stanja:
 
 \begin{itemize}
 	\item datoteka je već spremljena negdje u git repozitoriju,
-	\item datoteku ste tek izmijenili i niste ju još \emph{commit}ali u repozitorij,
-	\item datoteku ste stavili u taj "međuprostor" tako da biste pripremili \emph{commit}.
+	\item datoteku smo tek izmijenili i nismo ju još \emph{commit}ali u repozitorij,
+	\item datoteku smo stavili u taj "međuprostor" tako da bismo se pripremili za \emph{commit}.
 \end{itemize}
 
 Ovo zadnje stanje, odnosno, taj "međuprostor za \emph{commit}" se zove \emph{index} iliti indeks.
@@ -86,19 +86,20 @@ Idemo ju staviti u indeks s:
 
 Primijetiti ćete dio u kojem piše, \texttt{Changes to be committed} -- e to je spisak datoteka koje ste stavili u indeks.
 
-Čak i ako ste datoteku \emph{obrisali} -- morate ju dodati u indeks naredbom \verb+git add+.
-Zamislite to kao da \textbf{u indeks ne stavljate u stvari datoteku nego neko njeno (izmijenjeno) stanje}.
+Čak i ako smo datoteku \emph{obrisali} -- moramo ju dodati u indeks naredbom \verb+git add+.
+Ako vas to zbunjuje -- zamislite to kao da \textbf{u indeks ne stavljate u stvari datoteku nego neko njeno (izmijenjeno) stanje}.
 Kad ste datoteku obrisali -- u indeks treba spremiti novo stanje te datoteke ("izbrisano stanje").
 
-Dogoditi će se da ste neku datoteku stavili u indeks, ali ste se kasnije predomislili. 
-Sad tu datoteku želite izbaciti, ali bez da gubite izmjene koje ste na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
+Dogoditi će se da smo neku datoteku stavili u indeks, ali smo se kasnije predomislili. 
+Sad tu datoteku želimo izbaciti iz indeksa, ali bez da gubimo izmjene koje smo na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
+Ili ih jednostavno ne želimo u povijesti projekta (i datoteku ćemo resetirati na prethodno stanje).
 To se može naredbom:
 
 \gitoutputcommand{git reset HEAD -- <datoteka1> <datoteka2> \dots}
 
 Nakon toga, izmjene treba \emph{commit}ati.
 
-Još jedan scenarij kad se \verb+git rm --cached+ često koristi je sljedeći:
+Još jedan scenarij koji se često događa je sljedeći:
 Greškom ste u repozitorij spremili fajl koji tamo ne treba biti. 
 Taj fajl ste sad dodali u \verb+.gitignore+, ali on je i dalje u repozitoriju. 
 Ne želite ga obrisati, ali ne želite ga više u povijesti projekta.
@@ -109,13 +110,15 @@ Neka je to, na primjer, \verb+test.pyc+:
 To će vam u indeks dodati kao da je datoteka obrisana, iako ju ostavlja netaknutu na disku.
 Budući da smo datoteku prethodno dodali u \verb+.gitignore+, git više neće nuditi da ju \emph{commit}amo.
 
-Događati će vam se da ste promijenili neku datoteku, no kasnije se ispostavilo da ta izmjena nije bila potrebna. 
+Događati će nam se da smo promijenili neku datoteku, no kasnije se ispostavilo da ta izmjena nije bila potrebna. 
 I sad ju ne želite spremiti nego vratiti u prethodno stanje.
 To se može ovako:
 
 \gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
 
 Više detalja o \verb+git checkout+ i zašto ova gornja naredba radi to što radi biti će u kasnije.
+
+\TODO Slučaj kad je datoteka i u indeksu i izmijenjena
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
