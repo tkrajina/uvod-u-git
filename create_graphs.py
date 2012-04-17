@@ -14,8 +14,6 @@ GREEN = ( 0, 1, 0 )
 BLUE = ( 0, 0, 1 )
 GRAY = ( .6, .6, .6 )
 
-REMOTE_COLOR = ( 0, 0, 1 )
-
 def graph_primjer_s_klijentom():
 	graph = mod_graph.Graph()
 
@@ -577,18 +575,31 @@ def graph_origin_master():
 
 	graph.add_branch( mod_graph.Branch(
 			label = 'master',
-			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
+			nodes = 'abcde' ) )
 
 	graph.add_branch( mod_graph.Branch(
 			label = 'origin/master',
 			row = 1,
-			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
+			nodes = 'abcde' ) )
 
 	graph.add_branch( mod_graph.Branch(
 			label = 'master',
-			color = REMOTE_COLOR,
 			row = 3,
-			nodes = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ] ) )
+			nodes = 'abcde' ) )
+
+	brackets_column = 9 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
 
 	return graph
 

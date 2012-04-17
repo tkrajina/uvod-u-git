@@ -29,12 +29,17 @@ Nešto kao: \verb+origin+ ili \\ \verb+vanjin-repozitorij+ ili \verb+slobodan+ i
 Nazivi su vaš slobodan izbor. 
 Tako, ako vas četvero radi na istom projektu, njihove udaljene repozitorije možete nazvati \verb+marina+, \verb+ivan+, \verb+karla+.
 I sa svakim od njih možete imati nekakvu vrstu interakcije. 
-Na neke ćete slati svoje izmjene (ako imate ovlasti), a s nekih ćete preuzimati u svoj repozitorij.
+Na neke ćete slati svoje izmjene (ako imate ovlasti), a s nekih ćete izmjene preuzimati u svoj repozitorij.
 
 \section*{Kloniranje repozitorija}
 \addcontentsline{toc}{section}{Kloniranje repozitorija}
 
-To je postupak kojim kopiramo cijeli repozitorij na nekoj udaljenoj lokaciji na naše lokalno računalo, a da bi onda s njime dalje nastavili raditi.
+Kloniranje je postupak kojim kopiramo cijeli repozitorij na nekoj udaljenoj lokaciji na naše lokalno računalo, a da bi onda s njime dalje nastavili raditi.
+U stvari, kopirati repozitorij je jednostavno, dovoljno je u neki direktorij kopirati \verb+.git+ direktorij drugog repzitorija i onda u njemu napraviti \verb+git checkout HEAD+.
+
+Kloniranje je za nijansu drukčije.
+Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
+
 Postupak je jednostavan, ako znamo adresu (a moramo znati), onda\dots
 
 \input{git_output/git_clone}
