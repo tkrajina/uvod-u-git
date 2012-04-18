@@ -117,6 +117,53 @@ To se radi s \verb+git fetch+:
 
 \input{git_output/git_fetch}
 
+Nakon toga, stanje naših repozitorija je:
+
+\input{graphs/origin_master_3}
+
+Dakle, \verb+origin/master+ je osvježen tako da mu je stanje isto kao i \verb+master+ udaljenog repozitorija.
+
+\section*{Rad s origin/master}
+\addcontentsline{toc}{section}{Rad s origin/master}
+
+S \verb+origin/master+ možemo raditi skoro sve kao i s ostalim lokalnim granama.
+Možemo, na primjer, pogledati njegovu povijest s:
+
+\gitoutputcommand{git log origin/master}
+
+Možemo pogledati razlike između njega i naše trenutne grane:
+
+\gitoutputcommand{git diff origin/master}
+
+Možemo se prebaciti da \verb+origin/master+, ali\dots
+
+\input{git_output/git_checkout_origin_master}
+
+Git nam ovdje dopušta prebacivanje na \verb+origin/master+, ali nam jasno daje do znanja da je ta grana ipak po nečemu posebna.
+Kao što već znamo, ona nije zamišljena da s njome radimo direktno.
+Nju možemo samo osvježavati stanjem iz udaljenog repozitorija.
+U \verb+origin/master+ ne smijemo \emph{commit}ati.
+
+Ima, ipak, jedna radnja koju trebamo raditi s \verb+origin/master+, a to je da izmjene iz nje preuzimamo u naš lokalni \verb+master+.
+Prebacimo se na njega s \verb+git checkout master+ i\dots{}
+
+\gitoutputcommand{git merge origin/master}
+
+\dots{}i sad je stanje:
+
+\input{graphs/origin_master_4}
+
+I sad smo tek u \verb+master+ dobili stanje udaljenog \verb+master+.
+Općenito, to je postupak kojeg ćemo često ponavljati:
+
+\gitoutputcommand{git fetch}
+
+\dots{}da bismo osvježili svoj lokalni \verb+origin/master+.
+Sad tu možete malo proučiti njegovu povijest i izmjene.
+I onda:
+
+\gitoutputcommand{git merge origin/master}
+
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
 

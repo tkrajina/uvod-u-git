@@ -636,6 +636,72 @@ def graph_origin_master_2():
 
 	return graph
 
+def graph_origin_master_3():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcde' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_origin_master_4():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
