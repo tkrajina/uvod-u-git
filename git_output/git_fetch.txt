@@ -1,0 +1,7 @@
+$ git fetch
+remote: Counting objects: 5678, done.
+remote: Compressing objects: 100% (1967/1967), done.
+remote: Total 5434 (delta 3883), reused 4967 (delta 3465)
+Receiving objects: 100% (5434/5434), 1.86 MiB | 561 KiB/s, done.
+Resolving deltas: 100% (3883/3883), completed with 120 local objects.
+From git://github.com/twitter/bootstrap

@@ -92,39 +92,36 @@ Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da im
 Ako vam ovo zvuči zbunjujuće, ništa čudno.
 No, sve će sjesti na svoje mjesto kad to počnete koristiti.
 
-\section*{Kloniranje, grane i povijest udaljenog repozitorija}
-\addcontentsline{toc}{section}{Kloniranje, grane i povijest udaljenog repozitorija}
-
-Naš lokalni repozitorij može imati svoje grane, a onaj udaljeni svoje.
-Već znamo koristiti naredbu za rad s granama -- \verb+git branch+, ali ona nam daje samo spisak grana u našem repozitoriju.
-Ništa nam ne govori o granama na udaljenom repozitoriju, barem ne ako ga koristimo onako kako smo ga sad koristili.
-S \verb+git branch -a+ dobiti ćemo spisak svih grana kojima imamo trenutno pristup.
-
-To su sve \textbf{naše grane}, ali \textbf{i grane udaljenih repozitorija} koje trenutno imamo konfigurirane.
-Za sada je jedini takav udaljeni repozitorij naš \verb+origin+:
-
-\input{git_output/git_branch_all_1}
-
-Ovaj ispis znači da u \textbf{našem lokalnom} repozitoriju imamo samo jednu granu -- \verb+master+, dok u udaljenom \verb+origin+ (onom kojeg smo klonirali) imamo isto \verb+master+.
-Zapamtite, udaljene grane se uvijek referenciraju s \verb+<naziv_repozitorija>/<naziv_grane>+. 
-Zatrebamo li raditi nešto s udaljenim \verb+master+ repozitorijem, onda ćemo ga pisati kao \verb+origin/master+.
-
-U trenutku kad kloniramo udaljeni repozitorij, git će lokalno upamtiti sve grane koje se na njemu nalaze.
-
-%\input{git_output/git_branch_all_2}
+\TODO: \verb+checkout origin/master+, log, diff, merge
 
 \section*{Fetch}
 \addcontentsline{toc}{section}{Fetch}
 
+Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+.
+Stanje je sad ovakvo:
+
+\input{graphs/origin_master_2}
+
+Naš, lokalni, \verb+master+ je radna verzija s kojom ćemo mi raditi -- tj. na koju ćemo \emph{commit}ati.
+\verb+origin/master+ bi trebao biti lokalna kopija udaljenog \verb+master+, međutim -- ona se ne ažurira automatski.
+To što je vlasnik udaljenog repozitorija dodao dva \emph{commit}a ($e$ i $f$) ne znači da će naš repozitorij nekom čarolijom to odmah saznati.
+
+Git je zamišljen kao sustav koji ne zahtijeva stalni pristup internetu.
+\textbf{Od nas se očekuje da iniciramo interakciju s drugim repozitorijima}.
+Bez da mi pokrenemo neku radnju, git neće nikad kontaktirati udaljene repozitorije.
+Isto tako u drugom smjeru -- ni u jednoj situaciji neki drugi repozitorij ne može inicirati neki proces na našem repozitoriju.
+Najviše što što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da mi napravimo neku interakciju s njegovim repozitorijem.
+
+Kao što smo mi inicirali kloniranje, tako i mi moramo inicirati ažuriranje grane \verb+origin/master+.
+To se radi s \verb+git fetch+:
+
+\input{git_output/git_fetch}
+
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
-Treba imati na umu jednu stvar, svaki git repozitorij ima jednog ili više vlasnika.
-Kad kloniramo repozitorij, dobili smo njegovu kopiju na našem računalu i sad u njega možemo \emph{commit}ati.
-Ta kopija neće uvijek biti ažurna.
 
 \section*{Push}
 \addcontentsline{toc}{section}{Push}
-
 
 \section*{Rad s granama}
 \addcontentsline{toc}{section}{Rad s granama}
