@@ -159,10 +159,18 @@ Općenito, to je postupak kojeg ćemo često ponavljati:
 \gitoutputcommand{git fetch}
 
 \dots{}da bismo osvježili svoj lokalni \verb+origin/master+.
-Sad tu možete malo proučiti njegovu povijest i izmjene.
-I onda:
+Sad tu možemo malo proučiti njegovu povijest i izmjene koje uvodi u povijest.
+I onda\dots
 
 \gitoutputcommand{git merge origin/master}
+
+\dots{}da bi te izmjene unijeli u naš lokalni repozitorij.
+
+Malo složeniji scenarij je sljedeći -- recimo da smo nakon\dots{}
+
+\input{graphs/origin_master_2}
+
+\dots{}mi \emph{commit}ali u naš lokalni repozitorij. 
 
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
