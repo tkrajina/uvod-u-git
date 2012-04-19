@@ -636,6 +636,145 @@ def graph_origin_master_2():
 
 	return graph
 
+def graph_origin_master_2_2():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdexy' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcde' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_origin_master_2_3():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdexy' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_origin_master_2_3():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdexy' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_origin_master_2_4():
+	graph = mod_graph.Graph( column = 4 )
+
+	master_branch = mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdexyz' )
+	graph.add_branch( master_branch )
+
+	origin_master_branch = mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdefg' )
+	graph.add_branch( origin_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 12 
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	graph.add_arrow(
+			origin_master_branch.find_node( 'g' ),
+			master_branch.find_node( 'z' ),
+			color = GRAY )
+
+	return graph
+
 def graph_origin_master_3():
 	graph = mod_graph.Graph( column = 4 )
 

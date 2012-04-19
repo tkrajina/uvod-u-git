@@ -170,7 +170,20 @@ Malo složeniji scenarij je sljedeći -- recimo da smo nakon\dots{}
 
 \input{graphs/origin_master_2}
 
-\dots{}mi \emph{commit}ali u naš lokalni repozitorij. 
+\dots{}mi \emph{commit}ali u naš lokalni repozitorij svoje izmjene. Recimo da su to $x$ i $y$:
+
+\input{graphs/origin_master_2_2}
+
+Nakon \verb+git fetch+, stanje je:
+
+\input{graphs/origin_master_2_3}
+
+Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
+U biti je to kao da imamom dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
+Ovo je, u biti, najobičniji \emph{merge} (koji će, eventualno, imati i neke konflikte. No, to već znamo riješiti).
+Rezultat \emph{merge}a je $z$:
+
+\input{graphs/origin_master_2_4}
 
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
