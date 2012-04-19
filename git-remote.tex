@@ -188,6 +188,18 @@ Rezultat \emph{merge}a je $z$:
 \section*{Pull}
 \addcontentsline{toc}{section}{Pull}
 
+U prethodnom poglavlju smo opisali da je tipični redosljed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
+
+\gitoutputcommand{git fetch\\git merge origin/master}
+
+Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe htjeti skoro uvijek izvršiti.
+
+Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
+
+\gitoutputcommand{git pull}
+
+\verb+git pull+ je upravo kombinacija \verb+git fetch+ i \verb+git merge origin/master+.
+
 \section*{Push}
 \addcontentsline{toc}{section}{Push}
 
