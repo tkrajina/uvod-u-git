@@ -94,6 +94,29 @@ No, sve će sjesti na svoje mjesto kad to počnete koristiti.
 
 \TODO: \verb+checkout origin/master+, log, diff, merge
 
+\subsection*{Djelomično kloniranje povijesti repozitorija}
+\addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
+
+Našli ste na internetu neki zanimljiv projekt i njegov git repozitorij i htjeli bi ga skinuti i proučiti njegov kod. 
+Ništa lakše; \verb+git clone ...+.
+
+E, ali\dots
+Tu imamo mali problem.
+Git repozitorij sadrži cijelu povijest projekta. 
+To znači da sadrži sve \emph{commit}ove koje su radili programeri i koji mogu sezati i preko deset godina unazad.
+I zato \verb+git clone+ ponekad može potrajati dosta dugo. 
+Posebno ako imate sporu vezu.
+
+No, postoji trik.
+Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela njegova povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
+
+\gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
+
+To će biti puno brže, no nećete imati pristup cijeloj povijesti, nego samo zadnjih $5$ \emph{commit}ova.
+
+\TODO: Ograničenja takvog kloniranja
+
+
 \section*{Fetch}
 \addcontentsline{toc}{section}{Fetch}
 
@@ -122,9 +145,6 @@ Nakon toga, stanje naših repozitorija je:
 \input{graphs/origin_master_3}
 
 Dakle, \verb+origin/master+ je osvježen tako da mu je stanje isto kao i \verb+master+ udaljenog repozitorija.
-
-\section*{Rad s origin/master}
-\addcontentsline{toc}{section}{Rad s origin/master}
 
 S \verb+origin/master+ možemo raditi skoro sve kao i s ostalim lokalnim granama.
 Možemo, na primjer, pogledati njegovu povijest s:
@@ -181,7 +201,7 @@ Nakon \verb+git fetch+, stanje je:
 Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
 U biti je to kao da imamom dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
 Ovo je, u biti, najobičniji \emph{merge} (koji će, eventualno, imati i neke konflikte. No, to već znamo riješiti).
-Rezultat \emph{merge}a je $z$:
+Rezultat \emph{merge}a je novi čvor $z$:
 
 \input{graphs/origin_master_2_4}
 
@@ -213,27 +233,11 @@ Krećemo sad na prvu (i ovdje jedinu) radnju s kojom aktivno mijenjamo neki udal
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}
 
-\section*{Djelomično kloniranje povijesti repozitorija}
-\addcontentsline{toc}{section}{Djelomično kloniranje povijesti repozitorija}
+\subsection*{Dodavanje i brisanje udaljenih repozitorija}
+\addcontentsline{toc}{subsection}{Dodavanje i brisanje udaljenih repozitorija}
 
-Našli ste na internetu neki zanimljiv projekt i njegov git repozitorij i htjeli bi ga skinuti i proučiti njegov kod. 
-Ništa lakše; \verb+git clone ...+.
-
-E, ali\dots
-Tu imamo mali problem.
-Git repozitorij sadrži cijelu povijest projekta. 
-To znači da sadrži sve \emph{commit}ove koje su radili programeri i koji mogu sezati i preko deset godina unazad.
-I zato \verb+git clone+ ponekad može potrajati dosta dugo. 
-Posebno ako imate sporu vezu.
-
-No, postoji trik.
-Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela njegova povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
-
-\gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
-
-To će biti puno brže, no nećete imati pristup cijeloj povijesti, nego samo zadnjih $5$ \emph{commit}ova.
-
-\TODO: Ograničenja takvog kloniranja
+\subsection*{Rad s udaljenim repozitorijima}
+\addcontentsline{toc}{subsection}{Rad s udaljenim repozitorijima}
 
 tagovi, \dots
 
