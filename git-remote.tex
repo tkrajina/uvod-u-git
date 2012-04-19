@@ -227,6 +227,34 @@ Sve što smo do sada radili s gitom su bile radnje koje smo mi radili na našem 
 Čak i kloniranje je nešto što mi iniciramo i ničim nismo promijenili udaljeni repozitorij.
 Krećemo sad na prvu (i ovdje jedinu) radnju s kojom aktivno mijenjamo neki udaljeni repozitorij.
 
+Uzmimo, kao prvo, najjednostavniji mogući scenarij.
+Klonirali smo repozitorij i stanje je, naravno:
+
+\input{graphs/push_1}
+
+Nakon toga smo \emph{commit}ali par izmjena\dots
+
+\input{graphs/push_2}
+
+\dots{}i sad bi htjeli te izmjene "prebaciti" na udaljeni repozitorij.
+Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih izmjena na udaljeni repozitorij ovisi o tome imate li ovlasti za to ili ne.
+Udaljeni repozitorij mora biti tako konfiguriran da biste to mogli činiti.
+Ukoliko nemate ovlasti, sve što možete napraviti je zamoliti njegovog vlasnika da pogleda vaše izmjene ($f$ i $g$) i da ih preuzme kod sebe.
+
+Ukoliko, ipak, imate ovlasti, onda je ono što trebate napraviti:
+
+\input{git_output/git_push_origin_master}
+
+Stanje će sad biti:
+
+\input{graphs/push_3}
+
+Ovo je bio jednostavni scenarij u kojem smo u našem \verb+master+ \emph{commit}ali, ali u udaljenom \verb+master+ se nije ništa događalo.
+Što da nije tako?
+Dakle, dok smo mi radili na $e$ i $f$, vlasnik udaljenog repozitorija je \emph{commit}ao svoje $x$ i $y$:
+
+\input{graphs/push_2_1}
+
 \section*{Rad s granama}
 \addcontentsline{toc}{section}{Rad s granama}
 
