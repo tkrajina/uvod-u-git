@@ -255,6 +255,45 @@ Dakle, dok smo mi radili na $e$ i $f$, vlasnik udaljenog repozitorija je \emph{c
 
 \input{graphs/push_2_1}
 
+Kad pokušamo \verb+git push origin master+, dogoditi će se ovakvo nešto:
+
+\input{git_output/git_push_origin_master_rejected}
+
+Kod nas lokalno $e$ clijede $f$ i $g$, a na udaljenom repozitoriju $e$ slijede $x$ i $y$. 
+I git ovdje ne zna što točno napraviti, osim da mu netko pomogne.
+Kao i do sada, pomoć se očekuje od nas, a tu radnju trebamo izvršiti na lokalnom repozitoriju.
+Tek onda ćemo moći \emph{push}ati na udaljeni.
+
+Riješenje je standardno:
+
+\gitoutputcommand{git fetch}
+
+\dots{}i stanje je sad:
+
+\input{graphs/push_2_2}
+
+Sad ćemo, naravno:
+
+\gitoutputcommand{git merge origin/master}
+
+Na ovom koraku se može desiti da imate konflikata koje eventualno treba ispraviti s \verb+git mergetool+.
+Nakon toga, stanje je:
+
+\input{graphs/push_2_3}
+
+Sad možemo uredno napraviti:
+
+\gitoutputcommand{git push origin master}
+
+\dots{}a stanje naših repozitorija će biti:
+
+\input{graphs/push_2_4}
+
+Iako vam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$.
+Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
+
+\TODO force push
+
 \section*{Rad s granama}
 \addcontentsline{toc}{section}{Rad s granama}
 
