@@ -327,10 +327,42 @@ Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master
 
 Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
 
-\TODO force push
+\subsection*{Prisilan push}
+\addcontentsline{toc}{subsection}{Prisilan push}
+
+Vratimo se na ovu situaciju:
+
+\input{graphs/push_2_2}
+
+Da ponovimo još jednom.
+Standardni postupak je \verb+git fetch+ (što je u gornjem primjeru već učinjeno) i \verb+git merge origin/master+.
+
+Međutim, ovdje ima još jedna mogućnost.
+Nakon što smo proučili ono što je vlasnik udaljenog repozitorija napravio u \emph{commit}ovima $x$ i $y$, ponekad ćemo zaključiti da to jednostavno ne valja. 
+I najradije bi sada jednostavno "pregazili" njegove \emph{commit}ove u udaljenom \verb+master+.
+
+To se može, komanda je:
+
+\gitoutputcommand{git push -f origin master}
+
+\dots{}a rezultat će biti:
+
+\input{graphs/push_2_2_1}
+
+I sad s \verb+git push+ možemo još i osvježiti stanje \verb+origin/master+.
+
+Treba, međutim, imati na umu da ovakvo ponašanje nije baš uvijek poželjno. 
+Zbog dva razloga:
+
+\begin{itemize}
+	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo jednostavno pogriješili.
+	\item Nitko ne voli da mu se pregaze njegove izmjene kao što smo to mi ovdje napravili vlasniku ovog udaljenog repozitorija. Bilo bi bolje javiti se njemu, objasniti mu što ne valja, predložiti bolje riješenje i dogovoriti da \textbf{on} \emph{revert}a, \emph{reset}ira ili ispravi svoje izmjene.
+\end{itemize}
 
 \section*{Rad s granama}
 \addcontentsline{toc}{section}{Rad s granama}
+
+\TODO Tracking branch
 
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}

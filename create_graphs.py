@@ -975,6 +975,41 @@ def graph_push_2_2():
 
 	return graph
 
+def graph_push_2_2_1():
+	graph = mod_graph.Graph( column = 4 )
+
+	master_branch = mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcdefg' )
+	graph.add_branch( master_branch )
+
+	origin_master_branch = mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcdexy' )
+	graph.add_branch( origin_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'master',
+			row = 3,
+			nodes = 'abcdefg' ) )
+
+	brackets_column = 11
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 2,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 3,
+			rows = 1,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
 def graph_push_2_3():
 	graph = mod_graph.Graph( column = 4 )
 
@@ -1085,6 +1120,70 @@ def graph_push_3():
 			row = 3,
 			rows = 1,
 			label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_digresija_o_grafovima_1():
+	graph = mod_graph.Graph( column = 3 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'grana-1',
+			nodes = 'abcdefghij' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'grana-2',
+			row = 1,
+			nodes = 'abcdeyzq' ) )
+
+	return graph
+
+def graph_digresija_o_grafovima_2():
+	graph = mod_graph.Graph( column = 3 )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'grana-1',
+			nodes = 'abcdefghij' ) )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'grana-2',
+			row = 1,
+			branch_from = graph.get_branch( 0 ).get_node( 4 ),
+			nodes = 'yzq' ) )
+
+	return graph
+
+def graph_digresija_o_grafovima_3():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch( label = 'master', nodes = 'abcdexy' ) )
+
+	graph.add_branch( mod_graph.Branch( label = 'origin/master', row = 1, nodes = 'abcde' ) )
+
+	graph.add_branch( mod_graph.Branch( label = 'master', row = 3, nodes = 'abcdefg' ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket( column = brackets_column, row = 0, rows = 2, label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket( column = brackets_column, row = 3, rows = 1, label = 'udaljeni repozitorij' )
+
+	return graph
+
+def graph_digresija_o_grafovima_4():
+	graph = mod_graph.Graph( column = 4 )
+
+	graph.add_branch( mod_graph.Branch( label = 'master', nodes = 'abcdefg' ) )
+
+	graph.add_branch( mod_graph.Branch( label = 'master', row = 1, nodes = 'xy',
+	                                    branch_from = graph.get_branch( 0 ).get_node( 4 ) ) )
+
+	brackets_column = 11 
+
+	graph.add_square_bracket( column = brackets_column, row = 0, rows = 1,
+	                          label = 'udaljeni repozitorij' )
+
+	graph.add_square_bracket( column = brackets_column, row = 1, rows = 1,
+	                          label = 'lokalni repozitorij' )
 
 	return graph
 
