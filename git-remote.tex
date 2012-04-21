@@ -318,6 +318,15 @@ Sad možemo uredno napraviti:
 Iako vam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
 Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
 
+\subsection*{Rebase origin/master}
+\addcontentsline{toc}{subsection}{Rebase origin/master}
+
+Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta -- i to se može s:
+
+\gitoutputcommand{git rebase origin/master\\git push origin master}
+
+Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
+
 \TODO force push
 
 \section*{Rad s granama}
