@@ -1187,6 +1187,54 @@ def graph_digresija_o_grafovima_4():
 
 	return graph
 
+def graph_origin_master_s_granama():
+	graph = mod_graph.Graph( column = 4 )
+
+	master_branch = mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcde' )
+	graph.add_branch( master_branch )
+
+	origin_master_branch = mod_graph.Branch(
+			label = 'origin/master',
+			row = 1,
+			nodes = 'abcde' )
+	graph.add_branch( origin_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'test',
+			row = 2,
+			branch_from = origin_master_branch.get_node( 2 ),
+			nodes = 'xyz' ) )
+
+	remote_master_branch = mod_graph.Branch(
+			label = 'master',
+			row = 4,
+			nodes = 'abcde' )
+	graph.add_branch( remote_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'test',
+			row = 5,
+			branch_from = remote_master_branch.get_node( 2 ),
+			nodes = 'xyz' ) )
+
+	brackets_column = 10
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 3,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 4,
+			rows = 2,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:

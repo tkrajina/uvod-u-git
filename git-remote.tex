@@ -355,14 +355,33 @@ Treba, međutim, imati na umu da ovakvo ponašanje nije baš uvijek poželjno.
 Zbog dva razloga:
 
 \begin{itemize}
-	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo jednostavno pogriješili.
+	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo jednostavno pogriješili. Koliko god nam to bilo teško priznati, sasvim moguće je da jednostavno nismo dobro shvatili tuđi kod.
 	\item Nitko ne voli da mu se pregaze njegove izmjene kao što smo to mi ovdje napravili vlasniku ovog udaljenog repozitorija. Bilo bi bolje javiti se njemu, objasniti mu što ne valja, predložiti bolje riješenje i dogovoriti da \textbf{on} \emph{revert}a, \emph{reset}ira ili ispravi svoje izmjene.
 \end{itemize}
 
 \section*{Rad s granama}
 \addcontentsline{toc}{section}{Rad s granama}
 
+Svi primjeri do sada su bili relativno jednostavni utoliko što su oba repozitorija (udaljeni i naš lokalni) imali samo jednu granu -- \verb+master+.
+Idemo to sad (još) malo zakomplicirati i pogledati što se dešava ako kloniramo udaljeni repozitorij koji ima više grana:
+
+Nakon \verb+git clone+ rezultat će biti:
+
+\input{graphs/origin_master_s_granama}
+
+Kloniranjem dobijamo samo kopiju lokalnog \verb+master+, dok se sve grane čuvaju pod \verb+origin/+. Dakle imamo \verb+origin/master+ i \verb+origin/test+.
+Da je bilo više grana u repozitoriju kojeg kloniramo, imali bi više ovih \verb+origin/+ grana.
+To lokalno možemo vidjeti s:
+
+\input{git_output/git_branch_all_2}
+
+\TODO Preuzimanje udaljene grane u lokalnu
+
+\TODO Push na udaljenu granu
+
 \TODO Tracking branch
+
+\TODO "git push" vs "git push <grana>" ili "git push HEAD" (vezano uz tracking branch)
 
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}
