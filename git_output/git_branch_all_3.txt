@@ -1,0 +1,6 @@
+$ git branch -a
+  master
+* test
+  remotes/origin/master
+  remotes/origin/test
+

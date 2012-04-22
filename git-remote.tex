@@ -375,13 +375,28 @@ To lokalno možemo vidjeti s:
 
 \input{git_output/git_branch_all_2}
 
-\TODO Preuzimanje udaljene grane u lokalnu
+Već znamo da se možemo "prebaciti" s \verb+git checkout origin/master+, ali se ne očekuje da tamo stvari i \emph{commit}amo.
+Trebamo tu "\verb+remote+" granu granati u naš lokalni repozitorij i tek onda s njom počet raditi.
+Dakle, u našem testnom slučaju, napravili bi:
+
+\gitoutputcommand{git checkout origin/test\\
+git branch test\\
+git checkout test}
+
+Zadnje dvije naredbe smo mogli skratiti u \verb+git checkout -b test+.
+
+Sad je stanje:
+
+\input{graphs/origin_master_s_granama_2}
+
+\dots{}odnosno:
+
+\input{git_output/git_branch_all_3}
 
 \TODO Push na udaljenu granu
 
-\TODO Tracking branch
-
-\TODO "git push" vs "git push <grana>" ili "git push HEAD" (vezano uz tracking branch)
+\subsection*{Git push i \emph{tracking} grana}
+\addcontentsline{toc}{subsection}{Git push i \emph{tracking} grana}
 
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}

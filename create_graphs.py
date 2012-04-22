@@ -1235,6 +1235,60 @@ def graph_origin_master_s_granama():
 
 	return graph
 
+def graph_origin_master_s_granama_2():
+	graph = mod_graph.Graph( column = 4 )
+
+	master_branch = mod_graph.Branch(
+			label = 'master',
+			nodes = 'abcde' )
+	graph.add_branch( master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'test',
+			row = 1,
+			branch_from = master_branch.get_node( 2 ),
+			nodes = 'xyz' ) )
+
+	origin_master_branch = mod_graph.Branch(
+			label = 'origin/master',
+			row = 2,
+			nodes = 'abcde' )
+	graph.add_branch( origin_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'test',
+			row = 3,
+			branch_from = origin_master_branch.get_node( 2 ),
+			nodes = 'xyz' ) )
+
+	remote_master_branch = mod_graph.Branch(
+			label = 'master',
+			row = 5,
+			nodes = 'abcde' )
+	graph.add_branch( remote_master_branch )
+
+	graph.add_branch( mod_graph.Branch(
+			label = 'test',
+			row = 6,
+			branch_from = remote_master_branch.get_node( 2 ),
+			nodes = 'xyz' ) )
+
+	brackets_column = 10
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 0,
+			rows = 4,
+			label = 'lokalni repozitorij' )
+
+	graph.add_square_bracket(
+			column = brackets_column,
+			row = 5,
+			rows = 2,
+			label = 'udaljeni repozitorij' )
+
+	return graph
+
 for v in vars().keys():
 	# create graphs/ director if not exists:
 	try:
