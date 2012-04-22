@@ -393,7 +393,24 @@ Sad je stanje:
 
 \input{git_output/git_branch_all_3}
 
-\TODO Push na udaljenu granu
+Sad u taj lokalni \verb+master+ možemo \emph{commit}ati koliko nas je volja.
+Kad ćemo htjeti poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radim s novom granom umjesto master.
+Dakle,
+
+\gitoutputcommand{git fetch}
+
+\dots{}za osvježavanje \textbf{i} \verb+origin/master+ i \verb+origin/test+.
+Zatim\dots
+
+\gitoutputcommand{git merge origin/test}
+
+I, na kraju\dots
+
+\gitoutputcommand{git push origin test}
+
+\dots{}da bi svoje izmjene "poslali" na udaljeni repozitorij.
+
+\TODO Zamijeniti naziv grane \verb+test+ u nešto smislenije
 
 \subsection*{Git push i \emph{tracking} grana}
 \addcontentsline{toc}{subsection}{Git push i \emph{tracking} grana}
