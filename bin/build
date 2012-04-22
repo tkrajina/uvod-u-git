@@ -2,6 +2,9 @@ git log -1 --format=\\verb+%H+ > current_commit.tex
 
 python create_graphs.py
 python create_git_outputs.py
+
+# 2 puta da bi sadržaj bio ažuran:
+pdflatex git.tex
 pdflatex git.tex
 
 echo "git.pdf created"
