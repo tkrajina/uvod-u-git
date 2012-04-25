@@ -1318,7 +1318,7 @@ def graph_remote_s_granama_2():
 
     bojanov_master_lokalni = mod_graph.Branch( label = 'bojanov-repo/master', row = 3, nodes = 'abcdefg' )
     graph.add_branch( bojanov_master_lokalni )
-    graph.add_branch( mod_graph.Branch( branch_from = bojanov_master_lokalni.get_node( 3 ), row = 4, nodes = 'qwe', label = 'bojanov-repo/test' ) )
+    graph.add_branch( mod_graph.Branch( branch_from = bojanov_master_lokalni.get_node( 2 ), row = 4, nodes = 'qwe', label = 'bojanov-repo/test' ) )
 
     karlin_master = mod_graph.Branch( label = 'master', row = 6, nodes = 'abcdefg' )
     graph.add_branch( karlin_master )
@@ -1326,7 +1326,7 @@ def graph_remote_s_granama_2():
 
     bojanov_master = mod_graph.Branch( label = 'master', row = 9, nodes = 'abcdefg' )
     graph.add_branch( bojanov_master )
-    graph.add_branch( mod_graph.Branch( branch_from = bojanov_master.get_node( 3 ), row = 10, nodes = 'qwe', label = 'test' ) )
+    graph.add_branch( mod_graph.Branch( branch_from = bojanov_master.get_node( 2 ), row = 10, nodes = 'qwe', label = 'test' ) )
 
     brackets_column = 13 
 
