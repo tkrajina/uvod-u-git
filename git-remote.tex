@@ -411,18 +411,36 @@ I, na kraju\dots
 
 \gitoutputcommand{git push origin test}
 
-\dots{}da bi svoje izmjene "poslali" na udaljeni repozitorij.
+\dots{}da bi svoje izmjene "poslali" u granu \verb+test+ udaljenong repozitorija.
 
 \TODO Zamijeniti naziv grane \verb+test+ u nešto smislenije
 
 \subsection*{Git push i \emph{tracking} grana}
 \addcontentsline{toc}{subsection}{Git push i \emph{tracking} grana}
 
+\TODO
+
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}
 
+Kloniranjem na našem lokalnom računalu dobijamo kopiju udaljenog repozitorija s jednim dodatkom -- ta kopija je pupčanom vrpcom vezana za originalni repozitorij.
+Dobijamo referencu na \verb+origin+ repozitorij (onaj kojeg smo klonirali).
+Dobijamo i dobijamo one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost da osvježavamo njihovo stanje s \verb+git fetch+.
+
+Imamo i nekoliko ograničenja, a najvažnije je činjenica što možemo imati samo jedan \verb+origin+.
+Što ako želimo imati posla s više udaljenih repozitorija.
+Dakle, što ako imamo više programera s kojima želimo surađivati od kojih svatko ima \textbf{svoj} repozitorij.
+
+Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sustavu za verzioniranje.
+
 \subsection*{Dodavanje i brisanje udaljenih repozitorija}
 \addcontentsline{toc}{subsection}{Dodavanje i brisanje udaljenih repozitorija}
+
+Svaki udaljeni repozitorij mora biti repozitorij istog projekta. 
+Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku svoje povijesti nastali iz jednog jedinog projekta.
+Bilo kloniranjem ili je netko kopirao nečiji projekt (ili samo njegov \verb+.git+ direktorij i iz njega \emph{checkout}ao projekt).
+
+Ako dva repozitorija nisu nastali iz istog 
 
 \subsection*{Fetch, merge, pull i push s udaljenim repozitorijima}
 \addcontentsline{toc}{subsection}{Fetch, merge, pull i push s udaljenim repozitorijima}
