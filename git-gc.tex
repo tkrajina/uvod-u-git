@@ -16,10 +16,30 @@ Nemojte si dopustiti da grane u vašem repozitoriju izgledaju ovako "zbrčkano":
 
 \input{graphs/cirkus}
 
-Iako nam git omogućuje da imamo beskonačno grana, ljudski um nije sposoban
+Iako nam git omogućuje da imamo neograničen broj grana, ljudski um nije sposoban vizualizirati si više od 5-10\footnote{Barem moj nije, ako je vaš izuzetak, preskočite ovo.}.
+Kako budete stvaramo nove grane -- dešava se da imamo one u kojima smo počeli neki posao i kasnije odlučili da nam ne treba.
+Ili smo napravili posao, \emph{merge}ali u \verb+master+, ali nismo obrisali granu.
+Nađemo li se s više od 10-15 grana -- \textbf{sigurno} je dio njih tu samo zato što smo ih zaboravili obrisati.
+
+U svakom slučaju, predlažem vam da svakih par dana pogledate malo po lokalnim (a i udaljenim granama) i provjerite one koje više ne koristite.
+
+Ukoliko nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena koju treba vratiti u \verb+master+, postupak je sljedeći:
+
+\gitoutputcommand{git checkout neka-grana\\git merge master}
+
+\dots{}da bismo preuzeli sve izmjene iz master, tako da stanje bude ažurno.
+I sad\dots
+
+\gitoutputcommand{git diff master}
+
+\dots{}da bismo provjerili koje su točno izmjene ostale.
+Ako je prazno -- nema razlika i možemo brisati.
+Ako nije -- \textbf{ima} izmjena i sad se sami odlučite jesu li te izmjene nešto važno što ćete nastaviti razvijati ili nešto što možemo zanemariti i obrisati tu granu.
 
 \subsection*{Git gc}
 \addcontentsline{toc}{subsection}{Git gc}
+
+Druga stvar koju se preporuča ima veze s onim našim \verb+.git/objects+ direktorijem kojeg smo spominjali u "Ispod haube" poglavlju.
 
 \begin{itemize}
    \item Čišćenje nekorištenih brancheva
