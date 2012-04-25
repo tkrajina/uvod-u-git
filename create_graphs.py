@@ -1338,15 +1338,18 @@ def graph_remote_s_granama_2():
     return graph
 
 def graph_cirkus():
-    graph = mod_graph.Graph()
+    graph = mod_graph.Graph(node_distance=200)
 
-    for i in range(10):
+    for i in range(16):
+        nodes = ''
+        for j in range(mod_random.randint(5,15)):
+            nodes += ' '
         if i == 0:
-            graph.add_branch(mod_graph.Branch(nodes='       ', row=i))
+            graph.add_branch(mod_graph.Branch(nodes=nodes, row=i))
         else:
             random_branch = graph.get_branch(mod_random.randint(max(0, i - 2), i - 1))
             graph.add_branch(mod_graph.Branch(branch_from=random_branch.get_node(mod_random.randint(0,1)),
-                                              nodes='    ', row=i))
+                                              nodes=nodes, row=i))
             graph.add_arrow(graph.get_branch(i).get_node(mod_random.randint(1, 2)),
                             graph.get_branch(i - 1).get_node(mod_random.randint(2, 3)),
                             color=GRAY)
