@@ -1,0 +1,3 @@
+$ git remote show
+bojanov-repo
+karlin-repo

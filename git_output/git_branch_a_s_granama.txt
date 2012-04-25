@@ -1,0 +1,6 @@
+$ git branch -a
+master
+bojanov-repo/master
+bojanov-repo/test
+karlin-repo/master
+karlin-repo/varijanta1

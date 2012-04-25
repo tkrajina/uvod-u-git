@@ -436,11 +436,64 @@ Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sust
 \subsection*{Dodavanje i brisanje udaljenih repozitorija}
 \addcontentsline{toc}{subsection}{Dodavanje i brisanje udaljenih repozitorija}
 
-Svaki udaljeni repozitorij mora biti repozitorij istog projekta. 
-Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku svoje povijesti nastali iz jednog jedinog projekta.
+Svaki udaljeni repozitoriji bi trebali biti repozitorij istog projekta\footnote{Git dopušta čak i da udaljeni repozitorij bude repozitorij nekog drugog projekta, ali rezultati \emph{merge}anja će biti čudni.}. 
 Bilo kloniranjem ili je netko kopirao nečiji projekt (ili samo njegov \verb+.git+ direktorij i iz njega \emph{checkout}ao projekt).
+Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku svoje povijesti nastali iz jednog jedinog projekta.
 
-Ako dva repozitorija nisu nastali iz istog 
+Sve naredbe s administracijom udaljenih (\emph{remote}) repozitorija se rade s naredbom \verb+git remote ...+.
+
+Novi udaljeni repozitorij ćete dodati s \verb+git remote add <naziv> <adresa>+.
+Na primjer, uzmomo da radimo s dva programera od kojih je jednome repozitorij našeg zajedničkog projekta \verb+https://github.com/korisnik/projekt.git+, a drugome \verb+git@domena.com:projekt+.
+Ukoliko tek krećemo u suradnju s njima, prvi korak koji možemo (ali i ne moramo) napraviti je klonirati jedan od njihovih repozitorija:
+
+\gitoutputcommand{git clone https://github.com/korisnik/projekt.git}
+
+\dots{}i time smo dobili udaljeni repozitorij \verb+origin+ s tom adresom.
+Međutim, mi želimo imati posla i sa repozitorijem drugog korisnika, za to ćemo njega dodati kao \emph{remote}:
+
+\gitoutputcommand{git remote add bojanov-repo git@domena.com:projekt}
+
+\dots{}i sad imamo dva udaljena repozitorija \verb+origin+ i \verb+bojanov-repo+.
+S obzirom da smo drugi nazvali prema imenu njegovo vlasnika, možda ćemo htjeti i \verb+origin+ nazvati tako.
+Recimo da je to Karlin:
+
+\gitoutputcommand{git remote rename origin karlin-repo}
+
+Spisak svih repozitorija s kojima imamo posla dobijemo s:
+
+\input{git_output/git_remote_show}
+
+Kao i s \verb+origin+, gdje smo kloniranjem dobili lokalne kopije udaljenih grana (one \verb+origin/master+, \dots). 
+I ovdje ćemo ih imati, ali ovaj put će lokacije biti \verb+bojanov-repo/master+ i \verb+karlin-repo/master+.
+Njih ćemo isto tako morati osvježavati da bi bile ažurne.
+Naredba je ista:
+
+\gitoutputcommand{git fetch}
+
+I sad, kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih još preuzeli u naš repozitorij), jednostavno:
+
+\gitoutputcommand{git chekcout karlin-repo/master}
+
+\dots{}i isprobamo kako radi njena verzija aplikacije. Želimo li preuzeti njene izmjene:
+
+\gitoutputcommand{git merge karlin-repo/master}
+
+I, općenito, sve ono što smo govorili za \emph{fetch}, \emph{push}, \emph{pull} i \emph{merge} kad smo govorili o kloniranju vrijedi i ovdje.
+
+\input{graphs/remote_s_granama}
+
+Naravno, ne moraju sve \verb+master+ grane svugdje biti iste.
+Netko će \emph{commit}ati, nešto ćemo \emph{merge}ati, \dots
+Potpuno isto kao u situaciji kad smo postojali samo mi i \verb+origin+. 
+Jedino što sad postojimo: mi, \verb+karlin-repo+ i \verb+bojanov-repo+.
+
+Naravno, tu se može desiti da svaki udaljeni repozitorij ima svoje grane:
+
+\input{graphs/remote_s_granama_2}
+
+\dots{}a rezultat od \verb+git branch -a+ je:
+
+\input{git_output/git_branch_a_s_granama}
 
 \subsection*{Fetch, merge, pull i push s udaljenim repozitorijima}
 \addcontentsline{toc}{subsection}{Fetch, merge, pull i push s udaljenim repozitorijima}
