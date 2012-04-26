@@ -1,10 +1,27 @@
 \chapter*{Submoduli}
 \addcontentsline{toc}{chapter}{Submoduli}
 
-\begin{itemize}
-   \item 
-   \item 
-\end{itemize}
+Kad imamo dva projekta, svi mi programeri prirodno težimo k tome da izvučemo zajednički kod u neki treći (\emph{utility}) projekt.
+Tako da isti kod koristimo na više mjesta, a ne da svaki put izmišljamo toplu vodu.
+Postoje mnogi načini kako se takvi projekti organiziraju.
+
+Na primjer, ako radimo u javi, onda možete takve \emph{utility} projekte upakirati u \verb+.jar+ datoteke i koristiti ih u ostalim projektima.
+U \emph{IDE}ovima\footnote{Integrated development environment -- alati kao Eclipse, NetBeans, Idea, Visual studio, \dots} možemo imati projekte koji referenciraju druge projekte, isl.
+
+Git nudi jednu sličnu mogućnost koju možemo koristiti, a to su submoduli.
+
+Git submodul je \textbf{referenca na točno određeni \emph{commit} nekog drugog projekta na nekom mjestu u direktoriju našeg projekta}.
+I onda uz pomoć git-a možemo klonirati cijeli pomoćni projekt i postaviti ga na taj \emph{commit}.
+
+\TODO Dodavanje
+
+\TODO Kako je konfigurirano
+
+\TODO Brisanje
+
+\TODO Izmjene
+
+\TODO Postupak kad kloniramo projekt koji ima submodule
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
