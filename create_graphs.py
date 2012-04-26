@@ -1356,6 +1356,17 @@ def graph_cirkus():
 
     return graph
 
+def graph_amend():
+    graph = mod_graph.Graph(column=3)
+
+    graph.add_branch(mod_graph.Branch(label='master', row=0, nodes=('a','b','c','d','e','f\'')))
+    graph.add_branch(mod_graph.Branch(label='master', row=2, nodes='abcdef'))
+
+    graph.add_square_bracket(column = 9, row = 2, rows = 1, label = 'Originalno stanje')
+    graph.add_square_bracket(column = 9, row = 0, rows = 1, label = 'Nakon commit --amend')
+
+    return graph
+
 for v in vars().keys():
     # create graphs/ director if not exists:
     try:
