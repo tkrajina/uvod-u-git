@@ -415,6 +415,15 @@ I, na kraju\dots
 
 \TODO Zamijeniti naziv grane \verb+test+ u nešto smislenije
 
+\subsection*{Brisanje udaljene grane}
+\addcontentsline{toc}{subsection}{Brisanje udaljene grane}
+
+Ukoliko želimo obrisati granu na udaljenom repozitoriju -- to radimo s posebnom sintaksom naredbe \verb+git push+:
+
+\gitoutputcommand{git push origin :grana-koju-zelimo-obrisati}
+
+Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
+
 \subsection*{Git push i \emph{tracking} grana}
 \addcontentsline{toc}{subsection}{Git push i \emph{tracking} grana}
 
@@ -501,8 +510,6 @@ Naravno, tu se može desiti da svaki udaljeni repozitorij ima svoje grane:
 \TODO "Bare" repozitorij
 
 \TODO Commit na udaljenu granu
-
-\TODO Brisanje udaljene grane
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
