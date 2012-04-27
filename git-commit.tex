@@ -116,7 +116,7 @@ To se može ovako:
 
 \gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
 
-Više detalja o \verb+git checkout+ i zašto ova gornja naredba radi to što radi biti će u kasnije.
+Više detalja o \verb+git checkout+ i zašto ta gornja naredba radi to što radi će biti kasnije.
 
 \TODO Slučaj kad je datoteka i u indeksu i izmijenjena
 
@@ -139,7 +139,7 @@ Kad ste napravili izmjene na projektu, a \emph{niste} ih još snimili, graf proj
 \input{graphs/linearni_bez_zadnjeg_cvora}
 
 Dakle, zadnji čvor nema "nasljednika".
-Tek kad napravite taj zadnji commit vaše izmjene postaju dio repozitorija i tada je graf:
+Tek kad napravite taj zadnji \emph{commit} vaše izmjene postaju dio repozitorija i tada je graf:
 
 \input{graphs/linearni_sa_zadnjim_cvorom}
 
@@ -151,35 +151,36 @@ Tek kad napravite taj zadnji commit vaše izmjene postaju dio repozitorija i tad
 \input{git_output/git_log_0}
 
 Više o tome u posebnom poglavlju. 
-Za sada upamtite samo da u gitu svaki \emph{commit} ima jedinstveni string koji ga identificira.
-Taj string ima 40 znamenaka i primjere možete vidjeti u rezultatu od \verb+git log+.
+Za sada je važno znati da u gitu svaki \emph{commit} ima jedinstveni string koji ga identificira.
+Taj string ima 40 znamenaka i primjere možemo vidjeti u rezultatu od \verb+git log+.
 Na primjer, \verb+bf4fc495fc926050fb10260a6a9ae66c96aaf908+ je jedan takav.
 
 \section*{Ispravljanje zadnje izmjene}
 \addcontentsline{toc}{section}{Ispravljanje zadnje izmjene}
 
-Dogoditi će vam se da spremite neku izmjenu u repozitorij, gledate još malo projekt i shvatite da ste mogli još jednu sitnicu napraviti.
+Dogoditi će vam se da spremite neku izmjenu u repozitorij, a nakon toga proučavate još malo projekt i shvatite da ste mogli još jednu sitnicu ispraviti.
 I, nekako vam se čini da bi bilo logično da ta sitnica bude dio prethodnog \emph{commit}a.
+Bilo bi lijepo, pomislit' ćete kad biste mogli izmijeniti zadnji \emph{commit} tako da sadrži i ovu novu, sitnu, ispravku koju biste dodali.
 
-Bilo bi lijepo, pomislit' ćete kad biste mogli izmijeniti zadnji \emph{commit} tako da sadrži i ovu novu, sitnu, ispravku koju ste dodali.
 S gitom se to može.
-Prvo \emph{napravite} tu izmjenu; recimo da je ona bila na datotecu \verb+README.md+, dodate tu datoteku u indeks s \verb+git add README.md+ i izvršite sljedeće:
+Prvo učinomo tu izmjenu; recimo da je ona bila na datoteci \verb+README.md+, dodate tu datoteku u indeks s \verb+git add README.md+ i izvršite sljedeće:
 
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
 
-Ukoliko provjerite s \verb+git log+ šte se desilo, otkriti ćete da zadnji \emph{commit} sad ima novi komentar.
+Ovaj \verb+--amend+ gitu naređuje da promijeni zadnji \emph{commit} u povijesti tako da sadrži izmjene koje je imao i izmjene koje smo upravo dodali.
+Možemo provjeriti s \verb+git log+ šte se desilo i vidjeti ćemo da zadnji \emph{commit} sad ima novi komentar.
 U stvari, ispravno bi bilo kazati da je promijenjen i cijeli taj \emph{commit}.
 
-\verb+git commit --amend+ vam omogućava da u zadnji commit dodate neku datoteku ili čak i \emph{maknete} datoteku koju ste prethodno \emph{commit}ali. 
-No, treba samo pripaziti da se taj commit nalazi samo na vašem lokalnom repozitoriju, a ne i na nekom od udaljenih. 
+\verb+git commit --amend+ nam omogućava da u zadnji \emph{commit} dodamo neku datoteku ili čak i \emph{maknemo} datoteku koju smo prethodno \emph{commit}ali. 
+No, treba samo pripaziti da se taj commit nalazi samo na našem lokalnom repozitoriju, a ne i na nekom od udaljenih. 
 O tome više malo kasnije.
 
 \section*{Git gui}
 \addcontentsline{toc}{section}{Git gui}
 
-Kad spremate neku izmjenu koja ima puno datoteka, onda je gnjavaža non stop tipkati \verb+git add+.
+Kad spremamo neku izmjenu koja ima puno datoteka, onda može postati naporno non-stop tipkati \verb+git add+.
 Zbog toga postoji poseban grafički program kojemu je glavna namjena upravo to.
-Kad u komandnoj liniji utipkate:
+U komandnoj liniji:
 
 \gitoutputcommand{git gui}
 
@@ -190,24 +191,25 @@ Otvoriti će se sljedeće:
 Program se sastoji od četiri polja. 
 
 \begin{itemize}
-	\item Polje za datoteke koje su izmijenjene, ali nisu još u međuprostoru za snimanje izmjena (gore lijevo).
+	\item Polje za datoteke koje su izmijenjene, ali nisu još u indeksu (gore lijevo).
 	\item Polje za prikaz izmjena u pojedinim datotekama (gore desno). 
-	\item Polje za datoteke koje su izmijenjene i stavljene su u međuprostor za \emph{commit} (dolje lijevo).
+	\item Polje za datoteke koje su izmijenjene i stavljene su u indeks (dolje lijevo).
 	\item Polje za \emph{commit} (dolje lijevo).
 \end{itemize}
 
-Kad kliknete na neku datoteku, prikazati će se sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
+Klik na neku datoteku će prikazati sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
 Format je isti kao i kod \verb+git diff+.
 Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotke u polje izmijenjenih i spremnih za \emph{commit} i suprotno.
-Upišite komentar i kliknite na \emph{Commit} za snimanje izmjene.
+Nakon što odaberemo datoteke za koje želimo da budu dio našeg \emph{commit}a, trebamo unijeti komentar i kliknuti na "Commit" za snimanje izmjene.
 
-Ovdje, kao i u radu s komandnom linijom ne morati sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
-Možete dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
+Ovdje, kao i u radu s komandnom linijom ne moramo sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
+Možemo dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
 Drugim riječima, izmjene možete snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
-Koristite li \verb+git gui+ onda ovdje imati još jednu korisnu opciju, možete u indeks dodati ne \emph{cijelu} datoteku, nego samo \emph{nekoliko izmijenjenih linija}.
-Odaberite datoteku, u polju s izmijenjenim linijama odaberite samo linije koje želite spremite, desni klik i:
 
-\includegraphics[width=14cm]{images/git-gui-stage-lines-to-commit.png}
+S \verb+git gui+ imamo još jednu korisnu opciju -- možemo u indeks dodati \textbf{ne cijelu datoteku, nego samo nekoliko izmijenjenih linija} datoteke.
+Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želite spremite, desni klik i:
+
+\gitgraphics{images/git-gui-stage-lines-to-commit.png}
 
 Više puta će vam se dogoditi da ste na nekoj datoteci napravili izmjenu koju \emph{ne} želite snimiti. 
 Takvu datoteku možete resetirati, odnosno vratiti u početno stanje tako da ju odaberete u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
