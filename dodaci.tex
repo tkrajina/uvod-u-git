@@ -25,5 +25,56 @@
 \section*{Git i Mercurial}
 \addcontentsline{toc}{section}{Git i Mercurial}
 
+Mercurial je distribuirani sustav za verzioniranje sličan gitu.
+S obzirom da su nastali u isto vrijeme i bili pod utjecajem jedan drugog, imaju slične funkcionalnosti.
+Postoji i \emph{plugin} koji omogućuje da naredbe iz jednog koristite u radu s drugim\footnote{http://hg-git.github.com}.
+
+Mercurial ima malo konzistentnije imenovane naredbe, ali isto tako i manji broj korisnika.
+Međutim, ukoliko vam je git neintuitivan, mercurial bi trebao biti prirodna alternativa (naravno, ukoliko uopće želite distribuirani sustav).
+
+Ovdje ćemo proći samo nekoliko osnovnih naredbi u mercurialu, tek toliko da steknete osjećaj o tome kako je s njime raditi:
+
+Inicijalizacija repozitorija:
+
+\gitoutputcommand{hg init}
+
+Dodavanje datoteke \verb+README.txt+ u prostor predviđen za sljedeći \emph{commit} (ono što je u gitu \emph{index}):
+
+\gitoutputcommand{hg add README.txt}
+
+Micanje datoteke iz istog:
+
+\gitoutputcommand{hg forget README.txt}
+
+\emph{Commit}:
+
+\gitoutputcommand{hg commit}
+
+Trenutni status repozitorija:
+
+\gitoutputcommand{hg status}
+
+Izmjene u odnosu na repozitorij:
+
+\gitoutputcommand{hg diff}
+
+Kopiranje i izmjenu datoteka je poželjno raditi direktno iz mercuriala:
+
+\gitoutputcommand{hg mv datoteka1 datoteka2\\hg cp datoteka3 datoteka 4}
+
+Povijest repozitorija:
+
+\gitoutputcommand{hg log}
+
+"Vraćanje" na neku reviziju (\emph{commit}) u povijesti (za reviziju "1"):
+
+\gitoutputcommand{hg update 1}
+
+Vraćanje na zadnju reviziju:
+
+\gitoutputcommand{hg update tip}
+
+\TODO Mranchanje i mergeanje
+
 %\section*{}
 %\addcontentsline{toc}{section}{}
