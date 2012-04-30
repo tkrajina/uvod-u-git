@@ -199,7 +199,7 @@ Program se sastoji od četiri polja.
 
 Klik na neku datoteku će prikazati sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
 Format je isti kao i kod \verb+git diff+.
-Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotke u polje izmijenjenih i spremnih za \emph{commit} i suprotno.
+Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotka u polje s indeksom i suprotno.
 Nakon što odaberemo datoteke za koje želimo da budu dio našeg \emph{commit}a, trebamo unijeti komentar i kliknuti na "Commit" za snimanje izmjene.
 
 Ovdje, kao i u radu s komandnom linijom ne moramo sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
@@ -207,15 +207,15 @@ Možemo dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati 
 Drugim riječima, izmjene možete snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
 
 S \verb+git gui+ imamo još jednu korisnu opciju -- možemo u indeks dodati \textbf{ne cijelu datoteku, nego samo nekoliko izmijenjenih linija} datoteke.
-Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želite spremite, desni klik i:
+Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želimo spremite, desni klik i:
 
 \gitgraphics{images/git-gui-stage-lines-to-commit.png}
 
-Više puta će vam se dogoditi da ste na nekoj datoteci napravili izmjenu koju \emph{ne} želite snimiti. 
-Takvu datoteku možete resetirati, odnosno vratiti u početno stanje tako da ju odaberete u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
+Ako smo na nekoj datoteci napravili izmjenu koju \emph{ne} želimo snimiti -- takvu datoteku možemo resetirati, odnosno vratiti u početno stanje. 
+Jednostavno odaberemo ju u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
 
 Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
-Preporučam van da nađete vremena i proučite sve menije i kratice s tastaturom u radu, jer to će vam drastično ubrzati rad s ovim korisnim programčićem.
+Preporučam van da nađete vremena i proučite sve menije i kratice s tastaturom u radu, jer to će vam značajno ubrzati rad s ovim korisnim programčićem.
 
 %\begin{itemize}
 %   \item Tipični scenarij
