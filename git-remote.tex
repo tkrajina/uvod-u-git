@@ -92,8 +92,6 @@ Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da im
 Ako vam ovo zvuči zbunjujuće, ništa čudno.
 No, sve će sjesti na svoje mjesto kad to počnete koristiti.
 
-\TODO: \verb+checkout origin/master+, log, diff, merge
-
 \subsection*{Djelomično kloniranje povijesti repozitorija}
 \addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
 
@@ -112,9 +110,8 @@ No, postoji trik.
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
-To će biti puno brže, no nećete imati pristup cijeloj povijesti, nego samo zadnjih $5$ \emph{commit}ova.
-
-\TODO: Ograničenja takvog kloniranja
+To će biti puno brže, no s takvim klonom nemamo pristup cijeloj povijesti i ne bi mogli raditi sve ono što teorijski možeomo s pravim klonom. 
+Djelomično kloniranje je više zamišljeno da bismo skinuli kod nekog projekta samo da proučimo kod, a ne da bi se na njemu nešto ozbiljno radilo.
 
 \section*{Digresija o grafovima, repozitorijima i granama}
 \addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
