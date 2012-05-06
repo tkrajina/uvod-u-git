@@ -319,7 +319,26 @@ Sad možemo uredno napraviti:
 Iako vam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
 Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
 
-\TODO Push tagova
+\subsection*{Push tagova}
+\addcontentsline{toc}{subsection}{Push tagova}
+
+Naredba \verb+git push origin master+ šalje na udaljeno (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
+Slično bi napravili s bilo kojom drugom granom, no ima još nešto što ponekad želimo s lokalnom repozitorija poslati na udaljeni.
+To su tagovi.
+
+Ukoliko imamo lokalni tag kojeg treba \emph{push}ati, to se radi s:
+
+\gitoutputcommand{git push origin --tag}
+
+To će na udaljeni repozitorij poslati sve tagove.
+Želimo li tamo obrisati neki tag:
+
+\gitoutputcommand{git push origin :refs/tags/moj-tag}
+
+Treba samo imati na umu da je moguće da su drugi korisnici istog udaljenog repozitorija možda već \emph{fetch}ali naš tag u svoje repozitorije.
+Ukoliko smo ga mi tada obrisali, nastati će komplikacija.
+
+Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 
 \subsection*{Rebase origin/master}
 \addcontentsline{toc}{subsection}{Rebase origin/master}
