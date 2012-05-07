@@ -1,29 +1,21 @@
 \chapter*{Terminologija}
 \addcontentsline{toc}{chapter}{Terminologija}
 
-Mi (informatičari, programeri, IT stručnjaci, \dots) se redovito služimo stranim pojmovima i nisu nam strane riječi tipa \emph{mrđanje}, \emph{brenčanje}\footnote{Jedan kolega s posla, koji često \emph{merge}-a ima nadimak "mrđer"}, \emph{ekspajranje}, \emph{eksekjutanje}.
-No, poželjno bi bilo koristiti alternative koje su više u duhu jezika\footnote{Naravno, ne treba ni pretjerati s raznim \emph{vrtoletima}, \emph{čegrtasim velepamtilima}, \emph{nadstolnim klizalima}, isl.}.
+Mi (informatičari, programeri, IT stručnjaci i "stručnjaci", \dots) se redovito služimo stranim pojmovima i nisu nam strane riječi tipa \emph{mrđanje}, \emph{brenčanje}\footnote{Jedan kolega s posla, koji često \emph{merge}a ima nadimak "mrđer"}, \emph{ekspajranje}, \emph{eksekjutanje}.
+Slažem se da bi bilo poželjno bi bilo koristiti alternative koje su više u duhu jezika\footnote{Naravno, ne treba ni pretjerati s raznim \emph{vrtoletima}, \emph{čegrtasim velepamtilima}, \emph{nadstolnim klizalima}, isl.}.
+Međutim, besmisleno mi je bilo izmišljati nove riječi za potrebe priručnika koji bi bio uvod u git.
+Koristiti termine koje sam izmislio u letu i učiti git bi za potencijalnog čitatelja predstavljao dvostruki problem -- em bi morao učiti nešto novo, em bi morao učiti \textbf{moju} terminologiju drukčiju od one kojom se služe stručnjaci.
 
-Ovo što slijedi je moj pokušaj prevođenja termina koji se koriste u radu s gitom i sustavima za verzioniranje koda općenito: 
+Činjenica je da većina pojmova jednostavno nemaju ustaljen hrvatski prijevod\footnote{Jedan od glavnih krivaca za to su predavači na fakultetima koji ne misle da je verzioniranje koda tema za fakultetske kolegije. Oni su ti, a ne ljudi "na terenu" kao ja, koji su najviše zaduženi za to da budući stručnjaci koriste izraze u duhu jezika.}. 
+I zato sam ih koristio na točno onakav način kako se one upotrebljavaju u (domaćem) programerskom svijetu.
 
-\begin{description}
-\item[Version control:] je \emph{verzioniranje koda}.
-\item[Version control system:] je \emph{sustav za verzioniranje koda} ili, kraće, verzioniranje koda.
-\item[Revision control:] je isto što i \emph{version control}.
-\item[Repository:] je \emph{repozitorij}.
-\item[Branch:] \emph{grana} sustava za verzioniranje koda.
-\item[Merge:] bi nekima prirodno bilo prevesti kao \emph{spajanje grana}, no to nije baš točno. \emph{Merge}anjem dvije grane se one ne spajaju, nego se samo izmjene iz jedne \emph{preuzimaju} u drugu. No svaka grana može nastaviti svoj "život". Zato sam se ja odlučio to prevesti kao \emph{preuzimanje izmjena iz jedne grane u drugu}.
-\item[Commit:] je spremanje izmjena u sustav za verzioniranje koda. Kraće \emph{spremanje izmjena}.
-\item[Remote repository:] je \emph{udaljeni repozitorij}.
-\item[Pull:] je \emph{povlačenje i preuzimanje izmjena} s udaljenog repozitorija.
-\item[Pull request:] je \emph{zahtjev za povlačenje i preuzimanje izmjena} s udaljenog repozitorija.
-\item[Push:] je \emph{spremanje izmjena na udaljeni repozitorij}.
-\item[Fetch:] je \emph{preuzimanje izmjena} s udaljenog repozitorija.
-\item[Tag:] je \emph{oznaka} ili \emph{označiti}.
-%\item[:] 
-\end{description}
+Problem je i u tome što prijevod često uopće nije ono što se na prvi pogled čini ispravno.
+OK, \emph{branch}anje bi bilo "grananje", no \emph{merge}anje \textbf{nije} "spajanje grana". 
+Spajanjem grana bi rezultat bio jedna jedina grana, ali \emph{merge}anjem obje grane nastavljaju svoj život. 
+Jedino što se izmjene iz jedne preuzimaju i u drugu. 
+Ispravno bi bilo "preuzimanje izmjena iz jedne grane u drugu", ali to zvuči prilično nespretno da bi se koristilo u standardnom govoru.
 
-Sve ostale pojmove koji nisu spomenuti ovdje sam koristio u izvornom obliku, ali \emph{ukošenim} fontom. Na primjer \emph{fast-forward merge}.
+Dakle, svi pojmovi sam koristio u izvornom obliku, ali \emph{ukošenim} fontom. Na primjer \emph{fast-forward merge}, \emph{merge}anje ili \emph{commit}anje.
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
