@@ -25,22 +25,57 @@ Ovdje ću samo nabrojati neke od najpopularnijih:
 Za privatne repozitorije s više članova, moja preporuka je da platite tih par dolara Githubu ili BitBucketu. 
 Osim što dobijete vrhunsku uslugu -- tim novcem implicitno subvencionirate hosting svim ostalim projektima otvorenog koda koji su hostani tamo.
 
-\section*{Rad s certifikatima}
-\addcontentsline{toc}{section}{Rad s certifikatima}
-
-\TODO
-
 \section*{Vlastiti server}
 \addcontentsline{toc}{section}{Vlastiti server}
 
-\TODO
+Druga varijanta, umjesto hostinga je koristiti vlastiti server.
+Najjednostavniji scenarij je da jednostavno korisimo ssh protokol. 
+Git uredno tako funkcionira.
+Dakle, sve što trebamo učiniti je inicirati neki udaljeni git repozitorij i koristiti ga kao remote.
+
+Ako je naziv servera \verb+server.com+, korisničko ime s kojim se prijavljujemo \verb+git+, a direktorij s repozitorijem \verb+projekt/+, onda ga možemo početi koristiti s:
+
+\gitoutputcommand{git remote add moj-repozitorij git@server.com:projekt}
+
+To će vjerojatno biti dovoljno za jednog korisnika, no ima neke mane.
+
+Ukoliko želimo još nekome dati mogućnost da \emph{push}a ili \emph{fetch}a na/s našeg repozitorija. 
+Moramo mu dati i sve potrebne podatke da bi ostvario ssh konekciju na naš server.
+Ukoliko to učinimo, on se može povezati \emph{ssh}om i listati datoteke na serveru, gledati koji servisi su startani, isl.
+To ponekad ne želimo.
+
+Drugi problem je što ne možemo jednostavno nekome dati mogućnost da \emph{fetch}a i \emph{push}, a nekome drugome da samo \emph{fetch}a.
+Ako smo dali ssh pristup -- onda je on punopravan korisnik na tom serveru i ima iste ovlasti kao i bilo tko drugi tko se može prijaviti kao taj korisnik.
 
 \subsection*{Git shell}
 \addcontentsline{toc}{subsection}{Git shell}
 
+\emph{Git shell} riješava prvi od dva prethodno spomenuta problema. 
+Kao što (pretpostavljam) znamo, na svakom UNIXoidnom operativnom sustavu korisnici imaju definiran \emph{shell}, odnosno nekakav program u kojem on može izvršavati naredbe.
+
+\emph{Git shell} je posebna vrsta takvog \emph{shell}a koja korisniku \textbf{omogućuje ssh pristup, ali i korištenje samo određenom broja naredbi}.
+Postupak je jednostavan, treba kreirati novog korisnika (u primjeru koji slijedi, to je korisnik \verb+git+).
+Naredbom:
+
+\gitoutputcommand{chsh -s /usr/bin/git-shell git}
+
+\dots{}mu se početni \emph{shell} mijenja u \verb+git-shell+.
+I sad u njegovom \emph{home} direktoriju treba kreirati direktorij \verb+git-shell-commands+ koji sadrži samo one komande koje će se ssh-om moći izvršavati.
+Neke distribucije linuxa će već imati predložak takvog direktorija kojeg treba samo kopirati i dati prava za izvršavanje datotekama.
+Na primjer:
+
 \gitoutputcommand{cp -R /usr/share/doc/git/contrib/git-shell-commands /home/git/\\
 chmod +x /home/git/git-shell-commands/help\\
 chmod +x /home/git/git-shell-commands/list}
+
+Sad, ako se netko (tko ima ovlasti) pokuša spojiti s \emph{ssh}om, moći će izvršavati samo \verb+help+ i \verb+list+ naredbe.
+
+Ovakav pristup ne riješava problem ovlasti čitanja/pisanja nad repozitorijima, on vam samo omogućuje da ne dajete prava klasičnog korisnika na sustavu.
+
+\subsection*{Certifikati}
+\addcontentsline{toc}{subsection}{Certifikati}
+
+\TODO
 
 \section*{Git pluginovi}
 \addcontentsline{toc}{section}{Git pluginovi}
