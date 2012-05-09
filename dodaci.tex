@@ -75,7 +75,18 @@ Ovakav pristup ne riješava problem ovlasti čitanja/pisanja nad repozitorijima,
 \subsection*{Certifikati}
 \addcontentsline{toc}{subsection}{Certifikati}
 
-\TODO
+S obzirom da je najjednostavniji način da se git koristi preko ssh, praktično je podesiti certifikate na lokalnom/udaljenom računalu tako da ne moramo svaki put tipkati lozinku.
+To se može tako da naš javni ssh certifikat kopiramo na udaljeno računalo.
+
+U svojem \emph{home} direktoriju bi trebali imati \verb+.ssh+ direktorij.
+Ukoliko nije tamo, naredba:
+
+\gitoutputcommand{ssh-keygen -t dsa}
+
+\dots{}će ga kreirati zajedno s javnim certifikatom \verb+id_rsa.pub+.
+Kopirajte sadržaj te datoteke u \verb+~/.ssh/authorized_keys+ na udaljenom računalu.
+
+Ako je sve prošlo bez problema, korištenje gita preko ssh će od sad na dalje ići bez upita za lozinku za svaki \emph{push}, \emph{fetch} i \emph{pull}.
 
 \section*{Git pluginovi}
 \addcontentsline{toc}{section}{Git pluginovi}
