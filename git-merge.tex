@@ -5,15 +5,16 @@ Vratimo se opet na jednu viđenu ilustraciju:
 
 \input{graphs/git_merge_1}
 
-Da ponovoimo, prebacivanjem na granu \verb+master+, izmjene koje ste napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g vam neće biti dostupne.
-Istko, kad se prebacite na \verb+eksperimentalna-grana+ -- neće vam biti dostupne izmjene iz \emph x, \emph y i \emph z.
+Prebacivanjem na granu \verb+master+, izmjene koje smo napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g nam neće više biti dostupne.
+Slično, prebacivanjem na \verb+eksperimentalna-grana+ -- neće nam biti dostupne izmjene iz \emph x, \emph y i \emph z.
 
-To je sve divno i krasno dok svoje izmjene želite raditi u relativnoj izolaciji od ostatka izmjena u kodu. 
-No, što ako ste u \verb+master+ riješili neki gadan bug i htjeli biste sad tu ispravku preuzeti u \verb+eksperimentalna-grana+.
+To je u redu dok svoje izmjene želimo raditi u izolaciji od ostatka koda. 
+No, što ako smo u \verb+eksperimentalna-grana+ ispravili veliki bug i htjeli bismo sad tu ispravku preuzeti u \verb+master+?
 
-Ili, što ako zaključite kako je rezultat eksperimenta kojeg ste isprobali u \verb+eksperimentalna-grana+ uspješan i želite to sad imati u \verb+master+?
-Ono što vam sad treba je da nekako \emph{izmjene iz jedne grane preuzmete u drugu granu}.
-U gitu, to se naziva \textbf{merge}.
+Ili, što ako zaključimo kako je rezultat eksperimenta kojeg smo isprobali u \\
+\verb+eksperimentalna-grana+ uspješan i želimo to sad imati u \verb+master+?
+Ono što nam sad treba je da nekako \textbf{izmjene iz jedne grane preuzmemo u drugu granu}.
+U gitu, to se naziva \emph{merge}.
 Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
 Rezultat spajanja bi bila samo jedna grana. 
 No, \emph{merge}anjem dvije grane -- one nastavljaju svoj život. 
@@ -22,25 +23,26 @@ Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzi
 \section*{Git merge}
 \addcontentsline{toc}{section}{Git merge}
 
-Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želite u \verb+master+. 
-To se radi s naredbom \verb+git merge+.
-Zapamtite, da bi to napravili kako treba, trebate se nalaziti u onoj grani u koju želite preuzeti izmjene (u našem slučaju \verb+master+), i onda:
+Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želimo u \verb+master+. 
+To se radi s naredbom \verb+git merge+, a da bi to napravili kako \textbf{trebamo se nalaziti u onoj grani u koju želimo preuzeti izmjene} (u našem slučaju \verb+master+).
+Tada:
 
 \input{git_output/git_merge_1}
 
-Ovaj ispis je ukratko opisan rezultat procesa preuzimanja izmjena; koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko oduzeto, i tako dalje\dots
+Rezultat neredbe \verb+git merge+ ukratko opisan rezultat procesa preuzimanja izmjena; koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, i tako dalje\dots
 
-Uočite još jednu važnu stvar, ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
-Ne morate "ručno" \emph{commit}ati.
-Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja"; jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
+Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
+Ne moramo "ručno" \emph{commit}ati.
+Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika" -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
 
 Grafički se \verb+git merge+ može prikazati ovako:
 
 \input{graphs/git_merge_2}
 
-Kad ste preuzeli izmjene iz jednog grafa u drugi, nitko vas ne prisiljava da onaj prvi obrišete. 
-Grana može uredno nastaviti svoj život; dalje možete uredno u nju \emph{commit}ati, preuzimati izmjene iz jedne grane u drugu.
-I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obrisati.
+Kad smo preuzeli izmjene iz jednog grafa u drugi -- obje grane mogu uredno nastaviti svoj dosadašnji "život".
+U obje možemo uredno \emph{commit}ati, preuzimati izmjene iz jedne grane u drugu, isl.
+Kasnije možemo i ponoviti preuzimanje izmjena, odnosno \emph{merge}anje.
+I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju obrisati.
 
 \input{graphs/git_merge_3}
 
@@ -49,16 +51,17 @@ I, eventualno, jednog dana kad odlučite da vam više ne treba, možete ju obris
 \section*{Što merge radi kad\dots}
 \addcontentsline{toc}{section}{Što merge radi kad\dots}
 
-Možda vas zanima što merge radi u raznim varijantama.
-Recimo, u eksperimentalnoj grani ste dodali novu datoteku, a u glavnoj ste na toj datoteci napravili neku izmjenu.
+Vjerojatno se pitate što git radi s raznim kombinacijama. Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali, ili\dots
 
-U principu, vjerujte mi, git napravi točno ono što treba. 
+U principu, vjerujte mi, git najčešće napravi točno ono što treba. 
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
 Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja u to da ijedan sustav za verzioniranje koda zna ovu radnju izvršiti kako treba.
-Svaki put sam išao pogledati je li napravio ono što treba i provjeravati da mi nije možda pregazio neku datoteku ili važan komad koda.
-I nije, uvijek radi točno onako kako bi intuicija govorila da \emph{merge} treba izgledati.
+Svaki put sam išao pogledati je li napravio ono što bih očekivao da će napraviti i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
+Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (mašinska) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
 
-Umjesto beskonačnih primjera što radi, najbolje je da to jednostavno isprobate, a ja ću ovdje samo ukratko popisati što radi i zadržati se na jednoj varijanti. Dakle, 
+Umjesto beskonačnih hipotetskih situacija tipa "Što će git napraviti ako sam u grani $A$ napravi $x$, a u grani $B$ napravio $y$\dots" -- najbolje je da to jednostavno isprobate. 
+U ostatku ovog poglavlja ćemo samo opisati neke posebne situacije.
+
 Uzmimo poznati slučaj:
 
 \input{graphs/git_merge_2}
