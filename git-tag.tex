@@ -2,29 +2,29 @@
 \addcontentsline{toc}{chapter}{Tagovi}
 u
 \emph{Tag}, "oznaka", iliti "ključna riječ" je naziv koji je populariziran s dolaskom takozvanim "web 2.0" sajtovima. 
-Ljudi ne znaju, ali i neovisno o "web 2.0", tagovi su postojali i prije. 
+Mnogi ne znaju, ali tagovi su postojali i prije toga. 
 Tag je jedan od načina klasifikacije dokumenata.
 
-Standardni način klasifikacije je hijerarhijsko klasificiranje.
+Standardni način je hijerarhijsko klasifikaciranje.
 Po njemu, sve ono što kategoriziramo mora biti u nekoj kategoriji.
 Svaka kategorija može imati podkategorije i svaka kategorija može imati najviše jednu nadkategoriju.
 Tako klasificiramo životinje, biljke, knjige u knjižnici.
 Dakle, postoji "stablo" kategorija i samo jedan čvor može biti "korijen" tog stabla.
 
 Za razliku od toga \emph{tag}iranje je slobodnije.
-Tagirati možete bilo što i stvari koje \emph{tag}iramo mogu imati proizvoljan broj \emph{tag}ova.
-Kad bi u knjižnicama \emph{tag}irali knjige, onda one na policama ne bi bilo podijeljene po kategorijama.
-Sve bi bile poredane po bilo kojem redosljedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio:
+\emph{Tag}irati možete bilo što i stvari koje \emph{tag}iramo mogu imati proizvoljan broj \emph{tag}ova.
+Kad bi u knjižnicama tako označavali knjige, onda one na policama ne bi bilo podijeljene po kategorijama.
+Sve bi bile poredane po nekom proizvoljnom redosljedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio:
 
 \begin{itemize}
-	\item Ključne riječi (iliti \emph{tag}ove. Na primjer, za neki roman s Sherlockom Holmesom kao glavnim likom, to bi bili "ubojstvo", "krimić", "detektiv", "ensleski", "sherlock\_homes", "watson", \dots
+	\item Ključne riječi (iliti \emph{tag}ovi). Na primjer, za neki roman s Sherlockom Holmesom kao glavnim likom, to bi bili "ubojstvo", "krimić", "detektiv", "engleski", "sherlock\_homes", "watson", \dots
 	\item Nekakav identifikator knjige (vjerojano ISBN).
 	\item Mjesto gdje se knjiga nalazi.
 \end{itemize}
 
 Kad bi pretraživali knjige, otišli bi na računalo i utipkali "krimić" i "detektiv" i on bi nam izbacio sve knjige koje imaju oba ta \emph{tag}a.
 Tu ne bi bili samo romani Artura Conana Doylea, našli bi se i romani Agathe Christie i mnogih drugih. 
-Što više \emph{tag}ova zadamo, to ćemo manje rezultata pretraživanja dobiti.
+Što više \emph{tag}ova zadamo, to će rezultati pretraživanja biti više specifični.
 Uz svaku knjigu bi pisalo na kojoj točno polici se ona nalazi.
 
 Kako mi ovdje radimo s poviješću projekata pa ćemo to i \emph{tag}irati.
@@ -38,9 +38,8 @@ Međutim, taj string je nama ljudima besmislen.
 
 Nama su smisleni komentari uz kod, međutim, ovi \textbf{komentari nisu jedinstveni}.
 Projekt možemo pretraživati po riječima iz komentara, ali nema smisla od gita tražiti "Daj mi stanje projekta kakvo je bilo u trenutku kad je komentar \emph{commit} a bio 'Ispravljen bug s izračunom kamate'".
-Jer, moglo se desiti da ste imali dva \emph{commit}a (ili više) s komentarom "Ispravljen bug s izračunom kamate".
+Jer, moglo se desiti da smo imali dva (ili više) \emph{commit}a s komentarom "Ispravljen bug s izračunom kamate".
 
-Zašto to uopće činimo?
 Sjećate li se priče o verzioniranju koda?
 Bilo je riječi o primjeru programera koji radi na programu i izdaje verzije \verb+1.0+, \verb+1.1+, \verb+2.0+, \verb+2.1+\dots svoje aplikacije:
 
@@ -62,4 +61,4 @@ S \verb+git tag <naziv_taga>+ dodajete novi tag:
 
 \gitoutputcommand{git tag -d testni-tag}
 
-Ima samo jedna komplikacija koja se može dogoditi u radu s udaljenim projektima, no o tome ćemo malo kasnije.
+Rad s tagovima je jednostavan, a ima samo jedna komplikacija koja se može dogoditi u radu s udaljenim projektima, no o tome ćemo malo kasnije.
