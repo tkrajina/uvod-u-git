@@ -419,42 +419,43 @@ U svakom slučaju, ukoliko ste ga i započeli, uvijek ga možete prekinuti s:
 
 Ima još jedna posebna vrsta \emph{merge}a, a nosi malo neobičan naziv \emph{cherry-pick}\footnote{Engleski: branje trešanja. U prenesenom značenju: ispričati priču samo sa onim detaljima koji su pripovjedaču važni. Iliti, izbjegavanje onih dijelova priče koje pripovjedač ne želi.}.
 
-Radi se o sljedećem, zamislite da imate dvije grane:
+Pretpostavimo da imamo dvije grane:
 
 \input{graphs/git_merge_1}
 
-U \verb+eksperimentalna-grana+ ste nappravili nekoliko izmjena i sve te izmjene \emph{nisu} još spremne da biste ih prebacili u \verb+master+.
+U \verb+eksperimentalna-grana+ smo napravili nekoliko izmjena i sve te izmjene \emph{nisu} još spremne da bismo ih prebacili u \verb+master+.
 
-Međutim, ima jedan \emph{commit} (recimo da je to \emph g) s kojim ste ispravili mali bug koji se manifestirao i u \verb+master+ grani.
+Međutim, ima jedan \emph{commit} (recimo da je to \emph g) s kojim smo ispravili mali bug koji se manifestirao i u \verb+master+ grani.
 Klasični \emph{merge} oblika:
 
 \input{graphs/git_merge_2}
 
-\dots{}ne dolazi u obzir, jer bi on u \verb+master+ prebacio i sve izmjene koje ste napravili u \emph d, \emph e, \emph f i \emph g.
+\dots{}ne dolazi u obzir, jer bi on u \verb+master+ prebacio i sve izmjene koje smo napravili u \emph d, \emph e, \emph f i \emph g.
 Mi želimo samo i isključivo \emph g.
 To se, naravno, može i to je (naravno) taj \emph{cherry-pick}.
 
-Postupak je sljedeći; prvo pogledajte povijest grane \verb+eksperimentalna-grana+:
+Postupak je sljedeći: prvo promotrimo povijest grane \verb+eksperimentalna-grana+:
 
 \input{git_output/git_log_za_cherry_pick}
 
 Kao što ste vjerojatno već primijetili, svaki \emph{commit} u povijesti ima neki čudan string kao \verb+5c843fbfb09382c272ae88315eea9d77ed699083+.
 Taj string jedinstveno određuje svaki \emph{commit} (više riječi o tome u posebnom poglavlju).
 
-Sad trebate naći takav identifikator za onaj commit kojeg želite prebaciti u \verb+master+. Recimo da je to \verb+2b9ef6d02e51a890d508413e83495c11184b37fb+.
+Sad trebamo naći takav identifikator za onaj commit kojeg želite prebaciti u \verb+master+. Recimo da je to \verb+2b9ef6d02e51a890d508413e83495c11184b37fb+.
 
-Prebacite se u granu u koju želite preuzeti samo izmjene it tog \emph{commit}a i utipkajte \verb+git cherry-pick <commit>+.
-Ako nema konflikata, rezultat će biti otprilike:
+Prebacimo se u granu u koju želimo preuzeti samo izmjene it tog \emph{commit}a i utipkajmo \verb+git cherry-pick <commit>+.
+Ako nema konflikata, rezultat će biti:
 
 \input{git_output/git_cherry_pick}
 
-\dots{}a, ako imate konflikata onda\dots
+\dots{}a, ako imamo konflikata onda\dots 
+To već znamo riješiti, nadam se.
 
 \section*{Merge bez \emph{commit}a}
 \addcontentsline{toc}{section}{Merge bez \emph{commit}a}
 
-Vratimo se open na klasični \emph{merge}.
-Ukoliko je prošao bez ikakvih problema, onda ćete nakon\dots
+Vratimo se opet na klasični \emph{merge}.
+Ukoliko je prošao bez ikakvih problema, onda ćemo nakon\dots
 
 \input{graphs/git_merge_2}
 
@@ -464,17 +465,19 @@ Ukoliko je prošao bez ikakvih problema, onda ćete nakon\dots
 
 Vratimo se opet na cijelu onu priču oko \emph{rebase}.
 Poanta cijele priče je bila u tome što, ako obrišemo granu, brišemo i cijelu njenu povijest.
-Ako se već odlučimo da ne želimo \emph{rebase} onda bi bilo lijepo u povijesti projekta umjesto \texttt{Merge branch 'eksperimentalna-grana'} imati smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
+Ako se već odlučimo da ne želimo \emph{rebase}, onda bi bilo lijepo u povijesti projekta umjesto \texttt{Merge branch 'eksperimentalna-grana'} imati smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
 Na taj način će, čak i ako granu obrišemo, ostati jedan commit u kojem je opisano što je taj \emph{merge} riješio.
 
-To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge} izvršimo s:
+To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge}, izvršimo s:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-commit}
 
 Na taj naćin če se \emph{merge} izvršiti, ali neće se sve \emph{commit}ati. 
-Sad vi možete spremiti sve izmjene i staviti neki svoj komentar.
+Sad mi sami možemo spremiti sve izmjene i staviti neki svoj komentar.
 
 Jedini detalj na kojeg treba pripaziti je što, ako je došlo do \emph{fast-forward} \emph{merge}anja, onda \verb+--no-commit+ nema efekta.
 Zato, a za svaki slučaj, je bolje koristiti sljedeću sintaksu:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
+
+Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjek \emph{commit}a možete uvijek ispraviti s \emph{amend commit}om.
