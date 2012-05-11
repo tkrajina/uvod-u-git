@@ -51,7 +51,7 @@ I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju
 \section*{Što merge radi kad\dots}
 \addcontentsline{toc}{section}{Što merge radi kad\dots}
 
-Vjerojatno se pitate što git radi s raznim kombinacijama. Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali, ili\dots
+Vjerojatno se pitate što git radi u raznim mogućim situacijama. Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali, ili\dots
 
 U principu, vjerujte mi, git najčešće napravi točno ono što treba. 
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
@@ -66,20 +66,20 @@ Uzmimo poznati slučaj:
 
 \input{graphs/git_merge_2}
 
-Dakle, što će biti rezultat \emph{merge}anja, ako ste\dots
+Dakle, što će biti rezultat \emph{merge}anja, ako\dots
 
 \begin{itemize}
-	\item \dots{}u eksperimentalnoj grani izmijenili datoteku, a u \verb+master+ niste -- izmjene iz eksperimentalne će se dodati u \verb+master+.
-	\item \dots{}u eksperimentalnoj grani dodali datoteku -- ta datoteka će biti dodana i u \verb+master+.
-	\item \dots{}u eksperimentalnoj grani izbrisali datoteku -- datoteka će biti obrisana u glavnoj.
-	\item \dots{}u eksperimentalnoj grani \textbf{izmijenili i preimenovali} datoteku, a u \verb+master+ ste samo izmijenili datoteku -- ako izmjene na kodu nisu bile \textbf{konfliktne}, onda će se u \verb+master+ datoteka preimenovati i sadržavati će izmjene iz obje grane.
-	\item \dots{}u eksperimentaloj grani obrisali datoteku, a u glavnoj ju izmijenili -- \textbf{konflikt}.
+	\item \dots{}u eksperimentalnoj grani smo izmijenili datoteku, a u \verb+master+ nismo -- izmjene iz eksperimentalne će se dodati u \verb+master+.
+	\item \dots{}u eksperimentalnoj grani smo dodali datoteku -- ta datoteka će biti dodana i u \verb+master+.
+	\item \dots{}u eksperimentalnoj grani smo izbrisali datoteku -- datoteka će biti obrisana u glavnoj.
+	\item \dots{}u eksperimentalnoj grani smo \textbf{izmijenili i preimenovali} datoteku, a u \verb+master+ ste samo izmijenili datoteku -- ako izmjene na kodu nisu bile \textbf{konfliktne}, onda će se u \verb+master+ datoteka preimenovati i sadržavati će izmjene iz obje grane.
+	\item \dots{}u eksperimentaloj grani smo obrisali datoteku, a u glavnoj ju izmijenili -- \textbf{konflikt}.
 	\item itd\dots
 \end{itemize}
 
 Vjerojatno slutite što znači ova riječ koja je ispisana masnim slovima: \textbf{konflikt}.
 Postoje slučajevi u kojima git ne zna što napraviti. 
-I tada se očekuje od korisnika da on riješi problem. 
+I tada se očekuje od korisnika da sam riješi problem. 
 Pokušati ću to ilustrirati tako da opišem jedan od gornjih slučajeva; što se desi kad\dots
 
 \section*{Što se desi kad\dots}
@@ -90,7 +90,7 @@ Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugo
 I što onda?
 
 Pokušat ću to ilustrirati na jednom jednostavnom primjeru\dots
-Uzmimo jedan malo vjerojatan scenarij; neka je Antun Branko Šimić još živ i piše pjesme, naravno.
+Uzmimo jedan malo vjerojatan scenarij; neka je Antun Branko Šimić još živ i piše pjesme.
 Napiše pjesmu, pa s njome nije baš zadovoljan, pa malo križa po papiru, pa izmijeni prvi stih, pa izmijeni zadnji stih.
 Ponekad mu se rezultat sviđa, ponekad ne.
 Ponekad krene iznova.
@@ -256,7 +256,7 @@ Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda 
 
 Kad radimo s nekim projektom, onda nam je uvijek važno da imamo sačuvanu povijest projekta.
 To nam omogućava da saznamo tko je originalni autor nekog koda kojeg možda slabije razumijemo.
-Ili želimo vidjeti kojim redosljedom je neka datoteka rasla.
+Ili želimo vidjeti kojim redosljedom je neka datoteka nastajala.
 
 Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
 Grananje i preuzimanje izmjena iz jedne u drugu granu je bilo komplicirano i rijetko se radilo. 
@@ -264,7 +264,7 @@ Posljedica je da su projekti \emph{uvijek} imali linearnu povijest.
 
 \input{graphs/linearni_model}
 
-S gitom, uvijek se tu nalaze mnoge grane.
+S gitom, često imamo po nekoliko grana.
 Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako organizacija projekta postaje veći izazov.
 I zato mnogi programeri grane koje više ne koriste brišu.
 
@@ -275,12 +275,12 @@ Pogledajte, na primjer, ovakav projekt:
 
 Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
 Kad bi obrisali \verb+eksperimentalna-grana+ -- izgubili bi cijelu povijest te grane.
-Sve međukorake kako je ona nastajala, sve bi nestalo.
+Sve međukorake kako je ona nastajala ($d$, $e$, $f$ i $g$), sve bi nestalo.
 
-Nekome to nije problem, ali desiti će vam se situacija da to ne želite.
-Drugim riječim, ne biste htjeli da imate previše grana (jer vam to otežava organizaciju projekta), a ne želite gubiti povijest nastajanja svake od tih grana.
-To se može riješiti nečime što se zove \verb+rebase+.
-No, da ti to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
+Nekome to nije problem, ali desiti će nam se situacija da to ne želimo.
+Drugim riječim, ne bismo htjeli da imamo previše grana (jer nam to otežava organizaciju projekta), a ne želimo gubiti povijest nastajanja svake od tih grana.
+To se može riješiti nečime što se zove \emph{rebase}.
+Da bi to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
 
 \section*{Fast forward}
 \addcontentsline{toc}{section}{Fast forward}
@@ -295,7 +295,7 @@ osnovna pretpostavka i smisao preuzimanja izmjena iz jedne grane u drugu je to �
 To su ove dvije crte u gornjem grafu.
 Dakle, sve to ima smisla u projektu koji ima nelinearnu povijest (više grana).
 
-No, postoji jedan poseban slučaj koji zahtijeva malo pojašnjenje.
+No, postoji jedan poseban slučaj koji zahtijeva pojašnjenje.
 Uzmimo da je povijest projekta bila slična gornjem grafu, ali s jednom malo izmjenom:
 
 \input{graphs/fast_forward}
@@ -304,10 +304,10 @@ Programer je napravio novu granu \verb+varijanta+ i na njoj je nastavio rad.
 I svo to vrijeme nije radio nikakve izmjene na \verb+master+.
 Što kad sad želi preuzeti sve izmjene u \verb+master+?
 
-Uočavate li š1to je ovdje neobično?
-Iako imamo dvije grane, \emph{smisao} \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u drugu.
-Međutim, iako ovdje imamo dvije grane, \textbf{one čine jednu crtu}. 
-Te dvije grane imaju jednu povijest. 
+Uočavate li što je ovdje neobično?
+Smisao \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u drugu.
+Međutim, iako ovdje imamo dvije grane, \textbf{te dvije grane čine jednu crtu}. 
+One imaju jednu povijest. 
 I to linearnu povijest.
 
 Tako su razmišljali i originalni autori gita.
@@ -322,7 +322,7 @@ U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto stan
 Dakle, doslovno kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu.
 Čak i ako sad obrišete \verb+varijanta+, cijela njega povijest se nalazi u \verb+master+.
 
-Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želite izbjeći -- to se radi tako da dodate opciju \verb+--no-ff+ naredbi \verb+git merge+:
+Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želimo izbjeći -- to se radi tako da dodate opciju \verb+--no-ff+ naredbi \verb+git merge+:
 
 \gitoutputcommand{git merge --no-ff varijanta}
 
