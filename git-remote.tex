@@ -106,7 +106,7 @@ I zato \verb+git clone+ ponekad može potrajati dosta dugo.
 Posebno ako imate sporu vezu.
 
 No, postoji trik.
-Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela njegova povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
+Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
@@ -131,14 +131,14 @@ Zbog toga, na primjer u sljedećoj situaciji:
 
 \input{graphs/digresija_o_grafovima_3}
 
-Trebamo si zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ kao da imamo jedan graf koji se granao u $e$. Jedino što se svaka grana nalazi u svom repozitoriju, a ne više u istom.
-Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je ovakav:
+Trebamo si zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u $e$. Jedino što se svaka grana nalazi u svom repozitoriju, a ne više u istom.
+Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je:
 
 \input{graphs/digresija_o_grafovima_4}
 
 Opisani odnos vrijedi i za \verb+master+ i \verb+origin/master+.
 
-U ilustracijama koje slijede, grafovi su prikazani kao zasebne "crte" samo zato što logički pripadaju nekakvim posebnim entitetima (repozitorijima).
+U ilustracijama koje slijede, grafovi su prikazani kao zasebne "crte" samo zato što logički pripadaju posebnim entitetima (repozitorijima).
 Međutim, oni \textbf{su samo posebne grane istog projekta} iako se nalaze na različitim lokacijama/računalima.
 
 \section*{Fetch}
