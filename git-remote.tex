@@ -144,8 +144,8 @@ Međutim, oni \textbf{su samo posebne grane istog projekta} iako se nalaze na ra
 \section*{Fetch}
 \addcontentsline{toc}{section}{Fetch}
 
-Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+.
-Stanje je sad ovakvo:
+Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+?
+Stanje bi bilo ovakvo:
 
 \input{graphs/origin_master_2}
 
@@ -156,8 +156,8 @@ To što je vlasnik udaljenog repozitorija dodao dva \emph{commit}a ($e$ i $f$) n
 Git je zamišljen kao sustav koji ne zahtijeva stalni pristup internetu.
 U većini operacija -- \textbf{od nas se očekuje da iniciramo interakciju s drugim repozitorijima}.
 Bez da mi pokrenemo neku radnju, git neće nikad kontaktirati udaljene repozitorije.
-Isto tako u drugom smjeru -- ni u jednoj situaciji neki drugi repozitorij ne može inicirati neki proces na našem repozitoriju.
-Najviše što što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da mi napravimo neku interakciju s njegovim repozitorijem.
+Slično, drugi repozitorij ne može našeg natjerati da osvježi svoju sliku (odnosno \verb+origin/+ grane).
+Najviše što što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da to učinimo.
 
 Kao što smo mi inicirali kloniranje, tako i mi moramo inicirati ažuriranje grane \verb+origin/master+.
 To se radi s \verb+git fetch+:
@@ -224,7 +224,8 @@ Nakon \verb+git fetch+, stanje je:
 
 Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
 U biti je to kao da imamom dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
-Ovo je, u biti, najobičniji \emph{merge} (koji će, eventualno, imati i neke konflikte. No, to već znamo riješiti).
+Ovo je, u biti, najobičniji \emph{merge} koji će, eventualno, imati i neke konflikte. 
+No, to već znamo riješiti.
 Rezultat \emph{merge}a je novi čvor $z$:
 
 \input{graphs/origin_master_2_4}
@@ -236,7 +237,7 @@ U prethodnom poglavlju smo opisali da je tipični redosljed naredbi koje ćemo i
 
 \gitoutputcommand{git fetch\\git merge origin/master}
 
-Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe htjeti skoro uvijek izvršiti.
+Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe skoro uvijek izvršiti u tom redosljedu.
 
 Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
 
@@ -261,11 +262,13 @@ Nakon toga smo \emph{commit}ali par izmjena\dots
 \input{graphs/push_2}
 
 \dots{}i sad bi htjeli te izmjene "prebaciti" na udaljeni repozitorij.
-Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih izmjena na udaljeni repozitorij ovisi o tome imate li ovlasti za to ili ne.
-Udaljeni repozitorij mora biti tako konfiguriran da biste to mogli činiti.
-Ukoliko nemate ovlasti, sve što možete napraviti je zamoliti njegovog vlasnika da pogleda vaše izmjene ($f$ i $g$) i da ih preuzme kod sebe.
+Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih izmjena na udaljeni repozitorij ovisi o tome imamo li ovlasti za to ili ne.
+\textbf{Udaljeni repozitorij mora biti tako konfiguriran da bismo mogli raditi} \verb+git push+.
 
-Ukoliko, ipak, imate ovlasti, onda je ono što trebate napraviti:
+Ukoliko nemamo ovlasti, sve što možemo napraviti je zamoliti njegovog vlasnika da pogleda naše izmjene ($f$ i $g$) i da ih preuzme kod sebe, ako mu odgovaraju.
+Taj process se zove \textbf{\emph{pull request}} iliti zahtjev za \emph{pull} s njegove strane.
+
+Ukoliko, ipak, imamo ovlasti, onda je ono što treba napraviti:
 
 \input{git_output/git_push_origin_master}
 
@@ -284,7 +287,7 @@ Kad pokušamo \verb+git push origin master+, dogoditi će se ovakvo nešto:
 \input{git_output/git_push_origin_master_rejected}
 
 Kod nas lokalno $e$ clijede $f$ i $g$, a na udaljenom repozitoriju $e$ slijede $x$ i $y$. 
-I git ovdje ne zna što točno napraviti, osim da mu netko pomogne.
+I git ovdje ne zna što točno napraviti, i traži da mu netko pomogne.
 Kao i do sada, pomoć se očekuje od nas, a tu radnju trebamo izvršiti na lokalnom repozitoriju.
 Tek onda ćemo moći \emph{push}ati na udaljeni.
 
@@ -313,13 +316,13 @@ Sad možemo uredno napraviti:
 
 \input{graphs/push_2_4}
 
-Iako vam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
+Iako nam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
 Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
 
 \subsection*{Push tagova}
 \addcontentsline{toc}{subsection}{Push tagova}
 
-Naredba \verb+git push origin master+ šalje na udaljeno (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
+Naredba \verb+git push origin master+ šalje na udaljeni (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
 Slično bi napravili s bilo kojom drugom granom, no ima još nešto što ponekad želimo s lokalnom repozitorija poslati na udaljeni.
 To su tagovi.
 
