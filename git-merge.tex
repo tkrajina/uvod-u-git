@@ -20,8 +20,8 @@ Rezultat spajanja bi bila samo jedna grana.
 No, \emph{merge}anjem dvije grane -- one nastavljaju svoj život. 
 Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzimaju u drugoj grani.
 
-\section*{Git merge}
-\addcontentsline{toc}{section}{Git merge}
+\section*{Git \emph{merge}}
+\addcontentsline{toc}{section}{Git \emph{merge}}
 
 Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želimo u \verb+master+. 
 To se radi s naredbom \verb+git merge+, a da bi to napravili kako \textbf{trebamo se nalaziti u onoj grani u koju želimo preuzeti izmjene} (u našem slučaju \verb+master+).
@@ -48,8 +48,8 @@ I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
-\section*{Što merge radi kad\dots}
-\addcontentsline{toc}{section}{Što merge radi kad\dots}
+\section*{Što \emph{merge} radi kad\dots}
+\addcontentsline{toc}{section}{Što \emph{merge} radi kad\dots}
 
 Vjerojatno se pitate što git radi u raznim mogućim situacijama. Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali, ili\dots
 
@@ -251,8 +251,8 @@ Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda 
 
 \gitgraphics{images/mergetool.png}
 
-\section*{Merge, branch i povijest projekta}
-\addcontentsline{toc}{section}{Merge, branch i povijest projekta}
+\section*{\emph{Merge}, \emph{branch} i povijest projekta}
+\addcontentsline{toc}{section}{\emph{Merge}, \emph{branch} i povijest projekta}
 
 Kad radimo s nekim projektom, onda nam je uvijek važno da imamo sačuvanu povijest projekta.
 To nam omogućava da saznamo tko je originalni autor nekog koda kojeg možda slabije razumijemo.
@@ -282,8 +282,8 @@ Drugim riječim, ne bismo htjeli da imamo previše grana (jer nam to otežava or
 To se može riješiti nečime što se zove \emph{rebase}.
 Da bi to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
 
-\section*{Fast forward}
-\addcontentsline{toc}{section}{Fast forward}
+\section*{\emph{Fast forward}}
+\addcontentsline{toc}{section}{\emph{Fast forward}}
 
 Nakon objašnjenja s prethodnih nekoliko stranica, trebalo bi biti jasno što će se desiti ako želimo preuzeti izmjene iz \verb+varijanta+ u \verb+master+ u projektu koji ima ovakvu povijest:
 
@@ -326,8 +326,8 @@ Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava
 
 \gitoutputcommand{git merge --no-ff varijanta}
 
-\section*{Rebase}
-\addcontentsline{toc}{section}{Rebase}
+\section*{\emph{Rebase}}
+\addcontentsline{toc}{section}{\emph{Rebase}}
 
 Idemo, još jednom, pogledati linearni model:
 
@@ -403,8 +403,8 @@ U boljem slučaju (sve automatski), rezultat će biti ovakav:
 
 Nakon toga, slobodni smo izvesti \emph{merge}, koji će u ovom slučaju sigurno biti \emph{fast-forward}, a to je upravo ono što smo htjeli.
 
-\section*{Rebase ili ne?}
-\addcontentsline{toc}{section}{Rebase ili ne?}
+\section*{\emph{Rebase} ili ne?}
+\addcontentsline{toc}{section}{\emph{Rebase} ili ne?}
 
 Rebase nije nužno raditi.
 Na vama je odluka želite li izmjene iz neke grane sačuvati u povijesti projekta ili prepustiti zaboravu (za trenutak kad i ako granu obrišete).
@@ -414,8 +414,8 @@ U svakom slučaju, ukoliko ste ga i započeli, uvijek ga možete prekinuti s:
 
 \gitoutputcommand{git rebase --abort}
 
-\section*{Cherry-pick}
-\addcontentsline{toc}{section}{Cherry-pick}
+\section*{\emph{Cherry-pick}}
+\addcontentsline{toc}{section}{\emph{Cherry-pick}}
 
 Ima još jedna posebna vrsta \emph{merge}a, a nosi malo neobičan naziv \emph{cherry-pick}\footnote{Engleski: branje trešanja. U prenesenom značenju: ispričati priču samo sa onim detaljima koji su pripovjedaču važni. Iliti, izbjegavanje onih dijelova priče koje pripovjedač ne želi.}.
 
