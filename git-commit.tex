@@ -1,7 +1,7 @@
 \chapter*{Spremanje izmjena}
 \addcontentsline{toc}{chapter}{Spremanje izmjena}
 
-Vratimo se na trenutak na naša dva primjera, linerani model verzioniranja koda:
+Vratimo se na trenutak na naša dva primjera, linearni model verzioniranja koda:
 
 \input{graphs/linearni_model}
 
@@ -10,15 +10,15 @@ Vratimo se na trenutak na naša dva primjera, linerani model verzioniranja koda:
 \input{graphs/primjer_s_granama_i_spajanjima}
 
 U oba slučaja, čvorovi tih grafova su stanje projekta u nekom trenutku.
-Na primjer, kad ste prvi put inicirali projekt s \verb+git init+, dodali ste nekoliko datoteka i \emph{spremili ih}. 
+Na primjer, kad smo prvi put inicirali projekt s \verb+git init+, dodali smo nekoliko datoteka i \emph{spremili ih}. 
 U tom trenutku je nastao čvor \emph a.
-Nakon toga ste možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali i opet -- spremili novo stanje i dobili stanje \emph b.
+Nakon toga smo možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali i opet -- spremili novo stanje i dobili stanje \emph b.
 
-To što ste radili između svaka dva stanja je vaša stvar.
-No, trenutak kad se odlučite spremiti novo stanje projekta u vaš repozitorij -- to je gitu jedino važno i to se zove \emph{commit}.
+To što smo radili između svaka dva stanja je naša stvar i ne tiče se gita\footnote{Neki sustavi za verzioniranje, kao na primjer TFS, zahtijevaju stalnu vezu na internet i serveru dojavljuju svaki put kad krenete editirati neku datoteku. Git nije takav.}.
+No, trenutak kad se odlučimo spremiti novo stanje projekta u naš repozitorij -- to je gitu jedino važno i to se zove \emph{commit}.
 
-Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a \emph{nikad ne commitate u udaljeni repozitorij}. 
-Svoje lokalne promjene \emph{commit}ate, odnosno \emph{spremate} u \emph{lokalni} repozitorij na vašem računalu.
+Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a \textbf{nikad ne commitamo u udaljeni repozitorij}. 
+Svoje lokalne promjene \emph{commit}amo, odnosno spremamo u \textbf{lokalni} repozitorij na našem računalu.
 Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozitorijima.
 
 \section*{Status}
