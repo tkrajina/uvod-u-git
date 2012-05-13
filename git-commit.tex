@@ -76,7 +76,11 @@ Na primjer, u trenutku pisanja ovog poglavlja, \verb+git status+ je\footnote{Da,
 \input{git_output/git_status_prije_indeksa}
 
 Ovaj ispis govori kako je jedna datoteka izmijenjena, ali nije još \emph{commit}ana niti stavljena u indeks.
-Idemo ju staviti u indeks s:
+
+\subsection*{Spremanje u indeks}
+\addcontentsline{toc}{subsection}{Spremanje u indeks}
+
+Datoteku možemo staviti u indeks s:
 
 \gitoutputcommand{git add git-commit.tex}
 
@@ -90,7 +94,10 @@ Primijetiti ćete dio u kojem piše, \texttt{Changes to be committed} -- e to je
 Ako vas to zbunjuje -- zamislite to kao da \textbf{u indeks ne stavljate u stvari datoteku nego neko njeno (izmijenjeno) stanje}.
 Kad ste datoteku obrisali -- u indeks treba spremiti novo stanje te datoteke ("izbrisano stanje").
 
-Dogoditi će se da smo neku datoteku stavili u indeks, ali smo se kasnije predomislili. 
+\subsection*{Micanje iz indeksa}
+\addcontentsline{toc}{subsection}{Micanje iz indeksa}
+
+Ako smo neku datoteku stavili u indeks i kasnije se predomislili. 
 Sad tu datoteku želimo izbaciti iz indeksa, ali bez da gubimo izmjene koje smo na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
 Ili ih jednostavno ne želimo u povijesti projekta (i datoteku ćemo resetirati na prethodno stanje).
 To se može naredbom:
@@ -107,6 +114,9 @@ To se može ovako:
 
 Više detalja o \verb+git checkout+ i zašto ta gornja naredba radi to što radi će biti kasnije.
 
+\subsection*{O indeksu i stanju datoteka}
+\addcontentsline{toc}{subsection}{O indeksu i stanju datoteka}
+
 Ima još jedan detalj koji bi vas mogao zbuniti. 
 Uzmimo situaciju da samo jednu datoteku izmijenili i spremili u indeks:
 
@@ -116,6 +126,23 @@ No, sad tu datoteku još jednom izmijenimo.
 Sad je stanje ovakvo:
 
 \input{git_output/git_status_nakon_indeksa_2}
+
+Sad tu datoteku imamo izmijenjenu i u radnoj verziji (direktorij kakav je trenutno na disku) i u indeksu.
+Ako vas to zbunjuje, upamtite: Indeks (i git općenito) ne sprema datoteke nego \textbf{stanja datoteka}.
+I, u tom smislu, nije ništa neobično da imamo jedno stanje datoteke u indeksu, a drugo stanje datoteke u radnoj verziji našeg projekta.
+
+Ukoliko sad želimo osvježiti indeks sa zadnjom verzijom datoteke (onu koja je, \emph{de facto} spremljena u direktoriju), onda ćemo jednostavno:
+
+\gitoutputcommand{git add $<$datoteka$>$}
+
+Dakle, ukratko, indeks je prostor u kojeg spremamo grupu datoteka (odnosno \textbf{stanja} datoteka).
+Takav skup datoteka treba predstavljati neku logičku cjelinu tako da bi ih mogli spremiti u repozitorij.
+To spremanje je jedan \emph{commit}, a tim postupkom smo grafu našeg repozitorija dodali još jedan čvor. 
+
+Prije \emph{commit}a datoteke možemo stavljati u indeks ili izbacivati iz indeksa.
+Sve dok nismo sigurni da indeks predstavlja točno one datoteke koje želimo u našoj izmjeni (\emph{commit}u).
+
+Razlika između tog, novog, čvora i njegovog prethodnika su upravo datoteke koje smo imali u indeksu u trenutku kad smo \emph{commit} izvršili.
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
