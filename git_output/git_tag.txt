@@ -1,7 +1,0 @@
-$ git tag
-pocetak-projekta
-1.0
-1.1
-test
-2.0
-2.1

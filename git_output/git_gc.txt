@@ -1,6 +1,0 @@
-$ git gc
-Counting objects: 1493, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (541/541), done.
-Writing objects: 100% (1493/1493), done.
-Total 1493 (delta 910), reused 1485 (delta 906)

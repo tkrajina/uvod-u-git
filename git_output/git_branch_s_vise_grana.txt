@@ -1,6 +1,0 @@
-$ git branch
-  api
-  development
-  editable-text-pages
-  less-compile
-* master

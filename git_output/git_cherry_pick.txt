@@ -1,5 +1,0 @@
-$ git cherry-pick 2b9ef6d02e51a890d508413e83495c11184b37fb
-[master aab1445] Commit...
- 2 files changed, 26 insertions(+), 0 deletions(-)
- create mode 100644 datoteka.txt
-

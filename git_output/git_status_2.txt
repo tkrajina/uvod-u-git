@@ -1,9 +1,0 @@
-$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD <file>..." to unstage)
-#
-#	modified:   README.md
-#	deleted:    TODO.txt
-#	modified:   setup.py
-#

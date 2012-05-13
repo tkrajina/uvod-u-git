@@ -5,8 +5,8 @@
 *.swo
 *.toc
 *.idx
-*.pdf
 tmp/*
 graphs/*
 git_output/*.tex
 current_commit.tex
+submodules/*

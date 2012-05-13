@@ -1,8 +1,0 @@
-$ git log master
-commit d013601dabdccc083b4d62f0f46b30b147c932c1
-Merge: aab1445 8be54a9
-Author: Tomo Krajina <tkrajina@gmail.com>
-Date:   Wed Apr 4 13:12:01 2012 +0200
-
-    Merge branch 'eksperimentalna-grana'
-

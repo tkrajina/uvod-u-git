@@ -1,2 +1,0 @@
-$ git config user.name "Ana Anić"
-$ git config user.email "ana.anic@poslodavac.hr"

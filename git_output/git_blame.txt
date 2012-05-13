@@ -1,9 +1,0 @@
-$ git blame __init__.py
-^96f3f2d graph.py               (Tomo Krajina 2012-03-01 21:55:16 +0100   1) #!/usr/bin/python
-^96f3f2d graph.py               (Tomo Krajina 2012-03-01 21:55:16 +0100   2) # -*- coding: utf-8 -*-
-^96f3f2d graph.py               (Tomo Krajina 2012-03-01 21:55:16 +0100   3) 
-^96f3f2d graph.py               (Tomo Krajina 2012-03-01 21:55:16 +0100   4) import logging as mod_logging
-^96f3f2d graph.py               (Tomo Krajina 2012-03-01 21:55:16 +0100   5) 
-356f62d9 cvgraphtex/__init__.py (Tomo Krajina 2012-03-03 06:13:44 +0100   6) ROW_COLUMN_SIZE = 400
-356f62d9 cvgraphtex/__init__.py (Tomo Krajina 2012-03-03 06:13:44 +0100   7) NODE_RADIUS = 100
-...

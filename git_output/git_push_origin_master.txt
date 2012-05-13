@@ -1,8 +1,0 @@
-$ git push origin master
-Counting objects: 11, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (9/9), done.
-Writing objects: 100% (9/9), 1.45 KiB, done.
-Total 9 (delta 6), reused 0 (delta 0)
-To git@github.com:tkrajina/uvod-u-git.git
-   0335d78..63ced90  master -> master

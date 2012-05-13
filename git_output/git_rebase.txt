@@ -1,4 +1,0 @@
-$ git rebase master
-First, rewinding head to replay your work on top of it...
-Applying: Prvi commit
-Applying: Drugi commit

@@ -1,3 +1,0 @@
-$ git add README.md
-$ git add TODO.txt
-$ git add setup.py

@@ -1,2 +1,0 @@
-$ git config --global user.name "Ana Anić"
-$ git config --global user.email "ana.anic@privatna.domena.com"

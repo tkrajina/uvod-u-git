@@ -1,5 +1,0 @@
-map <F1> :!pdflatex git.tex
-map <F2> :!python create_graphs.py
-map <F3> :!python create_git_outputs.py
-map <F4> :!evince git.pdf &
-map <F5> :!bin/clean

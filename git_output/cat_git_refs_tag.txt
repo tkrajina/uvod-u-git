@@ -1,2 +1,0 @@
-$ cat .git/refs/tags/test
-d100b59e6e4a0fd3c3720fdfbdcc0bd4a6ead307

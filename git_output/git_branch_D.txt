@@ -1,2 +1,0 @@
-$ git branch -D eksperimentalna-grana
-Deleted branch eksperimentalna-grana (was 1658442).

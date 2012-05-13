@@ -1,2 +1,0 @@
-$ git branch -D master
-error: Cannot delete the branch 'master' which you are currently on.
