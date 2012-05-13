@@ -1,3 +1,6 @@
+Uvod u git
+==========
+
 Kako pokrenuti cijelu skalameriju?
 ==================================
 
