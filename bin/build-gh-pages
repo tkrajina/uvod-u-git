@@ -1,0 +1,6 @@
+bin/build
+cp git.pdf /tmp
+git checkout gh-pages
+cp /tmp/git.pdf .
+git add git.pdf
+git commit --amend "git.pdf"
