@@ -151,7 +151,36 @@ Vraćanje na zadnju reviziju:
 
 \gitoutputcommand{hg update tip}
 
-\TODO Mranchanje i mergeanje
+Pregled svih trenutnih grana:
+
+\gitoutputcommand{hg branches}
+
+Kreiranje nove grane:
+
+\gitoutputcommand{hg branch nova\_grana}
+
+Grana će biti stvarno i stvorena tek nakon prvog \emph{commit}a.
+
+Jedna razlika između grana u mercurialu i gitu je što su u prvome grane permanentne.
+Grane mogu biti aktivne i neaktivne, ali u principu one ostaju u repozitoriju.
+
+Glavna grana (ono što je u gitu \verb+master+) je ovdje \verb+default+.
+
+Prebacivanje s grane na granu:
+
+\gitoutputcommand{hg checkout naziv\_grane}
+
+\emph{Merge}anje grana:
+
+\gitoutputcommand{hg merge naziv\_grane}
+
+Pomoć:
+
+\gitoutputcommand{hg help}
+
+Za objašnjenje mercurialove terminologije:
+
+\gitoutputcommand{hg help glossary}
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
