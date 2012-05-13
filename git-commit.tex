@@ -99,17 +99,6 @@ To se može naredbom:
 
 Nakon toga, izmjene treba \emph{commit}ati.
 
-Još jedan scenarij koji se često događa je sljedeći:
-Greškom ste u repozitorij spremili datoteku koja tamo ne treba biti. 
-Tu datoteku smo sad dodali u \verb+.gitignore+, ali ona je i dalje u repozitoriju.
-Ne želimo ju obrisati, ali ne želite ju ni u povijesti projekta.
-Neka je to, na primjer, \verb+test.pyc+:
-
-\gitoutputcommand{git rm --cached test.pyc}
-
-To će vam u indeks dodati kao da je datoteka obrisana, iako ju ostavlja netaknutu na disku.
-Budući da smo datoteku prethodno dodali u \verb+.gitignore+, git više neće nuditi da ju \emph{commit}amo.
-
 Događati će nam se da smo promijenili neku datoteku, no kasnije se ispostavilo da ta izmjena nije bila potrebna. 
 I sad ju ne želite spremiti nego vratiti u prethodno stanje.
 To se može ovako:
@@ -118,7 +107,15 @@ To se može ovako:
 
 Više detalja o \verb+git checkout+ i zašto ta gornja naredba radi to što radi će biti kasnije.
 
-\TODO Slučaj kad je datoteka i u indeksu i izmijenjena
+Ima još jedan detalj koji bi vas mogao zbuniti. 
+Uzmimo situaciju da samo jednu datoteku izmijenili i spremili u indeks:
+
+\input{git_output/git_status_nakon_indeksa}
+
+No, sad tu datoteku još jednom izmijenimo. 
+Sad je stanje ovakvo:
+
+\input{git_output/git_status_nakon_indeksa_2}
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
@@ -134,7 +131,7 @@ Sad je status projekta opet:
 
 \input{git_output/git_status_0}
 
-Kad ste napravili izmjene na projektu, a \emph{niste} ih još snimili, graf projekta izgleda ovako nekako:
+Kad smo napravili izmjene na projektu, a \emph{nismo} ih još snimili, graf projekta izgleda ovako nekako:
 
 \input{graphs/linearni_bez_zadnjeg_cvora}
 
@@ -142,6 +139,30 @@ Dakle, zadnji čvor nema "nasljednika".
 Tek kad napravite taj zadnji \emph{commit} vaše izmjene postaju dio repozitorija i tada je graf:
 
 \input{graphs/linearni_sa_zadnjim_cvorom}
+
+\subsection*{Datoteke koje želimo u repozitoriju}
+\addcontentsline{toc}{subsection}{Datoteke koje ne želimo u repozitoriju}
+
+Jedan scenarij koji se često događa je sljedeći:
+Greškom smo u repozitorij spremili datoteku koja tamo ne treba biti. 
+Međutim, tu datoteku ne želimo obrisati s našeg diska, nego samo ne želimo njenu povijest imati u repozitoriju.
+
+To je, na primjer, situacija kad nam editor ili IDE spremi konfiguracijske datoteke koje su njemu važne, ali nisu bitne za projekt.
+Eclipse tako zna snimiti \verb+.project+, a Vim sprema radne datoteke s ekstenzijama \verb+.swp+ ili \verb+.swo+.
+Ako smo takvu datoteku jednom dodali u repozitorij, a naknadno smo zaključili da ju više ne želimo, onda ju prvo trebamo dodati u \verb+.gitignore+.
+Nakon toga -- git zna da \textbf{ubuduće} neće biti potrebno snimati izmjene na njoj.
+
+No, ona je i dalje u repozitoriju!
+Ne želimo ju obrisati s diska, ali ne želimo ju ni u povijesti projekta.
+Neka je to, na primjer, \verb+test.pyc+.
+Postupak je:
+
+\gitoutputcommand{git rm --cached test.pyc}
+
+To će vam u indeks dodati kao da je datoteka obrisana, iako ju ostavlja netaknutu na disku.
+Sad tu izmjenu treba \emph{commit}ati
+
+Budući da smo datoteku prethodno dodali u \verb+.gitignore+, git nam ubuduće nuditi da ju \emph{commit}amo.
 
 \section*{Povijest projeka}
 \addcontentsline{toc}{section}{Povijest projeka}
