@@ -231,7 +231,15 @@ def graph_primjer_s_granama_i_spajanjima_6():
 
     return graph
 
-def graph_linearni_bez_zadnjeg_cvora():
+def graph_linearni_bez_zadnjeg_cvora_0():
+    graph = mod_graph.Graph()
+
+    graph.add_branch( mod_graph.Branch(
+            nodes = [ 'a', 'b', 'c' ] ) )
+
+    return graph
+
+def graph_linearni_bez_zadnjeg_cvora_1():
     graph = mod_graph.Graph()
 
     graph.add_branch( mod_graph.Branch(
