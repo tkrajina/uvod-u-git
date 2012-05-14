@@ -8,7 +8,7 @@ Instalacija gita je relativno jednostavna. Ukoliko ste na na nekom od linuxoidni
 Za sve ostale, postoje jednostavne instalacije, a svi linkovi su dostupni na službenim web stranicama\footnote{http://git-scm.com/download}.
 
 Važno je napomenuti da su to samo \emph{osnovni paketi}. 
-Oni će biti dovoljni za primjere koji slijede, no za mnoge specifične scenarije postoje dodaci s kojima se git naredbe "obogaćuju" i omogućavaju nove stvari.
+Oni će biti dovoljni za primjere koji slijede, no za mnoge specifične scenarije postoje dodaci s kojima se git naredbe "obogaćuju" i omogućuju nove stvari.
 
 \section*{Prvi git repozitorij}
 \addcontentsline{toc}{section}{Prvi git repozitorij}
@@ -18,13 +18,13 @@ Vjerojatno mislite i to da je sljedeći korak preuzeti taj projekt s tog udaljen
 Neki sustavi taj korak nazivaju \emph{checkout}, neki \emph{import}, a u gitu je to \emph{clone}, iliti kloniranje projekta.
 
 S gitom je jednostavnije. 
-\emph{Apsolutno svaki direktorij može postati git repozitorij.}
+\textbf{Apsolutno svaki direktorij može postati git repozitorij.}
 Ne mora \emph{uopće} postojati udaljeni server i neki centralni repozitorij kojeg koriste (i) ostali koji rade na projektu.
 Ako vam je to neobično, onda se spremite, jer stvar je još čudnija -- ako već postoji udaljeni repozitorij s kojeg preuzimate izmjene od drugih programera on ne mora biti jedan jedini.
 \textbf{Mogu postojati deseci takvih udaljenih repozitorija}, sami ćete odlučiti na koje ćete "slati" svoje izmjene i s kojih preuzimati izmjene.
 I vlasnici tih udaljenih repozitorija imaju istu slobodu kao i vi, mogu samo odlučiti čije izmjene će preuzimati kod sebe i kome slati svoje izmjene.
 
-Pomisliti ćete da je rezultat anarhija u kojoj se ne zna tko pije, tko plače i tko plaća. 
+Pomisliti ćete da je rezultat anarhija u kojoj se ne zna tko pije, tko plače, a tko plaća. 
 Nije tako.
 Stvari, uglavnom, funkcioniraju bez većih problema.
 
@@ -50,7 +50,7 @@ Općenito, git naredbe uvijek imaju sljedeći format:
 
 Izuzetak je pomoćni grafički program s kojim se može pregledavati povijest projekta, a koji dolazi u instalaciji s gitom -- \verb+gitk+.
 
-Za svaku git naredbu možete dobiti \emph{help} s:
+Za svaku git naredbu možemo dobiti \emph{help} s:
 
 \gitoutputcommand{
 git help $<$komanda$>$
@@ -92,7 +92,7 @@ S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 
 \input{git_output/git_config_3}
 
-\verb+merge.tool+ određuje koji će se program koristiti u slučaju da \emph{konflikta} (o tome više kasnije). Ja koristim \verb+gvimdiff+:
+\verb+merge.tool+ određuje koji će se program koristiti u slučaju do \textbf{konflikta} (o tome više kasnije). Ja koristim \verb+gvimdiff+:
 
 \input{git_output/git_config_4}
 
