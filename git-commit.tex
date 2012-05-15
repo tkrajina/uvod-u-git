@@ -9,7 +9,7 @@ Vratimo se na trenutak na naša dva primjera, linearni model verzioniranja koda:
 
 \input{graphs/primjer_s_granama_i_spajanjima}
 
-U oba slučaja, čvorovi tih grafova su stanje projekta u nekom trenutku.
+U oba slučaja, čvorovi grafova su stanja projekta u nekom trenutku.
 Na primjer, kad smo prvi put inicirali projekt s \verb+git init+, dodali smo nekoliko datoteka i \textbf{spremili ih}. 
 U tom trenutku je nastao čvor \emph a.
 Nakon toga smo možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali i opet -- spremili novo stanje i dobili stanje \emph b.
@@ -24,8 +24,8 @@ Interakcija s udaljenim repozitorijem će biti tema poglavlja o udaljenim repozi
 \section*{Status}
 \addcontentsline{toc}{section}{Status}
 
-Da bismo provjerili imamo li uopće nešto za spremati, koristi se naredba \verb+git status+.
-Na primjer, kad na projektu koji nema lokalnih izmjena za spremanje utipkate \verb+git status+, dobiti ćemo:
+Da bismo provjerili imamo li uopće nešto za spremiti, koristi se naredba \verb+git status+.
+Na primjer, kad na projektu koji nema lokalnih izmjena za spremanje utipkamo \verb+git status+, dobiti ćemo:
 
 \input{git_output/git_status_0}
 
@@ -37,20 +37,19 @@ Sad će rezultat od \verb+git status+ izgledati ovako:
 
 Najbitniji podatak su linija u kojima piše \verb+modified: README.tex+, jer to je datoteka koju smo \emph{mijenjali}, ali ne još \emph{commit}ali.
 
-Želimo li pogledati \emph{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \emph{zadnjoj verziji} repozitorija, to možemo dobiti s \verb+git diff+. 
+Želimo li pogledati \textbf{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \textbf{zadnjoj verziji} repozitorija, to možemo dobiti s \verb+git diff+. 
 Primjer jednog ispisa te naredbe je:
 
 \input{git_output/git_diff_1}
 
-Ako vam ovo izgleda zbunjujuće -- postoji i način kako da se to ljepše prikaže, no, čisto za vježbu, nije loše pokušati interpretirati ispis od \verb+git diff+.
-Najvažniji dijelovi su linije oni koji počinju si \verb+diff+, jer one govore o kojim datotekama se radi.
-Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \emph{oko} dijela koji je izmijenjen i onda ono najvažnije -- linije obojane u crveno i one obojane u plavo.
+Najvažniji dijelovi su linije koje počinju si \verb+diff+, jer one govore o kojim datotekama se radi.
+Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \textbf{oko} dijela koji je izmijenjen i onda ono najvažnije -- linije obojane u crveno i one obojane u plavo.
 
 Linije koje započinju s "-" (crvene) su linije koje su obrisane, a one koje počinju s "+" (u plavom) su one koje su dodane. 
-Primijetimo da git ne zna da ste neku liniju izmijenili. 
+Primijetite da git ne zna da smo neku liniju izmijenili. 
 Ukoliko jesmo -- on se ponaša kao da smo staru obrisali, a novu dodali.
 
-Rezultat \verb+diff+ naredbe su samo dijelovi koje ste izmijenili i nekoliko linija \emph{oko njih}.
+Rezultat \verb+diff+ naredbe su samo dijelovi koje smo izmijenili i nekoliko linija \textbf{oko njih}.
 Ukoliko želimo malo veću tu "okolinu" oko naših izmjena, možemo ju izmijeniti s opcijom \\ \verb+-U<broj_linija>+.
 Na primjer, ukoliko želimo $10$ linija oko izmjenjenih dijelova koda, to ćemo dobiti sa:
 
