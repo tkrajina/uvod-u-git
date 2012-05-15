@@ -24,7 +24,7 @@ Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzi
 \addcontentsline{toc}{section}{Git \emph{merge}}
 
 Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želimo u \verb+master+. 
-To se radi s naredbom \verb+git merge+, a da bi to napravili kako \textbf{trebamo se nalaziti u onoj grani u koju želimo preuzeti izmjene} (u našem slučaju \verb+master+).
+To se radi s naredbom \verb+git merge+, a da bi to napravili \textbf{trebamo se nalaziti u onoj grani u koju želimo preuzeti izmjene} (u našem slučaju \verb+master+).
 Tada:
 
 \input{git_output/git_merge_1}
@@ -33,11 +33,13 @@ Rezultat neredbe \verb+git merge+ ukratko opisan rezultat procesa preuzimanja iz
 
 Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
 Ne moramo "ručno" \emph{commit}ati.
-Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika" -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
 
 Grafički se \verb+git merge+ može prikazati ovako:
 
 \input{graphs/git_merge_2}
+
+Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika" -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
+Odnosno, na grafu čvor \emph d jedini ima dvije strelice koje idu "u njega".
 
 Kad smo preuzeli izmjene iz jednog grafa u drugi -- obje grane mogu uredno nastaviti svoj dosadašnji "život".
 U obje možemo uredno \emph{commit}ati, preuzimati izmjene iz jedne grane u drugu, i sl.

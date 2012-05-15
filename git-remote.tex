@@ -34,25 +34,30 @@ Na neke ćete slati svoje izmjene (ako imate ovlasti), a s nekih ćete izmjene p
 \section*{Kloniranje repozitorija}
 \addcontentsline{toc}{section}{Kloniranje repozitorija}
 
-Kloniranje je postupak kojim kopiramo cijeli repozitorij na nekoj udaljenoj lokaciji na naše lokalno računalo, a da bi onda s njime dalje nastavili raditi.
-U stvari, kopirati repozitorij je jednostavno, dovoljno je u neki direktorij kopirati \verb+.git+ direktorij drugog repzitorija i onda u njemu napraviti \verb+git checkout HEAD+.
+Kloniranje je postupak kojim kopiramo cijeli repozitorij s udaljene lokacije na naše lokalno računalo.
+S tako kloniranim repozitorijem možemo nastaviti rad kao s repozitorijem kojeg smo inicirali lokalno.
 
-Kloniranje je za nijansu drukčije.
+\textbf{Kopirati repozitorij} je jednostavno, dovoljno je u neki kopirati \verb+.git+ direktorij drugog repozitorija.
+I onda na novoj (kopiranoj) lokaciji izvršiti napraviti \verb+git checkout HEAD+.
+
+Pravo kloniranje je za nijansu drukčije.
 Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
+Klonirani repozitorij čuva informaciju o repozitoriju is kojeg je kloniran.
+Ta informacija će mu kasnije olakšati da u udaljeni repozitorij šalje svoje izmjene i da od njega preuzima izmjene.
 
-Postupak je jednostavan, ako znamo adresu (a moramo znati), onda\dots
+Postupak je jednostavan. Moramo znati adresu udaljenog repozitorija, i tada će nam git s naredbom\dots
 
 \input{git_output/git_clone}
 
-\dots{}\textbf{kopira cijeli projekt, zajedno sa cijelom poviješću} na naše računalo.
+\dots{}\textbf{kopirati projekt, zajedno sa cijelom poviješću} na naše računalo.
 I to u direktorij \verb+uvod-u-git+.
-Sad tu možemo gledati povijest, granati, \emph{commit}ati, \dots Raditi što god nas je volja s tim projektom.
+Sad u njemu možemo gledati povijest, granati, \emph{commit}ati, \dots Raditi što god nas je volja s tim projektom.
 
 Jasno, ne može bilo tko kasnije svoje izmjene poslati nazad na originalnu lokaciju. 
 Za to moramo imati ovlasti, ili moramo vlasnika tog repozitorija pitati je li voljan naše izmjene preuzeti kod sebe.
 O tome malo kasnije.
 
-E, i još nešto. Sjećate se kad sam napisao da su nazivi udaljenih repozitorija vaš slobodan izbor.
+E, i još nešto. Sjećate se kad sam napisao da su nazivi udaljenih repozitorija vaš slobodan izbor?
 Nisam baš bio $100\%$ iskren. 
 Kloniranje je izuzetak.
 Ukoliko kloniramo udaljeni repozitorij, on se za nas zove \verb+origin+.
@@ -66,7 +71,7 @@ Možda negdje na svijetu postoji još netko tko je klonirao taj isti repozitorij
 No, naš dio svijeta su samo ova dva s kojima direktno imamo posla. 
 Jedan je udaljeno kojeg smo klonirali, a drugi je lokalni koji se nalazi pred nama.
 
-Prije negoli počnemo s pričom o tome kako slati ili primati izmjene iz jednog repozitorija u drugi, trebamo nakratko spomenuti kakva je točno struktura lokalnog repozitorija.
+Prije nego li počnemo s pričom o tome kako slati ili primati izmjene iz jednog repozitorija u drugi, trebamo nakratko spomenuti kakva je točno struktura lokalnog repozitorija.
 Već znamo za naredbu \verb+git branch+, koja nam ispisuje spisak svih grana na našem repozitoriju.
 No, sad imamo posla i sa udaljenim repozitorijem -- njega smo klonirali.
 
@@ -116,13 +121,12 @@ Djelomično kloniranje je više zamišljeno da bismo skinuli kod nekog projekta 
 \section*{Digresija o grafovima, repozitorijima i granama}
 \addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
 
-Prije nego što nastavimo, napravio bih kratku digresiju koja je važna za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
-
-Za razumijevanje nastavka ovog poglavlja važno je shvatiti da je graf\dots
+Prije nego li nastavimo, napravio bih kratku digresiju koja je važna za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
+Graf:
 
 \input{graphs/digresija_o_grafovima_1}
 
-\dots{}ekvivalentan grafu\dots
+\dots{}je ekvivalentan grafu\dots
 
 \input{graphs/digresija_o_grafovima_2}
 
@@ -131,7 +135,7 @@ Zbog toga, na primjer u sljedećoj situaciji:
 
 \input{graphs/digresija_o_grafovima_3}
 
-Trebamo si zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u $e$. Jedino što se svaka grana nalazi u svom repozitoriju, a ne više u istom.
+Trebamo si ovdje zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u $e$. Jedino što se svaka grana nalazi u svom repozitoriju, a ne više u istom.
 Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je:
 
 \input{graphs/digresija_o_grafovima_4}
