@@ -58,8 +58,9 @@ Na primjer, ukoliko želimo $10$ linija oko izmjenjenih dijelova koda, to ćemo 
 \section*{Indeks}
 \addcontentsline{toc}{section}{Indeks}
 
-Iako često govorimo o tome kako ćemo "\emph{commit}ati datoteku" ili "staviti datoteku u indeks" ili\dots -- treba imati na umu da ne radi s datotekama nego sa stanjima (ili verzijama) datoteka.
+Iako često govorimo o tome kako ćemo "\emph{commit}ati datoteku" ili "staviti datoteku u indeks" ili\dots -- treba imati na umu da git ne čuva "datoteke" (kao nekakav apstraktni pojam) nego stanja, odnosno \textbf{verzije datoteka}.
 Dakle, za jednu te istu datoteku -- git čuva njena različita stanja.
+Mi datoteke u našem projektu mijenjamo, a sami odlučujemo u kojem trenutku su one u takvom stanju da bismo ih snimili.
 
 U gitu postoji poseban "međuprostor" u koji se "stavljaju" datoteke koje ćemo spremiti (\emph{commit}ati).
 U odnosu na taj indeks i repozitorij općenito, datoteka (odnosno neko njeno stanje) može biti:
@@ -94,8 +95,9 @@ Nju možemo staviti u indeks s:
 
 \input{git_output/git_status_nakon_indeksa}
 
-Primijetiti ćete dio u kojem piše, \verb+Changes to be committed+ -- e to je spisak datoteka koje ste stavili u indeks.
-Dakle, datoteku smo spremili u indeks i sad smo spremni za \emph{commit} ili možemo nastaviti dodavati druge datoteke s \verb+git add+ sve dok se ne odlučimo za snimanje.
+Primijetite dio u kojem piše, \verb+Changes to be committed+ -- e to je spisak datoteka koje smo stavili u indeks.
+
+Nakon što smo datoteku spremili u indeks -- spremni smo za \emph{commit} ili možemo nastaviti dodavati druge datoteke s \verb+git add+ sve dok se ne odlučimo za snimanje.
 
 Čak i ako smo datoteku \emph{obrisali} -- moramo ju dodati u indeks naredbom \verb+git add+.
 Ako vas to zbunjuje -- podsjetimo se da \textbf{u indeks ne stavljamo u stvari datoteku nego neko njeno (izmijenjeno) stanje}.
@@ -104,17 +106,14 @@ Kad smo datoteku obrisali -- u indeks treba spremiti novo stanje te datoteke ("i
 \subsection*{Micanje iz indeksa}
 \addcontentsline{toc}{subsection}{Micanje iz indeksa}
 
-Ako smo neku datoteku stavili u indeks i kasnije se predomislili. 
-Sad tu datoteku želimo izbaciti iz indeksa, ali bez da gubimo izmjene koje smo na njoj napravili jer će one biti dio nekog sljedećeg \emph{commit}a.
-Ili ih jednostavno ne želimo u povijesti projekta (i datoteku ćemo resetirati na prethodno stanje).
-To se može naredbom:
+Ako smo neku datoteku stavili u indeks i kasnije se predomislili -- lako ju maknemo iz indeksa naredbom:
 
 \gitoutputcommand{git reset HEAD -- <datoteka1> <datoteka2> \dots}
 
 Nakon toga, izmjene treba \emph{commit}ati.
 
-Događati će nam se da smo promijenili neku datoteku, no kasnije se ispostavilo da ta izmjena nije bila potrebna. 
-I sad ju ne želite spremiti nego vratiti u prethodno stanje.
+Događati će nam se da smo promijenili neku datoteku, no kasnije zaključimo da ta izmjena nije bila potrebna. 
+I sad ju ne želite spremiti nego vratiti u prethodno stanje -- odnosno točno onakvo stanje kakvo je u zadnjoj verziji repozitorija.
 To se može ovako:
 
 \gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
