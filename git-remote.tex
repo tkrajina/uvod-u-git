@@ -524,12 +524,61 @@ Naravno, to ne mora biti tako -- Puno češća situacija će biti da svaki udalj
 
 \input{git_output/git_branch_a_s_granama}
 
-\subsection*{Fetch, merge, pull i push s udaljenim repozitorijima}
-\addcontentsline{toc}{subsection}{Fetch, merge, pull i push s udaljenim repozitorijima}
+\subsection*{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
+\addcontentsline{toc}{subsection}{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
+
+\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima je potpuno isto kao i s \verb+origin+ repozitorijem.
+U stvari, rad s njime i nije ništa drugo nego rad s udaljenim repozitorijem, jedina specifičnost je što referencu na \verb+origin+ dobijem implicitno pri kloniranju.
+
+Recimo da nam je udaljeni repozitorij \verb+ivanov-repo+.
+\emph{Fetch} se radi ovako:
+
+\gitoutputcommand{git fetch ivanov-repo}
+
+Nakon što smo osvježili lokalne kopije grana u \verb+ivanov-repo+, \emph{merge} radimo:
+
+\gitoutputcommand{git merge ivanov-repo/master}
+
+\dots{}ili\dots
+
+\gitoutputcommand{git merge ivanov-repo/grana}
+
+\emph{Pull}:
+
+\gitoutputcommand{git pull ivanov-repo master}
+
+\dots{}ili\dots
+
+\gitoutputcommand{git pull ivanov-repo grana}
+
+\dots{}a \emph{push}:
+
+\gitoutputcommand{git push ivanov-repo master}
+
+\dots{}ili\dots
+
+\gitoutputcommand{git push ivanov-repo grana}
+
+Naravno, na Ivanovom repozitoriju moramo imati postavljene ovlasti da bi mogli te operacije raditi.
+
+Ukoliko s njegovog repozitorija možemo \emph{fetch}ati, a ne možemo na njega \emph{push}ati (dakle, pristup nam je \emph{read-only}) -- može se dogoditi ovakva situacija:
+Napravili smo izmjenu za koju mislimo da bi poboljšala aplikaciju koja je u Ivanovom repozitoriju.
+No, nemamo ovlasti \emph{push}ati.
+Htjeli bi Ivanu nekako dati do znanja da mi imamo nešto što bi njega zanimalo.
+
+Najbolje bi bilo da mu jednostavno pošaljemo adresu našeg git repozitorija i kratku poruku s objašnjenjem što smo točno izmijenili i prijedloogom da on te izmjene \emph{pull}a (ili \emph{fetch}a i \emph{merge}a) u svoj repozitorij.
+Napravimo li tako, upravo smo poslali \emph{pull request}.
+
+\section*{\emph{Pull request}}
+\addcontentsline{toc}{section}{\emph{Pull request}}
+
+\emph{Pull request} nije ništa drugo nego kratka poruka vlasniku nekog udaljenog repozitorija koja sadržava adresu \textbf{našeg} repozitorija, opis izmjena koje smo naapravili i prijedlog da on te izmjene preuzme u svoj repozitorij.
+
+Ukoliko koristite Github za svoje projekte -- tamo postoji vrlo jednostavan i potpuno automatizirani proces za \emph{pull request}e\footnote{Treba ovdje napomenuti da Linus Torvalds ima neke prigovore na Githubov \emph{pull request} proces.}.
+U suprotnom, trebate doslovno poslati email vlasniku repozitorija s porukom.
+Postoji i naredba (\verb+git request-pull+) koja priprema sve detalje izmjena koje ste napravili za tu poruku.
 
 \TODO "Bare" repozitorij
-
-\TODO Commit na udaljenu granu
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
