@@ -528,7 +528,9 @@ Naravno, to ne mora biti tako -- Puno češća situacija će biti da svaki udalj
 \addcontentsline{toc}{subsection}{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
 
 \emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima je potpuno isto kao i s \verb+origin+ repozitorijem.
-U stvari, rad s njime i nije ništa drugo nego rad s udaljenim repozitorijem, jedina specifičnost je što referencu na \verb+origin+ dobijem implicitno pri kloniranju.
+U stvari, rad s njime i nije ništa drugo nego rad s udaljenim repozitorijem. 
+Specifičnost je što u kloniranom repozitoriju možemo uvijek računati da imamo referencu na \verb+origin+ (dobijemo ju implicitno pri kloniranju), a druge udaljene repozitorije moramo "ručno" dodati s \verb+git remote add+.
+Idemo sad samo pobrojati naredbe za rad s njima\dots
 
 Recimo da nam je udaljeni repozitorij \verb+ivanov-repo+.
 \emph{Fetch} se radi ovako:
@@ -566,13 +568,13 @@ Napravili smo izmjenu za koju mislimo da bi poboljšala aplikaciju koja je u Iva
 No, nemamo ovlasti \emph{push}ati.
 Htjeli bi Ivanu nekako dati do znanja da mi imamo nešto što bi njega zanimalo.
 
-Najbolje bi bilo da mu jednostavno pošaljemo adresu našeg git repozitorija i kratku poruku s objašnjenjem što smo točno izmijenili i prijedloogom da on te izmjene \emph{pull}a (ili \emph{fetch}a i \emph{merge}a) u svoj repozitorij.
+Najbolje bi bilo da mu jednostavno pošaljemo adresu našeg git repozitorija i kratku poruku s objašnjenjem što smo točno izmijenili i prijedlogom da on te izmjene \emph{pull}a (ili \emph{fetch}a i \emph{merge}a) u svoj repozitorij.
 Napravimo li tako, upravo smo poslali \emph{pull request}.
 
 \section*{\emph{Pull request}}
 \addcontentsline{toc}{section}{\emph{Pull request}}
 
-\emph{Pull request} nije ništa drugo nego kratka poruka vlasniku nekog udaljenog repozitorija koja sadržava adresu \textbf{našeg} repozitorija, opis izmjena koje smo naapravili i prijedlog da on te izmjene preuzme u svoj repozitorij.
+\emph{Pull request} nije ništa drugo nego kratka poruka vlasniku nekog udaljenog repozitorija koja sadržava adresu \textbf{našeg} repozitorija, opis izmjena koje smo napravili i prijedlog da on te izmjene preuzme u svoj repozitorij.
 
 Ukoliko koristite Github za svoje projekte -- tamo postoji vrlo jednostavan i potpuno automatizirani proces za \emph{pull request}e\footnote{Treba ovdje napomenuti da Linus Torvalds ima neke prigovore na Githubov \emph{pull request} proces.}.
 U suprotnom, trebate doslovno poslati email vlasniku repozitorija s porukom.
