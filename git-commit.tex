@@ -106,6 +106,15 @@ Nakon što smo datoteku spremili u indeks -- spremni smo za \emph{commit} ili mo
 Ako vas to zbunjuje -- podsjetimo se da \textbf{u indeks ne stavljamo u stvari datoteku nego neko njeno (izmijenjeno) stanje}.
 Kad smo datoteku obrisali -- u indeks treba spremiti novo stanje te datoteke ("izbrisano stanje").
 
+\verb+git add+ ne moramo nužno koristiti s jednom datotekom.
+Ukoliko spremamo cijeli direktorij datoteka, možemo ga dodati s:
+
+\gitoutputcommand{git add naziv\_direktorija/*}
+
+Ili, ako želimo dodati apsolutno sve što se nalazi u našoj radnoj verziji:
+
+\gitoutputcommand{git add .}
+
 \subsection*{Micanje iz indeksa}
 \addcontentsline{toc}{subsection}{Micanje iz indeksa}
 
@@ -230,11 +239,13 @@ Na primjer, \\\verb+bf4fc495fc926050fb10260a6a9ae66c96aaf908+ je jedan takav.
 \section*{Ispravljanje zadnjeg \emph{commit}a}
 \addcontentsline{toc}{section}{Ispravljanje zadnjeg \emph{commit}a}
 
-Dogoditi će se da \emph{commit}ate neku izmjenu u repozitorij, a nakon toga shvatite da ste mogli još jednu sitnicu ispraviti.
-I, nekako vam se čini da bi bilo logično da ta sitnica bude dio prethodnog \emph{commit}a.
-Bilo bi lijepo, pomislit' ćete, kad biste mogli izmijeniti zadnji \emph{commit} tako da sadrži i ovu novu, sitnu, ispravku koju biste dodali.
+Meni se, prije gita, događalo da \emph{commit}am neku izmjenu u repozitorij, a nakon toga shvatim da sam mogao još jednu sitnicu ispraviti.
+I logično bi bilo da je ta "sitnica" dio prethodnog \emph{commit}a.
+No, \emph{commit} sam već napravio, i ne mogu ga sad naknadno ispraviti.
+Bilo bi lijepo kad bismo mogli izmijeniti zadnji \emph{commit} tako da sadrži neku novu sitnu ispravku.
 
-S gitom se to može.
+S gitom se to može i to vrlo jednostavno.
+
 Prvo učinimo tu izmjenu u radnoj verziji projekta. 
 Recimo da je to bilo na datoteci \verb+README.md+.
 Dodamo tu datoteku u indeks s \verb+git add README.md+ kao da se spremamo napraviti još jedan \emph{commit}.
@@ -253,7 +264,7 @@ Više o tome malo kasnije.
 \section*{Git gui}
 \addcontentsline{toc}{section}{Git gui}
 
-Kad spremamo neku izmjenu koja ima puno datoteka, onda može postati naporno non-stop tipkati \verb+git add+.
+Kad spremamo \emph{commit} s puno datoteka, onda može postati naporno non-stop tipkati \verb+git add+.
 Zbog toga postoji poseban grafički program kojemu je glavna namjena upravo to.
 U komandnoj liniji:
 
@@ -279,7 +290,7 @@ Nakon što odaberemo datoteke za koje želimo da budu dio našeg \emph{commit}a,
 
 Ovdje, kao i u radu s komandnom linijom ne moramo sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
 Možemo dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
-Drugim riječima, izmjene možete snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
+Drugim riječima, izmjene možemo snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
 
 S \verb+git gui+ imamo još jednu korisnu opciju -- možemo u indeks dodati \textbf{ne cijelu datoteku, nego samo nekoliko izmijenjenih linija} datoteke.
 Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želimo spremite, desni klik i:
