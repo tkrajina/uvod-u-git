@@ -18,11 +18,13 @@ Nekoliko je razloga zašto je to tako:
 	\item Linux kernel se razvijao na gitu, tako da je u svijetu otvorenog koga (\emph{open source}) git stekao nekakvu auru važnosti.
 \end{itemize}
 
+U nastavku ove knjige pozabaviti ćemo se osnovnim pojmovima verzioniranja koda općenito i načinom kako je sve to implementirano u gitu.
+
 \section*{Format ove knjige}
 \addcontentsline{toc}{section}{Format ove knjige}
 
 Ova knjiga nije zamišljena kao detaljan uvod u to kako git funkcionira i kao općeniti priručnik u kojem ćete tražiti riješenje svaki put kad negdje zapnete.
-Osnovna ideja mi je bila da se za svaku "radnju" s gitom opišem problem, ilustriram ga grafikonom, malo razradim teoriju, potkrijepim primjerima i onda opišem nekoliko osnovnih git naredbi koje se najčešće koriste.
+Osnovna ideja mi je bila da za svaku "radnju" s gitom opišem problem, ilustriram ga grafikonom, malo razradim teoriju, potkrijepim primjerima i onda opišem nekoliko osnovnih git naredbi koje se najčešće koriste.
 Uspijem li u tom naumu -- nakon što pročitate knjigu, trebali biste biti sposobni git koristiti u svakodnevnom radu. 
 
 Zapnete li, a odgovora ne nađete ovdje, pravac Stackoverflow\footnote{http://stackoverflow.com}, Google, 
@@ -34,11 +36,12 @@ forumi, blogovi i, naravno, \verb+git help+.
 Da biste uredno "probavili" ovaj knjižuljak, pretpostavljam da:
 
 \begin{itemize}
-	\item znate programirati u nekim programskom jeziku,
-	\item poznajete princip funkcioniranja klasičnih sustava za verzioniranje koda (CVS, SVN, ...),
+	\item znate programirati u nekom programskom jeziku ili barem imate dobru predodžbu o tome kakav je proces nastajanja i razvoja aplikacija,
 	\item ne bojite se komandne linije,
 	\item poznajete osnove rada s unixoidnim operativnim sustavima.
 \end{itemize}
+
+Poznavanje rada s klasičnim sustavima za verzioniranje koda (CVS, SVN, TFS, \dots) nije nužno.
 
 Nekoliko riječi o zadnje dvije stavke.
 Iako git nije nužno ograničen na unix/linux operativne sustave, njegovo komandnolinijsko sučelje je tamo nastalo i drži se istih principa.
@@ -52,19 +55,19 @@ Svjestan sam toga da ova knjižica vrvi greškama.
 Ja nisam profesionalan pisac, a ova knjiga nije prošla kroz ruke profesionalnog lektora.
 
 Grešaka ima i pomalo ih ispravljam.
-No, ako želite pomoći -- zahvalan sam vam.
+No, ako želite pomoći -- unaprijed sam zahvalan!
 Evo nekoliko načina kako to možete učniti:
 
 \begin{itemize}
     \item Pošaljite email na \verb+tkrajina@gmail.com+,
-    \item \emph{Twitt}nite na \verb+@puzz+,
-    \item \emph{Fork}ajte i pošaljite \emph{pull request} s ispravkom. Repozitorij s tekstom je na: \\ \verb+https://github.com/tkrajina/uvod-u-git+
+    \item \emph{Twitt}nite mi na \verb+@puzz+,
+    \item \emph{Fork}ajte i pošaljite \emph{pull request} s ispravkom. 
 \end{itemize}
 
 Ukoliko odaberete bilo koju varijantu osim zadnje (\emph{fork}) -- dovoljan je kratak opis s greškom (stranica, rečenica, redak) i šifra koja se nalazi na dnu naslovnice\footnote{Na primjer ono što piše \emph{Commit} b5af8ec79a7384a5a291d15d050fc932eb474e79. E, ovaj nerazumljivi dugi string meni olakšava traženje verzije za koju prijavljujete grešku.}.
 
-Ukoliko i uočite grešku, možda je ona već ispravljena u zadnjoj verziji. 
-Na \\ \verb+https://github.com/tkrajina/uvod-u-git+ uvijek možete naći zadnju verziju ove knjižice.
+Repozitorij s izvornim \LaTeX{} kodom knjige možete naći na adresi \\\verb+http://github.com/tkrajina/uvod-u-git+
+ a na istoj adresi se nalazi i najnovija verzija PDF-a.
 
 \section*{Naredbe i operativni sustavi}
 \addcontentsline{toc}{section}{Naredbe i operativni sustavi}
