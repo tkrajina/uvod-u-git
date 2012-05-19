@@ -92,7 +92,19 @@ Ako je sve prošlo bez problema, korištenje gita preko ssh će od sad na dalje 
 \addcontentsline{toc}{section}{Git pluginovi}
 
 Ukoliko vam se učini da je skup naredbi koje možemo dobiti s \verb+git <naredba>+ limitiran -- lako je dodati nove.
-Sve što trebate jer snimiti \TODO
+Recimo da trebamo naredbu \verb+git gladan-sam+\footnote{Irelevantno što bi ta naredba radila, ali daje naslutiti moje mentalno stanje u trenutku dok sam ovo pisao :)}.
+Sve što treba je snimiti negdje izvršivu datoteku \verb+git-gladan-sam+ i potruditi se da je dostupna u komandnoj liniji.
+
+Na unixoidnim računalima, to bi izgledalo ovako nekako:
+
+\gitoutputcommand{mkdir moj-git-plugin\\
+cd moj-git-plugin\\
+touch git-gladan-sam\\
+\# Tu bi sad trebalo editirati skriptu git-gladan-sam...\\
+chmod +x git-gladan-sam\\
+export PATH=\$PATH:\textasciitilde{}/moj-git-plugin}
+
+Ovu zadnju liniju ćete, vjerojatno, dodati u neku inicijalizacijsku skriptu (\verb+.bashrc+, isl.) tako da bude dostupna i nakon restarta računala.
 
 %\section*{Git workflow}
 %\addcontentsline{toc}{section}{Git workflow}
