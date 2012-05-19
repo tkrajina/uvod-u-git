@@ -145,8 +145,8 @@ Opisani odnos vrijedi i za \verb+master+ i \verb+origin/master+.
 U ilustracijama koje slijede, grafovi su prikazani kao zasebne "crte" samo zato što logički pripadaju posebnim entitetima (repozitorijima).
 Međutim, oni \textbf{su samo posebne grane istog projekta} iako se nalaze na različitim lokacijama/računalima.
 
-\section*{Fetch}
-\addcontentsline{toc}{section}{Fetch}
+\section*{\emph{Fetch}}
+\addcontentsline{toc}{section}{\emph{Fetch}}
 
 Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+?
 Stanje bi bilo ovakvo:
@@ -234,8 +234,8 @@ Rezultat \emph{merge}a je novi čvor $z$:
 
 \input{graphs/origin_master_2_4}
 
-\section*{Pull}
-\addcontentsline{toc}{section}{Pull}
+\section*{\emph{Pull}}
+\addcontentsline{toc}{section}{\emph{Pull}}
 
 U prethodnom poglavlju smo opisali da je tipični redosljed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
 
@@ -249,8 +249,8 @@ Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
 
 \verb+git pull+ je upravo kombinacija \verb+git fetch+ i \verb+git merge origin/master+.
 
-\section*{Push}
-\addcontentsline{toc}{section}{Push}
+\section*{\emph{Push}}
+\addcontentsline{toc}{section}{\emph{Push}}
 
 Sve što smo do sada radili s gitom su bile radnje koje smo mi radili na našem lokalnom repozitoriju.
 Čak i kloniranje je nešto što mi iniciramo i ničim nismo promijenili udaljeni repozitorij.
@@ -323,8 +323,8 @@ Sad možemo uredno napraviti:
 Iako nam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
 Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
 
-\subsection*{Push tagova}
-\addcontentsline{toc}{subsection}{Push tagova}
+\subsection*{\emph{Push} tagova}
+\addcontentsline{toc}{subsection}{\emph{Push} tagova}
 
 Naredba \verb+git push origin master+ šalje na udaljeni (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
 Slično bi napravili s bilo kojom drugom granom, no ima još nešto što ponekad želimo s lokalnom repozitorija poslati na udaljeni.
@@ -344,8 +344,8 @@ Ukoliko smo ga mi tada obrisali, nastati će komplikacija.
 
 Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 
-\subsection*{Rebase origin/master}
-\addcontentsline{toc}{subsection}{Rebase origin/master}
+\subsection*{\emph{Rebase} origin/master}
+\addcontentsline{toc}{subsection}{\emph{Rebase} origin/master}
 
 Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta -- i to se može s:
 
@@ -353,8 +353,8 @@ Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 
 Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
 
-\subsection*{Prisilan push}
-\addcontentsline{toc}{subsection}{Prisilan push}
+\subsection*{Prisilan \emph{push}}
+\addcontentsline{toc}{subsection}{Prisilan \emph{push}}
 
 Vratimo se na ovu situaciju:
 
@@ -447,8 +447,8 @@ Ukoliko želimo obrisati granu na udaljenom repozitoriju -- to radimo s posebnom
 
 Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
 
-\subsection*{Git push i \emph{tracking} grana}
-\addcontentsline{toc}{subsection}{Git push i \emph{tracking} grana}
+\subsection*{Git \emph{push} i \emph{tracking} grana}
+\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
 
 \TODO
 

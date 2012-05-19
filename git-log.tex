@@ -1,5 +1,4 @@
 \chapter*{Povijest}
-\addcontentsline{toc}{chapter}{Povijest}
 
 Već smo se poznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona zasigurno nije dovoljna za proučavanje povijesti projekta.
 Posebno s git projektima, čija povijest zna biti dosta kompleksna (puno grana, \emph{merge}anja, i sl.).
@@ -9,8 +8,8 @@ Sigurno će vam se ponekad desiti da želite vidjeti koje se se izmjene desile i
 
 U ovom poglavlju ćemo proći samo neke od često korištenih varijanti naredbi za proučavanje povijesti projekta.
 
-\section*{Diff}
-\addcontentsline{toc}{section}{Diff}
+\section*{\emph{Diff}}
+\addcontentsline{toc}{section}{\emph{Diff}}
 
 Važna naredba je i \verb+git diff+. 
 S njome provjeravate razlike između dva \emph{commit}a.
@@ -38,8 +37,8 @@ Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+
 
 \gitoutputcommand{git diff 974ef testna-grana}
 
-\section*{Log}
-\addcontentsline{toc}{section}{Log}
+\section*{\emph{Log}}
+\addcontentsline{toc}{section}{\emph{Log}}
 
 Standardno s \verb+git log <naziv_grane>+ će vam ispisati povijest te grane.
 Sad kad znamo da je grana u biti samo referenca na zadnji \emph{commit}, znamo i da bi bilo preciznije kazati da je ispravna sintaksa \verb+git log <referenca_na_commit>+.
@@ -86,15 +85,15 @@ Ako vam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc7447337
 
 \gitoutputcommand{git diff 76cf8 76cf8\textasciitilde{}1}
 
-\section*{Blame}
-\addcontentsline{toc}{section}{Blame}
+\section*{\emph{Blame}}
+\addcontentsline{toc}{section}{\emph{Blame}}
 
 S \verb+git blame <datoteka>+ ćete dobiti ispis datoteke s detaljima o tome \textbf{tko}, \textbf{kad} i u \textbf{kojem \emph{commit}u} je napravio svaku liniju u toj datoteci i \textbf{iz koje datoteke} je ta izmjena došla ovdje:
 
 \input{git_output/git_blame}
 
-\section*{Whatchanged}
-\addcontentsline{toc}{section}{Whatchanged}
+\section*{\emph{Whatchanged}}
+\addcontentsline{toc}{section}{\emph{Whatchanged}}
 
 Naredba \verb+git whatchanged+ je vrlo slična \verb+git log+, jedino što uz svaki \emph{commit} ispisuje i spisak svih datoteka koje su se tada promijenile:
 
@@ -137,8 +136,8 @@ Ništa lakše:
 
 \dots{}i za trenutak imate stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možete s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+.
 
-\section*{Reset}
-\addcontentsline{toc}{section}{Reset}
+\section*{\emph{Reset}}
+\addcontentsline{toc}{section}{\emph{Reset}}
 
 Uzmimo ovakav scenarij; radite na nekoj grani.
 U jednom trenutku stanje je ovakvo:
@@ -186,8 +185,8 @@ I to je upravo ono što git čini s \verb+git reset+:
 Iako su ovi čvorovi ovdje prikazani na grafu, git do njih nikad ne može doći.
 Da bi rekonstruirao svoj graf, on uvijek kreće od HEAD, dakle $f$, $g$, $h$ i $i$ su izgubljeni.
 
-\section*{Revert}
-\addcontentsline{toc}{section}{Revert}
+\section*{\emph{Revert}}
+\addcontentsline{toc}{section}{\emph{Revert}}
 
 Treba imati na umu jednu stvari -- \verb+git reset+ \textbf{mijenja povijest projekta retrogradno}.
 Svaki \emph{commit} mijenja povijest projekta, no on to čini tako da \textbf{dodaje na kraju grane}.
