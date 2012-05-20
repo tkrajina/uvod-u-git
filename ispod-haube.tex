@@ -8,17 +8,18 @@ Da kojim slučajem danas morate dizajnirati i implementirati sustav za verzionir
 Kako biste čuvali povijest svake datoteke?
 
 Prije nego što ste počeli koristiti takve sustave, vjerojatno ste radili sljedeće: kad bi zaključili da ste došli do nekog važnog stanja u projektu, kopirali bi cijeli projekt u direktorij naziva \verb+projekt_backup+ ili \verb+projekt_2012_04_05+ ili neko drugo slično ime.
-Rezultat je da ste imali gomilu sličnih "backup" projekata.
+Rezultat je da ste imali gomilu sličnih "backup" direktorija.
 Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}).
 
-I to je nekakvo verzioniranje koda, no puno toga nedostaje.
+I to je nekakvo verzioniranje koda, ali s puno nedostataka.
 
 Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tako da u svaki direktorij spremite datoteku naziva \verb+komentar.txt+.
 Nemate niti nekakav graf, odnosno redosljed kako su direktorij nastajali jedan iz drugog.
 I to bi se moglo riješit tako da u svakom direktoriju u nekoj posebnoj datoteci, npr. \verb+parents+ nabrojite nazive direktorija koji su "roditelji" trenutnom direktoriju.
 
 No, sve je to prilično neefikasno što se tiče diskovnog prostora. 
-Imate li u repozitoriju jednu datoteku veličine 100 kilobajta koju \emph{nikad} ne mijenjate, njena kopija će opet zauzimati 100 kilobajta u svakoj kopiji projekta.
+Imate li u repozitoriju jednu datoteku veličine 100 kilobajta koju \textbf{nikad} ne mijenjate, njena kopija će opet zauzimati 100 kilobajta u svakoj kopiji projekta.
+Čak i ako nije nikad mijenjana.
 To je gnjavaža.
 
 Zato bi možda bilo bolje da umjesto \textbf{kopije direktorija} za \emph{commit} napravimo novi u kojeg ćemo staviti \textbf{samo one datoteke koje su izmijenjene}.
@@ -29,7 +30,7 @@ S time bi se problem diskovnog prostora drastično smanjio.
 Rezultat bi mogli još malo poboljšati tako da datoteke kompresiramo.
 
 Još jedna varijanta bi bila da ne čuvate izmijenjene datoteke, nego samo izmijenjene linije koda.
-Tako bi, vaše datoteke, umjesto cijelog sadržaja imale nešto tipa "Peta linija izmijenjena iz 'def suma\_brojeva()' u 'def zbroj\_brojeva()'".
+Tako bi vaše datoteke, umjesto cijelog sadržaja, imale nešto tipa "Peta linija izmijenjena iz 'def suma\_brojeva()' u 'def zbroj\_brojeva()'".
 To su takozvane "delte".
 Još jedna varijanta bi bila da ne radite kopije direktorija, nego sve snimate u jednom tako da za svaku datoteku čuvate originalnu verziju i nakon toga (u istoj datoteci) dodajete delte.
 Onda će vam trebati nekakav pomoćni programčić kako iz povijesti izvući zadnju verziju bilo koje datoteke, jer on mora izračunati sve delte od početne verzije.
@@ -37,15 +38,19 @@ Onda će vam trebati nekakav pomoćni programčić kako iz povijesti izvući zad
 Sve te varijante imaju jedan suptilni, ali neugodan, problem.
 Problem konzistencije.
 
-Vratimo se na trenutak na ideju s kopiranjem direktorija sa izmijenjenim datotekama.
-Ako svaki direktorij sadrži samo izmijenjene datoteke, onda prvi direktorij mora sadržavati \emph{sve} datoteke.
+Vratimo se na trenutak na ideju s direktorijima sa izmijenjenim datotekama (deltama).
+Dakle, svaki novi direktorij sadrži samo datoteke koje su izmijenjene u odnosu na prethodni.
+
+Ako svaki direktorij sadrži samo izmijenjene datoteke, onda prvi direktorij mora sadržavati \textbf{sve} datoteke.
 Pretpostavite da imate jednu datoteku koja nije nikad izmijenjena od prve do zadnje verzije. 
 Ona će se nalaziti samo u prvom (originalnom) direktoriju.
 
 Što ako neki zlonamjernik upadne u vaš sustav i izmijeni takvu datoteku?
 Razmislimo malo, on je upravo izmijenio ne samo početno stanje takve datoteke nego je \textbf{promijenio cijelu njenu povijest}!
-Kad bi vi svoj sustav pitali "daj mi zadnju verziju projekta", on bi protrčao kroz sva stanja projekta i dao bi vam hakerovu varijantu.
+Kad bi vi svoj sustav pitali "daj mi zadnju verziju projekta", on bi protrčao kroz sva stanja projekta i dao bi vam "zlonamjernikovu" varijantu.
 Jeste li sigurni da bi primijetili podvaljenu datoteku?
+
+Možda biste kad bi se vaš projekt sastojao od dvije-tri datoteke, ali što ako se radi o stotinama ili tisućama?
 
 Riješenje je da je vaš sustav nekako dizajniran tako da sam prepoznaje takve izmijenjene datoteke. 
 Odnosno, da je tako dizajniran da, ako bilo tko promijeni nešto u povijesti -- sam sustav prepozna da nešto s njime ne valja.
@@ -54,11 +59,13 @@ Takav jedinstveni identifikator će se nalaziti u grafu projekta, i sljedeći \e
 
 Ukoliko bilo tko promijeni sadržaj nekog \emph{commit}a, onda on više neće odgovarati tom identifikatoru.
 Promijeni li i identifikator, onda graf više neće biti konzistentan -- sljedeći \emph{commit} će sadržavati identifikator koji više ne postoji.
-Dakle, haker bi trebao promijeniti sve \emph{commit}ove do zadnjeg. 
+Zlonamjernik bi trebao promijeniti sve \emph{commit}ove do zadnjeg. 
 U biti, trebao bi promijeniti previše stvari da bi mu cijeli poduhvat mogao proći nezapaženo.
 
 Još ako je naš sustav distribuiran (dakle i drugi korisnici imaju povijest cijelog projekta) onda mu je još teže -- jer tu radnju mora ponoviti na računalima svih ljudi koji imaju kopije.
 S distribuiranim sustavima, nitko nikad niti ne zna tko sve ima kopije.
+Svaka kopija repozitorija sadrži povijest projekta.
+Ukoliko netko zlonamjerno manipulira poviješću projekta na jednom repozitoriju -- to će se primijetiti kad se taj repozitorij "sinhronizira" s ostalima.
 
 Nakon ovog početnog razmatranja, idemo pogledati koje od tih ideja su programeri gita uzeli kad su krenuli dizajnirati svoj sustav.
 Krećimo s problemom konzistentnosti.
@@ -99,6 +106,8 @@ Osim SHA1 identifikatora git uz svaki \emph{commit} čuva i neke metapodatke kao
 Buduću da je svaki \emph{commit} SHA1 sadržaja projekta u nekom trenutku, kad bi netko htio neopaženo promijeniti povijest projekta, morao bi promijeniti i njegov SHA1 identifikator.
 No, onda mora promijeniti i SHA1 njegovog sljedbenika, i sljedbenika njegovog sljedbenika, i\dots
 
+Sve da je to i napravio na jednom repozitoriju -- tu radnju mora ponoviti na svim ostalim \textbf{distribuiranim} repozitorijima istog projekta.
+
 \section*{Grane}
 \addcontentsline{toc}{section}{Grane}
 
@@ -130,7 +139,7 @@ Zato \textbf{gitu grane i nisu ništa drugo neki reference na njihove zadnje \em
 \section*{Reference}
 \addcontentsline{toc}{section}{Reference}
 
-SHA1 stringovi su računalu praktični, no ljudima su mrvicu nezgodni za pamćenje :)
+SHA1 stringovi su računalu praktični, no ljudima su mrvicu nezgodni za pamćenje.
 Zbog toga git ima par zgodnih sitnica vezanih uz reference.
 
 Pogledajmo SHA1 string \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
