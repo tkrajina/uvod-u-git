@@ -112,12 +112,12 @@ def process_groups_and_rules(groups, rules):
 
     return result
 
-def execute_git_status_rules(string, type_rules):
+def execute_git_output_rules(string, type_rules):
     result = ''
     rules = [
-        ('^(\$\s*)(.*)$', (GRAY, BLACK)),
+        ('^(\$\s*)(.*)$', (GRAY, BLUE)),
         ('^(.*)$', (GRAY)),
-   ]
+    ]
     for rule in type_rules:
         rules.insert(0, rule)
     for line in string.split('\n'):
@@ -144,7 +144,7 @@ def to_latex(string):
             return """\\gitoutput{%
 \\noindent%
 \\texttt{%
-""" + execute_git_status_rules(string, rule.line_rules)[: -3] + '}}'
+""" + execute_git_output_rules(string, rule.line_rules)[: -3] + '}}'
     raise Exception('Unknown git output for {0}'.format(string))
 
 if __name__ == '__main__':
