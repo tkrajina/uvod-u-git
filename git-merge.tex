@@ -452,7 +452,7 @@ Ako nema konflikata, rezultat će biti:
 \dots{}a, ako imamo konflikata onda\dots 
 To već znamo riješiti, nadam se.
 
-\section*{Merge bez \emph{commit}a}
+\section*{Merge bez \emph{commit}a\footnote{Ovaj naslov se odnosi samo na starije git klijente.}}
 \addcontentsline{toc}{section}{Merge bez \emph{commit}a}
 
 Vratimo se opet na klasični \emph{merge}.
@@ -482,4 +482,17 @@ Zato, a za svaki slučaj, je bolje koristiti sljedeću sintaksu:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
 
-Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjeg \emph{commit}a možete uvijek ispraviti s \emph{amend commit}om.
+Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjeg \emph{commit}a možete ispraviti i s \emph{amend commit}om.
+
+\section*{\emph{Squash merge}}
+\addcontentsline{toc}{section}{\emph{Squash merge}}
+
+Još jedna ponekad korisna opcija kod \emph{merge}a je, takozvani \emph{squash merge}.
+Radi se o sljedećem, klasični \emph{merge} stvara commit kao $d$ u grafu:
+
+\input{graphs/git_merge_2}
+
+Čvor $d$ ima dva prethodnika: $q$ i $d$.
+Ukoliko želimo da $d$ \textbf{ima} izmjene iz grane \verb+eksperimentalna-grana+, ali \textbf{ne želimo} da $d$ ima referencu na tu granu, to se dobije s\footnote{Ne brinite se ako vam ne pada na pamet scenarij u kojem bi to moglo trebati. I meni nije do jutros :)}:
+
+\gitoutputcommand{git merge --squash eksperimentalna-grana}
