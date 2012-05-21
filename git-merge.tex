@@ -276,18 +276,17 @@ Pogledajte, na primjer, ovakav projekt:
 \input{graphs/git_merge_2}
 
 Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
-Kad bi obrisali \verb+eksperimentalna-grana+ -- izgubili bi cijelu povijest te grane.
-Sve međukorake kako je ona nastajala ($d$, $e$, $f$ i $g$), sve bi nestalo.
+Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu\footnote{Na primjer, ako koristimo git kao subversion ili tfs klijent. Da, i to se može!}.
+U tom slučaju -- sve međukorake kako je \verb+eksperimentalna-grana+ nastajala ($d$, $e$, $f$ i $g$), sve bi nestalo.
 
-Nekome to nije problem, ali desiti će nam se situacija da to ne želimo.
-Drugim riječim, ne bismo htjeli da imamo previše grana (jer nam to otežava organizaciju projekta), a ne želimo gubiti povijest nastajanja svake od tih grana.
+U nekim drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
 To se može riješiti nečime što se zove \emph{rebase}.
 Da bi to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
 
 \section*{\emph{Fast forward}}
 \addcontentsline{toc}{section}{\emph{Fast forward}}
 
-Nakon objašnjenja s prethodnih nekoliko stranica, trebalo bi biti jasno što će se desiti ako želimo preuzeti izmjene iz \verb+varijanta+ u \verb+master+ u projektu koji ima ovakvu povijest:
+Nakon objašnjenja s prethodnih nekoliko stranica, trebalo bi biti jasno što će se dogoditi ako želimo preuzeti izmjene iz \verb+varijanta+ u \verb+master+ u projektu koji ima ovakvu povijest:
 
 \input{graphs/bez_fast_forward}
 
@@ -465,10 +464,11 @@ Ukoliko je prošao bez ikakvih problema, onda ćemo nakon\dots
 
 \input{git_output/git_merge_log}
 
-Vratimo se opet na cijelu onu priču oko \emph{rebase}.
-Poanta cijele priče je bila u tome što, ako obrišemo granu, brišemo i cijelu njenu povijest.
-Ako se već odlučimo da ne želimo \emph{rebase}, onda bi bilo lijepo u povijesti projekta umjesto \texttt{Merge branch 'eksperimentalna-grana'} imati smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
-Na taj način će, čak i ako granu obrišemo, ostati jedan commit u kojem je opisano što je taj \emph{merge} riješio.
+Ukoliko koristite neku noviju verziju gita, onda će on kod nakon \emph{merge}a otvoriti editor i ponuditi vam da sami upišete poruku za taj \emph{commit}.
+No, ako niste na najnovijoj verziji\dots
+
+Ako se već odlučimo da ne želimo \emph{rebase} -- u povijesti ćemo imati puno grana i čvorova u kojima se one spajaju.
+Bilo bi lijepo u kad bi umjesto \texttt{Merge branch 'eksperimentalna-grana'} imati smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
 
 To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge}, izvršimo s:
 
@@ -482,4 +482,4 @@ Zato, a za svaki slučaj, je bolje koristiti sljedeću sintaksu:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
 
-Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjek \emph{commit}a možete uvijek ispraviti s \emph{amend commit}om.
+Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjeg \emph{commit}a možete uvijek ispraviti s \emph{amend commit}om.
