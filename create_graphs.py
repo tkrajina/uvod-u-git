@@ -1211,7 +1211,7 @@ def graph_origin_master_s_granama():
     graph.add_branch(origin_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'test',
+            label = 'grana',
             row = 2,
             branch_from = origin_master_branch.get_node(2),
             nodes = 'xyz'))
@@ -1223,7 +1223,7 @@ def graph_origin_master_s_granama():
     graph.add_branch(remote_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'test',
+            label = 'grana',
             row = 5,
             branch_from = remote_master_branch.get_node(2),
             nodes = 'xyz'))
@@ -1253,7 +1253,7 @@ def graph_origin_master_s_granama_2():
     graph.add_branch(master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'test',
+            label = 'grana',
             row = 1,
             branch_from = master_branch.get_node(2),
             nodes = 'xyz'))
@@ -1265,7 +1265,7 @@ def graph_origin_master_s_granama_2():
     graph.add_branch(origin_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'test',
+            label = 'grana',
             row = 3,
             branch_from = origin_master_branch.get_node(2),
             nodes = 'xyz'))
@@ -1277,7 +1277,7 @@ def graph_origin_master_s_granama_2():
     graph.add_branch(remote_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'test',
+            label = 'grana',
             row = 6,
             branch_from = remote_master_branch.get_node(2),
             nodes = 'xyz'))

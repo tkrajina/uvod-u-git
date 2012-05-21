@@ -395,7 +395,7 @@ Nakon \verb+git clone+ rezultat će biti:
 
 \input{graphs/origin_master_s_granama}
 
-Kloniranjem dobijamo samo kopiju lokalnog \verb+master+, dok se sve grane čuvaju pod \verb+origin/+. Dakle imamo \verb+origin/master+ i \verb+origin/test+.
+Kloniranjem dobijamo samo kopiju lokalnog \verb+master+, dok se sve grane čuvaju pod \verb+origin/+. Dakle imamo \verb+origin/master+ i \verb+origin/grana+.
 Da je bilo više grana u repozitoriju kojeg kloniramo, imali bi više ovih \verb+origin/+ grana.
 To lokalno možemo vidjeti s:
 
@@ -405,11 +405,11 @@ Već znamo da se možemo "prebaciti" s \verb+git checkout origin/master+, ali se
 Trebamo tu "\verb+remote+" granu granati u naš lokalni repozitorij i tek onda s njom počet raditi.
 Dakle, u našem testnom slučaju, napravili bi:
 
-\gitoutputcommand{git checkout origin/test\\
-git branch test\\
-git checkout test}
+\gitoutputcommand{git checkout origin/grana\\
+git branch grana\\
+git checkout grana}
 
-Zadnje dvije naredbe smo mogli skratiti u \verb+git checkout -b test+.
+Zadnje dvije naredbe smo mogli skratiti u \verb+git checkout -b grana+.
 
 Sad je stanje:
 
@@ -420,23 +420,21 @@ Sad je stanje:
 \input{git_output/git_branch_all_3}
 
 Sad u taj lokalni \verb+master+ možemo \emph{commit}ati koliko nas je volja.
-Kad ćemo htjeti poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radim s novom granom umjesto master.
+Kad se odlučimo poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radim s novom granom umjesto master.
 Dakle,
 
 \gitoutputcommand{git fetch}
 
-\dots{}za osvježavanje \textbf{i} \verb+origin/master+ i \verb+origin/test+.
+\dots{}za osvježavanje \textbf{i} \verb+origin/master+ i \verb+origin/grana+.
 Zatim\dots
 
-\gitoutputcommand{git merge origin/test}
+\gitoutputcommand{git merge origin/grana}
 
 I, na kraju\dots
 
-\gitoutputcommand{git push origin test}
+\gitoutputcommand{git push origin grana}
 
-\dots{}da bi svoje izmjene "poslali" u granu \verb+test+ udaljenong repozitorija.
-
-\TODO Zamijeniti naziv grane \verb+test+ u nešto smislenije
+\dots{}da bi svoje izmjene "poslali" u granu \verb+grana+ udaljenong repozitorija.
 
 \subsection*{Brisanje udaljene grane}
 \addcontentsline{toc}{subsection}{Brisanje udaljene grane}
@@ -447,10 +445,10 @@ Ukoliko želimo obrisati granu na udaljenom repozitoriju -- to radimo s posebnom
 
 Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
 
-\subsection*{Git \emph{push} i \emph{tracking} grana}
-\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
-
-\TODO
+%\subsection*{Git \emph{push} i \emph{tracking} grana}
+%\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
+%
+%\TODO
 
 \section*{Udaljeni repozitoriji}
 \addcontentsline{toc}{section}{Udaljeni repozitoriji}

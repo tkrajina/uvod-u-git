@@ -1,5 +1,4 @@
 $ git branch -a
 * master
   remotes/origin/master
-  remotes/origin/test
-
+  remotes/origin/grana
