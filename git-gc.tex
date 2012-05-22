@@ -9,8 +9,8 @@ No, nekoliko puta tjedno treba uzeti pola sata vremena i počistiti nered koji j
 Tako i s repozitorijem.
 Ima nekoliko stvari na koje bi trebali pripaziti.
 
-\subsection*{Grane}
-\addcontentsline{toc}{subsection}{Grane}
+\section*{Grane}
+\addcontentsline{toc}{section}{Grane}
 
 Nemojte si dopustiti da grane u vašem repozitoriju izgledaju ovako "zbrčkano":
 
@@ -36,8 +36,8 @@ I sad\dots
 Ako je prazno -- nema razlika i možemo brisati.
 Ako nije -- \textbf{ima} izmjena i sad se sami odlučite jesu li te izmjene nešto važno što ćete nastaviti razvijati ili nešto što možemo zanemariti i obrisati tu granu.
 
-\subsection*{Git gc}
-\addcontentsline{toc}{subsection}{Git gc}
+\section*{Git gc}
+\addcontentsline{toc}{section}{Git gc}
 
 Druga stvar koju se preporuča ima veze s onim našim \verb+.git/objects+ direktorijem kojeg smo spominjali u "Ispod haube" poglavlju.
 Kao što znamo, svaki \emph{commit} ima svoju referencu i svoj objekt (datoteku) u tom direktoriju.
@@ -68,3 +68,68 @@ Naredba je \verb+git gc+:
 
 Osim \verb+gc+, postoji još nekoliko sličnih naredbi kao \verb+git repack+, \verb+git prune+, no one su manje važne za početnika.
 Ako vas zanima -- \verb+git help+ je uvijek na dohvat ruke.
+
+\section*{Povijest i brisanje grana}
+\addcontentsline{toc}{section}{Povijest i brisanje grane}
+
+Spomenuti ćemo još jednu stvar koja bi logički pripadala u poglavlja o granama i povijesti, ali tada nismo imali dovoljno znanja da bi ju shvatili.
+
+Što se dešava s \emph{commit}ovima iz neke grane nakon što ju obrišemo?
+Uzmimo tri primjera.
+U sva tri imamo dvije grane: \verb+master+ i \verb+grana+.
+
+Prvi primjer:
+
+\input{graphs/git_merge_i_brisanje_grana_1}
+
+\textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće brisati} s \verb+git gc+.
+Kako znamo koji čvorovi su dio projekta?
+Po tome što imaju neku referencu na sebe.
+Ta referenca može biti ili grana ili neki drugi čvor.
+
+Podsjetimo se da su strelice redosljed nastajanja, ali reference idu suprotnim smjerom -- sljedbenik ima referencu na prethodnika.
+Dakle, $g$ ima referencu na $f$, $f$ na $e$, itd.
+Što je sa čvorom $g$? 
+Izgleda kao da nitko nema referencu na njega, ali to nije točno -- grana \verb+grana+ je referenca na njega.
+
+Ako obrišemo granu \verb+grana+ -- $g$ više nema nikoga da njega referencira.
+Teorijski bi ga mogli obrisati, ali onda bi mogli obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
+
+Dakle, kad obrišemo granu koja nije \emph{merge}ana u neku drugu granu, onda se svi njeni čvorovi gube iz povijesti projekta.
+I, prije ili kasnije će biti obrisatni s \verb+git gc+.
+
+Drugi primjer:
+
+\input{graphs/git_merge_i_brisanje_grana_2}
+
+Ovaj primjer je isti kao i prvi, s jednom razlikom. 
+Došlo je do \emph{merge}a.
+
+Znamo da grana nije ništa drugo nego referenca na njen zadnji čvor/\emph{commit}.
+Obrišemo li granu \verb+grana+, obrisali smo referencu na njen zadnji čvor $g$.
+No, i dalje imamo $q$ koji pokazuje na $g$.
+Zbog toga će svi čvorovi grane \verb+grana+ nakon njenog brisanja ostati u repozitoriju.
+
+Treći primjer:
+
+\input{graphs/git_merge_i_brisanje_grana_3}
+
+Ukoliko u ovom promjeru obrišemo \verb+grana+, postoji samo jedan njen čvor koji će biti zagubljen -- $g$.
+$z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
+
+\section*{\emph{Squash merge} i brisanje grana}
+\addcontentsline{toc}{section}{\emph{Squash merge} i brisanje grana}
+
+Uzmimo opet:
+
+\input{graphs/git_merge_i_brisanje_grana_4}
+
+Želimo li u povijesti projekta sačuvati izmjene iz neke grane, ali ne i njenu povijest -- to se može s \verb+git merge --squash+.
+Podsjetimo se -- tom operacijom git \textbf{hoće} preuzeti izmjene iz grane, ali \textbf{neće} u čvoru $q$ napraviti referencu na $g$.
+Dakle, rezultat je kao da kod klasičnog \emph{merge}a, ali bez reference (u prethodnom grafu crvenom bojom):
+
+\input{graphs/git_merge_i_brisanje_grana_5}
+
+Sad smo preuzeli izmjene iz \verb+grana+ u \verb+master+, ali \verb+git gc+ će prije ili kasnije obrisati $d$, $e$, $f$ i $g$.
+
+S \verb+git merge --squash+ cijelu granu svodimo na jedan \emph{commit} i kasnije gubimo njenu povijest\footnote{\dots{}barem ako ju kasnije ne \emph{merge}amo klasičnim putem.}.

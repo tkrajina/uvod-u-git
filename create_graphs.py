@@ -310,6 +310,87 @@ def graph_kreiranje_grane_4():
 
     return graph
 
+def graph_git_merge_i_brisanje_grana_1():
+    graph = mod_graph.Graph(column = 4)
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            nodes = 'abcxyzq'))
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'grana',
+            branch_from = graph.find_node('b'),
+            row = 1,
+            nodes = 'defg'))
+
+    return graph
+
+def graph_git_merge_i_brisanje_grana_2():
+    graph = mod_graph.Graph(column = 4)
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            nodes = 'abcxyzq'))
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'grana',
+            branch_from = graph.find_node('b'),
+            row = 1,
+            nodes = 'defg'))
+
+    graph.add_arrow('g', 'q', color = GRAY)
+
+    return graph
+
+def graph_git_merge_i_brisanje_grana_3():
+    graph = mod_graph.Graph(column = 4)
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            nodes = 'abcxyzq'))
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'grana',
+            branch_from = graph.find_node('b'),
+            row = 1,
+            nodes = 'defg'))
+
+    graph.add_arrow('f', 'z', color = GRAY)
+
+    return graph
+
+def graph_git_merge_i_brisanje_grana_4():
+    graph = mod_graph.Graph(column = 4)
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            nodes = 'abcxyzq'))
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'grana',
+            branch_from = graph.find_node('b'),
+            row = 1,
+            nodes = 'defg'))
+
+    graph.add_arrow('g', 'q', color = RED)
+
+    return graph
+
+def graph_git_merge_i_brisanje_grana_5():
+    graph = mod_graph.Graph(column = 4)
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            nodes = 'abcxyzq'))
+
+    graph.add_branch(mod_graph.Branch(
+            label = 'grana',
+            branch_from = graph.find_node('b'),
+            row = 1,
+            nodes = 'defg'))
+
+    return graph
+
 def graph_git_merge_1():
     graph = mod_graph.Graph(column = 6)
 
