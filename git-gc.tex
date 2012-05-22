@@ -84,8 +84,8 @@ Prvi primjer:
 
 \textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće brisati} s \verb+git gc+.
 Kako znamo koji čvorovi su dio projekta?
-Po tome što imaju neku referencu na sebe.
-Ta referenca može biti ili grana ili neki drugi čvor.
+Po tome što postoji netko tko ima referencu na njih.
+Ta referenca može biti ili grana ili neki drugi čvor ili \emph{tag}.
 
 Podsjetimo se da su strelice redosljed nastajanja, ali reference idu suprotnim smjerom -- sljedbenik ima referencu na prethodnika.
 Dakle, $g$ ima referencu na $f$, $f$ na $e$, itd.
@@ -114,7 +114,8 @@ Treći primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_3}
 
-Ukoliko u ovom promjeru obrišemo \verb+grana+, postoji samo jedan njen čvor koji će biti zagubljen -- $g$.
+Ukoliko u ovom promjeru obrišemo \verb+grana+, postoji samo jedan njen čvor koji će biti izgubljen -- $g$.
+Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$, dakle on prestaje biti dio povijesti našeg projekta.
 $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 
 \section*{\emph{Squash merge} i brisanje grana}
