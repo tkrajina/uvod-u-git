@@ -115,8 +115,8 @@ Razmislimo o još jednom detalju, uz poznati graf:
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
-Takve grafove matematičari zovu "usmjereni grafovi" jer su veze između čvorova usmjerene.
-To jest, veze između čvorova nisu obične relacije (crte) nego \textbf{usmjerene} relacije (strelice u jednom smjeru): $\vec{ab}$, $\vec{bc}$, itd.
+Takve grafove matematičari zovu "usmjereni grafovi" jer veze između čvorova imaju svoj smjer.
+To jest, veze između čvorova nisu obične relacije (crte) nego \textbf{usmjerene} relacije, odnosno strelice u jednom smjeru: $\vec{ab}$, $\vec{bc}$, itd.
 Znamo već da svaki čvor tog grafa predstavlja stanje nekog projekta, a svaka strelica neku izmjenu u novo stanje.
 
 Sad kad znamo ovo malo pozadine oko toga kako git interno pamti podatke, idemo korak dalje.
@@ -124,12 +124,12 @@ Prethodni graf ćemo ovaj put prikazati malo drukčije:
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima_suprotne_strelice}
 
-Sve strelice su ovdje usmjerene suprotno negoli u grafovima kakve smo do sada imali.
+Sve strelice su ovdje usmjerene suprotno nego što su bile u grafovima kakve smo do sada imali.
 Radi se o tome da git upravo tako i "pamti" veze između čvorova.
 Naime, čvor \emph h ima referencu na na \emph g, \emph g ima reference na \emph f i na \emph q, itd.
 Uočite da nam uopće nije potrebno znati da se grana \verb+novi-feature+ sastoji od \emph x, \emph y, \emph z, \emph q i \emph w.
 Dovoljan nam je $w$.
-Iz njega možemo, prateći reference "unazad" (suprotno od kronološkog reda nastajanja) doći sve do mjesta gdje je grana nastala.
+Iz njega možemo, prateći reference "unazad" (suprotno od redosljeda njihovog nastajanja) doći sve do mjesta gdje je grana nastala.
 Tako, na osnovu samo jednog čvora (\emph{commit}a) možemo saznati cijelu povijest neke grane.
 
 Analogno, dovoljno nam je imati samo reference na zadnje \emph{commit}ove svih grana u repozitoriju -- da bi mogli saznati povijest cijelog projekta.

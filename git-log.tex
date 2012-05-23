@@ -40,10 +40,11 @@ Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+
 \section*{\emph{Log}}
 \addcontentsline{toc}{section}{\emph{Log}}
 
-Standardno s \verb+git log <naziv_grane>+ će vam ispisati povijest te grane.
+Standardno s naredbom \verb+git log <naziv_grane>+ dobijemo kratak ispis povijesti te grane.
 Sad kad znamo da je grana u biti samo referenca na zadnji \emph{commit}, znamo i da bi bilo preciznije kazati da je ispravna sintaksa \verb+git log <referenca_na_commit>+.
-Za git nije previše bitno jeste li mu dali naziv grane ili referencu na \emph{commit}, on će jednostavno krenuti "unazad" po grafu i dati vam povijest koju na taj način nađe.
-Pa tako, ako želimo povijest trenutne grane, ali bez zadnjih pet unosa, pitati ćemo jednostavno:
+Za git nije previše bitno jeste li mu dali naziv grane ili referencu na \emph{commit} -- naziv grane je ionako samo alias za zadnji \emph{commit} u toj grani.
+Ukoliko mu damo neki proizvoljan \emph{commit}, on će jednostavno krenuti "unazad" po grafu i dati vam povijest koju na taj način nađe.
+Pa tako, ako želimo povijest trenutne grane, ali bez zadnjih pet unosa -- treba nam referenca na peti \emph{commit} unazad, a to možemo s:
 
 \gitoutputcommand{git log HEAD\textasciitilde{}5}
 
@@ -51,7 +52,8 @@ Ili, ako želimo povijest grane \verb+testna-grana+ bez zadnjih 10 unosa:
 
 \gitoutputcommand{git log testna-grana\textasciitilde{}10}
 
-Želimo li povijest sa \emph{samo} nekoliko zadjnih unosa, koristimo \verb+git log -n+ sintaksu:
+Želimo li povijest sa \emph{samo} nekoliko zadjnih unosa, koristimo \\\verb+git log -<broj_ispisa>+ sintaksu. 
+Na primjer, ako nam treba samo 10 rezultata iz povijesti:
 
 \gitoutputcommand{git log -10 testna-grana}
 
