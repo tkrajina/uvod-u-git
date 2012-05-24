@@ -578,7 +578,78 @@ Ukoliko koristite Github za svoje projekte -- tamo postoji vrlo jednostavan i po
 U suprotnom, trebate doslovno poslati email vlasniku repozitorija s porukom.
 Postoji i naredba (\verb+git request-pull+) koja priprema sve detalje izmjena koje ste napravili za tu poruku.
 
-\TODO "Bare" repozitorij
+\section*{\emph{Bare} repozitorij}
+\addcontentsline{toc}{section}{\emph{Bare} repozitorij}
+
+Jedan detalj kojeg nismo istraživali je: U kakve repozitorije smijemo \emph{push}ati? 
+Jedino što znamo je da udaljeni repozitorij treba tako biti konfiguriran da imamo \textbf{ovlast \emph{push}ati}, ali ima još jedan detalj kojeg treba spomenuti.
+
+Pretpostavimo da postoji Ivanov i naš repozitorij.
+Ivan ima svoju radnu verziju projekta koja je ista kao i zadnja verzija u njegovom repozitoriju.
+Isto je i s našim repozitorijem (dakle, i nama i njemu \verb+git status+ pokazuje nemamo lokalno nikakvih ne\emph{commit}anih izmjena).
+
+Sad recimo mi napravimo izmjenu, \emph{push}amo u Ivanov repozitorij i tako, a da on toga uopće nije svjestan, mijenjamo status radne verzije njegovog projekta.
+Njemu će se činiti kao da mu, u jednom trenutku \verb+git status+ kaže da nema nikakvih izmjena, a sekundu kasnije (bez da je išta editirao) -- \verb+git status+ kaže da je nešto promijenio.
+\verb+git status+, naime pokazuje razlike između radne verzije repozitorija i \textbf{zadnjeg \emph{commit}a} u repozitoriju.
+S našim \emph{push}em -- mi smo upravo promijenili taj zadnji \emph{commit} u njegovom repozitoriju.
+
+Git nam to neće dopustiti, a odgovoriti će dugom i kriptičnom porukom koja počinje ovako:
+
+\gitoutputcommand{remote: error: refusing to update checked out branch: refs/heads/master\\
+remote: error: By default, updating the current branch in a non-bare repository\\
+remote: error: is denied, because it will make the index and work tree inconsistent\\
+remote: error: with what you pushed, and will require 'git reset --hard' to match\\
+remote: error: the work tree to HEAD.}
+
+Ako malo razmislite, to izgleda kao kontradikcija sa cijelom pričom o udaljenim repozitorijima.
+Kako to da nam git ne da \emph{push}ati u nečiji repozitorij, čak i ako imamo ovlasti?
+Čemu onda uopće \emph{push}?
+
+Riješenje je sljedeće: postoji posebna vrsta repozitorija koji \textbf{nemaju radnu verziju projekta}.
+To jest, oni nisu nikad \emph{checkout}ani, a sadržavaju samo \verb+.git+ direktorij.
+I to je \emph{bare}\footnote{Engleski: gol. Npr. \emph{barefoot} -- bosonog.} repozitorij.
+Kod takvih -- čak i kad \emph{push}amo -- nećemo nikad promijeniti status radne verzije (ona je \textbf{uvijek} prazna i/ili irelevantna).
+
+Kako se to uklapa u priču da ponekad moramo \emph{push}ati u nečiji repozitorij?
+
+Jednostavno, svatko bi trebao imati svoj lokalni repozitorij na svom lokalnom računalu na kojeg \textbf{nitko ne smije \emph{push}ati}.
+Svatko bi trebao imati \textbf{svoj udaljeni repozitorij} na kojeg će onda \emph{push}ati svoje izmjene.
+Na tom udaljenom repozitoriju bi on mogao/trebao postaviti ovlasti drugim programerima u koje ima povjerenje da imaju ovlasti \emph{push}ati.
+
+Na taj način nitko nikada ne može promijeniti status lokalnog (radnog) repozitorija bez da je njegov vlasnik toga svjestan.
+No, to može na tom udaljenom repozitoriju, a onda vlasnik iz njega može \emph{fetch}ati, \emph{pull}ati i \emph{push}ati.
+
+\textbf{\emph{Bare} repozitorij je repozitorij koji je zamišljen da bude na nekom serveru, a ne da se na njemu direktno \emph{commit}a}.
+Drugim riječima, nisu svi direktoriji jednaki: 
+postoje oni lokalni na kojima programiramo i radimo stvari i postoje oni udaljeni (\emph{bare}) na koje \emph{push}amo i s kojih \emph{fetch}amo i \emph{pull}amo.
+
+Konvertirati neki repozitorij u \emph{bare} je jednostavno:
+
+\gitoutputcommand{git config --bool core.bare true}
+
+Jedan scenarij u kojem će nam ova komanda biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
+I nismo imali nikakvih drugih udaljenih repozitorija.
+U jednom trenutku se odlučimo da smo već dosta toga napisali i želimo imati sigurnosnu kopiju na nekom udaljenom računalu.
+Kreiramo tamo doslovnu kopiju našeg direktorija.
+Na lokalnom računalu napravimo:
+
+\gitoutputcommand{git remote add origin login@server:staza/do/repozitorija}
+
+Ovdje smo išli suprotnim putem -- nismo klonirali repozitorij i tako dobili referencu na \verb+origin+, nego smo lokalni repozitorij kopirali na udaljeno računalo i tek sada postavili da nam je \verb+origin+ taj udaljeni repozitorij.
+No, ako sada pokušamo \emph{push}ati svoj \verb+master+:
+
+\gitoutputcommand{git push origin master}
+
+Dobiti ćemo \textbf{onu} grešku:
+
+\gitoutputcommand{remote: error: refusing to update checked out branch: refs/heads/master\\
+...}
+
+Riješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom ili (još bolje) koristeći ssh.} i tamo izvršimo:
+
+\gitoutputcommand{git config --bool core.bare true}
+
+I to će gitu na udaljenom računalu reći "ovaj repozitorij je namijenjen da ljudi na njega \emph{push}aju i s njega \emph{pull}aju i \emph{fetch}aju -- dopusti im to!".
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
