@@ -404,16 +404,31 @@ U boljem slučaju (sve automatski), rezultat će biti ovakav:
 
 Nakon toga, slobodni smo izvesti \emph{merge}, koji će u ovom slučaju sigurno biti \emph{fast-forward}, a to je upravo ono što smo htjeli.
 
-\section*{\emph{Rebase} ili ne?}
-\addcontentsline{toc}{section}{\emph{Rebase} ili ne?}
-
-Rebase nije nužno raditi.
-Na vama je odluka želite li izmjene iz neke grane sačuvati u povijesti projekta ili prepustiti zaboravu (za trenutak kad i ako granu obrišete).
-
 Ponekad će vam se dogoditi da sam \emph{rebase} ima previše konflikata pa ćete odustati.
-U svakom slučaju, ukoliko ste ga i započeli, uvijek ga možete prekinuti s:
+U svakom slučaju, ukoliko ste ga i započeli, uvijek se može prekinuti s:
 
 \gitoutputcommand{git rebase --abort}
+
+\section*{\emph{Rebase} ili ne \emph{rebase}?}
+\addcontentsline{toc}{section}{\emph{Rebase} ili ne \emph{rebase}?}
+
+Rebase nije nužno raditi.
+Na vama je odluka želite li jednostavniju (linearnu) povijest projekta ili ne.
+
+Postoji jedan scenarij koji, kad se prepriča, izgleda malo čudno, a u kojem je \emph{rebase} nužan.
+To je \textbf{ako koristite git kao CVS, subversion ili TFS klijent}.
+Nećemo ovdje u detalje, ali recimo to ovako -- da, mogće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
+
+\emph{Commit}ovi koji su slika udaljenog repozitorija se, u takvim slučajevima, uvijek čuvaju u posebnoj grani.
+Dakle, jedna grana je doslovna kopija udaljenog CVS/subversion/TFS repozitorija.
+Tu granu možemo osvježavati s novim \emph{commit}ovima iz centralnog repozitorija.
+Za normalno korištenje vrlo važno je da prije bilo kakvog \emph{commit}anja na te sustave -- svoje izmjene preselimo \emph{ispred} postojećih \emph{commit}ova.
+
+Kad treba \emph{commit}ati naše izmjene -- sve što smo radili u drugim granama treba preseliti na vrh (ispred) onih u grani koja je kopija centralnog repozitorija.
+Taj postupak nije ništa drugo nego \emph{rebase}.
+Tek tada možemo \emph{commit}ati.
+
+S obzirom da centralizirani sustavi za verzioniranje više vole linearnu od razgranate povijesti -- moramo igrati po njihovim pravilima, a \emph{rebase} je jedini način da to učinimo.
 
 \section*{\emph{Cherry-pick}}
 \addcontentsline{toc}{section}{\emph{Cherry-pick}}
