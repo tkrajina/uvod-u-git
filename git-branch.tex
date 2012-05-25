@@ -8,7 +8,7 @@ Još jednom ćemo početi s ovim, već viđenim, grafom:
 Ovaj put s jednom izmjenom, svaka "grana" ima svoj naziv: \verb+novi-feature+, \\ \verb+ispravak-problema-x+ i \verb+master+.
 U uvodnom poglavlju je opisan jedan od mogućih scenarija koji je mogao dovesti do ovog grafa.
 Ono što je ovdje važno još jednom spomenuti je sljedeće; svaki čvor grafa je stanje projekta u nekom trenutku njegove povijesti. 
-Svaka strelica iz jednog u drugi čvor je izmjena koju je programer napravio i snimio u nadi da će ona dovesti do željenog ponašanja aplikacije.
+Svaka strelica iz jednog u drugi čvor je izmjena koju je programer napravio i snimio u nadi da će dovesti do željenog ponašanja aplikacije.
 
 \section*{Spisak grana projekta}
 \addcontentsline{toc}{section}{Spisak grana projekta}
@@ -53,6 +53,12 @@ Na primjer:
 Sad je novo stanje projekta:
 
 \input{graphs/kreiranje_grane_2}
+
+Sad imamo granu \verb+eksperimentalna-grana+, ali u njoj nemamo još ni jednog čvora (\emph{commit}a).
+U toj grani sad možemo raditi točno onako kako smo se do sada naučili raditi s \verb+master+ -- izmijenimo (dodamo, obrišemo) datoteke, spremimo ih u indeks s \verb+git add+ i \emph{commit}amo s \verb+git commit+.
+I, sad bi dobili da naša nova grana ima svoj prvi čvor: 
+
+\input{graphs/kreiranje_grane_2_1}
 
 \section*{Prebacivanje s grane na granu}
 \addcontentsline{toc}{section}{Prebacivanje s grane na granu}
