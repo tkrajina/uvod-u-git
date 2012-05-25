@@ -26,6 +26,37 @@ Nakon malo eksperimentiranja, rezultat je da sam sve pojmove koristio u izvornom
 
 Pa, (ne)kome krivo, a (ne)kome pravo\dots
 
+\section*{Spisak korištenih termina}
+\addcontentsline{toc}{section}{Spisak korištenih termina}
+
+Svi termini su objašnjeni u knjizi, ali ako se izgubite u šumi \emph{push}eva, \emph{merge}va i \emph{squash}eva -- evo kratak pregled:
+
+\begin{description}
+    \item[\emph{Bare} repozitorij] je repozitorij koji nije predviđen da ima radnu verziju projekta. Njegov smisao je da bude na nekom serveru i da se na njega može \emph{push}ati i s njega \emph{pull}ati i \emph{fetch}ati.
+    \item[\emph{Branch}] je grana.
+    \item[\emph{Cherry-pick}] je preuzimanje izmjena iz samo jednog \emph{commit}a druge grane.
+    \item[\emph{Commit}] je spremanje izmjena na projektu u sustav za verzioniranje.
+    \item[Čvor] je \emph{commit}, ali koristi se kad se povijest projekta prikazuje grafom.
+    \item[\emph{Diff}] je pregled izmjena između dva \emph{commit}a (ili dvije grane ili dva stanja iste grane).
+    \item[\emph{Fast-forward}] je proces koji se događa kad vršimo \emph{merge} dva grafa, pri čemu je zadnji čvor ciljne grana ujedno i točka grananja dva grafa.
+    \item[\emph{Fetch}] je preuzimanje izmjena (\emph{commit}ova) s udaljenog repozitorija na lokalni.
+    \item[\emph{Log}] je pregled izmjena koje su se desile između \emph{commit}ova u nekoj grani. Ili pregled izmjena između radne verzije i stanja u repozitoriju.
+    \item[Indeks] je "međuprostor" u kojeg spremamo izmjene prije nego što ih \emph{commit}amo.
+    \item[\emph{Pull}] je kombinacija \emph{fetch}a i \emph{merge}a. S njime se izmjene s udaljenog repozitorija preuzimaju u lokalnu granu.
+    \item[\emph{Pull request}] je zahtjev vlasniku udaljenog repozitorija (na kojeg nemamo ovlasti \emph{push}ati) da preuzme izmjene koje smo mi napravili.
+    \item[\emph{Push}] je "slanje" lokalnih \emph{commit}ova na udaljeni repozitorij.
+    \item[\emph{Radna verzija repozitorija}] je stanje direktorija našeg projekta. Ono može i ne mora biti jednako zadnjem snimljenom stanju u grani repozitorija u kojoj se trenutno nalazimo.
+    \item[\emph{Rebase}] je proces kojim točku grananja jednog grafa pomičemo na kraj drugog grafa.
+    \item[\emph{Referenca}] je informacija na osnovu koje možemo jedinstveno odrediti neki \emph{commit} ili granu ili \emph{tag}.
+    \item[\emph{Reset}] je vraćanje stanja repozitorija na neko stanje. I to \textbf{ne} privremeno vraćanje nego baš izmjenu povijesti repozitorija pri čemu se briše zadnjih nekoliko \emph{commit}ova iz povijesti.
+    \item[\emph{Revert}] je spremanje izmjene koja poništava izmjene snimljene u nekom prethodnom \emph{commit}u.
+    \item[Repozitorij] je projekt koji je snimljen u nekom sustavu za verzioniranje koda. Repozitorij sadržava cijelu povijest projekta.
+    \item[\emph{Staging area}] je sinonim za \textbf{indeks}.
+    \item[\emph{Squash merge}] je \emph{merge}, ali na način da novostvoreni čvor nema referencu na granu iz koje su izmjene preuzete.
+    \item[\emph{Tag}] je oznaka iliti imenovana referenca na neki \emph{commit}.
+%    \item[\emph{}] 
+\end{description}
+
 %\section*{}
 %\addcontentsline{toc}{section}{}
 
