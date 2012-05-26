@@ -364,31 +364,31 @@ Dakle, želimo li granu \verb+test+ "pomaknuti" na kraj grane \verb+master+, (to
 
 \gitoutputcommand{git rebase master}
 
-U idealnoj situaciji, git će znati riješiti sve probleme i ispis bi mogao izgledati ovako nekako:
+U idealnoj situaciji, git će znati riješiti sve probleme i rezultat naredbe će izgledati ovako:
 
 \input{git_output/git_rebase}
 
 Međutim, ovdje mogu nastati problemi slični klasičnom \emph{merge}u.
-Tako da će se češće dogoditi:
+Tako da će se ponekad dogoditi:
 
 \input{git_output/git_rebase_konflikt}
 
 Pogledate li datoteke, vidjeti ćete da je format konfliktne datoteke isti kao kod konflikta pri \emph{merge}u.
 I opet, od nas se očekuje da te konflikte riješimo.
-Bilo koristeći \verb+git mergetool+, bilo tako da editiramo datoteku i ispravimo je u željeno stanje. 
+Bilo koristeći \verb+git mergetool+, bilo tako da editiramo datoteku i ispravimo ju tako da dobijemo željeno stanje.
 
-Promotrimo još jednom grafički prikaz onoga što ovdje pokušavamo napraviti:
+Promotrimo još jednom grafički prikaz onoga što pokušavamo napraviti:
 
 \input{graphs/fast_forward_4}
 
-Naš cilj je preseliti \textcolor{gray}{sivi} tako da postane \textcolor{blue}{plavi}.
+Naš cilj je preseliti \textcolor{gray}{sivi} dio tako da postane \textcolor{blue}{plavi}.
 Drugim riječim, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
 I tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
 
 Git će automatski napraviti koliko može.
-No, kad dođe konflikt (kao što je u primjeru kojeg trenutno obrađujemo), to trebamo napraviti sami.
+No, kad nastane konflikt (kao što je u primjeru kojeg trenutno obrađujemo), to trebamo napraviti sami.
 
-Ako koristite \verb+mergetool+, to ćete izvesti\dots
+Ako koristimo \verb+mergetool+\dots
 
 \input{git_output/git_rebase_konflikt_mergetool}
 
@@ -398,14 +398,14 @@ Nakon toga:
 \gitoutputcommand{git rebase --continue}
 
 Ponekad će git znati izvršiti ostatak procesa automatski, a može se dogoditi i da ne zna i opet od nas traži da ispravimo sljedeći konflikt.
-U boljem slučaju (sve automatski), rezultat će biti ovakav:
+U boljem slučaju (sve automatski), rezultat će biti:
 
 \input{git_output/git_rebase_konflikt_continue}
 
 Nakon toga, slobodni smo izvesti \emph{merge}, koji će u ovom slučaju sigurno biti \emph{fast-forward}, a to je upravo ono što smo htjeli.
 
-Ponekad će vam se dogoditi da sam \emph{rebase} ima previše konflikata pa ćete odustati.
-U svakom slučaju, ukoliko ste ga i započeli, uvijek se može prekinuti s:
+Ako \emph{rebase} ima previše konflikata -- možda se odlučimo odustati od nastavka.
+Prekid \emph{rebase}a i vraćanje repozitorija u stanje prije nego što smo ga pokrenuli možemo obaviti s:
 
 \gitoutputcommand{git rebase --abort}
 
@@ -417,16 +417,15 @@ Na vama je odluka želite li jednostavniju (linearnu) povijest projekta ili ne.
 
 Postoji jedan scenarij koji, kad se prepriča, izgleda malo čudno, a u kojem je \emph{rebase} nužan.
 To je \textbf{ako koristite git kao CVS, subversion ili TFS klijent}.
-Nećemo ovdje u detalje, ali recimo to ovako -- da, mogće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
+Nećemo ovdje u detalje, ali recimo to ovako -- da, moguće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
 
 \emph{Commit}ovi koji su slika udaljenog repozitorija se, u takvim slučajevima, uvijek čuvaju u posebnoj grani.
 Dakle, jedna grana je doslovna kopija udaljenog CVS/subversion/TFS repozitorija.
 Tu granu možemo osvježavati s novim \emph{commit}ovima iz centralnog repozitorija.
-Za normalno korištenje vrlo važno je da prije bilo kakvog \emph{commit}anja na te sustave -- svoje izmjene preselimo \emph{ispred} postojećih \emph{commit}ova.
 
 Kad treba \emph{commit}ati naše izmjene -- sve što smo radili u drugim granama treba preseliti na vrh (ispred) onih u grani koja je kopija centralnog repozitorija.
-Taj postupak nije ništa drugo nego \emph{rebase}.
 Tek tada možemo \emph{commit}ati.
+Taj postupak nije ništa drugo nego \emph{rebase}.
 
 S obzirom da centralizirani sustavi za verzioniranje više vole linearnu od razgranate povijesti -- moramo igrati po njihovim pravilima, a \emph{rebase} je jedini način da to učinimo.
 
