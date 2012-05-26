@@ -2,34 +2,34 @@
 \addcontentsline{toc}{chapter}{Udaljeni repozitoriji}
 
 Sve ono što smo do sada proučavali smo radili isključivo na lokalnom repozitoriju.
-Samo smo spomenuli da je git distribuirani sustav za verzioniranje koda, složiti ćete se da je već krajnje vrijeme da krenemo pomalo obrađivati interakciju s udaljenim repozitorijima.
+Samo smo spomenuli da je git distribuirani sustav za verzioniranje koda. 
+Složiti ćete se da je već krajnje vrijeme da krenemo pomalo obrađivati interakciju s udaljenim repozitorijima.
 
 Postoji puno scenarija kako može funkcionirati ta interakcija.
 Koncentrirajmo se sada na sam trenutak kad repozitorij "dođe" ili "nastane" na našem lokalnom računalu.
 Moguće je da smo ga stvorili od nule s \verb+git init+, na način kako smo to radili do sada i onda, na neki način, "poslali" na neku udaljenu lokaciju.
 Ili smo takav repozitorij ponudili drugim ljudima da ga preuzmu (kloniraju).
 
-No, moguće je i da smo saznali za neki već postojeći repozitorij, negdje na internetu, i sad želimo i mi preuzeti taj kod.
+Moguće je i da smo saznali za neki već postojeći repozitorij, negdje na internetu, i sad želimo i mi preuzeti taj kod.
 Bilo da je to zato što želimo pomoći u razvoju ili samo proučiti nečiji kod.
-Krenimo s prvim tipičnim scenarijem\dots
 
 \section*{Naziv i adresa repozitorija}
 \addcontentsline{toc}{section}{Naziv i adresa repozitorija}
 
 Prvu stvar koju ćemo obraditi je kloniranje udaljenog repozitorija.
-No, ima prije toga jedna sitnica koju trebamo znati.
+Ima prije toga jedna sitnica koju trebamo znati.
 Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
 
 Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njega andresa.
 Github\footnote{Web servis koji omogućava da držite svoje git repozitorije} omogućava da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
 Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
 
-Nadalje, svaki udaljeni repozitorij ima i svoje kratko ime.
-Nešto kao: \verb+origin+ ili \\ \verb+vanjin-repozitorij+ ili \verb+slobodan+ ili \verb+dalenov-repo+.
-Nazivi su vaš slobodan izbor. 
-Tako, ako vas četvero radi na istom projektu, njihove udaljene repozitorije možete nazvati \verb+marina+, \verb+ivan+, \verb+karla+.
-I sa svakim od njih možete imati nekakvu vrstu interakcije. 
-Na neke ćete slati svoje izmjene (ako imate ovlasti), a s nekih ćete izmjene preuzimati u svoj repozitorij.
+Dalje, svaki udaljeni repozitorij s kojime namjeravamo imati posla mora imati i svoje kratko ime.
+Nešto kao: \verb+origin+ ili \verb+vanjin-repozitorij+ ili \verb+slobodan+ ili \verb+dalenov-repo+.
+Nazivi su naš slobodan izbor. 
+Tako, ako nas četvero radi na istom projektu, njihove udaljene repozitorije možemo nazvati \verb+marina+, \verb+ivan+, \verb+karla+.
+I sa svakim od njih možemo imati nekakvu interakciju. 
+Na neke ćemo slati svoje izmjene (ako imamo ovlasti), a s nekih ćemo izmjene preuzimati u svoj repozitorij.
 
 \section*{Kloniranje repozitorija}
 \addcontentsline{toc}{section}{Kloniranje repozitorija}
