@@ -234,11 +234,17 @@ Ukoliko to i pokušamo, git će javiti grešku i tražiti nas da mu samo damo do
 \section*{Gitk}
 \addcontentsline{toc}{section}{Gitk}
 
-Git, standardno, sadrži i jedan pomoćni programčić koji vam grafički prikazuje povijest trenutne grane:
+U standardnoj instalaciji gita se nalazi i pomoćni programčić koji nam grafički prikazuje povijest trenutne grane.
+Pokreće se s:
+
+\gitoutputcommand{gitk}
+
+\dots{}a izgleda ovako:
 
 \gitgraphics{images/gitk.png}
 
-Prikazani dijelovi su, redom s lijeva na desno od gore prema dolje:
+Sučelje ima pet osnovnih dijelova.
+Ovdje opisani redom s lijeva na desno od gore prema dolje:
 
 \begin{itemize}
 	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom (bilo zbog grananja, \emph{merge}anja ili \emph{cherry-pick} \emph{merge}),
@@ -264,7 +270,7 @@ Gitk vam može i pregledati povijest samo do nekog \emph{commit}a u povijesti:
 \gitoutputcommand{gitk testna-grana}
 
 Kao i \verb+git gui+, tako i \verb+gitk+ na prvi pogled možda baš i nije jako intuitivan.
-No, brz je i praktičan za rad kad se naučite na njegovo grafičko sučelje.
+No, brz je i praktičan za rad kad se naučite na njegovo sučelje.
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
