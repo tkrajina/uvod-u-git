@@ -205,7 +205,7 @@ Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
 
 Postoje četiri vrste objekata: \emph{commit}, \emph{tag}, \emph{tree} i \emph{blob}. 
 \emph{Commit} i \emph{tag} sadrže metapodatke vezane uz ono što im sam naziv kaže.
-\emph{Blob} sadrži binarni sadržaj neke datoteke, dok je \emph{tree} spisak datoteka.
+\emph{Blob} sadrži binarni sadržaj neke datoteke, dok je \emph{tree} popis datoteka.
 
 Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{commit} objekti sadrže:
 
@@ -214,7 +214,7 @@ Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{
 	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako smo to učinili u tom \emph{commit}u,
 	\item Datum i vrijeme kad je nastao,
 	\item Autora,
-	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži spisak svih datoteka koje su sudjelovale u tom \emph{commit}u.
+	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži popis svih datoteka koje su sudjelovale u tom \emph{commit}u.
 \end{itemize}
 
 Drugim riječima, sve potrebno da bi znali od čega se \emph{commit} sastojao i da bi znali gdje je njegovo mjesto na grafu povijesti projekta.

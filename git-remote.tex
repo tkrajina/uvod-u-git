@@ -72,7 +72,7 @@ No, naš dio svijeta su samo ova dva s kojima direktno imamo posla.
 Jedan je udaljeno kojeg smo klonirali, a drugi je lokalni koji se nalazi pred nama.
 
 Prije nego li počnemo s pričom o tome kako slati ili primati izmjene iz jednog repozitorija u drugi, trebamo nakratko spomenuti kakva je točno struktura lokalnog repozitorija.
-Već znamo za naredbu \verb+git branch+, koja nam ispisuje spisak svih grana na našem repozitoriju.
+Već znamo za naredbu \verb+git branch+, koja nam ispisuje popis svih grana na našem repozitoriju.
 No, sad imamo posla i sa udaljenim repozitorijem -- njega smo klonirali.
 
 S \verb+git branch -a+ ispisujemo \textbf{sve grane koje su nam trenutno dostupne u lokalnom rpeozitoriju}.
@@ -455,11 +455,11 @@ Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo 
 
 Kloniranjem na našem lokalnom računalu dobijamo kopiju udaljenog repozitorija s jednim dodatkom -- ta kopija je pupčanom vrpcom vezana za originalni repozitorij.
 Dobijamo referencu na \verb+origin+ repozitorij (onaj kojeg smo klonirali).
-Dobijamo i dobijamo one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost osvježavanja njihovo stanje s \verb+git fetch+.
+Dobijamo i dobijamo one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost osvježavanja njihovog stanja s \verb+git fetch+.
 
-Imamo i nekoliko ograničenja, a najvažnija je to što možemo imati samo jedan \verb+origin+.
-Što ako želimo imati posla s više udaljenih repozitorija.
-Dakle, što ako imamo više programera s kojima želimo surađivati od kojih svatko ima \textbf{svoj} repozitorij.
+Imamo i nekoliko ograničenja, a najvažnije je to što možemo imati samo jedan \verb+origin+.
+Što ako želimo imati posla s više udaljenih repozitorija?
+Odnosno, što ako imamo više programera s kojima želimo surađivati od kojih svatko ima \textbf{svoj} repozitorij?
 
 Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sustavu za verzioniranje.
 
@@ -473,7 +473,7 @@ Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku 
 Sve naredbe s administracijom udaljenih (\emph{remote}) repozitorija se rade s naredbom \\ \verb+git remote+.
 
 Novi udaljeni repozitorij možemo dodati s \verb+git remote add <naziv> <adresa>+.
-Na primjer, uzmomo da radimo s dva programera od kojih je jednome repozitorij našeg zajedničkog projekta \verb+https://github.com/korisnik/projekt.git+, a drugome \verb+git@domena.com:projekt+.
+Na primjer, uzmimo da radimo s dva programera od kojih je jednome repozitorij na \\\verb+https://github.com/korisnik/projekt.git+, a drugome \verb+git@domena.com:projekt+.
 Ukoliko tek krećemo u suradnju s njima, prvi korak koji možemo (ali i ne moramo) napraviti je klonirati jedan od njihovih repozitorija:
 
 \gitoutputcommand{git clone https://github.com/korisnik/projekt.git}
@@ -489,7 +489,7 @@ Recimo da je to Karlin:
 
 \gitoutputcommand{git remote rename origin karlin-repo}
 
-Spisak svih repozitorija s kojima imamo posla dobijemo s:
+Popis svih repozitorija s kojima imamo posla dobijemo s:
 
 \input{git_output/git_remote_show}
 
