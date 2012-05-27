@@ -3,7 +3,7 @@
 Već smo se poznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona nije dovoljna za proučavanje povijesti projekta.
 Posebno s git projektima, čija povijest zna biti dosta kompleksna (puno grana, \emph{merge}anja, i sl.).
 
-Sigurno će vam se ponekad desiti da želite vidjeti koje se se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_xizse+ u projektu\dots 
+Sigurno će vam se desiti da želite vidjeti koje se se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_xizse+ u projektu\dots 
 Čak i ako vam se neki od navedenih scenarija čine malo vjerojatnim, vjerujte mi -- trebati će vam.
 U ovom poglavlju ćemo proći samo neke često korištene naredbe za proučavanje povijesti projekta.
 
@@ -12,12 +12,12 @@ U ovom poglavlju ćemo proći samo neke često korištene naredbe za proučavanj
 
 S \verb+git diff+ smo se već sreli. 
 Ukoliko ju pozovemo bez ikakvog dodatnog argumenta, ona će nam ispisati razlike između radne verzije repozitorija (tj. stanja projekta kakvo je trenutno na našem računalu) i zadnje verzije u repozitoriju.
-Druga varijante je da s njome provjeravamo razlike između dva \emph{commit}a ili grane (podsjetimo se da su grane u biti samo reference na zadnje \emph{commit}ove).
+Drugi način korištenja naredbe je da provjeravamo razlike između dva \emph{commit}a ili dvije grane (podsjetimo se da su grane u biti samo reference na zadnje \emph{commit}ove).
 Na primjer:
 
 \gitoutputcommand{git diff master tesna-grana}
 
-\dots{}će nam ispisati razliku između dvije grane. 
+\dots{}će nam ispisati razliku između te dvije grane. 
 Treba paziti na redosljed jer je ovdje bitan.
 Ukoliko isprobamo s:
 
@@ -45,7 +45,9 @@ Standardno s naredbom \verb+git log <naziv_grane>+ dobijemo kratak ispis povijes
 Sad kad znamo da je grana u biti samo referenca na zadnji \emph{commit}, znamo i da bi bilo preciznije kazati da je ispravna sintaksa \verb+git log <referenca_na_commit>+.
 Za git nije previše bitno jeste li mu dali naziv grane ili referencu na \emph{commit} -- naziv grane je ionako samo alias za zadnji \emph{commit} u toj grani.
 Ukoliko mu damo neki proizvoljan \emph{commit}, on će jednostavno krenuti "unazad" po grafu i dati vam povijest koju na taj način nađe.
-Pa tako, ako želimo povijest trenutne grane, ali bez zadnjih pet unosa -- treba nam referenca na peti \emph{commit} unazad, a to možemo s:
+
+Dakle, ako želimo povijest trenutne grane, ali bez zadnjih pet unosa -- treba nam referenca na peti \emph{commit} unazad.
+Git log će tada ispisivati od tog \emph{commit}a unazad:
 
 \gitoutputcommand{git log HEAD\textasciitilde{}5}
 
