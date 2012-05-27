@@ -1,31 +1,32 @@
 \chapter*{Povijest}
 
-Već smo se poznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona zasigurno nije dovoljna za proučavanje povijesti projekta.
+Već smo se poznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona nije dovoljna za proučavanje povijesti projekta.
 Posebno s git projektima, čija povijest zna biti dosta kompleksna (puno grana, \emph{merge}anja, i sl.).
 
 Sigurno će vam se ponekad desiti da želite vidjeti koje se se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_xizse+ u projektu\dots 
-Čak i ako vam se neki od navedenih scenarija, vjerujte mi -- trebati će vam.
-
-U ovom poglavlju ćemo proći samo neke od često korištenih varijanti naredbi za proučavanje povijesti projekta.
+Čak i ako vam se neki od navedenih scenarija čine malo vjerojatnim, vjerujte mi -- trebati će vam.
+U ovom poglavlju ćemo proći samo neke često korištene naredbe za proučavanje povijesti projekta.
 
 \section*{\emph{Diff}}
 \addcontentsline{toc}{section}{\emph{Diff}}
 
-Važna naredba je i \verb+git diff+. 
-S njome provjeravate razlike između dva \emph{commit}a.
+S \verb+git diff+ smo se već sreli. 
+Ukoliko ju pozovemo bez ikakvog dodatnog argumenta, ona će nam ispisati razlike između radne verzije repozitorija (tj. stanja projekta kakvo je trenutno na našem računalu) i zadnje verzije u repozitoriju.
+Druga varijante je da s njome provjeravamo razlike između dva \emph{commit}a ili grane (podsjetimo se da su grane u biti samo reference na zadnje \emph{commit}ove).
 Na primjer:
 
 \gitoutputcommand{git diff master tesna-grana}
 
-\dots{}će nam ispisati razliku između dvije grane. Pripazite, jer redosljed je ovdje bitan.
-Ukoliko isprobate s:
+\dots{}će nam ispisati razliku između dvije grane. 
+Treba paziti na redosljed jer je ovdje bitan.
+Ukoliko isprobamo s:
 
 \gitoutputcommand{git diff tesna-grana master}
 
-\dots{}dobiti ćete suprotan ispis. 
-Ako ste u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati da ste ga dodali, a u drugom oduzeli.
+\dots{}dobiti ćemo suprotan ispis. 
+Ako smo u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati da smo ga \textbf{dodali}, a u drugom da smo ga \textbf{oduzeli}.
 
-Želite li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg \emph{commit}a:
+Želimo li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg \emph{commit}a:
 
 \gitoutputcommand{git diff HEAD\textasciitilde{}2 HEAD\textasciitilde{}1}
 
@@ -52,7 +53,7 @@ Ili, ako želimo povijest grane \verb+testna-grana+ bez zadnjih 10 unosa:
 
 \gitoutputcommand{git log testna-grana\textasciitilde{}10}
 
-Želimo li povijest sa \emph{samo} nekoliko zadjnih unosa, koristimo \\\verb+git log -<broj_ispisa>+ sintaksu. 
+Želimo li povijest sa \emph{samo} nekoliko zadnjih unosa, koristimo \\\verb+git log -<broj_ispisa>+ sintaksu. 
 Na primjer, ako nam treba samo 10 rezultata iz povijesti:
 
 \gitoutputcommand{git log -10 testna-grana}
@@ -61,19 +62,26 @@ Na primjer, ako nam treba samo 10 rezultata iz povijesti:
 
 \gitoutputcommand{git log -10}
 
+\subsection*{\emph{Whatchanged}}
+\addcontentsline{toc}{subsection}{\emph{Whatchanged}}
+
+Naredba \verb+git whatchanged+ je vrlo slična \verb+git log+, jedino što uz svaki \emph{commit} ispisuje i spisak svih datoteka koje su se tada promijenile:
+
+\input{git_output/git_whatchanged}
+
 \subsection*{Pretraživanje povijesti}
 \addcontentsline{toc}{subsection}{Pretraživanje povijesti}
 
 Vrlo često će vam se dogoditi da tražite neki \emph{commit} iz povijesti.
 Ovdje ćemo proći samo dva najčešća slučaja.
-Prvi je kad pretražujete prema tekstu \emph{commit}a, tada se koristi \\\verb+git log --grep=<regularni_izraz>+.
-Na primjer, tražim li sve \emph{commit}ove koji \textbf{u \emph{commit} komentarima sadrže riječ} \verb+graph+:
+Prvi je kad pretražujemo prema tekstu \emph{commit}a, tada se koristi \\\verb+git log --grep=<regularni_izraz>+.
+Na primjer, tražimo li sve \emph{commit}ove koji \textbf{u \emph{commit} komentarima sadrže riječ} \verb+graph+:
 
 \gitoutputcommand{git log --grep=graph}
 
-Drugi česti scenarij je odgovor na pitanje "Kad se \textbf{u kodu} prvi put spomenuo string 'x'"? Tada se koristi \verb+git log -S<string>+.
+Drugi česti scenarij je odgovor na pitanje "Kad se \textbf{u kodu} prvi put spomenuo string 'trla baba lan'"? Tada se koristi \verb+git log -S<string>+.
 Dakle, ne u komentaru \emph{commit}a nego \textbf{u sadržaju datoteka}.
-Recimo da tražite tko je prvi napisao funkciju \verb+get_image_width+:
+Recimo da tražimo tko je prvi napisao funkciju \verb+get_image_width+:
 
 \gitoutputcommand{git log -Sget\_image\_width}
 
@@ -82,29 +90,24 @@ Treba li pretraživati za string s razmacima:
 \gitoutputcommand{git log -S"get image width"}
 
 Zapamtite, ovo će vam samo naći \emph{commit}ove.
-Kad ih nađete, htjeti ćete vjerojatno pogledati koje su točno bile izmjene.
-Ako vam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc74473370ca81993c5b07c2e35+, detalji izmjena koje su se njime dogodile su:
+Kad ih nađemo, htjeti ćemo vjerojatno pogledati koje su točno bile izmjene.
+Ako nam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc74473370ca81993c5b07c2e35+, detalji izmjena koje su se njime dogodile su:
 
 \gitoutputcommand{git diff 76cf8 76cf8\textasciitilde{}1}
+
+Podsjetimo se \verb+76cf8+ je kratica za \emph{commit}, a \verb+76cf8~1+ je referenca na njegovog \textbf{prethodnika} (zbog \verb+~1+).
 
 \section*{\emph{Blame}}
 \addcontentsline{toc}{section}{\emph{Blame}}
 
-S \verb+git blame <datoteka>+ ćete dobiti ispis datoteke s detaljima o tome \textbf{tko}, \textbf{kad} i u \textbf{kojem \emph{commit}u} je napravio svaku liniju u toj datoteci i \textbf{iz koje datoteke} je ta izmjena došla ovdje:
+S \verb+git blame <datoteka>+ ćemo dobiti ispis neke datoteke s detaljima o tome \textbf{tko}, \textbf{kad} i u \textbf{kojem \emph{commit}u} je napravio svaku liniju u toj datoteci i \textbf{iz koje datoteke} je ta izmjena došla ovdje\footnote{Nažalost, linije su preduge da bi se ovdje ispravno vidjelo.}:
 
 \input{git_output/git_blame}
-
-\section*{\emph{Whatchanged}}
-\addcontentsline{toc}{section}{\emph{Whatchanged}}
-
-Naredba \verb+git whatchanged+ je vrlo slična \verb+git log+, jedino što uz svaki \emph{commit} ispisuje i spisak svih datoteka koje su se tada promijenile:
-
-\input{git_output/git_whatchanged}
 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
-Ponekad nam se svima dešava da smo izmijenili datoteku i kasnije se sjetili da ta izmjena ne valja. 
+Svima nam se ponekad desilo da smo izmijenili datoteku i kasnije shvatili da ta izmjena ne valja. 
 Verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
 Kako da ju vratimo iz povijesti i \emph{commit}amo u novo stanje projekta?
 
@@ -130,23 +133,34 @@ Isto tako i s bilo kojom drugom referencom na neki \emph{commit} iz povijesti.
 
 Isto razmatranje kao u prethodnom odjeljku vrijedi i za vraćanje stanja cijelog repozitorija u neki trenutak iz prošlosti.
 
-Na primjer, otkrili ste bug, ne znate gdje točno u kodu, ali znate da se taj bug nije prije manifestirao. 
+Na primjer, otkrili smo bug, ne znate gdje točno u kodu, ali znamo da se taj bug nije prije manifestirao. 
+Međutim, ne znamo točno \textbf{kada} je bug zepočeo.
+
 Bilo bi zgodno kad bismo cijeli projekt mogli teleportirati na neko stanje kakvo je bilo prije $n$ \emph{commit}ova.
+Ako se tamo bug i dalje manifestira -- vratiti ćemo se još malo dalje u povijest.
+Ako se tamo manifestirao -- prebaciti ćemo se u malo bližu povijest.
+I tako -- mic po mic po povijesti, sve dok ne nađemo trenutak (\emph{commit}) u povijesti repozitorija u kojem je bug stvoren.
 Ništa lakše:
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{}10}
 
-\dots{}i za trenutak imate stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možete s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+.
+\dots{}i za trenutak imamo stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možemo s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+.
+
+Ili možemo provjeriti je li bug i dalje tu. Ako jest, idemo probati s\dots
+
+\gitoutputcommand{git checkout HEAD\textasciitilde{}20}
+
+\dots{}ako buga sad nemamo, znamo da se pojavio negdje između \textbf{dvadesetog} i \textbf{desetog} zadnjeg \emph{commit}a.
 
 \section*{\emph{Reset}}
 \addcontentsline{toc}{section}{\emph{Reset}}
 
-Uzmimo ovakav scenarij; radite na nekoj grani.
-U jednom trenutku stanje je ovakvo:
+Uzmimo ovakav scenarij; radimo na nekoj grani.
+U jednom trenutku stanje je:
 
 \input{graphs/linearni_model_za_reset}
 
-I sad zaključite kako tu nešto ne valja -- svi ovi \emph{commit}ovi od $f$ pa na dalje su krenuli krivim smjerom.
+I sad zaključimo kako tu nešto ne valja -- svi ovi \emph{commit}ovi od $f$ pa na dalje su krenuli krivim smjerom.
 Htjeli bi se nekako vratiti na:
 
 \input{graphs/linearni_model_za_reset_2}
@@ -166,7 +180,7 @@ Isto:
 \gitoutputcommand{git reset --hard 974ef0a}
 
 Postoji i \verb+git reset --soft <referenca>+. 
-S tom varijantom se isto gube \emph{commit}ovi nakon onog kojeg ste specificirali, ali stanje datoteka u vašem direktoriju ostaje kakvo jest.
+S tom varijantom se isto brišu \emph{commit}ovi iz povijesti repozitorija, ali stanje datoteka u našem radnom direktoriju ostaje kakvo jest.
 
 Cijela poanta naredbe \verb+git reset+ je da \textbf{pomiče HEAD}.
 Kao što znamo, HEAD je referenca na zadnji \emph{commit} u trenutnoj grani.
@@ -184,7 +198,7 @@ I to je upravo ono što git čini s \verb+git reset+:
 
 \input{graphs/linearni_model_za_reset_HEAD_2}
 
-Iako su ovi čvorovi ovdje prikazani na grafu, git do njih nikad ne može doći.
+Iako su ovi čvorovi ovdje prikazani na grafu, git do njih više ne može doći.
 Da bi rekonstruirao svoj graf, on uvijek kreće od HEAD, dakle $f$, $g$, $h$ i $i$ su izgubljeni.
 
 \section*{\emph{Revert}}
@@ -198,14 +212,14 @@ To se može riješiti s \verb+git revert+. Uzmimo, na primjer, ovakvu situaciju:
 
 \input{graphs/linearni_model_za_revert_1}
 
-Došli ste do zaključka da je \emph{commit} $f$ neispravan i treba vratiti na stanje kakvo je bilo u $e$.
-\verb+git reset+ bi $f$ jednostavno maknuo s grafa, ali recimo da to ne želimo.
+Došli smo do zaključka da je \emph{commit} $f$ neispravan i treba vratiti na stanje kakvo je bilo u $e$.
+Znamo već da bi \verb+git reset+ jednostavno maknuo $f$ s grafa, ali recimo da to ne želimo.
 Tada se može napraviti sljedeće \verb+git revert <commit>+. 
 Na primjer, ako želimo \emph{revert}ati samo zadnji \emph{commit}:
 
 \gitoutputcommand{git revert HEAD}
 
-Rezultat će biti da je dosadašnji graf ostao potpuno isti, no \textbf{dodan je novi commit} koji miče sve izmjene iz $f$:
+Rezultat će biti da je dosadašnji graf ostao potpuno isti, no \textbf{dodan je novi commit} koji miče sve izmjene koje su uvedene u $f$:
 
 \input{graphs/linearni_model_za_revert_1_revertano}
 
