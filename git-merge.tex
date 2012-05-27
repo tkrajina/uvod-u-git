@@ -29,7 +29,7 @@ Tada:
 
 \input{git_output/git_merge_1}
 
-Rezultat neredbe \verb+git merge+ ukratko opisan rezultat procesa preuzimanja izmjena; koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, i tako dalje\dots
+Rezultat neredbe \verb+git merge+ je ukratko opisan rezultat procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, i tako dalje\dots
 
 Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
 Ne moramo "ručno" \emph{commit}ati.
@@ -38,7 +38,7 @@ Grafički se \verb+git merge+ može prikazati ovako:
 
 \input{graphs/git_merge_2}
 
-Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika" -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
+Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika"\footnote{Ostali \emph{commit}ovi imaju ili jednog prethodnika ili nijednog -- ako se radi o prvom \emph{commit}u u repozitoriju.} -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
 Odnosno, na grafu čvor \emph d jedini ima dvije strelice koje idu "u njega".
 
 Kad smo preuzeli izmjene iz jednog grafa u drugi -- obje grane mogu uredno nastaviti svoj dosadašnji "život".
@@ -82,7 +82,6 @@ Dakle, što će biti rezultat \emph{merge}anja, ako\dots
 Vjerojatno slutite što znači ova riječ koja je ispisana masnim slovima: \textbf{konflikt}.
 Postoje slučajevi u kojima git ne zna što napraviti. 
 I tada se očekuje od korisnika da sam riješi problem. 
-Pokušati ću to ilustrirati tako da opišem jedan od gornjih slučajeva; što se desi kad\dots
 
 \section*{Što se desi kad\dots}
 \addcontentsline{toc}{section}{Što se desi kad\dots}
@@ -253,16 +252,18 @@ Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda 
 
 \gitgraphics{images/mergetool.png}
 
+Nakon što konflikt u datoteci (ili datotekama) riješite -- izmijenjene datoteke treba \emph{commit}ati.
+
 \section*{\emph{Merge}, \emph{branch} i povijest projekta}
 \addcontentsline{toc}{section}{\emph{Merge}, \emph{branch} i povijest projekta}
 
-Kad radimo s nekim projektom, onda nam je uvijek da imamo sačuvanu povijest projekta.
+Kad radimo s nekim projektom, onda nam je važno da imamo sačuvanu cijelu njegovu povijest.
 To nam omogućava da saznamo tko je originalni autor nekog koda kojeg možda slabije razumijemo.
 Ili želimo vidjeti kojim redosljedom je neka datoteka nastajala.
 
 Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
 Grananje i preuzimanje izmjena iz jedne u drugu granu je bilo komplicirano i rijetko se radilo. 
-Posljedica je da su projekti \emph{uvijek} imali linearnu povijest.
+Posljedica je da su projekti najčešće imali linearnu povijest.
 
 \input{graphs/linearni_model}
 
@@ -277,9 +278,8 @@ Pogledajte, na primjer, ovakav projekt:
 
 Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
 Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu\footnote{Na primjer, ako koristimo git kao subversion ili tfs klijent. Da, i to se može!}.
-U tom slučaju -- sve međukorake kako je \verb+eksperimentalna-grana+ nastajala ($d$, $e$, $f$ i $g$), sve bi nestalo.
+U drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
 
-U nekim drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
 To se može riješiti nečime što se zove \emph{rebase}.
 Da bi to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
 
@@ -310,6 +310,7 @@ Smisao \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u dru
 Međutim, iako ovdje imamo dvije grane, \textbf{te dvije grane čine jednu crtu}. 
 One imaju jednu povijest. 
 I to linearnu povijest.
+Jedino što se ta linearna povijest proteže kroz dvije grane.
 
 Tako su razmišljali i originalni autori gita.
 U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
@@ -338,9 +339,9 @@ Do sada bi svima trebalo biti jasno da on ima svoje mane.
 No, ima i nešto korisno -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
 Korak po korak, do trenutne verzije.
 
-Git nas ne tjera da radite grane, no postupak grananja čini bezbolnim. 
-I zbog toga povijest projekta \emph{može} postati cirkus kojeg je teško pratiti i organizirati.
-Zbog toga, organizacija repozitorija zahtijeva dosta veliku pažnju.
+Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim. 
+I zbog toga povijest projekta \textbf{može} postati cirkus kojeg je teško pratiti i organizirati.
+Zbog toga, organizacija repozitorija zahtijeva veliku pažnju.
 
 Postoji, ipak, način kako se može od puno grana stvoriti linearna povijest.
 Kad bi postojao trik kako da iz ovakvog stanja:
