@@ -28,21 +28,22 @@ Osim što dobijete vrhunsku uslugu -- tim novcem implicitno subvencionirate host
 \section*{Vlastiti server}
 \addcontentsline{toc}{section}{Vlastiti server}
 
-Druga varijanta, umjesto hostinga je koristiti vlastiti server.
-Najjednostavniji scenarij je da jednostavno korisimo ssh protokol. 
-Git uredno tako funkcionira.
-Dakle, sve što trebamo učiniti je inicirati neki udaljeni git repozitorij i koristiti ga kao remote.
+Druga varijanta je koristiti vlastiti server.
+Najjednostavniji scenarij je da jednostavno koristimo ssh protokol i postojeći korisnički račun na tom serveru. 
+Treba samo u neki direktorij na rom računalu postaviti git repozitorij.
 
-Ako je naziv servera \verb+server.com+, korisničko ime s kojim se prijavljujemo \verb+git+, a direktorij s repozitorijem \verb+projekt/+, onda ga možemo početi koristiti s:
+Ako je naziv servera \verb+server.com+, korisničko ime s kojim se prijavljujemo \verb+git+, a direktorij s repozitorijem \verb+projekti/abc/+, onda ga možemo početi koristiti s:
 
-\gitoutputcommand{git remote add moj-repozitorij git@server.com:projekt}
+\gitoutputcommand{git remote add moj-repozitorij git@server.com:projekti/abc}
+
+Naš projekt se u tom slučaju vjerojatno nalazi unutar korisnikovog "home" direktorija.
+Dakle, vjerojatno je putanja do našeg repozitorija na tom računalu: \\\verb+/home/korisnik/projekti/abc+.
 
 To će vjerojatno biti dovoljno za jednog korisnika, no ima nekih nedostataka.
 
 Ukoliko želimo još nekome dati mogućnost da \emph{push}a ili \emph{fetch}a na/s našeg repozitorija. 
 Moramo mu dati i sve potrebne podatke da bi ostvario ssh konekciju na naš server.
-Ukoliko to učinimo, on se može povezati \emph{ssh}om i listati datoteke na serveru, gledati koji servisi su startani, i sl.
-To ponekad ne želimo.
+Ukoliko to učinimo, on se može povezati \emph{ssh}om i raditi sve što i mi, a to ponekad ne želimo.
 
 Drugi problem je što ne možemo jednostavno nekome dati mogućnost da \emph{fetch}a i \emph{push}, a nekome drugome da samo \emph{fetch}a.
 Ako smo dali ssh pristup -- onda je on punopravan korisnik na tom serveru i ima iste ovlasti kao i bilo tko drugi tko se može prijaviti kao taj korisnik.
@@ -92,7 +93,7 @@ Ako je sve prošlo bez problema, korištenje gita preko ssh će od sad na dalje 
 \addcontentsline{toc}{section}{Git \emph{plugin}}
 
 Ukoliko vam se učini da je skup naredbi koje možemo dobiti s \verb+git <naredba>+ limitiran -- lako je dodati nove.
-Recimo da trebamo naredbu \verb+git gladan-sam+\footnote{Irelevantno što bi ta naredba radila, ali daje naslutiti moje mentalno stanje u trenutku dok sam ovo pisao :)}.
+Recimo da trebamo naredbu \verb+git gladan-sam+\footnote{Irelevantno što bi ta naredba radila :)}.
 Sve što treba je snimiti negdje izvršivu datoteku \verb+git-gladan-sam+ i potruditi se da je dostupna u komandnoj liniji.
 
 Na unixoidnim računalima, to bi izgledalo ovako nekako:
