@@ -56,7 +56,7 @@ Sad je novo stanje projekta:
 
 Sad imamo granu \verb+eksperimentalna-grana+, ali u njoj nemamo još ni jednog čvora (\emph{commit}a).
 U toj grani sad možemo raditi točno onako kako smo se do sada naučili raditi s \verb+master+ -- izmijenimo (dodamo, obrišemo) datoteke, spremimo ih u indeks s \verb+git add+ i \emph{commit}amo s \verb+git commit+.
-I, sad bi dobili da naša nova grana ima svoj prvi čvor: 
+Sad bi dobili da naša nova grana ima svoj prvi čvor: 
 
 \input{graphs/kreiranje_grane_2_1}
 
@@ -74,12 +74,12 @@ Prebacivanje s jedne grane na drugu granu se radi s komandom \verb+git checkout 
 
 Analogno, na glavnu granu se vraćamo s \verb+git checkout master+.
 
-Sad, kad smo se prebacili na novu granu, možemo tamo uredno \emph{commit}ati svoje izmjene. 
-I sve što tu radimo, neće biti vidljivo u \verb+master+ grani.
+Sad, kad smo se prebacili na novu granu, možemo tu uredno \emph{commit}ati svoje izmjene. 
+Sve što tu radimo, neće biti vidljivo u \verb+master+ grani.
 
 \input{graphs/kreiranje_grane_3}
 
-I, kad god želimo, možete se prebaciti na \verb+master+ i tamo nastaviti rad koji nije nužno vezan uz izmjene u drugoj grani:
+Kad god želimo, možete se prebaciti na \verb+master+ i tamo nastaviti rad koji nije nužno vezan uz izmjene u drugoj grani:
 
 \input{graphs/kreiranje_grane_4}
 
@@ -129,7 +129,7 @@ Više detalja o tome koji točno \emph{commit}ovi i u kojim uvijetima se brišu 
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz druge grane}
 
 S puno grana, događati će se svakakvi scenariji.
-Jedan od relativno čestih je situacija kad bismo htjeli preuzeti samo jednu ili više datoteka iz druge grane, ali ne želimo \textbf{preći} na tu drugu granu.
+Relativno česta situacija je kad bismo htjeli preuzeti samo jednu ili više datoteka iz druge grane, ali ne želimo \textbf{preći} na tu drugu granu.
 Znamo da su neke datoteke u drugoj grani izmijenjeni, i želimo ih u trenutnoj grani.
 To se može ovako:
 
