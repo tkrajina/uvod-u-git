@@ -67,7 +67,7 @@ Naredba je \verb+git gc+:
 \dots{}i nju treba izvršavati s vremena na vrijeme.
 
 Osim \verb+gc+, postoji još nekoliko sličnih naredbi kao \verb+git repack+, \verb+git prune+, no one su manje važne za početnika.
-Ako vas zanima -- \verb+git help+ je uvijek na dohvat ruke.
+Ako vas zanimaju -- \verb+git help+ je uvijek na dohvat ruke.
 
 \section*{Povijest i brisanje grana}
 \addcontentsline{toc}{section}{Povijest i brisanje grane}
@@ -82,7 +82,7 @@ Prvi primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_1}
 
-\textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće brisati} s \verb+git gc+.
+\textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće biti obrisati s} \verb+git gc+.
 Kako znamo koji čvorovi su dio projekta?
 Po tome što postoji netko tko ima referencu na njih.
 Ta referenca može biti ili grana ili neki drugi čvor ili \emph{tag}.
@@ -93,10 +93,10 @@ Dakle, $g$ ima referencu na $f$, $f$ na $e$, itd.
 Izgleda kao da nitko nema referencu na njega, ali to nije točno -- grana \verb+grana+ je referenca na njega.
 
 Ako obrišemo granu \verb+grana+ -- $g$ više nema nikoga da njega referencira.
-Teorijski bi ga mogli obrisati, ali onda bi mogli obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
+Mogli bi ga obrisati, ali onda bi mogli obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
 
 Dakle, kad obrišemo granu koja nije \emph{merge}ana u neku drugu granu, onda se svi njeni čvorovi gube iz povijesti projekta.
-I, prije ili kasnije će biti obrisatni s \verb+git gc+.
+I, prije ili kasnije će biti obrisani s \verb+git gc+.
 
 Drugi primjer:
 
