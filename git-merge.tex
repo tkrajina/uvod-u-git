@@ -360,8 +360,8 @@ Kad bi, tada, obrisali \verb+varijanta+, povijest bi odjednom postala linerna:
 
 Taj trik postoji i zove se \emph{rebase}.
 
-Radi se na sljedeći način; trebamo biti postavljeni u grani koju želite "pomaknuti". Zatim \verb+git rebase <grana>+, gdje je \verb+<grana>+ ona grana na koju kasnije želite napraviti \emph{fast-forward}. 
-Dakle, želimo li granu \verb+test+ "pomaknuti" na kraj grane \verb+master+, (to jest, izvršiti \emph{rebase}):
+Radi se na sljedeći način; trebamo biti postavljeni u grani koju želimo "pomaknuti". Zatim \verb+git rebase <grana>+, gdje je \verb+<grana>+ ona grana na kojoj kasnije treba izvršiti \emph{fast-forward}. 
+Želimo li granu \verb+test+ "pomaknuti" na kraj grane \verb+master+, (to jest, izvršiti \emph{rebase}):
 
 \gitoutputcommand{git rebase master}
 
@@ -374,26 +374,27 @@ Tako da će se ponekad dogoditi:
 
 \input{git_output/git_rebase_konflikt}
 
-Pogledate li datoteke, vidjeti ćete da je format konfliktne datoteke isti kao kod konflikta pri \emph{merge}u.
-I opet, od nas se očekuje da te konflikte riješimo.
+Pogledate li konfliktne datoteke, vidjeti ćete da je njihov format isti kao kod konflikta pri \emph{merge}u.
+Na isti način se od nas očekuje da konflikte riješimo.
 Bilo koristeći \verb+git mergetool+, bilo tako da editiramo datoteku i ispravimo ju tako da dobijemo željeno stanje.
 
-Promotrimo još jednom grafički prikaz onoga što pokušavamo napraviti:
+Kod grananja su konflikti vjerojatno malo jasniji -- točno znamo da jedna izmjena dolazi iz jedne grane, a druga iz druge.
+Ovdje će nam se možda dogoditi\footnote{Meni jest, puno puta} da nismo točno sigurni koju konfliktnu izmjenu uzeti.
+Ili ostaviti obje.
+Promotrimo, zato, još jednom grafički prikaz onoga što pokušavamo napraviti:
 
 \input{graphs/fast_forward_4}
 
 Naš cilj je preseliti \textcolor{gray}{sivi} dio tako da postane \textcolor{blue}{plavi}.
 Drugim riječim, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
-I tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
+Tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
 
-Git će automatski napraviti koliko može.
-No, kad nastane konflikt (kao što je u primjeru kojeg trenutno obrađujemo), to trebamo napraviti sami.
+Konflikt se može dogoditi u trenutku kad git "seli" $x$ u $x'$, ili $y$ u $y'$ ili $z$ u $z'$.
+Recimo da je konflikt nastao u prvom slučaju ($x$ u $x'$).
+Negdje u čvorovima $d$, $e$ i $f$ je mijenjan isti kod koji smo mi mijenjali u $x$\footnote{Primijetite da bi do ovog konflikta došli i s klasičnim \emph{merge}om.}.
+To treba imati na umu dok odlučujemo kako ćemo ispraviti konflikt.
 
-Ako koristimo \verb+mergetool+\dots
-
-\input{git_output/git_rebase_konflikt_mergetool}
-
-Važno je napomenuti da, nakon što smo konflikt ispravili, \textbf{ne smijemo izmjene \emph{commit}ati}, nego samo spremiti u indeks s \verb+git add+.
+Nakon što smo konflikt ispravili, \textbf{ne smijemo izmjene \emph{commit}ati, nego samo spremiti u indeks s} \verb+git add+.
 Nakon toga:
 
 \gitoutputcommand{git rebase --continue}
