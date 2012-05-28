@@ -1,7 +1,7 @@
 \chapter*{Preuzimanje izmjena iz jedne grane u drugu}
 \addcontentsline{toc}{chapter}{Preuzimanje izmjena iz jedne grane u drugu}
 
-Vratimo se opet na jednu viđenu ilustraciju:
+Vratimo se opet na već viđenu ilustraciju:
 
 \input{graphs/git_merge_1}
 
@@ -29,7 +29,8 @@ Tada:
 
 \input{git_output/git_merge_1}
 
-Rezultat neredbe \verb+git merge+ je ukratko opisan rezultat procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, i tako dalje\dots
+Rezultat neredbe \verb+git merge+ je rekapitulacija procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, itd\dots
+Sve tu piše.
 
 Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
 Ne moramo "ručno" \emph{commit}ati.
@@ -86,12 +87,12 @@ I tada se očekuje od korisnika da sam riješi problem.
 \section*{Što se desi kad\dots}
 \addcontentsline{toc}{section}{Što se desi kad\dots}
 
-Vjerojatno to i sami slutite -- stvar nije uvijek tako jednostavna.
+Stvar nije uvijek tako jednostavna.
 Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugoj grani napravite izmjenu na \emph{istoj} datoteci.
 I što onda?
 
 Pokušat ću to ilustrirati na jednom jednostavnom primjeru\dots
-Uzmimo jedan malo vjerojatan scenarij; neka je Antun Branko Šimić još živ i piše pjesme.
+Uzmimo hipotetski scenarij -- neka je Antun Branko Šimić još živ i piše pjesme.
 Napiše pjesmu, pa s njome nije baš zadovoljan, pa malo križa po papiru, pa izmijeni prvi stih, pa izmijeni zadnji stih.
 Ponekad mu se rezultat sviđa, ponekad ne.
 Ponekad krene iznova.

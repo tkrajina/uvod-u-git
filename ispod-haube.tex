@@ -180,7 +180,14 @@ Vjerojatno ste to već učinili, i vjerojatno ste otkrili da je njegov sadržaj 
 
 \input{git_output/dot_git_folder}
 
-Samo ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/objects+, \verb+.git/refs+, \verb+HEAD+ i \verb+.git/hooks+
+Samo ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/config+, \verb+.git/objects+, \verb+.git/refs+, \verb+HEAD+ i \verb+.git/hooks+
+
+\subsection*{.git/config}
+\addcontentsline{toc}{subsection}{.git/config}
+
+U datoteci \verb+.git/config+ se spremaju sve lokalne postavke.
+To jest, tu je sve one postavke koje snimimo s \verb+git config <naziv> <vrijednost>+, i to su stvari koje se odnose samo za tekući repozitorij.
+Za razliku od toga, \textbf{globalne} postavke (one koje se snime s \verb+git config --global+) se snimaju u korisnički direktorij u datoteci \verb+~/.gitconfig+.
 
 \subsection*{.git/objects}
 \addcontentsline{toc}{subsection}{.git/objects}
@@ -200,7 +207,7 @@ Na primjer, tip objekta se može pogledati s:
 
 \input{git_output/git_cat_file_type}
 
-\dots{}što znači da je to objekta tipa \emph{commit}.
+\dots{}što znači da je to objekt tipa \emph{commit}.
 Zamijenite li \verb+-t+ s \verb+-p+ dobiti ćete točan sadržaj te datoteke.
 
 Postoje četiri vrste objekata: \emph{commit}, \emph{tag}, \emph{tree} i \emph{blob}. 
