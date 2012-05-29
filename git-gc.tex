@@ -3,8 +3,9 @@
 
 Za programere -- repozitorij je životni prostor i s njime se živi dio dana.
 Kao što se trudimo držati stan urednim, tako bi trebalo i s našim virtualnim prostorima.
-Preko tjedna, kad rano ujutro odlazimo na posao i vraćamo se kasnije popodne, se ponekad desi da nam se u stanu nagomila robe za pranje.
-No, nekoliko puta tjedno treba uzeti pola sata vremena i počistiti nered koji je zaostao.
+Preko tjedna, kad rano ujutro odlazimo na posao i vraćamo se kasno popodne, se ponekad desi da nam se u stanu nagomila robe za pranje.
+Nekoliko puta tjedno treba uzeti pola sata vremena i počistiti nered koji je zaostao.
+Inače će entropija zavladati, a to nikako ne želim(o).
 
 Tako i s repozitorijem -- treba ga redovito održavati i čistiti nered koji ostavljamo za sobom.
 
@@ -34,6 +35,13 @@ I sad\dots
 \dots{}da bismo provjerili koje su točno izmjene ostale.
 Ako je prazno -- nema razlika i možemo brisati.
 Ako nije -- \textbf{ima} izmjena i sad se sami odlučite jesu li te izmjene nešto važno što ćete nastaviti razvijati ili nešto što možemo zanemariti i obrisati tu granu.
+
+Ukoliko baš morate imati puno grana, onda se potrudite da postoji neki logični način kako ih imenujete.
+Na primjer, ako koristite neki sustav za prijavu i praćenje grešaka, onda svaka greška ima neki svoj broj.
+Možete se odlučiti svaku grešku ispravljati u posebnoj grani. 
+Imate li puno veliku i kompleksnu aplikaciju -- biti će puno prijavljenih grešaka, posljedično i puno grana.
+Tada možete grane imenovati prema broju prijavljene greške zajedno s kratkim opisom.
+Na primjer, \verb+123-unicode-problem+ bi bila grana u kojoj ispravljate problem prijavljen pod brojim 123, a radi se o (tko bi rekao?) nekom problemu s \emph{unicode} enkodiranju.
 
 \section*{Git gc}
 \addcontentsline{toc}{section}{Git gc}
