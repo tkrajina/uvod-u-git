@@ -1490,8 +1490,7 @@ for v in vars().keys():
         \\vspace*{3mm}%
         \\noindent""")
             f.write(graph.get_latex_string())
-            f.write("""\\vspace*{3mm}%
-    \\end{minipage}%
+            f.write("""\\end{minipage}%
 \\end{tabular}
 """)
             print file_name, ' OK'
