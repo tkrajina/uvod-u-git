@@ -15,7 +15,7 @@ U tom trenutku je nastao čvor \emph a.
 Nakon toga smo možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali i opet -- spremili novo stanje i dobili stanje \emph b.
 
 To što smo radili između svaka dva stanja (tj. čvora) je naša stvar i ne tiče se gita\footnote{Neki sustavi za verzioniranje, kao na primjer TFS, zahtijevaju stalnu vezu na internet i serveru dojavljuju svaki put kad krenete editirati neku datoteku. Git nije takav.}.
-No, trenutak kad se odlučimo spremiti novo stanje projekta u naš repozitorij -- to je gitu jedino važno i to se zove \emph{commit}.
+Trenutak kad se odlučimo spremiti novo stanje projekta u naš repozitorij -- to je gitu jedino važno i to se zove \emph{commit}.
 
 Važno je ovdje napomenuti da u gitu, za razliku od subversiona, CVS-a ili TFS-a \textbf{nikad ne commitamo u udaljeni repozitorij}. 
 Svoje lokalne promjene \emph{commit}amo, odnosno spremamo u \textbf{lokalni} repozitorij na našem računalu.
@@ -138,7 +138,7 @@ Uzmimo situaciju da smo samo jednu datoteku izmijenili i spremili u indeks:
 
 \input{git_output/git_status_nakon_indeksa}
 
-No, ako sad tu datoteku izmijenimo direktno u projektu -- novo stanje će biti ovakvo:
+Izmijenimo li tu datoteku direktno u projektu -- novo stanje će biti ovakvo:
 
 \input{git_output/git_status_nakon_indeksa_2}
 
@@ -240,16 +240,15 @@ Na primjer, \\\verb+bf4fc495fc926050fb10260a6a9ae66c96aaf908+ je jedan takav.
 \addcontentsline{toc}{section}{Ispravljanje zadnjeg \emph{commit}a}
 
 Meni se, prije gita, događalo da \emph{commit}am neku izmjenu u repozitorij, a nakon toga shvatim da sam mogao još jednu sitnicu ispraviti.
-I logično bi bilo da je ta "sitnica" dio prethodnog \emph{commit}a.
-No, \emph{commit} sam već napravio, i ne mogu ga sad naknadno ispraviti.
-Bilo bi lijepo kad bismo mogli izmijeniti zadnji \emph{commit} tako da sadrži neku novu sitnu ispravku.
+I logično bi bilo da je ta "sitnica" dio prethodnog \emph{commit}a, ali \emph{commit} sam već napravio.
+Nisam ga mogao naknato promijeniti.
 
-S gitom se to može i to vrlo jednostavno.
+S gitom se to može.
 
 Prvo učinimo tu izmjenu u radnoj verziji projekta. 
 Recimo da je to bilo na datoteci \verb+README.md+.
 Dodamo tu datoteku u indeks s \verb+git add README.md+ kao da se spremamo napraviti još jedan \emph{commit}.
-No, umjesto \verb+git commit+, sad je naredba:
+Umjesto \verb+git commit+, sad je naredba:
 
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
 
@@ -258,7 +257,7 @@ Možemo provjeriti s \verb+git log+ šte se desilo i vidjeti ćemo da zadnji \em
 U stvari, ispravno bi bilo kazati da je promijenjen i cijeli taj \emph{commit}.
 
 \verb+git commit --amend+ nam omogućava da u zadnji \emph{commit} dodamo neku datoteku ili čak i \emph{maknemo} datoteku koju smo prethodno \emph{commit}ali. 
-No, treba samo pripaziti da se taj commit nalazi samo na našem lokalnom repozitoriju, a ne i na nekom od udaljenih. 
+Treba samo pripaziti da se taj commit nalazi samo na našem lokalnom repozitoriju, a ne i na nekom od udaljenih. 
 Više o tome malo kasnije.
 
 \section*{Git gui}

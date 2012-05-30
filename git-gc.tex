@@ -54,7 +54,7 @@ Grafički:
 Dakle, git interno dodaje \textbf{novi} objekt (\emph{f'}) i na njega pomiče referencu \verb+HEAD+ (koja je do tada gledala na \emph f).
 On samo "kaže": Od sada na dalje, zadnji \emph{commit} u ovoj grani više nije \emph f, nego \emph{f'}.
 
-No, sad u git repozitoriju imamo i \emph{commit} \emph f, a i \emph{f'}, ali samo jedan od njih se koristi (\emph{f'}).
+Sad u git repozitoriju imamo i \emph{commit} \emph f, a i \emph{f'}, ali samo jedan od njih se koristi (\emph{f'}).
 Commit \emph f je \textbf{i dalje snimljen u} \verb+.git/object+ \textbf{direktoriju}.
 I on se više neće koristiti.
 Puno tih \verb+git commit --amend+ posljedično ostavlja puno takvog "smeća" u repozitoriju.
@@ -109,8 +109,7 @@ Ovaj primjer je isti kao i prvi, s jednom razlikom.
 Došlo je do \emph{merge}a.
 
 Znamo da grana nije ništa drugo nego referenca na njen zadnji čvor/\emph{commit}.
-Obrišemo li granu \verb+grana+, obrisali smo referencu na njen zadnji čvor $g$.
-No, i dalje imamo $q$ koji pokazuje na $g$.
+Obrišemo li granu \verb+grana+, obrisali smo referencu na njen zadnji čvor $g$, ali i dalje imamo $q$ koji pokazuje na $g$.
 Zbog toga će svi čvorovi grane \verb+grana+ nakon njenog brisanja ostati u repozitoriju.
 
 Treći primjer:

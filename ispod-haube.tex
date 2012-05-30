@@ -17,7 +17,7 @@ Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tak
 Nemate niti nekakav graf, odnosno redosljed kako su direktorij nastajali jedan iz drugog.
 I to bi se moglo riješit tako da u svakom direktoriju u nekoj posebnoj datoteci, npr. \verb+parents+ nabrojite nazive direktorija koji su "roditelji" trenutnom direktoriju.
 
-No, sve je to prilično neefikasno što se tiče diskovnog prostora. 
+Sve je to prilično neefikasno što se tiče diskovnog prostora. 
 Imate li u repozitoriju jednu datoteku veličine 100 kilobajta koju \textbf{nikad} ne mijenjate, njena kopija će opet zauzimati 100 kilobajta u svakoj kopiji projekta.
 Čak i ako nije nikad mijenjana.
 To je gnjavaža.
@@ -104,7 +104,7 @@ Osim SHA1 identifikatora git uz svaki \emph{commit} čuva i neke metapodatke kao
 \end{itemize}
 
 Buduću da je svaki \emph{commit} SHA1 sadržaja projekta u nekom trenutku, kad bi netko htio neopaženo promijeniti povijest projekta, morao bi promijeniti i njegov SHA1 identifikator.
-No, onda mora promijeniti i SHA1 njegovog sljedbenika, i sljedbenika njegovog sljedbenika, i\dots
+Onda mora promijeniti i SHA1 njegovog sljedbenika, i sljedbenika njegovog sljedbenika, i\dots
 
 Sve da je to i napravio na jednom repozitoriju -- tu radnju mora ponoviti na svim ostalim \textbf{distribuiranim} repozitorijima istog projekta.
 
@@ -132,7 +132,7 @@ Dovoljan nam je $w$.
 Iz njega možemo, prateći reference "unazad" (suprotno od redosljeda njihovog nastajanja) doći sve do mjesta gdje je grana nastala.
 Tako, na osnovu samo jednog čvora (\emph{commit}a) možemo saznati cijelu povijest neke grane.
 
-Analogno, dovoljno nam je imati samo reference na zadnje \emph{commit}ove svih grana u repozitoriju -- da bi mogli saznati povijest cijelog projekta.
+Dovoljno nam je imati samo reference na zadnje \emph{commit}ove svih grana u repozitoriju -- da bi mogli saznati povijest cijelog projekta.
 
 Zato \textbf{gitu grane i nisu ništa drugo neki reference na njihove zadnje \emph{commit}ove}.
 
@@ -160,7 +160,7 @@ Tada samo dodajte jedan ili dva znaka više (\verb+974ef0ad+ ili \verb+974ef0ad8
 Referenca \verb+HEAD+ je uvijek referenca na zadnji \emph{commit} u grani u kojoj se nalazimo.
 Ukoliko nam treba referenca na predzadnji \emph{commit}, mogli bi pogledati \verb+git log+ i tamo naći njegov SHA1.
 Postoji i lakši način: \verb+HEAD~1+.
-Analogno, pred-predzadnji commit je \verb+HEAD~2+, i tako dalje.
+Pred-predzadnji commit je \verb+HEAD~2+, i tako dalje\dots
 
 Na primjer, želimo li pogledati koje su se izmjene dogodile između sadašnjeg stanja grana i stanja od prije $10$ \emph{commit}ova, to će ići ovako:
 

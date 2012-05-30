@@ -9,7 +9,7 @@ Prebacivanjem na granu \verb+master+, izmjene koje smo napravili u \emph{commit}
 Slično, prebacivanjem na \verb+eksperimentalna-grana+ -- neće nam biti dostupne izmjene iz \emph x, \emph y i \emph z.
 
 To je u redu dok svoje izmjene želimo raditi u izolaciji od ostatka koda. 
-No, što ako smo u \verb+eksperimentalna-grana+ ispravili veliki bug i htjeli bismo sad tu ispravku preuzeti u \verb+master+?
+Što ako smo u \verb+eksperimentalna-grana+ ispravili veliki bug i htjeli bismo sad tu ispravku preuzeti u \verb+master+?
 
 Ili, što ako zaključimo kako je rezultat eksperimenta kojeg smo isprobali u \\
 \verb+eksperimentalna-grana+ uspješan i želimo to sad imati u \verb+master+?
@@ -17,7 +17,7 @@ Ono što nam sad treba je da nekako \textbf{izmjene iz jedne grane preuzmemo u d
 U gitu, to se naziva \emph{merge}.
 Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
 Rezultat spajanja bi bila samo jedna grana. 
-No, \emph{merge}anjem dvije grane -- one nastavljaju svoj život. 
+\emph{Merge}anjem dvije grane -- one nastavljaju svoj život. 
 Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzimaju u drugoj grani.
 
 \section*{Git \emph{merge}}
@@ -272,7 +272,7 @@ S gitom, često imamo po nekoliko grana.
 Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako organizacija projekta postaje veći izazov.
 I zato mnogi programeri grane koje više ne koriste brišu.
 
-No, tu sad imamo mali problem.
+Tu sad imamo mali problem.
 Pogledajte, na primjer, ovakav projekt:
 
 \input{graphs/git_merge_2}
@@ -297,7 +297,7 @@ osnovna pretpostavka i smisao preuzimanja izmjena iz jedne grane u drugu je to �
 To su ove dvije crte u gornjem grafu.
 Dakle, sve to ima smisla u projektu koji ima nelinearnu povijest (više grana).
 
-No, postoji jedan poseban slučaj koji zahtijeva pojašnjenje.
+Postoji jedan poseban slučaj koji zahtijeva pojašnjenje.
 Uzmimo da je povijest projekta bila slična gornjem grafu, ali s jednom malo izmjenom:
 
 \input{graphs/fast_forward}
@@ -336,8 +336,7 @@ Idemo, još jednom, pogledati linearni model:
 
 \input{graphs/linearni_model}
 
-Do sada bi svima trebalo biti jasno da on ima svoje mane.
-No, ima i nešto korisno -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
+Do sada bi svima trebalo biti jasno da on ima svoje mane, ali ima i pozitivne strane -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
 Korak po korak, do trenutne verzije.
 
 Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim. 

@@ -68,12 +68,12 @@ Ostali repozitoriji koje ćemo dodavati mogu imati nazive kakve god želimo.
 
 Od trenutka kad smo klonirali svoj repozitorij pa na dalje -- za nas postoje \textbf{dva repozitorija}.
 Možda negdje na svijetu postoji još netko tko je klonirao taj isti repozitorij i na njemu nešto radi (a da mi o tome ništa ne znamo).
-No, naš dio svijeta su samo ova dva s kojima direktno imamo posla. 
+Naš dio svijeta su samo ova dva s kojima direktno imamo posla. 
 Jedan je udaljeno kojeg smo klonirali, a drugi je lokalni koji se nalazi pred nama.
 
 Prije nego li počnemo s pričom o tome kako slati ili primati izmjene iz jednog repozitorija u drugi, trebamo nakratko spomenuti kakva je točno struktura lokalnog repozitorija.
 Već znamo za naredbu \verb+git branch+, koja nam ispisuje popis svih grana na našem repozitoriju.
-No, sad imamo posla i sa udaljenim repozitorijem -- njega smo klonirali.
+Sad imamo posla i sa udaljenim repozitorijem -- njega smo klonirali.
 
 S \verb+git branch -a+ ispisujemo \textbf{sve grane koje su nam trenutno dostupne u lokalnom rpeozitoriju}.
 Naime, kad smo klonirali repozitorij -- postale su nam dostupne i grane udaljenog repozitorija:
@@ -95,7 +95,7 @@ U lokalnom \verb+master+ ćemo mi \emph{commit}ati naše izmjene, a u \verb+orig
 Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da imamo ažurno stanje udaljenog repozitorija.
 
 Ako vam ovo zvuči zbunjujuće, ništa čudno.
-No, sve će sjesti na svoje mjesto kad to počnete koristiti.
+Sve će sjesti na svoje mjesto kad to počnete koristiti.
 
 \subsection*{Djelomično kloniranje povijesti repozitorija}
 \addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
@@ -228,8 +228,7 @@ Nakon \verb+git fetch+, stanje je:
 
 Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
 U biti je to kao da imamom dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
-Ovo je, u biti, najobičniji \emph{merge} koji će, eventualno, imati i neke konflikte. 
-No, to već znamo riješiti.
+Ovo je, u biti, najobičniji \emph{merge} koji će, eventualno, imati i neke konflikte koje znamo riješiti.
 Rezultat \emph{merge}a je novi čvor $z$:
 
 \input{graphs/origin_master_2_4}
@@ -617,7 +616,7 @@ Svatko bi trebao imati \textbf{svoj udaljeni repozitorij} na kojeg će onda \emp
 Na tom udaljenom repozitoriju bi on mogao/trebao postaviti ovlasti drugim programerima u koje ima povjerenje da imaju ovlasti \emph{push}ati.
 
 Na taj način nitko nikada ne može promijeniti status lokalnog (radnog) repozitorija bez da je njegov vlasnik toga svjestan.
-No, to može na tom udaljenom repozitoriju, a onda vlasnik iz njega može \emph{fetch}ati, \emph{pull}ati i \emph{push}ati.
+To može na udaljenom repozitoriju, a onda vlasnik iz njega može \emph{fetch}ati, \emph{pull}ati i \emph{push}ati.
 
 \textbf{\emph{Bare} repozitorij je repozitorij koji je zamišljen da bude na nekom serveru, a ne da se na njemu direktno \emph{commit}a}.
 Drugim riječima, nisu svi direktoriji jednaki: 
@@ -636,7 +635,7 @@ Na lokalnom računalu napravimo:
 \gitoutputcommand{git remote add origin login@server:staza/do/repozitorija}
 
 Ovdje smo išli suprotnim putem -- nismo klonirali repozitorij i tako dobili referencu na \verb+origin+, nego smo lokalni repozitorij kopirali na udaljeno računalo i tek sada postavili da nam je \verb+origin+ taj udaljeni repozitorij.
-No, ako sada pokušamo \emph{push}ati svoj \verb+master+:
+Pokušamo li sada \emph{push}ati svoj \verb+master+:
 
 \gitoutputcommand{git push origin master}
 
