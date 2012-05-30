@@ -59,7 +59,7 @@ Vjerojatno se pitate što git radi u raznim mogućim situacijama. Na primjer u j
 U principu, vjerujte mi, git najčešće napravi točno ono što treba. 
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
 Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja u to da ijedan sustav za verzioniranje koda zna ovu radnju izvršiti kako treba.
-Svaki put sam išao pogledati je li napravio ono što bih očekivao da će napraviti i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
+Nakon svakog \emph{merge}a sam išao proučavati je li rezultat ispravan i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
 Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (mašinska) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
 
 Umjesto beskonačnih hipotetskih situacija tipa "Što će git napraviti ako sam u grani $A$ izmijenio $x$, a u grani $B$ izmijenio $y$\dots" -- najbolje je da to jednostavno isprobate. 
@@ -247,7 +247,7 @@ Nakon toga treba ju \emph{commit}ati na standardan način.
 Drugi način je da koristite \verb+git mergetool+.
 Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
 Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše rješavate ovakve konflikte.
-Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od tih programa.
+Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od programa za rješavanje konflikata.
 
 Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda ovako:
 
@@ -259,7 +259,7 @@ Nakon što konflikt u datoteci (ili datotekama) riješite -- izmijenjene datotek
 \addcontentsline{toc}{section}{\emph{Merge}, \emph{branch} i povijest projekta}
 
 Kad radimo s nekim projektom, onda nam je važno da imamo sačuvanu cijelu njegovu povijest.
-To nam omogućava da saznamo tko je originalni autor nekog koda kojeg možda slabije razumijemo.
+To nam omogućava da saznamo tko je originalni autor koda kojeg možda slabije razumijemo.
 Ili želimo vidjeti kojim redosljedom je neka datoteka nastajala.
 
 Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
@@ -341,7 +341,7 @@ Korak po korak, do trenutne verzije.
 
 Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim. 
 I zbog toga povijest projekta \textbf{može} postati cirkus kojeg je teško pratiti i organizirati.
-Zbog toga, organizacija repozitorija zahtijeva veliku pažnju.
+Organizacija repozitorija zahtijeva posebnu pažnju, posebno ako radite s više ljudi na istom projektu.
 
 Postoji, ipak, način kako se može od puno grana stvoriti linearna povijest.
 Kad bi postojao trik kako da iz ovakvog stanja:
@@ -354,7 +354,7 @@ Kad bi postojao trik kako da iz ovakvog stanja:
 
 To jest, da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
 Tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
-Kad bi, tada, obrisali \verb+varijanta+, povijest bi odjednom postala linerna:
+Nakon toga bi brisanjem grane \verb+varijanta+ dobili da je povijest našeg projekta postala linearna:
 
 \input{graphs/bez_fast_forward_rebase_2}
 

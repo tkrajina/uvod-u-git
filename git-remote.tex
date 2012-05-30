@@ -438,7 +438,7 @@ I, na kraju\dots
 \subsection*{Brisanje udaljene grane}
 \addcontentsline{toc}{subsection}{Brisanje udaljene grane}
 
-Ukoliko želimo obrisati granu na udaljenom repozitoriju -- to radimo s posebnom sintaksom naredbe \verb+git push+:
+Želimo li obrisati granu na udaljenom repozitoriju -- to radimo posebnom varijantom naredbe \verb+git push+:
 
 \gitoutputcommand{git push origin :grana-koju-zelimo-obrisati}
 
@@ -454,9 +454,9 @@ Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo 
 
 Kloniranjem na našem lokalnom računalu dobijamo kopiju udaljenog repozitorija s jednim dodatkom -- ta kopija je pupčanom vrpcom vezana za originalni repozitorij.
 Dobijamo referencu na \verb+origin+ repozitorij (onaj kojeg smo klonirali).
-Dobijamo i dobijamo one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost osvježavanja njihovog stanja s \verb+git fetch+.
+Dobijamo i one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost osvježavanja njihovog stanja s \verb+git fetch+.
 
-Imamo i nekoliko ograničenja, a najvažnije je to što možemo imati samo jedan \verb+origin+.
+Imamo i neka ograničenja, a najvažnije je to što možemo imati samo jedan \verb+origin+.
 Što ako želimo imati posla s više udaljenih repozitorija?
 Odnosno, što ako imamo više programera s kojima želimo surađivati od kojih svatko ima \textbf{svoj} repozitorij?
 
@@ -466,7 +466,7 @@ Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sust
 \addcontentsline{toc}{subsection}{Dodavanje i brisanje udaljenih repozitorija}
 
 Svi udaljeni repozitoriji bi trebali biti repozitorij istog projekta\footnote{Git dopušta čak i da udaljeni repozitorij bude repozitorij nekog drugog projekta, ali rezultati \emph{merge}anja će biti čudni.}. 
-Bilo kloniranjem bilo kopiranjem nečijeg projekta (tj. kopiranjem \verb+.git+ direktorijia i \emph{checkout}anjem projekta).
+Bilo da su nastali kloniranjem ili kopiranjem nečijeg projekta (tj. kopiranjem \verb+.git+ direktorijia i \emph{checkout}anjem projekta).
 Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku svoje povijesti nastali iz jednog jedinog projekta.
 
 Sve naredbe s administracijom udaljenih (\emph{remote}) repozitorija se rade s naredbom \\ \verb+git remote+.
