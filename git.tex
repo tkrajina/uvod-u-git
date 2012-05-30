@@ -19,9 +19,9 @@
 
 % TODO: Naći neku bolju kombinaciju
 \addtolength{\hoffset}{-1cm}
-\addtolength{\voffset}{-3cm}
-\addtolength{\textwidth}{3cm}
-\addtolength{\textheight}{4cm}
+\addtolength{\voffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\textheight}{1cm}
 \pagestyle{empty}
 
 \makeindex
@@ -30,10 +30,11 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 
 \newcommand{\gitgraphics}[1]{%
-\begin{tabular}{|l}
-    \begin{minipage}[b]{150mm}%
+\begin{tabular}{l}
+    \begin{minipage}[b]{120mm}%
         \vspace*{5mm}%
-        \includegraphics[width=14cm]{#1}
+        \noindent
+        \includegraphics[width=12cm]{#1}
         \vspace*{5mm}%
     \end{minipage}%
 \end{tabular}
