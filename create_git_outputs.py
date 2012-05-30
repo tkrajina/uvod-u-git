@@ -156,6 +156,7 @@ if __name__ == '__main__':
             latex_file_name = file_name.replace('.txt', '.tex')
             with file('git_output/{0}'.format(latex_file_name), 'w') as f:
                 f.write(latex)
+
             print latex_file_name, 'OK'
 
 

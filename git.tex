@@ -29,22 +29,24 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 
 \newcommand{\gitgraphics}[1]{%
-	\vspace*{5mm}%
-    \includegraphics[width=14cm]{#1}
-	\vspace*{5mm}%
+\begin{tabular}{|l}
+    \begin{minipage}[b]{150mm}%
+        \vspace*{5mm}%
+        \includegraphics[width=14cm]{#1}
+        \vspace*{5mm}%
+    \end{minipage}%
+\end{tabular}
 }
 
 \newcommand{\gitoutput}[1]{%
-	\vspace*{3mm}%
-	\begin{tabular}{|l}%
-		\begin{minipage}[b]{150mm}%
-			\vspace*{3mm}%
-			\noindent
-			\texttt{#1}
-			\vspace*{3mm}%
-		\end{minipage}%
-	\end{tabular}%
-	\vspace*{3mm}%
+\begin{tabular}{|l}
+    \begin{minipage}[b]{150mm}%
+        \vspace*{3mm}%
+        \noindent
+        \texttt{#1}
+        \vspace*{3mm}%
+    \end{minipage}%
+\end{tabular}
 }
 
 \newcommand{\gitoutputcommand}[1]{%

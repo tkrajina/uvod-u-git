@@ -1485,7 +1485,15 @@ for v in vars().keys():
         graph = method()
 
         with file(file_name, 'w') as f:
+            f.write("""\\begin{tabular}{l}
+    \\begin{minipage}[b]{150mm}%
+        \\vspace*{3mm}%
+        \\noindent""")
             f.write(graph.get_latex_string())
+            f.write("""\\vspace*{3mm}%
+    \\end{minipage}%
+\\end{tabular}
+""")
             print file_name, ' OK'
 		
 
