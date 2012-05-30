@@ -1,7 +1,7 @@
 \chapter*{Tagovi}
 \addcontentsline{toc}{chapter}{Tagovi}
-u
-\emph{Tag}, "oznaka", iliti "ključna riječ" je naziv koji je populariziran s dolaskom takozvanim "web 2.0" sajtovima. 
+
+\emph{Tag}, "oznaka" iliti "ključna riječ" je naziv koji je populariziran s dolaskom takozvanim "web 2.0" sajtovima. 
 Mnogi ne znaju, ali tagovi su postojali i prije toga. 
 Tag je jedan od načina klasifikacije dokumenata.
 
@@ -17,13 +17,13 @@ Kad bi u knjižnicama tako označavali knjige, onda one na policama ne bi bilo p
 Sve bi bile poredane po nekom proizvoljnom redosljedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio:
 
 \begin{itemize}
-	\item Ključne riječi (iliti \emph{tag}ovi). Na primjer, za neki roman s Sherlockom Holmesom kao glavnim likom, to bi bili "ubojstvo", "krimić", "detektiv", "engleski", "sherlock\_homes", "watson", \dots
+	\item Ključne riječi (iliti \emph{tag}ove). Na primjer, za neki roman s Sherlockom Holmesom kao glavnim likom, to bi bili "ubojstvo", "krimić", "detektiv", "engleski", "sherlock\_homes", "watson", \dots
 	\item Nekakav identifikator knjige (vjerojano ISBN).
 	\item Mjesto gdje se knjiga nalazi.
 \end{itemize}
 
 Kad bi pretraživali knjige, otišli bi na računalo i utipkali "krimić" i "detektiv" i on bi nam izbacio sve knjige koje imaju oba ta \emph{tag}a.
-Tu ne bi bili samo romani Artura Conana Doylea, našli bi se i romani Agathe Christie i mnogih drugih. 
+Tu ne bi bili samo romani Artura Conana Doylea, našli bi se i oni Agathe Christie i mnogih drugih. 
 Što više \emph{tag}ova zadamo, to će rezultati pretraživanja biti više specifični.
 Uz svaku knjigu bi pisalo na kojoj točno polici se ona nalazi.
 
@@ -37,8 +37,8 @@ To je string od 40 znamenaka.
 Međutim, taj string je nama ljudima besmislen.
 
 Nama su smisleni komentari uz kod, međutim, ovi \textbf{komentari nisu jedinstveni}.
-Projekt možemo pretraživati po riječima iz komentara, ali nema smisla od gita tražiti "Daj mi stanje projekta kakvo je bilo u trenutku kad je komentar \emph{commit} a bio 'Ispravljen bug s izračunom kamate'".
-Jer, moglo se desiti da smo imali dva (ili više) \emph{commit}a s komentarom "Ispravljen bug s izračunom kamate".
+Projekt možemo pretraživati po riječima iz komentara, ali nema smisla od gita tražiti "Daj mi stanje projekta kakvo je bilo u trenutku kad je komentar \emph{commit}a bio 'Ispravljen bug s izračunom kamate'".
+Jer, moglo se desiti da smo imali dva (ili više) \emph{commit}a s istim komentarom.
 
 Sjećate li se priče o verzioniranju koda?
 Bilo je riječi o primjeru programera koji radi na programu i izdaje verzije \verb+1.0+, \verb+1.1+, \verb+2.0+, \verb+2.1+\dots svoje aplikacije:
@@ -62,3 +62,9 @@ S \verb+git tag <naziv_taga>+ dodajete novi tag:
 \gitoutputcommand{git tag -d testni-tag}
 
 Rad s tagovima je jednostavan, a ima samo jedna komplikacija koja se može dogoditi u radu s udaljenim projektima, no o tome ćemo malo kasnije.
+
+Želimo li projekt privremeno vratiti na stanje kakvo je bilo u trenutku kad smo definirali \emph{tag} \verb+1.0+:
+
+\gitoutputcommand{git checkout 1.0}
+
+I sad tu možete stvoriti novu granu s \verb+git checkout <grana>+ ili vratiti projekt u zadnje stanje s \verb+git checkout HEAD+.
