@@ -460,7 +460,7 @@ Taj string jedinstveno određuje svaki \emph{commit} (više riječi o tome u pos
 
 Sad trebamo naći takav identifikator za onaj commit kojeg želite prebaciti u \verb+master+. Recimo da je to \verb+2b9ef6d02e51a890d508413e83495c11184b37fb+.
 
-Prebacimo se u granu u koju želimo preuzeti samo izmjene it tog \emph{commit}a i utipkajmo \verb+git cherry-pick <commit>+.
+Prebacimo se u granu u koju želimo preuzeti samo izmjene iz tog \emph{commit}a i utipkajmo \verb+git cherry-pick <commit>+.
 Ako nema konflikata, rezultat će biti:
 
 \input{git_output/git_cherry_pick}
@@ -491,7 +491,7 @@ To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge}
 \gitoutputcommand{git merge eksperimentalna-grana --no-commit}
 
 Na taj naćin če se \emph{merge} izvršiti, ali neće se sve \emph{commit}ati. 
-Sad mi sami možemo spremiti sve izmjene i staviti neki svoj komentar.
+Sad možemo \emph{commit}ati sa svojim komentarom ili eventualno napraviti još koju izmjenu prije nego se odlučimo snimiti novo stanje.
 
 Jedini detalj na kojeg treba pripaziti je što, ako je došlo do \emph{fast-forward} \emph{merge}anja, onda \verb+--no-commit+ nema efekta.
 Zato je, za svaki slučaj, bolje koristiti sljedeću sintaksu:
