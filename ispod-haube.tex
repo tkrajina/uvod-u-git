@@ -186,7 +186,7 @@ Samo ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/config+, \verb
 \addcontentsline{toc}{subsection}{.git/config}
 
 U datoteci \verb+.git/config+ se spremaju sve lokalne postavke.
-To jest, tu je sve one postavke koje snimimo s \verb+git config <naziv> <vrijednost>+, i to su stvari koje se odnose samo za tekući repozitorij.
+To jest, tu su sve one postavke koje smo snimili s \verb+git config <naziv> <vrijednost>+, i to su konfiguracije koje se odnose samo za tekući repozitorij.
 Za razliku od toga, \textbf{globalne} postavke (one koje se snime s \verb+git config --global+) se snimaju u korisnički direktorij u datoteci \verb+~/.gitconfig+.
 
 \subsection*{.git/objects}
@@ -196,8 +196,8 @@ Sadržaj direktorija \verb+.git/objects+ izgleda ovako nekako:
 
 \input{git_output/git_objects}
 
-I to je onaj direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
-Dakle, to git koristi umjesto onih višestrukih direktorija koje smo spomenuli u našem hipotetskom sustavu za verzioniranje, na početku ovog poglavlja.
+I to je direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
+Dakle, to git koristi umjesto onih višestrukih direktorija koje smo spomenuli u našem hipotetskom sustavu za verzioniranje na početku ovog poglavlja.
 Apsolutno sve se ovdje čuva.
 
 Uočite, na primjer, datoteku \verb+d7/3aabba2b969b2ff2cbff18f1dc4e254d2a2af+.
@@ -218,16 +218,16 @@ Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{
 
 \begin{itemize}
 	\item Referencu na prethodni \emph{commit},
-	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako smo to učinili u tom \emph{commit}u,
+	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako smo je dotični \emph{commit}u rezultat \emph{merge}a),
 	\item Datum i vrijeme kad je nastao,
 	\item Autora,
 	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži popis svih datoteka koje su sudjelovale u tom \emph{commit}u.
 \end{itemize}
 
-Drugim riječima, sve potrebno da bi znali od čega se \emph{commit} sastojao i da bi znali gdje je njegovo mjesto na grafu povijesti projekta.
+Drugim riječima, tu imamo sve potrebno da bi znali od čega se \emph{commit} sastojao i da bi znali gdje je njegovo mjesto na grafu povijesti projekta.
 
 Stvar se može zakomplicirati kad broj objekata poraste.
-Tada se u \emph{blob} objekte može zapakirati više datoteka ili samo dijelova datoteka posebnim algoritmom za pakiranje (\emph{pack}).
+Tada se u jedan \emph{blob} objekte može zapakirati više datoteka ili samo dijelova datoteka posebnim algoritmom za pakiranje (\emph{pack}).
 
 \subsection*{.git/refs}
 \addcontentsline{toc}{subsection}{.git/refs}
@@ -244,13 +244,14 @@ Svaki od tih datoteka sarži referencu na jedan od objekata iz \verb+.git/object
 Poigrajte se s \verb+git cat-file+ i otkriti ćete da su to uvijek \emph{commit} objekti.
 
 Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija, a koji se nalaze u \verb+.git/objects+.
+To je implementacija one priče kako je gitu grana samo referenca na njen zadnji \emph{commit}.
 
 \subsection*{HEAD}
 \addcontentsline{toc}{subsection}{HEAD}
 
 Datoteka \verb+.git/HEAD+ u stvari nije obična datoteka nego samo simbolički link na neku od datoteka unutar \verb+git/refs+.
 I to na onu od tih datoteka koja sadrži referencu na granu u kojoj se trenutno nalazimo.
-Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/heads/master+, što znači da se nalazim na \verb+master+ grani.
+Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/heads/master+, što znači da se moj repozitorij nalazi na \verb+master+ grani.
 
 \subsection*{.git/hooks}
 \addcontentsline{toc}{subsection}{.git/hooks}
