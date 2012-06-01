@@ -1307,7 +1307,7 @@ def graph_origin_master_s_granama():
     graph.add_branch(origin_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'origin/grana',
             row = 2,
             branch_from = origin_master_branch.get_node(2),
             nodes = 'xyz'))
@@ -1361,7 +1361,7 @@ def graph_origin_master_s_granama_2():
     graph.add_branch(origin_master_branch)
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'origin/grana',
             row = 3,
             branch_from = origin_master_branch.get_node(2),
             nodes = 'xyz'))
