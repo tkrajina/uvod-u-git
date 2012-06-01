@@ -359,12 +359,10 @@ Vratimo se na ovu situaciju:
 
 \input{graphs/push_2_2}
 
-Da ponovimo još jednom.
-Standardni postupak je \verb+git fetch+ (što je u gornjem primjeru već učinjeno) i \verb+git merge origin/master+.
-
+Standardni postupak je \verb+git fetch+ (što je u gornjem primjeru već učinjeno) i \\ \verb+git merge origin/master+.
 Međutim, ovdje ima još jedna mogućnost.
 Nakon što smo proučili ono što je vlasnik udaljenog repozitorija napravio u \emph{commit}ovima $x$ i $y$, ponekad ćemo zaključiti da to jednostavno ne valja. 
-I najradije bi sada jednostavno "pregazili" njegove \emph{commit}ove u udaljenom \verb+master+.
+I najradije bi sada jednostavno "pregazili" naše \emph{commit}ove preko njegovih u udaljenom \verb+master+.
 
 To se može, komanda je:
 
@@ -419,7 +417,7 @@ Sad je stanje:
 \input{git_output/git_branch_all_3}
 
 Sad u taj lokalni \verb+master+ možemo \emph{commit}ati koliko nas je volja.
-Kad se odlučimo poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radim s novom granom umjesto master.
+Kad se odlučimo poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radimo s novom granom umjesto master.
 Dakle,
 
 \gitoutputcommand{git fetch}

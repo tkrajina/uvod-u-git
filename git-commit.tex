@@ -35,10 +35,10 @@ Sad će rezultat od \verb+git status+ izgledati ovako:
 
 \input{git_output/git_status_1}
 
-Najbitniji podatak su linije u kojima piše \verb+modified: README.tex+, jer to je datoteka koju smo \emph{mijenjali}, ali ne još \emph{commit}ali.
+Najbitniji podatak su linije u kojima piše \verb+modified:+ i \verb+deleted:+, jer to su datoteke koju smo \emph{mijenjali}, ali ne još \emph{commit}ali.
 
 Želimo li pogledati \textbf{koje su točne razlike} u tim datotekama u odnosu na stanje kakvo je snimljeno u repozitoriju, odnosno u \textbf{zadnjoj verziji} repozitorija, to možemo dobiti s \verb+git diff+. 
-Primjer jednog ispisa te naredbe je:
+Primjer ispisa te naredbe je:
 
 \input{git_output/git_diff_1}
 
@@ -59,8 +59,8 @@ Na primjer, ukoliko želimo $10$ linija oko izmjenjenih dijelova koda, to ćemo 
 \addcontentsline{toc}{section}{Indeks}
 
 Iako često govorimo o tome kako ćemo "\emph{commit}ati datoteku" ili "staviti datoteku u indeks" ili\dots -- treba imati na umu da git ne čuva "datoteke" (kao nekakav apstraktni pojam) nego stanja, odnosno \textbf{verzije datoteka}.
-Dakle, za jednu te istu datoteku -- git čuva njena različita stanja.
-Mi datoteke u našem projektu mijenjamo, a sami odlučujemo u kojem trenutku su one u takvom stanju da bismo ih snimili.
+Dakle, za jednu te istu datoteku -- git čuva njena različita stanja, kako se mijenjala kroz povijest.
+Mi datoteke u našem projektu mijenjamo, a sami odlučujemo u kojem trenutku su one takve da bismo ih snimili.
 
 U gitu postoji poseban "međuprostor" u koji se "stavljaju" datoteke koje ćemo spremiti (\emph{commit}ati).
 U odnosu na taj "prostor" i repozitorij općenito, datoteka (odnosno neko njeno stanje) može biti:
