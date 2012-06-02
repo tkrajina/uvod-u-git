@@ -103,9 +103,46 @@ Podsjetimo se \verb+76cf8+ je kratica za \emph{commit}, a \verb+76cf8~1+ je refe
 \section*{\emph{Blame}}
 \addcontentsline{toc}{section}{\emph{Blame}}
 
-S \verb+git blame <datoteka>+ ćemo dobiti ispis neke datoteke s detaljima o tome \textbf{tko}, \textbf{kad} i u \textbf{kojem \emph{commit}u} je napravio svaku liniju u toj datoteci, te \textbf{iz koje datoteke} je ta izmjena došla u tekuću\footnote{Nažalost, linije su preduge da bi se ovdje ispravno vidjelo.}:
+S \verb+git blame <datoteka>+ ćemo dobiti ispis neke datoteke s detaljima o tome \textbf{tko}, \textbf{kad} i u \textbf{kojem \emph{commit}u} je napravio (ili izmijenio) pojedinu liniju u toj datoteci\footnote{Nažalost, linije su preduge da bi se ovdje ispravno vidjelo.}:
 
 \input{git_output/git_blame}
+
+Nađete li liniju koja započinje znakom \verb+^+ -- to znači da je ta linija bila tu i u prvoj verziji datoteke.
+
+U svakom projektu datoteke mijenjaju imena. 
+Tako da kod koji je pisan u jednoj datoteci ponekad završi u datoteci nekog trećeg imena.
+Ukoliko želimo znati i u kojoj su su datoteci linije naše trenutke datoteke prvi put pojavile, to se može s:
+
+\gitoutputcommand{git blame -C <datoteka>}
+
+\section*{Digresija o micanju datoteka}
+\addcontentsline{toc}{section}{Digresija o micanju datoteka}
+
+Vezano uz \verb+git blame -C+, napraviti ćemo jednu malu digresiju.
+Neki drugi sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih komandi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij.
+
+Ukoliko to ne učinite, nego datoteke preimenujete standardnim putem (naredbe \verb+mv+ ili \verb+move+) -- sustav za verzioniranje neće imati informaciju o tome da je neka datoteka preimenovana. 
+Što se njega tiče -- primijetiti će da je jedna datoteka obrisana i druga nastala.
+
+Ukoliko smo ju samo preimenovali, možda bi po sadržaju mogao zaključiti da se radi o istoj datoteci, ali ako što ako smo ju preimenovali i promijenili dvije linije?
+Posljedica je -- ako je u jednoj grani datoteka preimenovana a u drugoj samo izmijenjena -- rezultat \emph{merge}a može biti neočekivan, a sustav neće nikad znati u kojoj datoteci je neki kod prvi put nastao i tko ga je prvi put napisao.
+Ispasti će da je korisnik koji je (samo) preimenovao datoteku napisao i sav kod u njoj.
+
+Barem u \textbf{tim} sustavima za verzioniranje, kod gita je malo drukčije.
+Git ima ugrađenu heuristiku koja prati je li datoteka u nekom \emph{commit}u nestala.
+Ukoliko jest -- proučiti će koje datoteke su u istom \emph{commit}u nastale. 
+Ako se sadržaj poklapa u dovoljno velikom postotku linija, git će sam zaključiti da se radi o preimenovanju (ili micanju) datoteke -- a ne o datoteci koja se prvi put pojavljuje u repozitoriju.
+
+I to je princip na osnovu kojeg \verb+git blame -C+ "zna" u kojoj datoteci se neka linija prvi put pojavila.
+
+Nemojte da vas zbuni činjenica što git \textbf{ima} komandu:
+
+\gitoutputcommand{git mv <stara\_datoteka> <nova\_datoteka>}
+
+\dots{}za preimenovanje/micanje datoteka.
+Ta naredba ne radi ništa posebno \textbf{u gitu}, ona je samo \emph{alias} za standardnu naredbu operativnog sustava (\verb+mv+ ili \verb+move+).
+
+Zbog toga naredba \verb+git merge+ radi ispravno čak i ako u jednog grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
