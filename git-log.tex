@@ -118,7 +118,7 @@ Ukoliko želimo znati i u kojoj su su datoteci linije naše trenutke datoteke pr
 \section*{Digresija o micanju datoteka}
 \addcontentsline{toc}{section}{Digresija o micanju datoteka}
 
-Vezanuo uz \verb+git blame -C+, napraviti ćemo jednu malu digresiju.
+Vezano uz \verb+git blame -C+, napraviti ćemo jednu malu digresiju.
 Pretpostavimo da Ivo i Marijana zajedno pišu pjesmu.
 Ivo je napisao prvu verziju i datoteku s pjesmom nazvao \verb+pjesnici.txt+.
 Nakon toga je Marijana pjesmu tu datoteku preimenovala u \verb+pjesnici-u-svijetu.txt+.
@@ -128,7 +128,7 @@ Problem je što je \verb+pjesnici-u-svijetu.txt+ dodana od strane Marijane.
 Ispada kao da je ona \textbf{napisala} tu pjesmu, iako je samo preimenovala datoteku.
 
 Zbog ovakve situacije neki drugi sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih komandi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij.
-Tako oni znaju da je Marijana \textbf{preimenovala} postojeću datoteku, ali sadržaj je i dalje napisao Ivan.
+Tako oni znaju da je Marijana \textbf{preimenovala} postojeću datoteku, ali sadržaj je napisao Ivan.
 Ukoliko to ne učinite, nego datoteke preimenujete standardnim putem (naredbe \verb+mv+ ili \verb+move+) -- sustav za verzioniranje neće imati informaciju o tome da je preimenovana. 
 
 To je problem, jer kod svakog micanja i preimenovanja datoteke moramo stalno paziti da se to napravi kroz naredbe sustava za verzioniranje.
@@ -154,7 +154,7 @@ Nemojte da vas zbuni to što git \textbf{ima} komandu:
 \dots{}za preimenovanje/micanje datoteka.
 Ta naredba ne radi ništa posebno \textbf{u gitu}, ona je samo \emph{alias} za standardnu naredbu operativnog sustava (\verb+mv+ ili \verb+move+).
 
-Zbog toga naredba \verb+git merge+ radi ispravno čak i ako u jednog grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
+Zbog toga naredba \verb+git merge+ radi ispravno čak i ako u jednoj grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
