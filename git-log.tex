@@ -115,8 +115,8 @@ Ukoliko želimo znati i u kojoj su su datoteci linije naše trenutke datoteke pr
 
 \gitoutputcommand{git blame -C <datoteka>}
 
-\section*{Digresija o micanju datoteka}
-\addcontentsline{toc}{section}{Digresija o micanju datoteka}
+\section*{Digresija o premještanju datoteka}
+\addcontentsline{toc}{section}{Digresija o premješštanju datoteka}
 
 Vezano uz \verb+git blame -C+, napraviti ćemo jednu malu digresiju.
 Pretpostavimo da Ivo i Marijana zajedno pišu pjesmu.
@@ -142,7 +142,7 @@ Spomenuti problem nije problem i u gitu.
 Git ima ugrađenu heuristiku koja prati je li datoteka u nekom \emph{commit}u preimenovana.
 Ukoliko u novom \emph{commit}u on nađe da je jedna datoteka \textbf{obrisana} -- proučiti će koje datoteke su u istom \emph{commit}u \textbf{nastale}. 
 Ako se sadržaj poklapa u dovoljno velikom postotku linija, git će sam zaključiti da se radi o preimenovanju datoteke -- a ne o datoteci koja se prvi put pojavljuje u repozitoriju.
-Isto vrijedi ako datoteku nismo preimenovali nego pomaknuli (i, eventualno, preimenovali) na novu lokaciju u repozitorij.
+Isto vrijedi ako datoteku nismo preimenovali nego premjestili (i, eventualno, preimenovali) na novu lokaciju u repozitorij.
 
 To je princip na osnovu kojeg \verb+git blame -C+ "zna" u kojoj datoteci se neka linija prvi put pojavila.
 Zato bez straha možemo koristiti naredbe \verb+mv+, \verb+move+ ili manipulirati ih preko nekog IDE-a.
