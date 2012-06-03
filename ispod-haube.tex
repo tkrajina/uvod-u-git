@@ -14,7 +14,7 @@ Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}).
 I to je nekakvo verzioniranje koda, ali s puno nedostataka.
 
 Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tako da u svaki direktorij spremite datoteku naziva \verb+komentar.txt+.
-Nemate niti nekakav graf, odnosno redosljed kako su direktorij nastajali jedan iz drugog.
+Nemate niti graf, odnosno redosljed nastajanja \emph{commit}ova.
 I to bi se moglo riješit tako da u svakom direktoriju u nekoj posebnoj datoteci, npr. \verb+parents+ nabrojite nazive direktorija koji su "roditelji" trenutnom direktoriju.
 
 Sve je to prilično neefikasno što se tiče diskovnog prostora. 
@@ -24,7 +24,7 @@ To je gnjavaža.
 
 Zato bi možda bilo bolje da umjesto \textbf{kopije direktorija} za \emph{commit} napravimo novi u kojeg ćemo staviti \textbf{samo one datoteke koje su izmijenjene}.
 Zahtijevalo bi malo više posla jer morate točno znati koje su datoteke izmijenjene, ali i to se može riješiti.
-Mogli bi napraviti neku jednostavno \emph{shell} skriptu koja će to napraviti a nas. 
+Mogli bi napraviti neku jednostavno \emph{shell} skriptu koja bi to napravila za nas. 
 
 S time bi se problem diskovnog prostora drastično smanjio. 
 Rezultat bi mogli još malo poboljšati tako da datoteke kompresiramo.

@@ -118,7 +118,7 @@ Ili, ako želimo dodati apsolutno sve što se nalazi u našoj radnoj verziji:
 \subsection*{Micanje iz indeksa}
 \addcontentsline{toc}{subsection}{Micanje iz indeksa}
 
-Recimo da smo datoteku stavili u indeks i kasnije se predomislili -- lako ju maknemo iz indeksa naredbom:
+Recimo da smo datoteku stavili u indeks i kasnije se predomislili -- lako ju iz indeksa maknemo naredbom:
 
 \gitoutputcommand{git reset HEAD -- <datoteka1> <datoteka2> \dots}
 
@@ -142,7 +142,8 @@ Izmijenimo li tu datoteku direktno u projektu -- novo stanje će biti ovakvo:
 
 \input{git_output/git_status_nakon_indeksa_2}
 
-Dotična datoteka je sad i u radnoj verziji i u indeksu.
+Dotična datoteka je sad u radnoj verziji označena kao izmijenjena, ali ne još stavljena u indeks.
+Istovremeno, ona je i u indeksu!
 Iz stvarnog svijeta smo naviknuti da jedna stvar ne može biti na dva mjesta, međutim iz dosadašnjeg razmatranja znamo da gitu nije toliko bitna datoteka (kao apstraktan pojam) nego \textbf{verzije (ili stanja) datoteke}.
 I, u tom smislu, nije ništa neobično da imamo jedno stanje datoteke u indeksu, a drugo stanje datoteke u radnoj verziji našeg projekta.
 
