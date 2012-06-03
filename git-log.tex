@@ -119,26 +119,26 @@ Ukoliko želimo znati i u kojoj su su datoteci linije naše trenutke datoteke pr
 \addcontentsline{toc}{section}{Digresija o premješštanju datoteka}
 
 Vezano uz \verb+git blame -C+, napraviti ćemo jednu malu digresiju.
-Pretpostavimo da Ivo i Marijana zajedno pišu pjesmu.
-Ivo je napisao prvu verziju i datoteku s pjesmom nazvao \verb+pjesnici.txt+.
-Nakon toga je Marijana pjesmu tu datoteku preimenovala u \verb+pjesnici-u-svijetu.txt+.
-U trenutku kad je Marijana \emph{commit}ala svoju izmjenu -- sustav za verzioniranje je te izmjene vidio kao da je \verb+pjesnici.txt+ obrisana, a nova pjesma  \verb+pjesnici-u-svijetu+ dodana.
+Pretpostavimo da Mujo i Haso zajedno pišu zbirku pjesama.
+Svaku pjesmu spreme u posebnu datoteku, a da bi lakše pratili tko je napisao koju pjesmu -- koriste git.
+Mujo je napisao pjesmu \verb+proljeće.txt+.
+Nakon toga je Haso tu datoteku preimenovao u \verb+proljeće-u-mom-gradu.txt+.
+U trenutku kad je Haso \emph{commit}ao svoju izmjenu -- sustav za verzioniranje je te izmjene vidio kao da je \verb+proljeće.txt+ obrisana, a nova pjesma  \verb+proljeće-u-mom-gradu.txt+ dodana.
 
-Problem je što je \verb+pjesnici-u-svijetu.txt+ dodana od strane Marijane.
-Ispada kao da je ona \textbf{napisala} tu pjesmu, iako je samo preimenovala datoteku.
+Problem je što je novu datoteku \verb+proljeće-u-mom-gradu.txt+ dodao Haso.
+Ispada kao da je on \textbf{napisao} tu pjesmu, iako je samo preimenovao datoteku.
 
-Zbog ovakve situacije neki drugi sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih komandi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij.
-Tako oni znaju da je Marijana \textbf{preimenovala} postojeću datoteku, ali sadržaj je napisao Ivan.
-Ukoliko to ne učinite, nego datoteke preimenujete standardnim putem (naredbe \verb+mv+ ili \verb+move+) -- sustav za verzioniranje neće imati informaciju o tome da je preimenovana. 
+Zbog ovakve situacije neki sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih naredbi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij.
+Tako oni znaju da je Haso \textbf{preimenovao} postojeću datoteku, ali sadržaj je napisao Mujo.
+Ukoliko to ne učinite preko njegovih naredbi -- nego datoteke preimenujete standardnim putem (naredbe \verb+mv+ ili \verb+move+) -- sustav za verzioniranje neće imati informaciju o tome da je preimenovana. 
 
-To je problem, jer kod svakog micanja i preimenovanja datoteke moramo stalno paziti da se to napravi kroz naredbe sustava za verzioniranje.
-Ni u kojem slučaju preko standardnih naredbi operativnog sustava jer, ukoliko to učinimo -- gubimo povijest sadržaja datoteke.
+To je problem, jer ljudi to često zaborave, a kad se to desi -- gubi se povijest \textbf{sadržaja} datoteke.
 
-Problem je i kod \emph{merge}a.
+Kad za zaboravite -- problem je i kod \emph{merge}a.
 Ako je u jednoj grani datoteka \textbf{preimenovana} a u drugoj samo \textbf{izmijenjena} -- sustav neće znati da se u stvari radi o istoj datoteci koja je promijenjena, on će to percipirati kao dvije različite datotekke.
 Rezultat \emph{merge}a može biti neočekivan.
 
-Spomenuti problem nije problem i u gitu.
+Spomenuto nije problem i u gitu.
 Git ima ugrađenu heuristiku koja prati je li datoteka u nekom \emph{commit}u preimenovana.
 Ukoliko u novom \emph{commit}u on nađe da je jedna datoteka \textbf{obrisana} -- proučiti će koje datoteke su u istom \emph{commit}u \textbf{nastale}. 
 Ako se sadržaj poklapa u dovoljno velikom postotku linija, git će sam zaključiti da se radi o preimenovanju datoteke -- a ne o datoteci koja se prvi put pojavljuje u repozitoriju.
