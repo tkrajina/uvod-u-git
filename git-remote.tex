@@ -5,7 +5,7 @@ Sve ono što smo do sada proučavali smo radili isključivo na lokalnom repozito
 Samo smo spomenuli da je git distribuirani sustav za verzioniranje koda. 
 Složiti ćete se da je već krajnje vrijeme da krenemo pomalo obrađivati interakciju s udaljenim repozitorijima.
 
-Postoji puno scenarija kako može funkcionirati ta interakcija.
+Postoji puno situacija kako može funkcionirati ta interakcija.
 Koncentrirajmo se sada na sam trenutak kad repozitorij "dođe" ili "nastane" na našem lokalnom računalu.
 Moguće je da smo ga stvorili od nule s \verb+git init+, na način kako smo to radili do sada i onda, na neki način, "poslali" na neku udaljenu lokaciju.
 Ili smo takav repozitorij ponudili drugim ljudima da ga preuzmu (kloniraju).
@@ -214,7 +214,7 @@ I onda\dots
 
 \dots{}da bi te izmjene unijeli u naš lokalni repozitorij.
 
-Malo složeniji scenarij je sljedeći -- recimo da smo nakon\dots{}
+Malo složenija situacije je sljedeća -- recimo da smo nakon\dots{}
 
 \input{graphs/origin_master_2}
 
@@ -279,7 +279,7 @@ Stanje će sad biti:
 
 \input{graphs/push_3}
 
-Ovo je bio jednostavni scenarij u kojem smo u našem \verb+master+ \emph{commit}ali, ali na udaljeni \verb+master+ nije nitko drugi \emph{commit}ao.
+To je bila situacija u kojoj smo u našem \verb+master+ \emph{commit}ali, ali na udaljeni \verb+master+ nije nitko drugi \emph{commit}ao.
 Što da nije tako?
 Dakle, dok smo mi radili na $e$ i $f$, vlasnik udaljenog repozitorija je \emph{commit}ao svoje $x$ i $y$:
 
@@ -364,7 +364,7 @@ Međutim, ovdje ima još jedna mogućnost.
 Nakon što smo proučili ono što je vlasnik udaljenog repozitorija napravio u \emph{commit}ovima $x$ i $y$, ponekad ćemo zaključiti da to jednostavno ne valja. 
 I najradije bi sada jednostavno "pregazili" naše \emph{commit}ove preko njegovih u udaljenom \verb+master+.
 
-To se može, komanda je:
+To se može, naredba je:
 
 \gitoutputcommand{git push -f origin master}
 
@@ -624,7 +624,7 @@ Konvertirati neki repozitorij u \emph{bare} je jednostavno:
 
 \gitoutputcommand{git config --bool core.bare true}
 
-Jedan scenarij u kojem će nam ova komanda biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
+Scenarij u kojem će nam ova naredba biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
 I nismo imali nikakvih drugih udaljenih repozitorija.
 U jednom trenutku se odlučimo da smo već dosta toga napisali i želimo imati sigurnosnu kopiju na nekom udaljenom računalu.
 Kreiramo tamo doslovnu kopiju našeg direktorija.

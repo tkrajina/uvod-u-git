@@ -135,7 +135,7 @@ Ukoliko to ne učinite preko njegovih naredbi -- nego datoteke preimenujete stan
 To je problem, jer ljudi to često zaborave, a kad se to desi -- gubi se povijest \textbf{sadržaja} datoteke.
 
 Kad to zaboravite -- problem je i kod \emph{merge}a.
-Ako je u jednoj grani datoteka \textbf{preimenovana} a u drugoj samo \textbf{izmijenjena} -- sustav neće znati da se u stvari radi o istoj datoteci koja je promijenjena, on će to percipirati kao dvije različite datotekke.
+Ako je u jednoj grani datoteka \textbf{preimenovana} a u drugoj samo \textbf{izmijenjena} -- sustav neće znati da se u stvari radi o istoj datoteci koja je promijenjena, on će to percipirati kao dvije različite datoteke.
 Rezultat \emph{merge}a može biti neočekivan.
 
 Spomenuto nije problem i u gitu.
@@ -154,7 +154,7 @@ Nemojte da vas zbuni to što git \textbf{ima} komandu:
 \dots{}za preimenovanje/micanje datoteka.
 Ta naredba ne radi ništa posebno \textbf{u gitu}, ona je samo \emph{alias} za standardnu naredbu operativnog sustava (\verb+mv+ ili \verb+move+).
 
-Zbog toga naredba \verb+git merge+ radi ispravno čak i ako u jednoj grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
+Naredba \verb+git merge+ radi ispravno čak i ako u jednoj grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
@@ -167,7 +167,7 @@ Znamo već da s \verb+git checkout <naziv_grane> -- <datoteka1> <datoteka2>...+ 
 Odnedavno znamo i da naziv grane nije ništa drugo nego referenca na njen zadnji \emph{commit}.
 Ako umjesto grane, tamo stavimo referencu na neki drugi \emph{commit} dobiti ćemo stanje datoteke iz tog trenutka u povijesti.
 
-Dakle, \verb+git checkout+ se, osim za prebacivanje s grane na granu, može koristiti i za pruzimanje neke datoteke iz prošlosti:
+Dakle, \verb+git checkout+ se, osim za prebacivanje s grane na granu, može koristiti i za preuzimanje neke datoteke iz prošlosti:
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{5} -- pjesma.txt}
 
@@ -207,8 +207,7 @@ Ili možemo provjeriti je li bug i dalje tu. Ako jest, idemo probati s\dots
 \section*{\emph{Reset}}
 \addcontentsline{toc}{section}{\emph{Reset}}
 
-Uzmimo ovakav scenarij; radimo na nekoj grani.
-U jednom trenutku stanje je:
+Uzmimo ovakvu hipotetsku situaciju: Radimo na nekoj grani, a u jednom trenutku stanje je:
 
 \input{graphs/linearni_model_za_reset}
 

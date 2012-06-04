@@ -202,11 +202,11 @@ Dakle, nakon \emph{commit}a smo dobili novi čvor $d$.
 \subsection*{Datoteke koje ne želimo u repozitoriju}
 \addcontentsline{toc}{subsection}{Datoteke koje ne želimo u repozitoriju}
 
-Jedan scenarij koji se često događa je sljedeći:
+Situacija koji se često događa je sljedeća:
 Greškom smo u repozitorij spremili datoteku koja tamo ne treba biti. 
 Međutim, tu datoteku ne želimo obrisati s našeg diska, nego samo ne želimo njenu povijest imati u repozitoriju.
 
-To je, na primjer, situacija kad nam editor ili IDE spremi konfiguracijske datoteke koje su njemu važne, ali nisu bitne za projekt.
+To se dešava, na primjer, kad nam editor ili IDE spremi konfiguracijske datoteke koje su njemu važne, ali nisu bitne za projekt.
 Eclipse tako zna snimiti \verb+.project+, a Vim sprema radne datoteke s ekstenzijama \verb+.swp+ ili \verb+.swo+.
 Ako smo takvu datoteku jednom dodali u repozitorij, a naknadno smo zaključili da ju više ne želimo, onda ju prvo trebamo dodati u \verb+.gitignore+.
 Nakon toga -- git zna da \textbf{ubuduće} neće biti potrebno snimati izmjene na njoj.
