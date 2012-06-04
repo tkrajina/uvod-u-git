@@ -100,7 +100,7 @@ Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na di
 
 Zato što je grananje memorijski nezahtjevno i brzo, pripremite se na situacije kad ćete se naći s \textbf{previše} grana.
 Možda smo neke grane napravili da bi isprobali nešto novo, a to se na kraju pokazalo kao loša ideja pa smo granu napustili.
-Ili smo neku granu kreirali da bi započeli nešto novo u aplikaciji, ali na kraju je to riješio netko drugi ili se pokazalo da to nije potrebno.
+Ili smo ju započeli da bi riješili neki problem, ali taj problem je prije nas riješio netko drugi.
 
 U tom slučaju, granu možemo obrisati s \verb+git branch -D <naziv_grane>+. 
 Dakle, ako je stanje grana na našem projektu:
@@ -130,7 +130,7 @@ Više detalja o tome koji točno \emph{commit}ovi i u kojim uvijetima se brišu 
 
 S puno grana, događati će se svakakve situacije.
 Relativno česta situacija je kad bismo htjeli preuzeti samo jednu ili više datoteka iz druge grane, ali ne želimo \textbf{preći} na tu drugu granu.
-Znamo da su neke datoteke u drugoj grani izmijenjeni, i želimo ih u trenutnoj grani.
+Znamo da su neke datoteke u drugoj grani izmijenjene i želimo ih preuzeti u trenutnu granu.
 To se može ovako:
 
 \gitoutputcommand{git checkout <naziv\_grane> -- <datoteka1> <datoteka2> ...}
