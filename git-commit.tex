@@ -63,17 +63,17 @@ Dakle, za jednu te istu datoteku -- git čuva njena različita stanja, kako se m
 Mi datoteke u našem projektu mijenjamo, a sami odlučujemo u kojem trenutku su one takve da bismo ih snimili.
 
 U gitu postoji poseban "međuprostor" u koji se "stavljaju" datoteke koje ćemo spremiti (\emph{commit}ati).
-U odnosu na taj "prostor" i repozitorij općenito, datoteka (odnosno neko njeno stanje) može biti:
+Dakle, sad imamo tri različita "mjesta" u kojima se čuvaju datoteke -- odnosno konkretna stanja pojedinih datoteka:
 
-\begin{itemize}
-	\item datoteka je već spremljena negdje \textbf{u git repozitoriju}. U tom repozitoriju čuvamo sve prethodnde verzije iste datoteke.
-	\item datoteku smo tek \textbf{izmijenili i nismo ju još \emph{commit}ali u repozitorij}. Ta datoteka može, ali i ne mora, imati prethodne verzije snimljene u repozitoriju.
-	\item datoteku smo stavili u taj "međuprostor" tako da bismo \textbf{ju pripremili za \emph{commit}}.
-\end{itemize}
+\begin{description}
+	\item[Git repozitorij] čuva različita stanja iste datoteke (\textbf{povijest} datoteke).
+	\item[Radna verzija repozitorija] je stanje datoteka u našem direktoriju. Ono može biti isto ili različito u odnosu na stanje datoteka u repozitoriju.
+	\item[Poseban "međuprostor" \emph{commit}] gdje privremeno spremamo trenutno stanje datoteka prije nego što ih \emph{commit}amo.
+\end{description}
 
 Ovo zadnje stanje, odnosno, taj "međuprostor za \emph{commit}" se zove \emph{index} iliti indeks.
 U literaturi ćete često naći i naziv \emph{staging area} ili \emph{cache}\footnote{Nažalost, git ovdje nije konzistentan pa i u svojoj dokumentaciji ponekad koristi \emph{stage}, a ponekad \emph{cache}.}.
-I naredba \verb+git status+ je upravo namijenjena pregledavanju statusa indeksa i radne verzije projekta.
+Naredba \verb+git status+ je upravo namijenjena pregledavanju statusa indeksa i radne verzije projekta.
 Na primjer, u trenutku pisanja ovog poglavlja, \verb+git status+ je\footnote{Da, i ova knjiga je pisana koristeći git. Detalji na https://github.com/tkrajina/uvod-u-git}:
 
 \input{git_output/git_status_prije_indeksa}
