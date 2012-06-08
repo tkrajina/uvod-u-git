@@ -17,7 +17,7 @@ Ono što nam sad treba je da nekako \textbf{izmjene iz jedne grane preuzmemo u d
 U gitu, to se naziva \emph{merge}.
 Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
 Rezultat spajanja bi bila samo jedna grana. 
-\emph{Merge}anjem dvije grane -- one nastavljaju svoj život. 
+Nakon \emph{Merge}a dvije grane -- one nastavljaju svoj život. 
 Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzimaju u drugoj grani.
 
 \section*{Git \emph{merge}}
@@ -29,7 +29,7 @@ Tada:
 
 \input{git_output/git_merge_1}
 
-Rezultat neredbe \verb+git merge+ je rekapitulacija procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, itd\dots
+Rezultat naredbe \verb+git merge+ je rekapitulacija procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, itd\dots
 Sve tu piše.
 
 Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
@@ -47,14 +47,11 @@ U obje možemo uredno \emph{commit}ati, preuzimati izmjene iz jedne grane u drug
 Kasnije možemo i ponoviti preuzimanje izmjena, odnosno \emph{merge}anje.
 I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju obrisati.
 
-\input{graphs/git_merge_3}
-
-\input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
-
 \section*{Što \emph{merge} radi kad\dots}
 \addcontentsline{toc}{section}{Što \emph{merge} radi kad\dots}
 
-Vjerojatno se pitate što git radi u raznim mogućim situacijama. Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali, ili\dots
+Vjerojatno se pitate što je rezultat \emph{merge}anja u različitim situacijama.
+Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali ili u jednoj editirali početak datoteke, a u drugoj kraj iste ili\dots
 
 U principu, vjerujte mi, git najčešće napravi točno ono što treba. 
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
