@@ -144,21 +144,21 @@ Izmijenimo li tu datoteku direktno u projektu -- novo stanje će biti ovakvo:
 
 Dotična datoteka je sad u radnoj verziji označena kao izmijenjena, ali ne još stavljena u indeks.
 Istovremeno, ona je i u indeksu!
-Iz stvarnog svijeta smo naviknuti da jedna stvar ne može biti na dva mjesta, međutim iz dosadašnjeg razmatranja znamo da gitu nije toliko bitna datoteka (kao apstraktan pojam) nego \textbf{verzije (ili stanja) datoteke}.
+Iz stvarnog svijeta smo naviknuti da jedna stvar ne može biti na dva mjesta, međutim iz dosadašnjeg razmatranja znamo da gitu nije toliko bitna datoteka (kao apstraktan pojam) nego \textbf{konkretne verzije (ili stanja) datoteke}.
 I, u tom smislu, nije ništa neobično da imamo jedno stanje datoteke u indeksu, a drugo stanje datoteke u radnoj verziji našeg projekta.
 
-Ukoliko sad želimo osvježiti indeks sa zadnjom verzijom datoteke (onu koja je, \emph{de facto} spremljena u direktoriju -- radnoj verziji projekta), onda ćemo jednostavno:
+Ukoliko sad želimo osvježiti indeks sa zadnjom verzijom datoteke (onu koja je, \emph{de facto} spremljena u direktoriju), onda ćemo jednostavno:
 
 \gitoutputcommand{git add $<$datoteka$>$}
 
-Dakle, ukratko, indeks je prostor u kojeg spremamo grupu datoteka (\textbf{stanja} datoteka!).
-Takav skup datoteka treba predstavljati neku logičku cjelinu tako da bi ih mogli spremiti u repozitorij.
+Ukratko, indeks je prostor u kojeg spremamo grupu datoteka (\textbf{stanja} datoteka!).
+Takav skup datoteka treba predstavljati neku logičku cjelinu koju ćemo spremiti u repozitorij.
 To spremanje je jedan \emph{commit}, a tim postupkom smo grafu našeg repozitorija dodali još jedan čvor. 
 
 Prije \emph{commit}a datoteke možemo stavljati u indeks ili izbacivati iz indeksa.
 Sve dok nismo sigurni da indeks predstavlja točno one datoteke koje želimo u našoj izmjeni (\emph{commit}u).
 
-Razlika između tog, novog, čvora i njegovog prethodnika su upravo datoteke koje smo imali u indeksu u trenutku kad smo \emph{commit} izvršili.
+Razlika između tog novog čvora i njegovog prethodnika su upravo datoteke koje smo imali u indeksu u trenutku kad smo \emph{commit} izvršili.
 
 \section*{Prvi commit}
 \addcontentsline{toc}{section}{Prvi commit}
@@ -168,7 +168,7 @@ Izmjene možemo spremiti s:
 \gitoutputcommand{git commit -m "Nova verzija"}
 
 U stringu nakon \verb+-m+ \textbf{moramo} unijeti komentar uz svaku promjenu koju spremamo u repozitorij.
-Git ne dopušta spremanje izmjena bez komentara.
+Git ne dopušta spremanje izmjena bez komentara\footnote{U stvari, dopušta ako dodate \texttt{--allow-empty-message}, ali bolje da to ne radite.}.
 
 Sad je status projekta opet:
 
@@ -218,7 +218,7 @@ Postupak je:
 
 \gitoutputcommand{git rm --cached test.pyc}
 
-To će vam u indeks dodati kao da je datoteka obrisana, iako ju ostavlja netaknutu na disku.
+To će nam u indeks dodati stanje kao da je datoteka obrisana, iako ju ostavlja netaknutu na disku.
 Drugim riječima \verb+git rm --cached+ sprema "obrisano stanje" datoteke u indeks.
 Sad tu izmjenu treba \emph{commit}ati da bi git znao da od ovog trenutka na dalje datoteku može obrisati iz svoje povijesti.
 
@@ -234,7 +234,7 @@ Sve prethodne \emph{commit}ove možemo pogledati s \verb+git log+:
 
 Više riječi o povijesti repozitorija će biti u posebnom poglavlju. 
 Za sada je važno znati da u gitu svaki \emph{commit} ima jedinstveni string koji ga identificira.
-Taj string ima 40 znamenaka i primjere možemo vidjeti u rezultatu od \verb+git log+.
+Taj string ima 40 znamenaka i primjere istih možemo vidjeti u rezultatu od \verb+git log+.
 Na primjer, \\\verb+bf4fc495fc926050fb10260a6a9ae66c96aaf908+ je jedan takav.
 
 \section*{Ispravljanje zadnjeg \emph{commit}a}
@@ -253,9 +253,8 @@ Umjesto \verb+git commit+, sad je naredba:
 
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
 
-Ovaj \verb+--amend+ gitu naređuje da promijeni zadnji \emph{commit} u povijesti tako da sadrži \textbf{i izmjene koje je već imao i izmjene koje smo upravo dodali}.
+Ovaj \verb+--amend+ gitu naređuje da izmijeni zadnji \emph{commit} u povijesti tako da sadrži \textbf{i izmjene koje je već imao i izmjene koje smo upravo dodali}.
 Možemo provjeriti s \verb+git log+ šte se desilo i vidjeti ćemo da zadnji \emph{commit} sad ima novi komentar.
-U stvari, ispravno bi bilo kazati da je promijenjen i cijeli taj \emph{commit}.
 
 \verb+git commit --amend+ nam omogućava da u zadnji \emph{commit} dodamo neku datoteku ili čak i \emph{maknemo} datoteku koju smo prethodno \emph{commit}ali. 
 Treba samo pripaziti da se taj commit nalazi samo na našem lokalnom repozitoriju, a ne i na nekom od udaljenih. 
