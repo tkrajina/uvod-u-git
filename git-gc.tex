@@ -75,31 +75,31 @@ Ako vas zanimaju -- \verb+git help+ je uvijek na dohvat ruke.
 \section*{Povijest i brisanje grana}
 \addcontentsline{toc}{section}{Povijest i brisanje grane}
 
-Spomenuti ćemo još jednu stvar koja bi logički pripadala u poglavlja o granama i povijesti, ali tada nismo imali dovoljno znanja da bi ju shvatili.
+Spomenuti ćemo još nešto što bi logički pripadalo u poglavlja o granama i povijesti, ali tada nismo imali dovoljno znanja.
 
 Što se dešava s \emph{commit}ovima iz neke grane nakon što ju obrišemo?
 Uzmimo tri primjera.
-U sva tri imamo dvije grane: \verb+master+ i \verb+grana+.
+U sva tri imamo dvije grane: \verb+master+ i \verb+eksperiment+.
 
 Prvi primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_1}
 
+Pravilo po kojem git razlikuje čvorove koje će ostaviti u povijesti od onih koje će obrisati je jednostavno:
 \textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće biti obrisati s} \verb+git gc+.
-Kako znamo koji čvorovi su dio projekta?
-Po tome što postoji netko tko ima referencu na njih.
-Ta referenca može biti ili grana ili neki drugi čvor ili \emph{tag}.
+Kako znamo koji čvorovi su dio \textbf{povijesti projekta}?
+Po tome što postoji nešto (grana, čvor ili \emph{tag}) tko ima referencu na njih.
+
+Krenimo sad primijeniti to pravilo na naš primjer\dots
 
 Podsjetimo se da su strelice redosljed nastajanja, ali reference idu suprotnim smjerom -- sljedbenik ima referencu na prethodnika.
 Dakle, $g$ ima referencu na $f$, $f$ na $e$, itd.
 Što je sa čvorom $g$? 
-Izgleda kao da nitko nema referencu na njega, ali to nije točno -- grana \verb+grana+ je referenca na njega.
+Izgleda kao da nitko nema referencu na njega, ali to nije točno -- grana \verb+eksperiment+ je referenca na njega.
 
-Ako obrišemo granu \verb+grana+ -- $g$ više nema nikoga da njega referencira.
-Mogli bi ga obrisati, ali onda bi mogli obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
-
+Ako obrišemo granu \verb+eksperiment+ -- $g$ više nema nikoga da njega referencira.
+\verb+git gc+ će ga obrisati, ali onda mora obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
 Dakle, kad obrišemo granu koja nije \emph{merge}ana u neku drugu granu, onda se svi njeni čvorovi gube iz povijesti projekta.
-I, prije ili kasnije će biti obrisani s \verb+git gc+.
 
 Drugi primjer:
 
@@ -109,14 +109,14 @@ Ovaj primjer je isti kao i prvi, s jednom razlikom.
 Došlo je do \emph{merge}a.
 
 Znamo da grana nije ništa drugo nego referenca na njen zadnji čvor/\emph{commit}.
-Obrišemo li granu \verb+grana+, obrisali smo referencu na njen zadnji čvor $g$, ali i dalje imamo $q$ koji pokazuje na $g$.
-Zbog toga će svi čvorovi grane \verb+grana+ nakon njenog brisanja ostati u repozitoriju.
+Obrišemo li granu \verb+eksperiment+, obrisali smo referencu na njen zadnji čvor $g$, ali i dalje imamo $q$ koji pokazuje na $g$.
+Zbog toga će svi čvorovi grane \verb+eksperiment+ nakon njenog brisanja ostati u repozitoriju.
 
 Treći primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_3}
 
-Ukoliko u ovom promjeru obrišemo \verb+grana+, postoji samo jedan njen čvor koji će biti izgubljen -- $g$.
+Ukoliko u ovom promjeru obrišemo \verb+eksperiment+, postoji samo jedan njen čvor koji će biti izgubljen, a to je $g$.
 Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$, dakle on prestaje biti dio povijesti našeg projekta.
 $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 

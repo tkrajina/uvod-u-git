@@ -333,7 +333,7 @@ def graph_git_merge_i_brisanje_grana_1():
             nodes = 'abcxyzq'))
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'eksperiment',
             branch_from = graph.find_node('b'),
             row = 1,
             nodes = 'defg'))
@@ -348,7 +348,7 @@ def graph_git_merge_i_brisanje_grana_2():
             nodes = 'abcxyzq'))
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'eksperiment',
             branch_from = graph.find_node('b'),
             row = 1,
             nodes = 'defg'))
@@ -365,7 +365,7 @@ def graph_git_merge_i_brisanje_grana_3():
             nodes = 'abcxyzq'))
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'eksperiment',
             branch_from = graph.find_node('b'),
             row = 1,
             nodes = 'defg'))
@@ -382,7 +382,7 @@ def graph_git_merge_i_brisanje_grana_4():
             nodes = 'abcxyzq'))
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'eksperiment',
             branch_from = graph.find_node('b'),
             row = 1,
             nodes = 'defg'))
@@ -399,7 +399,7 @@ def graph_git_merge_i_brisanje_grana_5():
             nodes = 'abcxyzq'))
 
     graph.add_branch(mod_graph.Branch(
-            label = 'grana',
+            label = 'eksperiment',
             branch_from = graph.find_node('b'),
             row = 1,
             nodes = 'defg'))
