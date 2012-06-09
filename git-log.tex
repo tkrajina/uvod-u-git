@@ -82,7 +82,7 @@ Na primjer, tražimo li sve \emph{commit}ove koji \textbf{u \emph{commit} koment
 
 \gitoutputcommand{git log --grep=graph}
 
-Drugi česti scenarij je odgovor na pitanje "Kad se \textbf{u kodu} prvi put spomenuo string 'trla baba lan'"? Tada se koristi \verb+git log -S<string>+.
+Drugi česti scenarij je odgovor na pitanje "Kad se \textbf{u kodu} prvi put spomenuo neki string?". Tada se koristi \verb+git log -S<string>+.
 Dakle, ne u komentaru \emph{commit}a nego \textbf{u sadržaju datoteka}.
 Recimo da tražimo tko je prvi napisao funkciju \verb+get_image_x_size+:
 
@@ -111,7 +111,7 @@ Nađete li liniju koja započinje znakom \verb+^+ -- to znači da je ta linija b
 
 U svakom projektu datoteke mijenjaju imena. 
 Tako da kod koji je pisan u jednoj datoteci ponekad završi u datoteci nekog trećeg imena.
-Ukoliko želimo znati i u kojoj su su datoteci linije naše trenutke datoteke prvi put pojavile, to se može s:
+Ukoliko želimo znati i u kojoj su datoteci linije naše trenutke datoteke prvi put pojavile, to se može s:
 
 \gitoutputcommand{git blame -C <datoteka>}
 
@@ -154,13 +154,13 @@ Nemojte da vas zbuni to što git \textbf{ima} naredbu:
 \dots{}za preimenovanje/micanje datoteka.
 Ta naredba ne radi ništa posebno \textbf{u gitu}, ona je samo \emph{alias} za standardnu naredbu operativnog sustava (\verb+mv+ ili \verb+move+).
 
-Naredba \verb+git merge+ radi ispravno čak i ako u jednoj grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
+Zato git ispravno \emph{merge}a čak i ako u jednoj grani datoteku preimenujemo i izmijenimo, a u drugoj samo izmijenimo -- git će sam zaključiti da se radi o istoj datoteci različitog imena.
 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
 Svima nam se ponekad desilo da smo izmijenili datoteku i kasnije shvatili da ta izmjena ne valja. 
-Verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
+Na primjer zaključili smo da je verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
 Kako da ju vratimo iz povijesti i \emph{commit}amo u novo stanje projekta?
 
 Znamo već da s \verb+git checkout <naziv_grane> -- <datoteka1> <datoteka2>...+ možemo lokalno dobiti stanje datoteke iz te grane.
@@ -171,7 +171,7 @@ Dakle, \verb+git checkout+ se, osim za prebacivanje s grane na granu, može kori
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{5} -- pjesma.txt}
 
-\dots{}nam u trenutni direktorij vraća točno stanje datoteke \verb+pjesma.txt+ od prije $5$ \emph{commit}ova.
+To će nam u trenutni direktorij vratiti točno stanje datoteke \verb+pjesma.txt+ od prije $5$ \emph{commit}ova.
 I sad smo slobodni tu datoteku opet \emph{commit}ati ili ju promijeniti i \emph{commit}ati.
 
 Treba li nam da datoteka kakva je bila u predzadnjem \emph{commit}u grane \verb+test+?

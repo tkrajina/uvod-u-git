@@ -179,7 +179,7 @@ Vjerojatno ste to već učinili, i vjerojatno ste otkrili da je njegov sadržaj 
 
 \input{git_output/dot_git_folder}
 
-Samo ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/config+, \verb+.git/objects+, \verb+.git/refs+, \verb+HEAD+ i \verb+.git/hooks+
+Ukratko ćemo ovdje opisati neke važne dijelove: \verb+.git/config+, \verb+.git/objects+, \verb+.git/refs+, \verb+HEAD+ i \verb+.git/hooks+
 
 \subsection*{.git/config}
 \addcontentsline{toc}{subsection}{.git/config}
@@ -195,7 +195,7 @@ Sadržaj direktorija \verb+.git/objects+ izgleda ovako nekako:
 
 \input{git_output/git_objects}
 
-I to je direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
+To je direktorij koji sadrži sve verzije svih datoteka i svih \emph{commit}ova našeg projekta.
 Dakle, to git koristi umjesto onih višestrukih direktorija koje smo spomenuli u našem hipotetskom sustavu za verzioniranje na početku ovog poglavlja.
 Apsolutno sve se ovdje čuva.
 
@@ -217,7 +217,7 @@ Poigrate li se malo s \verb+git cat-file -p <referenca>+ otkriti ćete da \emph{
 
 \begin{itemize}
 	\item Referencu na prethodni \emph{commit},
-	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako smo je dotični \emph{commit}u rezultat \emph{merge}a),
+	\item Referencu na \emph{commit} grane koju smo \emph{merge}ali (ako je dotični \emph{commit} rezultat \emph{merge}a),
 	\item Datum i vrijeme kad je nastao,
 	\item Autora,
 	\item Referencu na jedan objekt tipa \emph{tree} koji sadrži popis svih datoteka koje su sudjelovale u tom \emph{commit}u.
@@ -239,10 +239,10 @@ Pogledajmo i sadržaj tih datoteka:
 
 \input{git_output/cat_git_refs_tag}
 
-Svaki od tih datoteka sarži referencu na jedan od objekata iz \verb+.git/objects+. 
+Svaka od tih datoteka sarži referencu na jedan od objekata iz \verb+.git/objects+. 
 Poigrajte se s \verb+git cat-file+ i otkriti ćete da su to uvijek \emph{commit} objekti.
 
-Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija, a koji se nalaze u \verb+.git/objects+.
+Zaključatk se sam nameće -- u \verb+.git/refs+ se nalaze reference na sve grane, tagove i grane udaljenih repozitorija koji se nalaze u \verb+.git/objects+.
 To je implementacija one priče kako je gitu grana samo referenca na njen zadnji \emph{commit}.
 
 \subsection*{HEAD}
@@ -257,7 +257,7 @@ Na primjer, u trenutku dok pišem ove retke \verb+HEAD+ je kod mene \verb+refs/h
 
 Ovaj direktorij sadrži \emph{shell} skripte koje želimo izvršiti u trenutku kad se dogode neki važni događaji na našem repozitoriju.
 Svaki git repozitorij već sadrži primjere takvih skripti s ekspenzijom \verb+.sample+.
-Ukoliko taj sample maknete, one će se početi izvršavati na tim događajima.
+Ukoliko taj sample maknete, one će se početi izvršavati na tim događajima (\emph{event}ima).
 
 Na primjer, želite li da se prije svakog \emph{commit}a izvrše \emph{unit} testovi i pošalje mejl s rezultatima, napraviti ćete skriptu \verb+pre-commit+ koja to radi.
 
