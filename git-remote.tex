@@ -294,7 +294,7 @@ I git ovdje ne zna što točno napraviti, i traži da mu netko pomogne.
 Kao i do sada, pomoć se očekuje od nas, a tu radnju trebamo izvršiti na lokalnom repozitoriju.
 Tek onda ćemo moći \emph{push}ati na udaljeni.
 
-Riješenje je standardno:
+Rješenje je standardno:
 
 \gitoutputcommand{git fetch}
 
@@ -586,7 +586,7 @@ Ivan ima svoju radnu verziju projekta koja je ista kao i zadnja verzija u njegov
 Isto je i s našim repozitorijem (dakle, i nama i njemu \verb+git status+ pokazuje nemamo lokalno nikakvih ne\emph{commit}anih izmjena).
 
 Sad recimo mi napravimo izmjenu, \emph{push}amo u Ivanov repozitorij i tako, a da on toga uopće nije svjestan, mijenjamo status radne verzije njegovog projekta.
-Njemu će se činiti kao da mu, u jednom trenutku \verb+git status+ kaže da nema nikakvih izmjena, a sekundu kasnije (bez da je išta editirao) -- \verb+git status+ kaže da je nešto promijenio.
+Njemu će se činiti kao da mu, u jednom trenutku \verb+git status+ kaže da nema nikakvih izmjena, a sekundu kasnije (bez da je išta editirao) -- \verb+git status+ kaže da se njegova radna verzija razlikuje od zadnjeg stanja u repozitoriju.
 \verb+git status+, naime pokazuje razlike između radne verzije repozitorija i \textbf{zadnjeg \emph{commit}a} u repozitoriju.
 S našim \emph{push}em -- mi smo upravo promijenili taj zadnji \emph{commit} u njegovom repozitoriju.
 
@@ -602,15 +602,16 @@ Ako malo razmislite, to izgleda kao kontradikcija sa cijelom pričom o udaljenim
 Kako to da nam git ne da \emph{push}ati u nečiji repozitorij, čak i ako imamo ovlasti?
 Čemu onda uopće \emph{push}?
 
-Riješenje je sljedeće: postoji posebna vrsta repozitorija koji \textbf{nemaju radnu verziju projekta}.
+Rješenje je sljedeće: postoji posebna vrsta repozitorija koji \textbf{nemaju radnu verziju projekta}.
 To jest, oni nisu nikad \emph{checkout}ani, a sadržavaju samo \verb+.git+ direktorij.
 I to je \emph{bare}\footnote{Engleski: gol. Npr. \emph{barefoot} -- bosonog.} repozitorij.
-Kod takvih -- čak i kad \emph{push}amo -- nećemo nikad promijeniti status radne verzije (ona je \textbf{uvijek} prazna i/ili irelevantna).
+Kod takvih -- čak i kad \emph{push}amo -- nećemo nikad promijeniti status radne verzije.
+Radna verzija je tu irelevantna.
 
 Kako se to uklapa u priču da ponekad moramo \emph{push}ati u nečiji repozitorij?
 
 Jednostavno, svatko bi trebao imati svoj lokalni repozitorij na svom lokalnom računalu na kojeg \textbf{nitko ne smije \emph{push}ati}.
-Svatko bi trebao imati \textbf{svoj udaljeni repozitorij} na kojeg će onda \emph{push}ati svoje izmjene.
+Trebao bi imati i \textbf{svoj udaljeni repozitorij} na kojeg će onda \emph{push}ati svoje izmjene.
 Na tom udaljenom repozitoriju bi on mogao/trebao postaviti ovlasti drugim programerima u koje ima povjerenje da imaju ovlasti \emph{push}ati.
 
 Na taj način nitko nikada ne može promijeniti status lokalnog (radnog) repozitorija bez da je njegov vlasnik toga svjestan.
@@ -624,7 +625,7 @@ Konvertirati neki repozitorij u \emph{bare} je jednostavno:
 
 \gitoutputcommand{git config --bool core.bare true}
 
-Scenarij u kojem će nam ova naredba biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
+Još jedan scenarij u kojem će nam ova naredba biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
 I nismo imali nikakvih drugih udaljenih repozitorija.
 U jednom trenutku se odlučimo da smo već dosta toga napisali i želimo imati sigurnosnu kopiju na nekom udaljenom računalu.
 Kreiramo tamo doslovnu kopiju našeg direktorija.
@@ -642,7 +643,7 @@ Dobiti ćemo \textbf{onu} grešku:
 \gitoutputcommand{remote: error: refusing to update checked out branch: refs/heads/master\\
 ...}
 
-Riješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom ili (još bolje) koristeći ssh.} i tamo izvršimo:
+Rješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom ili (još bolje) koristeći ssh.} i tamo izvršimo:
 
 \gitoutputcommand{git config --bool core.bare true}
 
