@@ -307,7 +307,7 @@ Smisao \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u dru
 Međutim, iako ovdje imamo dvije grane, \textbf{te dvije grane čine jednu crtu}. 
 One imaju jednu povijest. 
 I to linearnu povijest.
-Jedino što se ta linearna povijest proteže kroz dvije grane.
+Jedino što se ta linearna povijest proteže kroz obje grane.
 
 Tako su razmišljali i originalni autori gita.
 U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
@@ -318,10 +318,12 @@ U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto stan
 
 \input{graphs/fast_forward_3}
 
-Dakle, doslovno kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu.
+Dakle, kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu%
+\footnote{Preciznije, čvorovi $x$, $y$ i $z$ se sad nalaze u dvije grane. U gitu jedan \emph{commit} može biti dio više različitih grana.}%
+.
 Čak i ako sad obrišete \verb+varijanta+, cijela njega povijest se nalazi u \verb+master+.
 
-Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želimo izbjeći -- to se radi tako da dodate opciju \verb+--no-ff+ naredbi \verb+git merge+:
+Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želimo izbjeći -- to se radi tako da dodamo opciju \verb+--no-ff+ naredbi \verb+git merge+:
 
 \gitoutputcommand{git merge --no-ff varijanta}
 
@@ -332,7 +334,7 @@ Idemo, još jednom, pogledati linearni model:
 
 \input{graphs/linearni_model}
 
-Do sada bi svima trebalo biti jasno da on ima svoje mane, ali ima i pozitivne strane -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
+Do sada bi svima trebalo biti jasno da on ima svoje nedostatke, ali ima i pozitivnih strana -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
 Korak po korak, do trenutne verzije.
 
 Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim. 
@@ -388,7 +390,10 @@ Tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
 Konflikt se može dogoditi u trenutku kad git "seli" $x$ u $x'$, ili $y$ u $y'$ ili $z$ u $z'$.
 Recimo da je konflikt nastao u prvom slučaju ($x$ u $x'$).
 Negdje u čvorovima $d$, $e$ i $f$ je mijenjan isti kod koji smo mi mijenjali u $x$\footnote{Primijetite da bi do ovog konflikta došli i s klasičnim \emph{merge}om.}.
+Mi ovdje želimo zadržati povijest iz svih \emph{commit}ova: $d$, $e$, $f$, $x$, $y$ i $z$.
 To treba imati na umu dok odlučujemo kako ćemo ispraviti konflikt.
+
+U slučaju konflikta, često ćemo htjeti zadržati obje verzije konfliktnog koda, treba samo pripaziti na njihov redosljed i potencijalne sitne bugove koji mogu nastati.
 
 Nakon što smo konflikt ispravili, \textbf{ne smijemo izmjene \emph{commit}ati, nego samo spremiti u indeks s} \verb+git add+.
 Nastavljamo s:
@@ -413,17 +418,18 @@ Prekid \emph{rebase}a i vraćanje repozitorija u stanje prije nego što smo ga p
 Rebase nije nužno raditi.
 Na vama je odluka želite li jednostavniju (linearnu) povijest projekta ili ne.
 
-Postoji jedan scenarij koji, kad se prepriča, izgleda malo čudno, a u kojem je \emph{rebase} važan.
+Postoji jedan način korištenja gita u kojem je \emph{rebase} važan.
 To je \textbf{ako koristite git kao CVS, subversion ili TFS klijent}.
 Nećemo ovdje u detalje, ali recimo to ovako -- da, moguće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
 
 \emph{Commit}ovi koji su slika udaljenog repozitorija se, u takvim slučajevima, uvijek čuvaju u posebnoj grani.
-Dakle, jedna grana je doslovna kopija udaljenog CVS/subversion/TFS repozitorija.
+Dakle, jedna grana je doslovna kopija udaljenog repozitorija (CVS, subversion ili TFS).
 Tu granu možemo osvježavati s novim \emph{commit}ovima iz centralnog repozitorija.
 
-Kad treba \emph{commit}ati naše izmjene -- sve što smo radili u drugim granama treba preseliti na vrh (ispred) onih u grani koja je kopija centralnog repozitorija.
-Tek tada možemo \emph{commit}ati.
+Našu gitovsku čudnovatu i razgranatu povijest treba svesti na povijest kakvu ti repozitoriji najbolje razumiju, a to je linearna.
+Zato, kad treba \emph{commit}ati naše izmjene -- sve što smo radili u drugim granama treba "preseliti" na kraj grane koja je kopija centralnog repozitorija.
 Taj postupak nije ništa drugo nego \emph{rebase}.
+Tek tada možemo \emph{commit}ati.
 
 S obzirom da centralizirani sustavi za verzioniranje više vole linearnu od razgranate povijesti -- moramo igrati po njihovim pravilima, a \emph{rebase} je jedini način da to učinimo.
 
