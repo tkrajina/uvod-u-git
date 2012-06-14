@@ -476,13 +476,13 @@ Ukoliko tek krećemo u suradnju s njima, prvi korak koji možemo (ali i ne moram
 \gitoutputcommand{git clone https://github.com/korisnik/projekt.git}
 
 \dots{}i time smo dobili udaljeni repozitorij \verb+origin+ s tom adresom.
-Međutim, mi želimo imati posla i sa repozitorijem drugog korisnika, za to ćemo njega dodati kao \emph{remote}:
+Međutim, mi želimo imati posla i sa repozitorijem drugog korisnika, za to ćemo i njega dodati kao \emph{remote}:
 
 \gitoutputcommand{git remote add bojanov-repo git@domena.com:projekt}
 
 \dots{}i sad imamo dva udaljena repozitorija \verb+origin+ i \verb+bojanov-repo+.
 S obzirom da smo drugi nazvali prema imenu njegovo vlasnika, možda ćemo htjeti i \verb+origin+ nazvati tako.
-Recimo da je to Karlin:
+Recimo da je to Karlin repozitoriji, pa ćemo ga i nazvati tako:
 
 \gitoutputcommand{git remote rename origin karlin-repo}
 
@@ -495,7 +495,7 @@ I ovdje ćemo ih imati, ali ovaj put će lokacije biti \verb+bojanov-repo/master
 Njih ćemo isto tako morati osvježavati da bi bile ažurne.
 Naredba je ista:
 
-\gitoutputcommand{git fetch}
+\gitoutputcommand{git fetch karlin-repo\\git fetch bojanov-repo}
 
 I sad, kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih još preuzeli u naš repozitorij), jednostavno:
 
@@ -503,7 +503,7 @@ I sad, kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih jo
 
 \dots{}i isprobamo kako radi njena verzija aplikacije. Želimo li preuzeti njene izmjene:
 
-\gitoutputcommand{git merge karlin-repo/master}
+\gitoutputcommand{git checkout master\\git merge karlin-repo/master}
 
 I, općenito, sve ono što smo govorili za \emph{fetch}, \emph{push}, \emph{pull} i \emph{merge} kad smo govorili o kloniranju vrijedi i ovdje.
 
