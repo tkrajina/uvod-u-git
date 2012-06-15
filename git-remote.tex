@@ -122,7 +122,7 @@ Djelomično kloniranje je više zamišljeno da bismo skinuli kod nekog projekta 
 \addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
 
 Prije nego li nastavimo, napravio bih kratku digresiju koja je važna za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
-Graf:
+Radi se o sljedećem -- ovaj graf:
 
 \input{graphs/digresija_o_grafovima_1}
 
@@ -135,7 +135,8 @@ Zbog toga, na primjer u sljedećoj situaciji:
 
 \input{graphs/digresija_o_grafovima_3}
 
-Trebamo si ovdje zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u $e$. Jedino što se svaka grana nalazi u svom repozitoriju, a ne više u istom.
+Trebamo si ovdje zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u čvoru $e$.
+Jedino što se svaka grana nalazi u zasebnom repozitoriju, a ne više u istom.
 Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je:
 
 \input{graphs/digresija_o_grafovima_4}
@@ -346,9 +347,9 @@ Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 \subsection*{\emph{Rebase} origin/master}
 \addcontentsline{toc}{subsection}{\emph{Rebase} origin/master}
 
-Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta -- i to se može s:
+Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta kao zasebni čvorovi -- i to se može s:
 
-\gitoutputcommand{git rebase origin/master\\git push origin master}
+\gitoutputcommand{git checkout master\\git rebase origin/master\\git push origin master}
 
 Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
 
@@ -362,7 +363,7 @@ Vratimo se na ovu situaciju:
 Standardni postupak je \verb+git fetch+ (što je u gornjem primjeru već učinjeno) i \\ \verb+git merge origin/master+.
 Međutim, ovdje ima još jedna mogućnost.
 Nakon što smo proučili ono što je vlasnik udaljenog repozitorija napravio u \emph{commit}ovima $x$ i $y$, ponekad ćemo zaključiti da to jednostavno ne valja. 
-I najradije bi sada jednostavno "pregazili" naše \emph{commit}ove preko njegovih u udaljenom \verb+master+.
+I najradije bi sada "pregazili" naše \emph{commit}ove preko njegovih u udaljenom \verb+master+.
 
 To se može, naredba je:
 
@@ -378,7 +379,7 @@ Treba, međutim, imati na umu da ovakvo ponašanje nije baš uvijek poželjno.
 Zbog dva razloga:
 
 \begin{itemize}
-	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo jednostavno pogriješili. Koliko god nam to bilo teško priznati, sasvim moguće je da jednostavno nismo dobro shvatili tuđi kod.
+	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo pogriješili. Koliko god nam to bilo teško priznati, sasvim moguće je da jednostavno nismo dobro shvatili tuđi kod.
 	\item Nitko ne voli da mu se pregaze njegove izmjene kao što smo to mi ovdje napravili vlasniku ovog udaljenog repozitorija. Bilo bi bolje javiti se njemu, objasniti mu što ne valja, predložiti bolje riješenje i dogovoriti da \textbf{on} \emph{revert}a, \emph{reset}ira ili ispravi svoje izmjene.
 \end{itemize}
 
@@ -440,7 +441,7 @@ I, na kraju\dots
 
 \gitoutputcommand{git push origin :grana-koju-zelimo-obrisati}
 
-Potpuno isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
+Isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
 
 %\subsection*{Git \emph{push} i \emph{tracking} grana}
 %\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
