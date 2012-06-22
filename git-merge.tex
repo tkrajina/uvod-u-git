@@ -321,9 +321,10 @@ U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto stan
 Dakle, kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu%
 \footnote{Preciznije, čvorovi $x$, $y$ i $z$ se sad nalaze u dvije grane. U gitu jedan \emph{commit} može biti dio više različitih grana.}%
 .
-Čak i ako sad obrišete \verb+varijanta+, cijela njega povijest se nalazi u \verb+master+.
+Čak i ako sad obrišete \verb+varijanta+, cijela njegova povijest se nalazi u \verb+master+.
 
-Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga. Ukoliko to želimo izbjeći -- to se radi tako da dodamo opciju \verb+--no-ff+ naredbi \verb+git merge+:
+Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga.
+Želimo li ga izbjeći -- to se radi tako da dodamo opciju \verb+--no-ff+ naredbi \verb+git merge+:
 
 \gitoutputcommand{git merge --no-ff varijanta}
 
