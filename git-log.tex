@@ -196,13 +196,12 @@ Ništa lakše:
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{}10}
 
-\dots{}i za čas imamo stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možemo s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+.
-
-Ili možemo provjeriti je li bug i dalje tu. Ako jest, idemo probati s\dots
+\dots{}i za čas imamo stanje kakvo je bilo prije $10$ \emph{commit}ova. Sad tu možemo s \verb+git branch+ kreirati novu granu ili vratiti se na najnovije stanje s \verb+git checkout HEAD+. Ili možemo provjeriti je li bug i dalje tu. Ako jest, idemo probati s\dots
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{}20}
 
 \dots{}ako buga sad nemamo, znamo da se pojavio negdje između \textbf{dvadesetog} i \textbf{desetog} zadnjeg \emph{commit}a.
+I tako, mic po mic, sve dok ne nađemo onaj trenutak u povijesti kad se greška pojavila.
 
 \section*{\emph{Reset}}
 \addcontentsline{toc}{section}{\emph{Reset}}
