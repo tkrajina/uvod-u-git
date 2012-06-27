@@ -107,15 +107,15 @@ Drugi primjer:
 Ovaj primjer je isti kao i prvi, s jednom razlikom. 
 Došlo je do \emph{merge}a.
 
-Znamo da grana nije ništa drugo nego referenca na njen zadnji čvor/\emph{commit}.
-Obrišemo li granu \verb+eksperiment+, obrisali smo referencu na njen zadnji čvor $g$, ali i dalje imamo $q$ koji pokazuje na $g$.
+Znamo da grana nije ništa drugo nego referenca na zadnji čvor/\emph{commit}.
+Obrišemo li granu \verb+eksperiment+, obrisali smo referencu na zadnji čvor $g$, ali i dalje imamo $q$ koji pokazuje na $g$.
 Zbog toga će svi čvorovi grane \verb+eksperiment+ nakon njenog brisanja ostati u repozitoriju.
 
 Treći primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_3}
 
-Ukoliko u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan njen čvor koji će biti izgubljen, a to je $g$.
+Ukoliko u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan čvor koji će biti izgubljen, a to je $g$.
 Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$, dakle on prestaje biti dio povijesti našeg projekta.
 $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 
