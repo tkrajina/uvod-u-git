@@ -1,10 +1,10 @@
 \chapter*{Verzioniranje koda i osnovni pojmovi}
 \addcontentsline{toc}{chapter}{Verzioniranje koda i osnovni pojmovi}
 
-\section*{Što je to verzioniranje koda?}
-\addcontentsline{toc}{section}{Što je to verzioniranje koda?}
+\section*{Što je verzioniranje koda?}
+\addcontentsline{toc}{section}{Što je verzioniranje koda?}
 
-S problemom verzioniranja koda ste se sreli kad ste prvi put napisali program koji rješava neki konkretan problem. 
+S problemom verzioniranja koda sreli ste se kad ste prvi put napisali program koji rješava neki konkretan problem. 
 Bilo da je to neka jednostavna web aplikacija, CMS\footnote{Content Management System}, komandnolinijski pomoćni programčić ili kompleksni ERP\footnote{Enterprise Resource Planning}.
 
 Svaka aplikacija koja ima \textbf{stvarnog} korisnika kojemu rješava neki \textbf{stvarni} problem ima i \textbf{korisničke zahtjeve}.
@@ -14,7 +14,7 @@ Možemo satima, danima i mjesecima sjediti s budućim korisnicima i planirati š
 Radi li se o nekoj maloj izmjeni -- možda ćemo ju napraviti na licu mjesta.
 Možda ćemo trebati otići kući, potrošiti nekoliko dana i napraviti \textbf{novu verziju}.
 
-Desiti će se, na primjer, da korisniku damo na testiranje verziju \texttt{1.0}.
+Desit će se, na primjer, da korisniku damo na testiranje verziju \texttt{1.0}.
 On će istestirati i, naravno, naći nekoliko sitnih stvari koje treba ispraviti.
 Otići ćemo kući, ispraviti ih, napraviti verziju \texttt{1.1} s kojom će klijent biti zadovoljan.
 Nekoliko dana kasnije, s malo više iskustva u radu s aplikacijom, on zaključuje kako sad ima \textbf{bolju} ideju kako je trebalo ispraviti verziju \textbf{1.0}.
@@ -27,7 +27,7 @@ Grafički bi to izgledalo ovako nekako:
 U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara -- trebamo se vratiti korak unazad (u povijest projekta) i započeti novu verziju -- odnosno novu \textbf{granu projekta}.
 I nastaviti projekt s tom izmjenom.
 
-I to je samo jedan od mnogih mogućih scenarija kakvi se dešavaju s aplikacijama.
+I to je samo jedan od mnogih mogućih scenarija kakvi se događaju s aplikacijama.
 
 \section*{Linearno verzioniranje koda}
 \addcontentsline{toc}{section}{Linearno verzioniranje koda}
@@ -37,7 +37,7 @@ Linearni pristup verzioniranju koda se najbolje može opisati sljedećom ilustra
 \input{graphs/linearni_model}
 
 To je idealna situacija u kojoj točno unaprijed znamo kako aplikacija treba izgledati. 
-Započnemo projekt s nekim početnim stanjem \emph a, pa napravimo izmjene \emph b, \emph c, \dots sve dok ne zaključimo da smo spremni izdati prvu verziju za javnost.
+Započnemo projekt s početnim stanjem \emph a, pa napravimo izmjene \emph b, \emph c, \dots sve dok ne zaključimo da smo spremni izdati prvu verziju za javnost.
 I proglasimo to verzijom \texttt{1.0}. 
 
 Postoje mnoge varijacije ovog linearnog modela, jedna česta je:
@@ -45,18 +45,18 @@ Postoje mnoge varijacije ovog linearnog modela, jedna česta je:
 \input{graphs/linearni_model_2}
 
 Ona je česta u situacijama kad nemamo kontrolu nad time koja je točno verzija programa instalirana kod klijenta. 
-S web aplikacijama to nije problem, jer vi jednostavno možete aplikaciju prebaciti nas server i odmah svi klijenti koriste novu verziju.
-Međutim, ukoliko je vaš program klijentima "spržen" na CD i takav poslan klijentu -- može se desiti da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
+S web aplikacijama to nije problem, jer vi jednostavno možete aplikaciju prebaciti na server i odmah svi klijenti koriste novu verziju.
+Međutim, ukoliko je vaš program klijentima "spržen" na CD i takav poslan klijentu -- može se dogoditi da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
 
 I sad, što ako klijent koji je zadovoljan sa starijom verzijom programa otkrije \textbf{bug}?
 I zbog nekog razloga ne želi preći na novu verziju?
 U tom slučaju, morate imati neki mehanizam kako da se privremeno vratite na staru verziju, ispravite problem, izdate "novu verziju stare verzije". 
-Pošaljete je klijentu i nakon toga, vratite se na zadnju verziju i tamo nastavite rad na svoj projektu.
+Pošaljete je klijentu i nakon toga, vratite se na zadnju verziju i tamo nastavite rad na svojem projektu.
 
 \section*{Grafovi, grananje i spajanje grana}
 \addcontentsline{toc}{section}{Grafovi, grananje i spajanje grana}
 
-Prije nego nastavimo s gitom, par riječi o grafovima. 
+Prije nego nastavimo s gitom, nekoliko riječi o grafovima. 
 U ovoj knjižici ćete vidjeti puno grafova kao što su u primjerima s linearnim verzioniranjem koda. 
 Zato ćemo se na trenutak zadržati na jednom takvom grafu:
 
@@ -83,7 +83,7 @@ Zatim se sjetio izmjene koju je mogao napraviti u \emph{originalnoj} verziji; vr
 
 \input{graphs/primjer_s_granama_i_spajanjima_3}
 
-Nakon toga se vratio na svoj prvotni eksperiment, i odlučio se da bi bilo dobro tamo imati izmjene koje je napravio u \emph c i \emph d.
+Nakon toga se vratio na svoj prvotni eksperiment, i odlučio da bi bilo dobro tamo imati izmjene koje je napravio u \emph c i \emph d.
 Tada je \emph{preuzeo} te izmjene u svoju granu:
 
 \input{graphs/primjer_s_granama_i_spajanjima_4}
@@ -107,7 +107,7 @@ Na svim grafovima će glavna grana biti ona najdonja.
 Uočite, na primjer, da izmjena \emph w nije nikad završila u glavnoj grani. 
 
 Jedna od velikih prednosti gita je lakoća stvaranja novih grana i preuzimanja izmjena iz jedne u drugu granu. 
-Tako je programerima jednostavno u nekom trenutku razmišljati i postupiti na sljedeći način: \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušati ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
+Tako je programerima jednostavno u nekom trenutku razmišljati i postupiti na sljedeći način: \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušat ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
 
 Druga velika prednost čestog grananja u programima je kad se dodaje neka nova funkcionalnost koja zahtijeva puno izmjena, a ne želimo te izmjene odmah stavljati u glavnu granu programa:
 

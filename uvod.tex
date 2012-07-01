@@ -1,7 +1,7 @@
 \chapter*{Uvod}
 \addcontentsline{toc}{chapter}{Uvod}
 
-Git je alat kojeg je razvio Linus Torvalds da bi mu olakšao vođenje jednog velikog i kompleksnog projekta -- linux kernela.
+Git je alat koji je razvio Linus Torvalds da bi mu olakšao vođenje jednog velikog i kompleksnog projekta -- linux kernela.
 U početku to \textbf{nije} bio program s današnjom namjenom; Linus je zamislio da git bude osnova \textbf{drugim sustavima za razvijanje koda}.
 Drugi alati su trebali razvijati svoje sučelje na osnovu gita.
 Tako je, barem, bilo zamišljeno.
@@ -13,13 +13,17 @@ Nastale su brojne platforme za \emph{hosting} projekata, kao što je Github\foot
 Nekoliko je razloga zašto je to tako:
 
 \begin{itemize}
-	\item Postojeći sustavi za verzioniranje su zahtijevali da se točno zna tko sudjeluje u projektu (tj. tko je \emph{comitter}). To je demotiviralo ljude koji bi možda pokušali pomoći projektima kad mi imali priliku. S distribuiranim sustavima, bilo tko može "forkati" repozitorij i raditi na njemu. Ukoliko misli da je napravio nešto korisno -- vlasniku originalnog repozitorija bi predložio da preuzme njegove izmjene. Broj ljudi koji se mogu okušati u radu na nekom projektu je tako puno veći, a vlasnik i dalje zadržava pravo odlučivanja čije će izmjene uzeti, a čije neće.
+	\item Postojeći sustavi za verzioniranje su zahtijevali da se točno zna tko sudjeluje u projektu (tj. tko je \emph{comitter}).%
+    To je demotiviralo ljude koji bi možda pokušali pomoći projektima kad mi imali priliku.%
+    S distribuiranim sustavima bilo tko može "\emph{fork}ati" repozitorij i raditi na njemu.%
+    Ukoliko misli da je napravio nešto korisno -- vlasniku originalnog repozitorija bi predložio da preuzme njegove izmjene.%
+    Broj ljudi koji se mogu okušati u radu na nekom projektu je tako puno veći, a vlasnik i dalje zadržava pravo odlučivanja čije će izmjene uzeti, a čije neće.
 	\item git je \textbf{brz},
 	\item vrlo je lako i brzo granati, isprobavati izmjene koje su radili drugi ljudi i preuzeti ih u svoj kod,
 	\item Linux kernel se razvijao na gitu, tako da je u svijetu otvorenog koga (\emph{open source}) git stekao nekakvu auru važnosti.
 \end{itemize}
 
-U nastavku ove knjige pozabaviti ćemo se osnovnim pojmovima verzioniranja koda općenito i načinom kako je sve to implementirano u gitu.
+U nastavku ove knjige pozabavit ćemo se osnovnim pojmovima verzioniranja koda općenito i načinom kako je sve to implementirano u gitu.
 
 \section*{O težini, teškoćama i problemima}
 \addcontentsline{toc}{section}{O težini, teškoćama i problemima}
@@ -57,7 +61,7 @@ Poznavanje rada s klasičnim sustavima za verzioniranje koda (CVS, SVN, TFS, \do
 
 Nekoliko riječi o zadnje dvije stavke.
 Iako git nije nužno ograničen na unix/linux operativne sustave, njegovo komandnolinijsko sučelje je tamo nastalo i drži se istih principa.
-Postoje grafička sučelja, međutim mnoge iole složenije stvari je teško uopće implementirati u nekom grafičkom sučelju. 
+Problem je što je mnoge složenije stvari teško uopće implementirati u nekom grafičkom sučelju. 
 Moj prijedlog je da git naučite koristiti u komandnoj liniji, a tek onda krenete s nekim grafičkim alatom -- tek tako ćete ga zaista savladati.
 
 \section*{Našla/našao sam grešku}
@@ -76,7 +80,7 @@ Evo nekoliko načina kako to možete učniti:
     \item \emph{Fork}ajte i pošaljite \emph{pull request} s ispravkom. 
 \end{itemize}
 
-Ukoliko odaberete bilo koju varijantu osim zadnje (\emph{fork}) -- dovoljan je kratak opis s greškom (stranica, rečenica, redak) i šifra koja se nalazi na dnu naslovnice\footnote{Na primjer ono što piše \emph{Commit} b5af8ec79a7384a5a291d15d050fc932eb474e79. E, ovaj nerazumljivi dugi string meni olakšava traženje verzije za koju prijavljujete grešku.}.
+Ukoliko odaberete bilo koju varijantu osim zadnje (\emph{fork}) -- dovoljan je kratak opis s greškom (stranica, rečenica, redak) i šifra koja se nalazi na dnu naslovnice\footnote{Na primjer ono što piše \emph{Commit} b5af8ec79a7384a5a291d15d050fc932eb474e79. Ovaj nerazumljivi dugi string mi značajno olakšava traženje verzije za koju prijavljujete grešku.}.
 
 Repozitorij s izvornim \LaTeX{} kodom knjige možete naći na adresi \\\url{http://github.com/tkrajina/uvod-u-git}
  a na istoj adresi se nalazi i najnovija verzija PDF-a.
@@ -86,4 +90,4 @@ Repozitorij s izvornim \LaTeX{} kodom knjige možete naći na adresi \\\url{http
 
 Sve naredbe koje nisu specifične za git, kao na primjer "stvaranje novog direktorija", "ispis datoteka u direktoriju", i sl. će biti prema POSIX standardu\footnote{http://en.wikipedia.org/wiki/POSIX}.
 Dakle, u primjerima ćemo koristiti naredbe koje se koriste na UNIX, OS X i linux operativnim sustavima. 
-I za korisnike Microsoft Windowsa to ne bi trebao biti problem jer se radi o relativno malo broju njih kao što su \verb+mkdir+ umjesto \verb+md+, \verb+ls+ umjesto \verb+dir+, i slično.
+I za korisnike Microsoft Windowsa to ne bi trebao biti problem jer se radi o relativno malom broju njih kao što su \verb+mkdir+ umjesto \verb+md+, \verb+ls+ umjesto \verb+dir+, i slično.
