@@ -119,6 +119,37 @@ Ukoliko u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan čvor k
 Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$, dakle on prestaje biti dio povijesti našeg projekta.
 $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 
+\section*{Digresija o brisanju grana}
+\addcontentsline{toc}{section}{Digresija o brisanju grana}
+
+Uzmimo opet situaciju u kojoj i nakon brisanja grane zadržavamo sve njene \emph{commit}ove:
+
+\input{graphs/git_merge_i_brisanje_grana_2}
+
+\dots{}i onu u koju gubimo samo neke čvorove:
+
+\input{graphs/git_merge_i_brisanje_grana_3}
+
+Prvu situaciju zovemo \textbf{potpuno \emph{merge}ana grana}, a drugu \textbf{djelomično \emph{merge}ana grana}.
+
+Sad kad znamo da postoje situacije u kojima čak i nakon brisanja grane -- njeni \emph{commit}ovi ostaju u povijesti projekta.
+Mogli bi si postaviti pitanje -- čemu uopće brisati grane?
+
+Odgovor je jednostavan. Brisanjem grane nam njeni \emph{commit}ovi ostaju u povijesti (barem ako je došlo do \emph{merge}a), ali nemamo više tu granu ispisanu u listi grana koji dobijemo s \verb+git branch+.
+Kad bi tamo imalli sve grane koje smo ikad imali u povijesti projekta (a njih može biti jako puno) -- bilo bi se teško snaći u podužem ispisu.
+
+Druga digresija koju ćemo ovdje napraviti se tiče brisanja grane.
+Postoje dva načina, prvog kojeg smo već spomenuli:
+
+\gitoutputcommand{git branch -D grana}
+
+\dots{}koji definitivno briše granu \verb+grana+, a drugi je:
+
+\gitoutputcommand{git branch -d grana}
+
+\dots{}koji će odbiti obrisati granu koja nije potpuno \emph{merge}ana.
+Dakle, ako imate strah da ne biste slučajno obrisali granu čije izmjene još niste preuzeli u neku drugu granu -- koristiti \verb+-d+ umjesto \verb+-D+ kod brisanja.
+
 \section*{\emph{Squash merge} i brisanje grana}
 \addcontentsline{toc}{section}{\emph{Squash merge} i brisanje grana}
 
