@@ -50,8 +50,8 @@ I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju
 \section*{Što \emph{merge} radi kada\dots}
 \addcontentsline{toc}{section}{Što \emph{merge} radi kada\dots}
 
-Vjerojatno se pitate što je rezultat \emph{merge}anja u različitim situacijama.
-Na primjer u jednog grani smo dodali datoteku, a u drugoj editirali ili u jednoj editirali početak datoteke, a u drugoj kraj iste ili\dots
+Vjerojatno se pitate što je rezultat \emph{merge}anja u nekim situacijama.
+Na primjer u jednoj grani smo dodali datoteku, a u drugoj editirali ili u jednoj editirali početak datoteke, a u drugoj kraj iste ili\dots
 
 U principu, vjerujte mi, git najčešće napravi točno ono što treba. 
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
@@ -208,7 +208,7 @@ Sad je rezultat naredbe \verb+git merge varijanta+:
 
 \input{git_output/git_merge_konflikt}
 
-To znači da git nije znao kako da \emph{automatski} preuzme izmjene iz \emph b u \emph a.
+To znači da git nije znao kako automatski preuzeti izmjene iz \emph b u \emph a.
 Idete li sad editirati datoteku s pjesmom naći ćete:
 
 	\gitoutput{%
@@ -240,7 +240,7 @@ Sad se od autora očekuje da sam odluči kako će izgledati datoteka nakon \emph
 Jednostavan način je da editira tu datoteku i sam ju izmijeni kako želi.
 Nakon toga treba ju \emph{commit}ati na standardan način.
 
-Drugi način je da koristite \verb+git mergetool+.
+Drugi način je da koristi \verb+git mergetool+.
 Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
 Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše rješavate ovakve konflikte.
 Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od programa za rješavanje konflikata.
@@ -266,7 +266,7 @@ Posljedica je da su projekti najčešće imali linearnu povijest.
 
 S gitom, često imamo po nekoliko grana.
 Svaka od tih grana ima svoju povijest, a kako se povećava broj grana, tako organizacija projekta postaje veći izazov.
-I zato mnogi programeri grane koje više ne koriste brišu.
+I zato mnogi programeri grane koje više ne koriste brišu\footnote{Treba biti jasno da se brisanjem grane ne brišu nužno i \emph{commit}ovi od kojih se sastojala. Koji se točno \emph{commit}ovi gube brisanjem će biti opisano u poglavlju o "higijeni" repozitorija.}.
 
 Tu sad imamo mali problem.
 Pogledajte, na primjer, ovakav projekt:
@@ -274,7 +274,7 @@ Pogledajte, na primjer, ovakav projekt:
 \input{graphs/git_merge_2}
 
 Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
-Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu\footnote{Na primjer, ako koristimo git kao subversion ili tfs klijent. Da, i to se može!}.
+Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu.
 U drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
 
 To se može riješiti nečime što se zove \emph{rebase}.
