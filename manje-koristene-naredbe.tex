@@ -9,6 +9,15 @@ Ovdje ćemo ih samo nabrojati i generalno opisati čemu služe, a ako nekad zatr
 \section*{Clean}
 \addcontentsline{toc}{section}{Clean}
 
+S naredbom\dots
+
+\gitoutputcommand{git clean}
+
+\dots{}git iz radnog direktorija briše sve one datoteke koje nisu u povijesti repozitorija.
+
+To je korisno kad želite obrisati privremene datoteke koje su rezultat kompajliranja ili privremen direktorije.
+Ukoliko dodate \verb+-x+ -- naredba će obrisati i sve datoteke koje su popisane u \verb+.gitignore+.
+
 \section*{Bisect}
 \addcontentsline{toc}{section}{Bisect}
 
