@@ -17,13 +17,13 @@ Ukoliko ju pozovemo bez ikakvog dodatnog argumenta, ona će nam ispisati razlike
 Drugi način korištenja naredbe je da provjeravamo razlike između dva \emph{commit}a ili dvije grane (podsjetimo se da su grane u biti samo reference na zadnje \emph{commit}ove).
 Na primjer:
 
-\gitoutputcommand{git diff master tesna-grana}
+\gitoutputcommand{git diff master testna-grana}
 
 \dots{}će nam ispisati razliku između te dvije grane. 
 Treba paziti na redosljed jer je ovdje bitan.
 Ukoliko isprobamo s:
 
-\gitoutputcommand{git diff tesna-grana master}
+\gitoutputcommand{git diff testna-grana master}
 
 \dots{}dobiti ćemo suprotan ispis. 
 Ako smo u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati kao da je \textbf{dodan}, a u drugom kao da je \textbf{obrisan}.
