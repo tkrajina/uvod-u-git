@@ -11,8 +11,6 @@ Ovdje ćemo ih samo nabrojati i generalno opisati čemu služe, a ako nekad zatr
 
 S naredbom\do\TODO
 
-ts
-
 \gitoutputcommand{git clean}
 
 \dots{}git iz radnog direktorija briše sve one datoteke koje nisu u povijesti repozitorija.
@@ -28,7 +26,7 @@ Imamo li jednostavan način kako reproducirati bug -- možemo se s \verb+git che
 Kad ga nađemo -- treba samo proučiti kod koji je uveden ili izmijenjen s tim \emph{commit}om.
 
 Od nas se očekuje samo da imamo referencu na \emph{commit} u kojemu je bug prisutan (\verb+bad+) i na \emph{commit} u kojemu bug \textbf{nije} prisutan (\verb+good+).
-\emph{Bisect} nam tada u nekoliko koraka pomaće naći trenutak kada je bug nastao\footnote{Metodom binarnog pretraživanja.}.
+\emph{Bisect} nam tada u nekoliko koraka pomaže naći trenutak kada je bug nastao\footnote{Metodom binarnog pretraživanja.}.
 
 \section*{Rev-list}
 \addcontentsline{toc}{section}{Rev-list}
