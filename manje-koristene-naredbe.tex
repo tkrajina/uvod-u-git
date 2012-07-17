@@ -49,12 +49,16 @@ U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje 
 \section*{Format-patch}
 \addcontentsline{toc}{section}{Format-patch}
 
-\TODO
+Koristi se kad šaljemo \emph{patch} emailom\footnote{Čini mi se da je to danas jako rijedak običaj.}.
+Na primjer, napravili smo lokalno nekoliko \emph{commit}ova i sad ih želimo poslati emailom vlasniku udaljenog projekta.
+S \verb+git format-patch+ ćemo pripremiti emailove sa svim potrebnim detaljima o \emph{commit}ovima (odnosno naše \emph{patch}eve).
 
 \section*{Am}
 \addcontentsline{toc}{section}{Am}
 
-\TODO
+Radnja suprotna onome što radimo s \verb+git format-patch+.
+U ovom slučaju smo \textbf{mi} oni koji smo primili \emph{patch}eve emailom, i sad ih treba "pretvoriti" u \emph{commit}ove.
+To se radi s \verb+git am+.
 
 \section*{Fsck}
 \addcontentsline{toc}{section}{Fsck}
