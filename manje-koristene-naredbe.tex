@@ -31,15 +31,15 @@ Od nas se očekuje samo da imamo referencu na \emph{commit} u kojemu je bug pris
 \section*{Filter-branch}
 \addcontentsline{toc}{section}{Filter-branch}
 
-Rijetko korištena naredba s kojom možete promijeniti cijelu povijest projekta.
-Na primjer, \emph{commit}ali ste u projekt s vašom privatnom email adresom, i sad biste htjeli promijeniti sve vaše \emph{commit}ove tako da sadrže službeni email.
-Slično, možete mijenjati datume \emph{commit}ova, dodati datoteke ili obrisati datoteke iz \emph{commit}ova, isl.
+Rijetko korištena naredba s kojom možemo promijeniti cijelu povijest projekta.
+Na primjer, \emph{commit}ali smo u projekt s našom privatnom email adresom, i sad bismo htjeli promijeniti sve naše \emph{commit}ove tako da sadrže službeni email.
+Slično, možemo mijenjati datume \emph{commit}ova, dodati datoteke ili obrisati datoteke iz \emph{commit}ova, isl.
 
-Trebate imati na umu da tako promijenjeni repozitorij ima različite SHA1 stringove \emph{commit}ova.
-To znači da, ako naredbu primijenite na jednom repozitoriju, drugi repozitorij više neće imati zajedničku povijest s vašim.
+Trebamo imati na umu da tako promijenjeni repozitorij ima različite SHA1 stringove \emph{commit}ova.
+To znači da, ako naredbu primijenimo na jednom repozitoriju, drugi distribuirani repozitorij istog projekta \textbf{više neće imati zajedničku povijest s našim}.
 
-Najbolje je to učiniti na vašem privatnom repozitoriju (kad ste sigurni da nitko drugi nema klon repozitorija) ili ako na projektu radite s točno određenim krugom ljudi.
-U ovom drugom slučaju -- dogovorite se s njima da svi \emph{commit}aju svoje grane u vaš repozitorij, izvršite \verb+git filter-branch+ i nakon toga zamolite sve ostale da sad iznova kloniraju repozitorij.
+Najbolje je to učiniti na našem privatnom repozitoriju kad smo sigurni da nitko drugi nema klon repozitorija ili ako na projektu radimo s točno određenim krugom ljudi.
+U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje grane u naš repozitorij, izvršiti ćemo \verb+git filter-branch+ i nakon toga zamolimo sve ostale da sad iznova kloniraju repozitorij.
 
 \section*{Shortlog}
 \addcontentsline{toc}{section}{Shortlog}
