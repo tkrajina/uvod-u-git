@@ -4,19 +4,16 @@
 U ovom poglavlju ćemo proći neke rijeđe korištene naredbe gita.
 Neke od njih ćete koristiti jako rijetko, a neke vjerojatno nikad.
 Zato nije ni potrebno da ih detaljno razumijete, važno je samo da znate da one postoje. 
-Ovdje ćemo ih samo nabrojati i generalno opisati čemu služe, a ako nekad zatrebaju -- lako ćete saznati kako se koriste s \verb+git help+.
+Ovdje ćemo ih samo nabrojati i generalno opisati čemu služe, a ako zatrebaju -- lako ćete saznati kako se koriste s \verb+git help+.
 
 \section*{Clean}
 \addcontentsline{toc}{section}{Clean}
 
-S naredbom\do\TODO
+S naredbom \verb+git clean -f+ git iz radnog direktorija briše sve one datoteke koje nisu u povijesti repozitorija.
+Nismo li sigurni što će točno izbrisati s \verb+git clean -n+ ćemo dobiti samo spisak.
 
-\gitoutputcommand{git clean}
-
-\dots{}git iz radnog direktorija briše sve one datoteke koje nisu u povijesti repozitorija.
-
-To je korisno kad želite obrisati privremene datoteke koje su rezultat kompajliranja ili privremen direktorije.
-Ukoliko dodate \verb+-x+ -- naredba će obrisati i sve datoteke koje su popisane u \verb+.gitignore+.
+To je korisno kad želimo obrisati privremene datoteke koje su rezultat kompajliranja ili privremen direktorije.
+Ukoliko dodamo \verb+-x+ -- naredba će obrisati i sve datoteke koje su popisane u \verb+.gitignore+.
 
 \section*{Bisect}
 \addcontentsline{toc}{section}{Bisect}
@@ -40,7 +37,7 @@ Trebamo imati na umu da tako promijenjeni repozitorij ima različite SHA1 string
 To znači da, ako naredbu primijenimo na jednom repozitoriju, drugi distribuirani repozitorij istog projekta \textbf{više neće imati zajedničku povijest s našim}.
 
 Najbolje je to učiniti na našem privatnom repozitoriju kad smo sigurni da nitko drugi nema klon repozitorija ili ako na projektu radimo s točno određenim krugom ljudi.
-U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje grane u naš repozitorij, izvršiti ćemo \verb+git filter-branch+ i nakon toga zamolimo sve ostale da sad iznova kloniraju repozitorij.
+U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje grane u naš repozitorij, izvršiti ćemo \verb+git filter-branch+ i nakon toga zamolimo ih da sad iznova kloniraju repozitorij.
 
 \section*{Shortlog}
 \addcontentsline{toc}{section}{Shortlog}
@@ -77,6 +74,7 @@ Ukoliko nešto ne valja s SHA1 čvorovima (\emph{commit}ovima) u ili je repozito
 
 Ja znam da je \verb+e0d22c0608ca0867b501f4890b4155486e8896b8+ \emph{commit} u mom repozitoriju.
 Gitu je to dovoljno, ali svima nama bi puno više značilo da nam netko kaže "peti \emph{commit} prije verzije \verb+1.0+" ili "drugi \emph{commit} nakon što smo \emph{branch}ali granu \verb+test+".
+Za to postoji \verb+git name-rev+.
 
 Na primjer, meni \verb+git name-rev e0d22+ ispisuje \verb+manje-koristene-naredbe~6+, što znači da je to šesti \emph{commit} prije kraja grane \verb+manje-koristene-naredbe+.
 
@@ -93,7 +91,7 @@ Kad se kasnije vratite na prvotnu granu, prethodno spremljene izmjene možete vr
 Sa \verb+git submodule+ možemo u svoj repozitorij dodati neki drugi repozitorij. 
 Jednostavno, u neki direktorij će se klonirati cijeli taj "drugi" repozitorij, a naš repozitorij će točno upamtiti SHA1 od željenog podrepozitorija.
 
-Treba napomenuti da je s najnovijom verzijom gita uvedena jedna slična (ali bolja!) naredba: \verb+git subtree+, ali to još nije ušlo u široku upotrebu pa ju ovdje ne namjeravam podrobnije opisati\footnote{U jednoj od sljedećih verzija ove knjige će nova naredba vjerojatno dobiti cijelo poglavlje.}.
+Treba napomenuti da je s najnovijom verzijom gita uvedena jedna slična (ali bolja!) naredba: \verb+git subtree+, ali to još nije ušlo u široku upotrebu\footnote{U jednoj od sljedećih verzija ove knjige će nova naredba vjerojatno dobiti cijelo poglavlje.}.
 
 \section*{Rev-list}
 \addcontentsline{toc}{section}{Rev-list}
