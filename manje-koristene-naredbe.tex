@@ -19,12 +19,12 @@ Ukoliko dodamo \verb+-x+ -- naredba će obrisati i sve datoteke koje su popisane
 \addcontentsline{toc}{section}{Bisect}
 
 \emph{Bisect} je pomoćna git naredba koja se koristi kad imamo bug u programu, a ne znamo točno trenutak u povijesti repozitorija kad je nastao.
-Imamo li jednostavan način kako reproducirati bug -- možemo se s \verb+git checkout+ igrati sve dok ne "pogodimo" trenutak u povijesti kad je bug nastao. 
-Kad ga nađemo -- treba samo proučiti kod koji je uveden ili izmijenjen s tim \emph{commit}om.
-\emph{Bisect} je upravo to -- binarno pretraživanje za mjestom gdje je bug nastao.
+Imamo li jednostavan način kako reproducirati bug -- možemo se s \verb+git checkout+ igrati sve dok ga ne nađemo.
+Tada treba samo proučiti kod koji je uveden ili izmijenjen s tim \emph{commit}om.
 
+\emph{Bisect} je upravo to -- binarno pretraživanje za mjestom gdje je bug nastao.
 Od nas se očekuje samo da imamo referencu na \emph{commit} u kojemu je bug prisutan (\verb+bad+) i na \emph{commit} u kojemu bug \textbf{nije} prisutan (\verb+good+).
-\emph{Bisect} nam tada u nekoliko koraka pomaže naći trenutak kada je bug nastao.
+\emph{Bisect} nam tada u nekoliko koraka pomaže naći trenutak kada je bug nastao, odnosno trenutak kad je stanje projekta iz \verb+good+ prešlo u \verb+bad+.
 
 \section*{Filter-branch}
 \addcontentsline{toc}{section}{Filter-branch}
@@ -61,7 +61,7 @@ To se radi s \verb+git am+.
 \section*{Fsck}
 \addcontentsline{toc}{section}{Fsck}
 
-\verb+git fsck+ provjerava ispravnost nekog objekta u repozitoriju ili cijelog repozitorija.
+\verb+git fsck+ provjerava ispravnost nekog objekta ili cijelog repozitorija.
 Ukoliko nešto ne valja s SHA1 čvorovima (\emph{commit}ovima) u ili je repozitorij "koruptiran"\footnote{Može se dogoditi, na primjer, ako je nestalo struje dok ste s repozitorijem radili neku radnju koja zahtijeva puno snimanja po disku.} -- ova naredba će naći sve nekonzistentnosti.
 
 \section*{Instaweb}
