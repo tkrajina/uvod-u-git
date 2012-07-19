@@ -20,8 +20,8 @@ Prvu stvar koju ćemo obraditi je kloniranje udaljenog repozitorija.
 Ima prije toga jedna sitnica koju trebamo znati.
 Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
 
-Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njega andresa.
-Github\footnote{Web servis koji omogućava da držite svoje git repozitorije} omogućava da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
+Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njena adresa.
+Github\footnote{Web servis koji omogućuje da držite svoje git repozitorije} omogućuje da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
 Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \\\verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
 
 Dalje, svaki udaljeni repozitorij s kojime namjeravamo imati posla mora imati i svoje kratko ime.
@@ -228,7 +228,7 @@ Nakon \verb+git fetch+, stanje je:
 \input{graphs/origin_master_2_3}
 
 Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
-U biti je to kao da imamom dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
+U biti je to kao da imamo dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
 Ovo je, u biti, najobičniji \emph{merge} koji će, eventualno, imati i neke konflikte koje znamo riješiti.
 Rezultat \emph{merge}a je novi čvor $z$:
 
@@ -290,7 +290,7 @@ Kad pokušamo \verb+git push origin master+, dogoditi će se ovakvo nešto:
 
 \input{git_output/git_push_origin_master_rejected}
 
-Kod nas lokalno $e$ clijede $f$ i $g$, a na udaljenom repozitoriju $e$ slijede $x$ i $y$. 
+Kod nas lokalno $e$ slijede $f$ i $g$, a na udaljenom repozitoriju $e$ slijede $x$ i $y$. 
 I git ovdje ne zna što točno napraviti, i traži da mu netko pomogne.
 Kao i do sada, pomoć se očekuje od nas, a tu radnju trebamo izvršiti na lokalnom repozitoriju.
 Tek onda ćemo moći \emph{push}ati na udaljeni.
