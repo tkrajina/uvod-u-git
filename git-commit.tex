@@ -302,6 +302,32 @@ Jednostavno odaberemo ju u meniju \verb+Commit+ $\rightarrow$ \verb+Revert chang
 Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
 Preporučam vam da nađete vremena i proučite sve menije i kratice s tastaturom u radu, jer to će vam značajno ubrzati daljnji rad.
 
+\section*{Clean}
+\addcontentsline{toc}{section}{Clean}
+
+Naredba \verb+git clean+ služi da iz radnog direktorija obrisali sve one datoteke koje nisu dio trenutne verzije repozitorija.
+To je korisno kad želimo obrisati privremene datoteke koje su rezultat kompajliranja ili privremene direktorije.
+Nismo li sigurni što će točno izbrisati s \verb+git clean -n+ ćemo dobiti samo spisak.
+Ukoliko dodamo \verb+-x+ naredba će obrisati i sve datoteke koje su popisane u \verb+.gitignore+.
+
+Na primjer, \LaTeX je metajezik za pisanje dokumenata u kojem je pisana i ova knjiga.
+Dokument se kompajlira u PDF, ali pri tome generira privremene datoteke s ekstenzijama \verb+.aux+ i \verb+.log+.
+Te datoteke nam nisu potrebne u repozitoriju i možemo ih dodati u \verb+.gitignore+ ili jednostavno počistiti s \verb+git clean+.
+
+Prvo pogledamo koje točno datoteke će \verb+git clean+ "očistiti":
+
+\input{git_output/git_clean}
+
+Ako nam je to u redu, onda sa:
+
+\gitoutputcommand{git clean -f}
+
+\dots{}brišemo te datoteke.
+
+Možemo obrisati i samo određene privremene datoteke ili samo jedan direktorij s:
+
+\gitoutputcommand{git clean -f -- <direktorij>}
+
 %\begin{itemize}
 %   \item Tipični scenarij
 %   \item Stash?

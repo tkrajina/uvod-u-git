@@ -1,0 +1,10 @@
+$ git clean -n
+Would remove dodaci.aux
+Would remove git-branch.aux
+Would remove git-commit.aux
+Would remove git-gc.aux
+Would remove git-init.aux
+Would remove git-log.aux
+Would not remove graphs/
+Would remove ispod-haube.aux
+Would remove verzioniranje-koda.aux
