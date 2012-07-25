@@ -100,6 +100,55 @@ Ako nam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc7447337
 
 Podsjetimo se \verb+76cf8+ je kratica za \emph{commit}, a \verb+76cf8~1+ je referenca na njegovog \textbf{prethodnika} (zbog \verb+~1+).
 
+
+
+
+\section*{Gitk}
+\addcontentsline{toc}{section}{Gitk}
+
+U standardnoj instalaciji gita dolazi i pomoćni programčić koji nam grafički prikazuje povijest trenutne grane.
+Pokreće se s:
+
+\gitoutputcommand{gitk}
+
+\dots{}a izgleda ovako:
+
+\gitgraphics{images/gitk.png}
+
+Sučelje ima pet osnovnih dijelova.
+Ovdje opisani redom s lijeva na desno od gore prema dolje:
+
+\begin{itemize}
+	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom (bilo zbog grananja, \emph{merge}anja ili \emph{cherry-pick} \emph{merge}),
+	\item popis ljudi koji su \emph{commit}ali,
+	\item datum i vrijeme, 
+	\item pregled svih izmjena,
+	\item pregled datoteka koje su izmijenjene.
+\end{itemize}
+
+Kad odaberete \emph{commit} dobiti ćete sve izmjene i datoteke koje su sudjelovale u izmjenama.
+Kad odaberete datoteku, \verb+gitk+ će u dijelu sa izmjenama "skočiti" na izmjene koje su se dogodile na toj datoteci.
+
+Gitk vam može i pregledati povijest samo do nekog \emph{commit}a u povijesti:
+
+\gitoutputcommand{gitk HEAD\textasciitilde{}10}
+
+\dots{}ili:
+
+\gitoutputcommand{gitk 974ef0ad8351ba7b4d402b8ae3942c96d667e199}
+
+\dots{}ili određene grane:
+
+\gitoutputcommand{gitk testna-grana}
+
+Gitk prikazuje povijest samo trenutne grane, odnosno samo onih \emph{commit}ova koji su na neki način sudjelovali u njoj.
+Želimo li povijest svih grana -- treba ga pokrenuti su:
+
+\gitoutputcommand{gitk --all}
+
+Kao i \verb+git gui+, tako i \verb+gitk+ na prvi pogled možda baš i nije jako intuitivan.
+No, brz je i praktičan za rad kad se naučite na njegovo sučelje.
+
 \section*{\emph{Blame}}
 \addcontentsline{toc}{section}{\emph{Blame}}
 
@@ -294,52 +343,6 @@ Naravno, ako malo o tome razmislite, složiti ćete se da sve to radi idealno sa
 \verb+git revert+ uredno radi ako revertamo \emph{commit}ove koji su bliži kraju grane.
 Teško će, ako ikako, \emph{revert}ati stvari koje smo mijenjali prije dvije godine u kodu koji je, nakon toga, puno puta bio mijenjan.
 Ukoliko to i pokušamo, git će javiti grešku i tražiti nas da mu sami damo do znanja kako bi \emph{revert} trebao izgledati.
-
-\section*{Gitk}
-\addcontentsline{toc}{section}{Gitk}
-
-U standardnoj instalaciji gita dolazi i pomoćni programčić koji nam grafički prikazuje povijest trenutne grane.
-Pokreće se s:
-
-\gitoutputcommand{gitk}
-
-\dots{}a izgleda ovako:
-
-\gitgraphics{images/gitk.png}
-
-Sučelje ima pet osnovnih dijelova.
-Ovdje opisani redom s lijeva na desno od gore prema dolje:
-
-\begin{itemize}
-	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom (bilo zbog grananja, \emph{merge}anja ili \emph{cherry-pick} \emph{merge}),
-	\item popis ljudi koji su \emph{commit}ali,
-	\item datum i vrijeme, 
-	\item pregled svih izmjena,
-	\item pregled datoteka koje su izmijenjene.
-\end{itemize}
-
-Kad odaberete \emph{commit} dobiti ćete sve izmjene i datoteke koje su sudjelovale u izmjenama.
-Kad odaberete datoteku, \verb+gitk+ će u dijelu sa izmjenama "skočiti" na izmjene koje su se dogodile na toj datoteci.
-
-Gitk vam može i pregledati povijest samo do nekog \emph{commit}a u povijesti:
-
-\gitoutputcommand{gitk HEAD\textasciitilde{}10}
-
-\dots{}ili:
-
-\gitoutputcommand{gitk 974ef0ad8351ba7b4d402b8ae3942c96d667e199}
-
-\dots{}ili određene grane:
-
-\gitoutputcommand{gitk testna-grana}
-
-Gitk prikazuje povijest samo trenutne grane, odnosno samo onih \emph{commit}ova koji su na neki način sudjelovali u njoj.
-Želimo li povijest svih grana -- treba ga pokrenuti su:
-
-\gitoutputcommand{gitk --all}
-
-Kao i \verb+git gui+, tako i \verb+gitk+ na prvi pogled možda baš i nije jako intuitivan.
-No, brz je i praktičan za rad kad se naučite na njegovo sučelje.
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
