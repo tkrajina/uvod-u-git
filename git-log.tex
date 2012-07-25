@@ -28,6 +28,11 @@ Ukoliko isprobamo s:
 \dots{}dobiti ćemo suprotan ispis. 
 Ako smo u \verb+testna-grana+ jedan redak dodali -- u jednom slučaju će \verb+diff+ ispisati kao da je \textbf{dodan}, a u drugom kao da je \textbf{obrisan}.
 
+Treba imati na umu da \verb+diff+ ne prikazuje ono što ćemo dobiti \emph{merge}anjem dvije grane -- on samo prikazuje razlike.
+Iz tih razlika ne možemo vidjeti kako su nastale.
+Ne vidimo, na primjer, koja je grana imala više \emph{commit}ova ili kako je došlo do razlika koje nam \verb+diff+ prikazuje.
+Za to je bolje koristiti naredbu \verb+gitk+, koja će biti detaljno objašnjena kasnije.
+
 Želimo li provjeriti koje su izmjene dogodile između predzadnjeg i pred-predzadnjeg \emph{commit}a:
 
 \gitoutputcommand{git diff HEAD\textasciitilde{}2 HEAD\textasciitilde{}1}
@@ -148,6 +153,13 @@ Gitk prikazuje povijest samo trenutne grane, odnosno samo onih \emph{commit}ova 
 
 Kao i \verb+git gui+, tako i \verb+gitk+ na prvi pogled možda baš i nije jako intuitivan.
 No, brz je i praktičan za rad kad se naučite na njegovo sučelje.
+
+Isto tako možete prikazati graf sa samo određenim granama:
+
+\gitoutputcommand{gitk grana1 grana2}
+
+\dots{}i to je dobro koristiti u kombinanciji s \verb+git diff grana1 grana2+.
+Jer, kao što smo već spomenuli, \verb+diff+ nam daje samo informaciju o razlikama između dvije grane, ali ne i njihove povijesti.
 
 \section*{\emph{Blame}}
 \addcontentsline{toc}{section}{\emph{Blame}}
