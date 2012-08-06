@@ -95,6 +95,15 @@ Kod gita to je puno jednostavnije, kad kreiramo novi granu, nema nikakvog kopira
 Svaki put kad spremite izmjenu, čuva se samo ta izmjena.
 Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na disku.
 
+\subsection*{Prebacivanje na granu i tekuće izmjene}
+\addcontentsline{toc}{subsection}{Prebacivanje na granu i tekuće izmjene}
+
+Kod prebacivanja s grane na granu s \verb+git checkout+ može nastati manji problem ukoliko imamo ne\emph{commit}anih izmjena.
+Postoji nekoliko situacija u kojima nam git neće dopustiti prebacivanje.
+Najčešća je kad u dvije grane imate dvije različite verzije iste datoteke, a tu datoteku ste u tekućoj grani izmijenili ostavili ne\emph{commit}anu.
+
+Zapamtite, \textbf{najbolje je prebacivati se s grane na granu tek nakon smo \emph{commit}ali sve izmjene}. Tako će nas u novoj grani dočekati čista situacija, a ne datoteke koje smo izmijenili u prethodnoj grani. 
+
 \section*{Brisanje grane}
 \addcontentsline{toc}{section}{Brisanje grane}
 
