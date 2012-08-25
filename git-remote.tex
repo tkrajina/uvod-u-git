@@ -17,7 +17,7 @@ Bilo da je to zato što želimo pomoći u razvoju ili samo proučiti nečiji kod
 \addcontentsline{toc}{section}{Naziv i adresa repozitorija}
 
 Prvu stvar koju ćemo obraditi je kloniranje udaljenog repozitorija.
-Ima prije toga jedna sitnica koju trebamo znati.
+Ima prije toga nešto što trebamo znati.
 Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
 
 Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njena adresa.
@@ -51,7 +51,7 @@ Postupak je jednostavan. Moramo znati adresu udaljenog repozitorija, i tada će 
 
 \dots{}\textbf{kopirati projekt, zajedno sa cijelom poviješću} na naše računalo.
 I to u direktorij \verb+uvod-u-git+.
-Sad u njemu možemo gledati povijest, granati, \emph{commit}ati, \dots Raditi što god nas je volja s tim projektom.
+Sad u njemu možemo gledati povijest, granati, \emph{commit}ati, \dots Ukratko, raditi što god nas je volja s tim projektom.
 
 Jasno, ne može bilo tko kasnije svoje izmjene poslati nazad na originalnu lokaciju. 
 Za to moramo imati ovlasti, ili moramo vlasnika tog repozitorija pitati je li voljan naše izmjene preuzeti kod sebe.
@@ -122,7 +122,7 @@ Djelomično kloniranje je više zamišljeno da bismo skinuli kod nekog projekta 
 \addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
 
 Nastaviti ćemo još jednu digresiju važnu za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
-Radi se o sljedećem, ovaj graf:
+Radi se o tome da je ovaj graf:
 
 \input{graphs/digresija_o_grafovima_1}
 
@@ -604,7 +604,7 @@ Kako to da nam git ne da \emph{push}ati u nečiji repozitorij, čak i ako imamo 
 Čemu onda uopće \emph{push}?
 
 Rješenje je sljedeće: postoji posebna vrsta repozitorija koji \textbf{nemaju radnu verziju projekta}.
-To jest, oni nisu nikad \emph{checkout}ani, a sadržavaju samo \verb+.git+ direktorij.
+To jest, oni nisu nikad \emph{checkout}ani, a sadrže samo \verb+.git+ direktorij.
 I to je \emph{bare}\footnote{Engleski: gol. Npr. \emph{barefoot} -- bosonog.} repozitorij.
 Kod takvih -- čak i kad \emph{push}amo -- nećemo nikad promijeniti status radne verzije.
 Radna verzija je tu irelevantna.
@@ -648,7 +648,7 @@ Rješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom i
 
 \gitoutputcommand{git config --bool core.bare true}
 
-I to će gitu na udaljenom računalu reći "ovaj repozitorij je namijenjen da ljudi na njega \emph{push}aju i s njega \emph{pull}aju i \emph{fetch}aju -- dopusti im to!".
+I to će gitu na udaljenom računalu reći: "ovom repozitoriju je namijena da ljudi na njega \emph{push}aju, s njega \emph{pull}aju i \emph{fetch}aju -- dopusti im to!".
 
 %\section*{}
 %\addcontentsline{toc}{section}{}
