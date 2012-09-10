@@ -100,14 +100,14 @@ Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na di
 
 Kod prebacivanja s grane na granu s \verb+git checkout+ može nastati manji problem ukoliko imamo ne\emph{commit}anih izmjena.
 Postoji nekoliko situacija u kojima nam git neće dopustiti prebacivanje.
-Najčešća je kad u dvije grane imate dvije različite verzije iste datoteke, a tu datoteku ste u tekućoj grani izmijenili ostavili ne\emph{commit}anu.
+Najčešća je kad u dvije grane imamo dvije različite verzije iste datoteke, a tu datoteku ste u tekućoj grani izmijenili ostavili ne\emph{commit}anu.
 
-Zapamtite, \textbf{najbolje je prebacivati se s grane na granu tek nakon smo \emph{commit}ali sve izmjene}. Tako će nas u novoj grani dočekati čista situacija, a ne datoteke koje smo izmijenili u prethodnoj grani. 
+Zapamtite, \textbf{najbolje je prebacivati se s grane na granu tek nakon smo \emph{commit}ali sve izmjene}. Tako će nas u novoj grani dočekati čista situacija, a ne datoteke koje smo izmijenili dok smo radili na prethodnoj grani. 
 
 \section*{Brisanje grane}
 \addcontentsline{toc}{section}{Brisanje grane}
 
-Zato što je grananje memorijski nezahtjevno i brzo, pripremite se na situacije kad ćete se naći s \textbf{previše} grana.
+Zato što je grananje memorijski i procesorski nezahtjevno i brzo, pripremite se na situacije kad ćete se naći s \textbf{previše} grana.
 Možda smo neke grane napravili da bi isprobali nešto novo, a to se na kraju pokazalo kao loša ideja pa smo granu napustili.
 Ili smo ju započeli da bi riješili neki problem, ali taj problem je prije nas riješio netko drugi.
 
@@ -128,7 +128,7 @@ Primijetimo samo da sad ne možemo obrisati \verb+master+:
 
 \input{git_output/git_branch_D_trenutne_grane}
 
-I to vrijedi općenito -- ne možete obrisati granu na kojoj se trenutno nalazimo.
+I to vrijedi općenito -- ne možemo obrisati granu na kojoj se trenutno nalazimo.
 
 Treba znati i to da brisanjem grane ne brišemo njene \emph{commit}ove.
 Oni ostaju dio povijesti, do daljnjega.
