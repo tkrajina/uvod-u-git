@@ -37,8 +37,8 @@ Na neke ćemo slati svoje izmjene (ako imamo ovlasti), a s nekih ćemo izmjene p
 Kloniranje je postupak kojim kopiramo cijeli repozitorij s udaljene lokacije na naše lokalno računalo.
 S tako kloniranim repozitorijem možemo nastaviti rad kao s repozitorijem kojeg smo inicirali lokalno.
 
-\textbf{Kopirati repozitorij} je jednostavno, dovoljno je u neki kopirati \verb+.git+ direktorij drugog repozitorija.
-I onda na novoj (kopiranoj) lokaciji izvršiti napraviti \verb+git checkout HEAD+.
+\textbf{Kopirati repozitorij} je jednostavno, dovoljno je u neki direktorij kopirati \verb+.git+ direktorij drugog repozitorija.
+I onda na novoj (kopiranoj) lokaciji izvršiti \verb+git checkout HEAD+.
 
 Pravo kloniranje je za nijansu drukčije.
 Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
@@ -184,7 +184,7 @@ Možemo pogledati razlike između njega i naše trenutne grane:
 
 \gitoutputcommand{git diff origin/master}
 
-Možemo se prebaciti da \verb+origin/master+, ali\dots
+Možemo se prebaciti na \verb+origin/master+, ali\dots
 
 \input{git_output/git_checkout_origin_master}
 
@@ -265,7 +265,7 @@ Nakon toga smo \emph{commit}ali par izmjena\dots
 
 \input{graphs/push_2}
 
-\dots{}i sad bi htjeli te izmjene "prebaciti" na udaljeni repozitorij.
+\dots{}i sad bismo htjeli te izmjene "prebaciti" na udaljeni repozitorij.
 Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih izmjena na udaljeni repozitorij ovisi o tome imamo li ovlasti za to ili ne.
 \textbf{Udaljeni repozitorij mora biti tako konfiguriran da bismo mogli raditi} \verb+git push+.
 
