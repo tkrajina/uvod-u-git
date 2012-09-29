@@ -18,20 +18,18 @@ Nađemo li se s više od 10-15 grana -- \textbf{sigurno} je dio njih tu samo zat
 
 U svakom slučaju, predlažem vam da svakih par dana pogledate malo po lokalnim (a i udaljenim granama) i provjerite one koje više ne koristite.
 
-Ukoliko nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena koju treba vratiti u \verb+master+, postupak je sljedeći:
+Ukoliko nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena koju treba vratiti u \verb+master+, možemo koristiti naredbu:
 
-\gitoutputcommand{git checkout neka-grana\\git merge master}
+\gitoutputcommand{git branch --no-merged master}
 
-\dots{}da bismo preuzeli sve izmjene iz master, tako da stanje bude ažurno.
-I sad\dots
+To će nam ispisati spisak svih grana čije izmjene \textbf{su u potpunosti} \emph{merge}ane u master. 
+Analogno, postoji i naredba:
 
-\gitoutputcommand{git diff master}
+\gitoutputcommand{git branch --merged <naziv\_grane>}
 
-\dots{}za provjeru koje su točno izmjene ostale.
-Ako je prazno -- nema razlika i možemo brisati.
-Ako nije -- \textbf{ima} izmjena i sad se sami odlučujemo jesu li te izmjene nešto važno što ćemo nastaviti razvijati ili nešto što možemo zanemariti i obrisati tu granu.
+Da bi dobili spisak svih onih grana koje \textbf{nisu} u potpunosti \emph{merge}ane u neku drugu granu.
 
-Ukoliko baš morate imati puno grana, onda se potrudite dogovoriti neki logični način kako ih imenujete.
+Ukoliko baš morate imati puno grana, onda se potrudite dogovoriti neki logičan način kako ih imenujete.
 Na primjer, ako koristite neki sustav za prijavu i praćenje grešaka, onda svaka greška ima neki svoj broj.
 Možete se odlučiti svaku grešku ispravljati u posebnoj grani. 
 Imate li veliku i kompleksnu aplikaciju -- biti će i puno prijavljenih grešaka, a posljedično i puno grana.
