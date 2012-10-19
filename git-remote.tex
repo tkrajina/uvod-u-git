@@ -89,7 +89,7 @@ Dakle, grafički bi to mogli prikazati ovako:
 
 \input{graphs/origin_master}
 
-Imamo dva repozitorija, lokalni i udaljeni.
+Imamo dva repozitorija -- lokalni i udaljeni.
 Udaljeni ima samo granu \verb+master+, a lokalni ima dvije kopije te grane. 
 U lokalnom \verb+master+ ćemo mi \emph{commit}ati naše izmjene, a u \verb+origin/master+ se nalazi kopija udaljenog \verb+origin/master+ u koju \textbf{nećemo} \emph{commit}ati.
 Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da imamo ažurno stanje (sliku) udaljenog repozitorija.
@@ -100,7 +100,7 @@ Sve će sjesti na svoje mjesto kad to počnete koristiti.
 \subsection*{Djelomično kloniranje povijesti repozitorija}
 \addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
 
-Našli ste na internetu neki zanimljiv projekt i sad želite klonirati njegov git repozitorij bi proučiti njegov kod. 
+Našli ste na internetu neki zanimljiv projekt i sad želite klonirati njegov git repozitorij bi mu proučiti kod. 
 Ništa lakše; \verb+git clone ...+.
 
 E, ali\dots
@@ -111,7 +111,7 @@ I zato \verb+git clone+ ponekad može potrajati dosta dugo.
 Posebno ako imate sporu vezu.
 
 No, postoji trik.
-Želimo li skinuti projekt samo zato da bi pogledali njegov kod a ne zanima nas cijela povijest -- moguće je klonirati samo nekoliko njegovih zadnjih \emph{commit}ova s:
+Želimo li skinuti projekt samo zato da bi pogledali njegov kod, a ne zanima nas cijela povijest, moguće je klonirati samo nekoliko zadnjih \emph{commit}ova s:
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
