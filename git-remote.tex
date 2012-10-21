@@ -443,6 +443,15 @@ I, na kraju\dots
 
 Isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
 
+Ukoliko imamo granu \verb+test+ i \emph{push}amo ju na udaljeni repozitorij -- naši kolege će tu granu nakon \emph{fetch}anja vidjeti kao \verb+origin/test+.
+Međutim, ukoliko \textbf{obrišemo} granu na udaljenom repozitoriju, kolegama se neće automatski obrisati \verb+origin/test+.
+To je ponekad malo zbunjujuće, ali s druge strane, barem nam osigurava da ne možemo greškom obrisati granu.
+Jer, ukoliko smo ju greškom obrisali -- referenca se i dalje nalazi u drugim kloniram repozitorijima.
+
+Ukoliko uz \emph{fetch} želite da vam se i obrišu sve grane koje je netko drugi obrisao na udaljenom repozitoriju, naredba je:
+
+\gitoutputcommand{git fetch -p}
+
 %\subsection*{Git \emph{push} i \emph{tracking} grana}
 %\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
 %
