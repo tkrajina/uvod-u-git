@@ -28,7 +28,7 @@ Trebamo imati na umu da tako promijenjeni repozitorij ima različite SHA1 string
 To znači da, ako naredbu primijenimo na jednom repozitoriju, drugi distribuirani repozitorij istog projekta \textbf{više neće imati zajedničku povijest s našim}.
 
 Najbolje je to učiniti na našem privatnom repozitoriju kad smo sigurni da nitko drugi nema klon repozitorija ili ako na projektu radimo s točno određenim krugom ljudi.
-U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje grane u naš repozitorij, izvršiti ćemo \verb+git filter-branch+ i nakon toga zamolimo ih da sad iznova kloniraju repozitorij.
+U ovom drugom slučaju -- dogovorimo se s njima da svi iz\emph{commit}aju svoje grane u naš repozitorij, izvršiti ćemo \verb+git filter-branch+ i nakon toga zamolimo ih da sad obrišu i iznova kloniraju repozitorij.
 
 \section*{Shortlog}
 \addcontentsline{toc}{section}{Shortlog}
@@ -53,12 +53,12 @@ To se radi s \verb+git am+.
 \addcontentsline{toc}{section}{Fsck}
 
 \verb+git fsck+ provjerava ispravnost nekog objekta ili cijelog repozitorija.
-Ukoliko nešto ne valja s SHA1 čvorovima (\emph{commit}ovima) u ili je repozitorij "koruptiran"\footnote{Može se dogoditi, na primjer, ako je nestalo struje dok ste s repozitorijem radili neku radnju koja zahtijeva puno snimanja po disku.} -- ova naredba će naći sve nekonzistentnosti.
+Ukoliko nešto ne valja s SHA1 čvorovima (\emph{commit}ovima) ili je repozitorij "koruptiran"\footnote{Može se dogoditi, na primjer, ako je nestalo struje dok ste s repozitorijem radili neku radnju koja zahtijeva puno snimanja po disku.} -- ova naredba će naći sve nekonzistentnosti.
 
 \section*{Instaweb}
 \addcontentsline{toc}{section}{Instaweb}
 
-\verb+git instaweb+ omogućuje jednostavno web sučelje za pregled povijesti repozitorija.
+\verb+git instaweb+ pokreće jednostavno web sučelje za pregled povijesti repozitorija.
 
 \section*{Name-rev}
 \addcontentsline{toc}{section}{Name-rev}
