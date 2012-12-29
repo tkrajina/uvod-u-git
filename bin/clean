@@ -1,2 +1,0 @@
-rm *.dvi *.log *.aux *.swp *.swo *.toc *.idx *.pdf
-rm graphs/*
