@@ -1,1 +1,0 @@
-evince -p `python -c "import random as r;print r.randint(1,140)"` git.pdf
