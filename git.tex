@@ -35,6 +35,25 @@
 \end{tabular}
 }
 
+% Pomoćne naredbe za naslove + sadržaj:
+
+\newcommand{\tocChapter}[1]{%
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
+
+\newcommand{\tocSection}[1]{%
+\section*{#1}
+\addcontentsline{toc}{section}{#1}
+}
+
+\newcommand{\tocSubSection}[1]{%
+\subsection*{#1}
+\addcontentsline{toc}{subsection}{#1}
+}
+
+% ----------------------------------------------------------------------------------------------------
+
 \newcommand{\gitoutput}[1]{%
 \begin{tabular}{|l}
     \begin{minipage}[b]{140mm}%
