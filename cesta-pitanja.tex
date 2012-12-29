@@ -1,6 +1,37 @@
 \tocChapter{Česta pitanja}
 
-\TODO
+Jedno je razumijeti naredbe i terminologiju gita, a potpuno drugo je imati iskustvo u radu s gitom.
+Da bi nekako došli do iskustva, trebamo imati osjećaj o tome koji su problemi koji se pojavljuju u radu i trebamo automatizirati postupak njihovog riješavanja.
+U ovom poglavlju ćemo proći nekoliko takvih "situacija".
+
+\tocSection{Jesmo li $push$ali svoje izmjene na udaljeni repozitorij?}
+
+S klasičnim sustavima za verzioniranje, kod kojeg smo izmijenili može biti ili lokalno ne$commit$an ili $commit$an na centralnom repozitoriju.
+
+Kao što sad već znamo, s gitom je stvar za nijansu složenija.
+Naš kod može biti lokalno ne$commit$an, može biti $commit$an na našem lokalnom repozitoriju, a može biti i $push$an na udaljeni repozitorij.
+Više puta mi se desilo da se kolega (koji tek uči git) pita "Kako to da moje izmjene nisu završile na produkciji\footnote{\dots{}ili produkcijskom $build$u.}, \textbf{iako sam ih $commit$ao}?".
+Odgovor je jednostavan -- $commit$ao ih je lokalno, ali nije $push$ao na naš glavni repozitorij.
+
+Problem kojeg on ima je u tome što nije nigdje jasno vidljivo jesu li izmjene iz njegove \verb+master+ grane $push$ane na udaljeni repozitorij.
+
+Jedan jednostavan način da to provjerite je da provjerite odnos između \verb+master+ i \verb+origin/master+.
+Za svaki slučaj, prvo ćemo osvježiti stanje udaljenog repozitorija s:
+
+\gitoutput{git fetch}
+
+\dots{}i sad idemo \textbf{vizualno} proučiti odnos između naše dvije grane:
+
+\gitoutput{gitk master origin/master}
+
+Sad pogledajte na grafu je li:
+\begin{itemize}
+    \item \verb+master+ \textbf{ispred} \verb+origin/master+, u tom slučaju vi imate više $commit$ova od udaljenog repozitorija i možete ih $push$ati,
+    \item \verb+master+ \textbf{iza} \verb+origin/master+, u tom slučaju vi imate manje $commit$ova od udaljenog repozitorija i trebate ih pokupiti s udaljenog repozitorija ($pull$ ili $rebase$),
+    \item \verb+master+ i \verb+origin/master+ se nalaze na dvije grane koje su međusobno divergirale (u tom slučaju vi \textbf{imate} ne$commit$ane izmjene, ali trebate prvo napraviti $pull$ i onda ih $push$ati).
+\end{itemize}
+
+\TODO screenshoti
 
 \tocSection{$Commit$ali smo u krivu granu}
 
@@ -15,10 +46,6 @@
 \TODO
 
 \tocSection{$Push$ali smo u remote repozitorij izmjenu koju nismo htjeli}
-
-\TODO
-
-\tocSection{Jesmo li $push$ali svoje izmjene na udaljeni repozitorij?}
 
 \TODO
 
