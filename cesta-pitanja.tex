@@ -98,7 +98,19 @@ S obzirom da nam stanje u \verb+master+ treba biti isto kao u \verb+origin/maste
 
 \tocSection{Imamo ne$commitane$ izmjene i git nam ne da prebacivanje na drugu granu}
 
-\TODO
+Imamo li ne$commit$anih izmjena, git ponekad neće dati prebacivanje ($checkout$anje) s grane na granu.
+Ukoliko te izmjene predstavljaju neku logičnu cjelinu -- onda ćemo ih jednostavno $commit$ati i to nije problem.
+No, ako se nalazimo na pola posla i to ne želimo\dots
+
+To se može zaobići na dva načina.
+Jedan je da koristite naredbu \verb+git stash+, a drugi je da ipak -- $commit$ate.
+Problem s ovim drugim pristupom je što ćete imati djelomični $commit$ s poluzavršenim kodom.  
+Međutim, kad se naknadno vratimo na ovu granu (nakon što obavimo posao na nekoj drugoj) -- možemo posao završiti i commitati ga s:
+
+\gitoutput{git commit --amend -m "Novi komentar...}
+
+I, osvježili smo prethodni polovični $commit$.
+Ukoliko to činimo, treba samo pripaziti da svoj "privremeni" $commit$ ne $push$ate na udaljeni repozitorij dok nije gotov\footnote{To općenito vrijedi za $commit$ove, nemojte koristiti "commit --amend" ukoliko ste već $push$ali na udaljeni repozitorij.}.
 
 \tocSection{Zadnjih $n$ $commit$ova treba "stisnuti" u jedan $commit$}
 
