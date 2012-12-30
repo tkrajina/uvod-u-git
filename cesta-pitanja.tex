@@ -32,22 +32,6 @@ Sad pogledajte na grafu je li:
     \item \verb+master+ i \verb+origin/master+ pokazuju na isti čvoj, tada je lokalno stanje potpuno isto ko i stanje udaljenog repozitorija.
 \end{itemize}
 
-Primjer situacije gdje nemamo ništa za $push$ati na na udaljeni repozitorij (nego čak imamo nešto za \textbf{preuzeti} iz njega):
-
-\gitgraphics{images/origin_master_ispred_master.png}{5cm}
-
-Primjer gdje imamo dva $commit$a koje nismo $push$ali, a mogli bismo:
-
-\gitgraphics{images/master_ispred_origin_master.png}{5cm}
-
-Primjer gdje imamo tri $commit$a za $push$anje, ali trebamo prije toga preuzeti četiri $commit$a iz \verb+origin/master+ i $merge$ati ih u našu granu:
-
-\gitgraphics{images/master_i_origin_master_divergirani.png}{5cm}
-
-I, situacija u kojoj je lokalni \verb+master+ potpuno isti kao udaljeni \verb+origin/master+:
-
-\gitgraphics{images/master_i_origin_master_isti.png}{6.5cm}
-
 \tocSection{$Commit$ali smo u krivu granu}
 
 Na primjer, slučajno smo commitali u \verb+master+, a trebali smo u \verb+unicode-fix+.

@@ -1,0 +1,73 @@
+\tocChapter{Prikaz grana u git alatima}
+
+Način kako su grafovi repozitorija prikazivani u ovoj knjizi nije isti kako ih prikazuju različiti aliati za rad s gitom.
+Ovako mi se činilo za nijansu lakše za praćenje, ali da bi lakše radili s alatima kao što je \verb+gitk+ napraviti ćemo ovdje kratak uvod u to kako alati prikazuju povijest, $commit$ove i grane.
+
+Osnovna razlika je u tome što grafički alati obično prikazuju povijest od dolje (starije) prema gore (novije). 
+Druga bitna razlika je što neće \emph{commit}ove iz jedne grane prikazivati u posebnom retku (ili stupcu).
+
+\tocSection{Prikaz lokalnih grana}
+
+Situacija kojoj imamo samo \verb+master+ i onda stvorimo ovu granu u kojoj još nismo ništa $commit$ali:
+
+\input{graphs/git_merge_01}
+
+\dots{}u \verb+gitk+u će biti prikazano ovako:
+
+\gitgraphics{images/gitk-001.png}{8cm}
+
+Drugim riječime, \verb+master+ i \verb+eksperimentalna-grana+ pokazuju na isti $commit$.
+
+Slična situacija:
+
+\input{graphs/git_merge_02}
+
+\dots{}će biti prikazana ovako:
+
+\gitgraphics{images/gitk-002.png}{8cm}
+
+Kao što vidite, u istom stupcu su prikazane obje grane, samo je prikazan zadnji $commit$ za svaku granu.
+
+Ukoliko imate dvije grane u kojima se paralelno razvijao kod:
+
+\input{graphs/git_merge_1}
+
+\dots{}\verb+gitk+ će prikazati ovako:
+
+\gitgraphics{images/gitk-003.png}{8cm}
+
+\dots{}u principu slično, jedino što se alat trudi da pojedine $commit$ove prikazuje svakog u posebnom redu.
+Ukoliko se s \verb+master+ prebacite na \verb+eksperimentalna-grana+, graf će biti isti jedino će se prikazati na kojoj ste točno grani:
+
+\gitgraphics{images/gitk-004.png}{8cm}
+
+Nakon ovakvog $merge$a:
+
+\input{graphs/git_merge_2}
+
+\dots{}graf je:
+
+\gitgraphics{images/gitk-005.png}{8cm}
+
+\tocSection{Prikaz grana udaljenog repozitorija}
+
+Ukoliko imamo posla i s udaljenim repozitorijima, onda će njihove grane biti prikazane na istom grafu kao npr. \verb+remotes/origin/master+ ili \verb+origin/grana+.
+
+Recimo da nemamo ništa za $push$ati na na udaljeni repozitorij (nego čak imamo nešto za \textbf{preuzeti} iz njega):
+
+\gitgraphics{images/origin_master_ispred_master.png}{5cm}
+
+Iz ovoga je jasno da za naš \verb+master+ "zaostaje" za četiri $commit$a u odnosu na udaljeni \verb+master+.
+
+Primjer gdje imamo dva $commit$a koje nismo $push$ali, a mogli bismo:
+
+\gitgraphics{images/master_ispred_origin_master.png}{5cm}
+
+Primjer gdje imamo tri $commit$a za $push$anje, ali trebamo prije toga preuzeti četiri $commit$a iz \verb+origin/master+ i $merge$ati ih u našu granu:
+
+\gitgraphics{images/master_i_origin_master_divergirani.png}{5cm}
+
+I, situacija u kojoj je lokalni \verb+master+ potpuno isti kao udaljeni \verb+origin/master+:
+
+\gitgraphics{images/master_i_origin_master_isti.png}{6.5cm}
+
