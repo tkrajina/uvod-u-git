@@ -114,9 +114,30 @@ Ukoliko to činimo, treba samo pripaziti da svoj "privremeni" $commit$ ne $push$
 
 \tocSection{Zadnjih $n$ $commit$ova treba "stisnuti" u jedan $commit$}
 
-\TODO
+S \verb+git log+ ili \verb+gitk+ nađite SHA1 identifikator zadnjeg $commit$a kojeg \textbf{želimo ostaviti netaknutog} (tj. sve $commitove$ \textbf{nakon} njega želimo "stisnuti" u jedan $commit$).
+Neka je to, na primjer, \verb+15694d32935f07cc66dbc98fdd7b3b248d885492+.
+
+Treba pripaziti se da lokalno u repozitoriju nemamo nikakvih ne$commit$anih izmjena i da se nalazimo u pravoj grani, a onda:
+
+\gitoutput{git reset --soft 15694d32935f07cc66dbc98fdd7b3b248d885492}
+
+Git će nas sad vratiti u povijest, ali stanje datoteka će ostaviti kakve su bile.
+Sad ih možete $commit$ati iznova i dobiti ćemo ono što smo tražili.
 
 \tocSection{$Push$ali smo u remote repozitorij izmjenu koju nismo htjeli}
 
-\TODO
+Kad smo \textbf{lokalno} napravili izmjenu koju nismo htjeli -- možemo koristiti \verb+git reset --hard ...+.
 
+Međutim, ako smo našu izmjenu $push$ali, onda je najbolje napraviti:
+
+\gitoutput{git revert <nas\_commit>}
+
+Podsjetimo se, \verb+revert+ stvara \textbf{novi} $commit$ koji \textbf{miče} izmjene koje smo mi napravili.
+Nakon toga -- $push$ajmo još jednom na udaljeno repozitorij, i to je to.
+
+Alternativa je da napravimo:
+
+\gitoutput{git reset --hard <commit>\\
+git push -f origin <grana>}
+
+\dots{}međutim, to može biti problem ako je naše neželjene izmjene na udaljenom repozitoriju netko već preuzeo ($fetch$ao) kod sebe lokalno.
