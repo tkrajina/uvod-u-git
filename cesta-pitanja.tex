@@ -10,7 +10,7 @@ S klasičnim sustavima za verzioniranje, kod kojeg smo izmijenili može biti ili
 
 Kao što sad već znamo, s gitom je stvar za nijansu složenija.
 Naš kod može biti lokalno ne$commit$an, može biti $commit$an na našem lokalnom repozitoriju, a može biti i $push$an na udaljeni repozitorij.
-Više puta mi se desilo da se kolega (koji tek uči git) pita "Kako to da moje izmjene nisu završile na produkciji\footnote{\dots{}ili produkcijskom $build$u.}, \textbf{iako sam ih $commit$ao}?".
+Više puta mi se desilo da netko od kolega (tko tek uči git) pita "Kako to da moje izmjene nisu završile na produkciji\footnote{\dots{}ili produkcijskom $build$u.}, \textbf{iako sam ih $commit$ao}?".
 Odgovor je jednostavan -- $commit$ao ih je lokalno, ali nije $push$ao na naš glavni repozitorij.
 
 Problem kojeg on ima je u tome što nije nigdje jasno vidljivo jesu li izmjene iz njegove \verb+master+ grane $push$ane na udaljeni repozitorij.
@@ -39,7 +39,7 @@ Primjer gdje imamo dva $commit$a koje nismo $push$ali, a mogli bismo:
 
 \gitgraphics{images/master_ispred_origin_master.png}{5cm}
 
-Primjer gdje imamo tri $commit$a za $push$anje, ali trebamo prije toga preuzeti četiri $commit$a it \verb+origin/master+ i $merge$ati ih u našu granu:
+Primjer gdje imamo tri $commit$a za $push$anje, ali trebamo prije toga preuzeti četiri $commit$a iz \verb+origin/master+ i $merge$ati ih u našu granu:
 
 \gitgraphics{images/master_i_origin_master_divergirani.png}{5cm}
 
@@ -64,10 +64,10 @@ git cherry-pick master\textasciitilde{}1}
 Podsjetimo se da je \verb+master+ naziv grane, ali i pokazivač na njegov zadnji $commit$, tako da \verb+git cherry-pick master+ preuzima samo taj zadnji $commit$.
 Commit \verb+master~1+ se odnosi na pretposljednji u toj grani.
 
-Umjesto \verb+master+ i \verb+master~1+ smo mogli koristiti i SHA1 identifikatora $commit$ova, koje možemo dobiti s \verb+git log master+.
+Umjesto \verb+master+ i \verb+master~1+ smo mogli koristiti i SHA1 identifikatore $commit$ova, koje možemo dobiti s \verb+git log master+.
 
-Sad, kad smo te $commit$ove prebicili (i) u željenu granu, trebamo ih maknuti iz one u kojoj su neželjeni.
-Idemo se prvo prebaciti na nju:
+Sad, kad smo te $commit$ove prebacili (i) u željenu granu, trebamo ih maknuti iz one u kojoj su neželjeni.
+Idemo se prvo prešaltati na nju:
 
 \gitoutput{git checkout master}
 
@@ -75,7 +75,7 @@ I, idemo ih obrisati:
 
 \gitoutput{git reset --hard master~2}
 
-\dots{}što tu granu prebacuje na stanje u \verb+master~2+ (a to je pred-predzadnji $commit$).
+\dots{}što tu granu resetira na stanje u \verb+master~2+ (a to je pred-predzadnji $commit$).
 
 \tocSection{$Commit$ali smo u granu X, ali te commitove želimo prebaciti u novu granu}
 
@@ -98,13 +98,13 @@ S obzirom da nam stanje u \verb+master+ treba biti isto kao u \verb+origin/maste
 
 \tocSection{Imamo ne$commitane$ izmjene i git nam ne da prebacivanje na drugu granu}
 
-Imamo li ne$commit$anih izmjena, git ponekad neće dati prebacivanje ($checkout$anje) s grane na granu.
+Imamo li ne$commit$anih izmjena, git ponekad neće dopustiti prebacivanje ($checkout$anje) s grane na granu.
 Ukoliko te izmjene predstavljaju neku logičnu cjelinu -- onda ćemo ih jednostavno $commit$ati i to nije problem.
 No, ako se nalazimo na pola posla i to ne želimo\dots
 
 To se može zaobići na dva načina.
-Jedan je da koristite naredbu \verb+git stash+, a drugi je da ipak -- $commit$ate.
-Problem s ovim drugim pristupom je što ćete imati djelomični $commit$ s poluzavršenim kodom.  
+Jedan je da koristimo naredbu \verb+git stash+, a drugi je da ipak -- $commit$ate.
+Problem s ovim drugim pristupom je što ćemo imati djelomični $commit$ s poluzavršenim kodom.  
 Međutim, kad se naknadno vratimo na ovu granu (nakon što obavimo posao na nekoj drugoj) -- možemo posao završiti i commitati ga s:
 
 \gitoutput{git commit --amend -m "Novi komentar...}
@@ -122,7 +122,7 @@ Treba pripaziti se da lokalno u repozitoriju nemamo nikakvih ne$commit$anih izmj
 \gitoutput{git reset --soft 15694d32935f07cc66dbc98fdd7b3b248d885492}
 
 Git će nas sad vratiti u povijest, ali stanje datoteka će ostaviti kakve su bile.
-Sad ih možete $commit$ati iznova i dobiti ćemo ono što smo tražili.
+Sad ih možemo $commit$ati iznova i dobiti ćemo ono što smo tražili.
 
 \tocSection{$Push$ali smo u remote repozitorij izmjenu koju nismo htjeli}
 
@@ -132,7 +132,7 @@ Međutim, ako smo našu izmjenu $push$ali, onda je najbolje napraviti:
 
 \gitoutput{git revert <nas\_commit>}
 
-Podsjetimo se, \verb+revert+ stvara \textbf{novi} $commit$ koji \textbf{miče} izmjene koje smo mi napravili.
+Podsjetimo se, \verb+revert+ stvara \textbf{novi} $commit$ koji \textbf{miče} izmjene koje smo prethodno napravili.
 Nakon toga -- $push$ajmo još jednom na udaljeno repozitorij, i to je to.
 
 Alternativa je da napravimo:
