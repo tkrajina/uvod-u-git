@@ -1,0 +1,3 @@
+[submodule "submodules/vcgraphtex"]
+	path = submodules/vcgraphtex
+	url = https://github.com/tkrajina/version-control-graphs-in-latex.git
