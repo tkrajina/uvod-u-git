@@ -49,11 +49,52 @@ I, situacija u kojoj je lokalni \verb+master+ potpuno isti kao udaljeni \verb+or
 
 \tocSection{$Commit$ali smo u krivu granu}
 
-\TODO
+Na primjer, slučajno smo commitali u \verb+master+, a trebali smo u \verb+unicode-fix+.
+Pretpostavimo da su zadnja dva $commit$a iz \verb+master+ ona koja želimo prebaciti u ovu drugu granu.
+
+Riješenje je jednostavno, prvo ćemo se prebaciti u tu drugu granu:
+
+\gitoutput{git checkout unicode-fix}
+
+Zatim chemo preuzeti jedan po jedan ta dva $commit$a u trenutnu granu:
+
+\gitoutput{git cherry-pick master\\
+git cherry-pick master\textasciitilde{}1}
+
+Podsjetimo se da je \verb+master+ naziv grane, ali i pokazivač na njegov zadnji $commit$, tako da \verb+git cherry-pick master+ preuzima samo taj zadnji $commit$.
+Commit \verb+master~1+ se odnosi na pretposljednji u toj grani.
+
+Umjesto \verb+master+ i \verb+master~1+ smo mogli koristiti i SHA1 identifikatora $commit$ova, koje možemo dobiti s \verb+git log master+.
+
+Sad, kad smo te $commit$ove prebicili (i) u željenu granu, trebamo ih maknuti iz one u kojoj su neželjeni.
+Idemo se prvo prebaciti na nju:
+
+\gitoutput{git checkout master}
+
+I, idemo ih obrisati:
+
+\gitoutput{git reset --hard master~2}
+
+\dots{}što tu granu prebacuje na stanje u \verb+master~2+ (a to je pred-predzadnji $commit$).
 
 \tocSection{$Commit$ali smo u granu X, ali te commitove želimo prebaciti u novu granu}
 
-\TODO
+$Commit$ali smo u \verb+master+, ali u jednom trenutku smo zaključili da te izmjene ne želimo tu.
+Želimo stvoriti novu granu koja će nam sačuvati te $commit$ove, a \verb+master+ resetirati na isto stanje kao i u udaljenom repozitoriju.
+Pa, idemo redom, s\dots
+
+\gitoutput{git checkout -b nova-grana}
+
+\dots{}ćemo kreirati novu granu iz \verb+master+.
+Te dvije grane su trenutno potpuno iste, dakle, upravo smo riješili prvi dio zadatka -- sačuvali smo $commit$ove iz \verb+master+ u drugoj grani.
+
+S obzirom da nam stanje u \verb+master+ treba biti isto kao u \verb+origin/master+, prvo ćemo se potruditi da lokalno imamo ažurno stanje udaljenog repozitorija:
+
+\gitoutput{git fetch}
+
+\dots{}i sad idemo izjednačiti \verb+master+ i \verb+origin/master+:
+
+\gitoutput{git reset --hard origin/master}
 
 \tocSection{Imamo ne$commitane$ izmjene i git nam ne da prebacivanje na drugu granu}
 
