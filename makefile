@@ -21,6 +21,8 @@ edit:
 clean:
 	rm -f *.dvi *.log *.aux *.swp *.swo *.toc *.idx *.pdf
 	rm -f graphs/*
+show: build
+	evince git.pdf &
 random-page: build
 	evince -p `python -c "import random as r;print r.randint(1,140)"` git.pdf
 github-page: build
