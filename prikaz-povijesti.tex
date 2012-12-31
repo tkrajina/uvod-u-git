@@ -1,10 +1,10 @@
 \tocChapter{Prikaz grana u git alatima}
 
-Način kako su grafovi repozitorija prikazivani u ovoj knjizi nije isti kako ih prikazuju različiti aliati za rad s gitom.
-Ovako mi se činilo za nijansu lakše za praćenje, ali da bi lakše radili s alatima kao što je \verb+gitk+ napraviti ćemo ovdje kratak uvod u to kako alati prikazuju povijest, $commit$ove i grane.
+Način kako su grafovi repozitorija prikazivani u ovoj knjizi nije isti kako ih prikazuju grafički alati za rad s gitom.
+Ovako mi se činilo za nijansu lakše za praćenje, ali da bi lakše radili s alatima kao što je \verb+gitk+ napraviti ćemo ovdje kratak pregled kako ti alati prikazuju povijest, $commit$ove i grane.
 
-Osnovna razlika je u tome što grafički alati obično prikazuju povijest od dolje (starije) prema gore (novije). 
-Druga bitna razlika je što neće \emph{commit}ove iz jedne grane prikazivati u posebnom retku (ili stupcu).
+Osnovna razlika je u tome što grafički alati obično prikazuju povijest od dolje (starije) prema gore (novije)
+i to što \emph{commit}ovi iz iste grane nisu prikazani u posebnom retku (ili stupcu).
 
 \tocSection{Prikaz lokalnih grana}
 
@@ -12,7 +12,10 @@ Situacija kojoj imamo samo \verb+master+ i onda stvorimo ovu granu u kojoj još 
 
 \input{graphs/git_merge_01}
 
-\dots{}u \verb+gitk+u će biti prikazano ovako:
+Ovdje je strelica prikazano samo zato da se vidi da smo \verb+eksperimentalna-grana+ kreirali iz $commit$a $c$.
+U biti, ta grana je trenutno ista kao i \verb+master+.
+
+U \verb+gitk+u će ta ista situacija biti prikazana ovako:
 
 \gitgraphics{images/gitk-001.png}{8cm}
 
@@ -26,7 +29,8 @@ Slična situacija:
 
 \gitgraphics{images/gitk-002.png}{8cm}
 
-Kao što vidite, u istom stupcu su prikazane obje grane, samo je prikazan zadnji $commit$ za svaku granu.
+Kao što vidite, u istom stupcu su prikazane obje grane, samo je označen zadnji $commit$ za svaku granu.
+No, to već znamo -- $commit$ i nije ništa drugo nego pokazivač na jedan $commit$.
 
 Ukoliko imate dvije grane u kojima se paralelno razvijao kod:
 

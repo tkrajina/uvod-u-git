@@ -15,7 +15,7 @@ Odgovor je jednostavan -- $commit$ao ih je lokalno, ali nije $push$ao na naš gl
 
 Problem kojeg on ima je u tome što nije nigdje jasno vidljivo jesu li izmjene iz njegove \verb+master+ grane $push$ane na udaljeni repozitorij.
 
-Jedan jednostavan način da to provjerite je da provjerite odnos između \verb+master+ i \verb+origin/master+.
+Jednostavan način da to provjerimo je da provjerimo odnos između \verb+master+ i \verb+origin/master+.
 Za svaki slučaj, prvo ćemo osvježiti stanje udaljenog repozitorija s:
 
 \gitoutput{git fetch}
@@ -31,6 +31,8 @@ Sad pogledajte na grafu je li:
     \item \verb+master+ i \verb+origin/master+ se nalaze na dvije grane koje su međusobno divergirale (u tom slučaju vi \textbf{imate} ne$commit$ane izmjene, ali trebate prvo napraviti $pull$ i onda ih $push$ati).
     \item \verb+master+ i \verb+origin/master+ pokazuju na isti čvoj, tada je lokalno stanje potpuno isto ko i stanje udaljenog repozitorija.
 \end{itemize}
+
+Za primjere grafova, pogledajte poglavlje o prikazu grafova.
 
 \tocSection{$Commit$ali smo u krivu granu}
 
