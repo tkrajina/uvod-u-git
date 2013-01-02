@@ -1,7 +1,7 @@
 \tocChapter{Prikaz grana u git alatima}
 
 Način kako su grafovi repozitorija prikazivani u ovoj knjizi nije isti kako ih prikazuju grafički alati za rad s gitom.
-Ovako mi se činilo za nijansu lakše za praćenje, ali da bi lakše radili s alatima kao što je \verb+gitk+ napraviti ćemo ovdje kratak pregled kako ti alati prikazuju povijest, $commit$ove i grane.
+Odlučio sam se na ovakav prikaz jer mi se činilo intuitivnije za razumijevanje, ali da bi lakše radili s alatima kao što je \verb+gitk+ napraviti ćemo ovdje kratak pregled kako ti alati prikazuju povijest, $commit$ove i grane.
 
 Osnovna razlika je u tome što grafički alati obično prikazuju povijest od dolje (starije) prema gore (novije)
 i to što \emph{commit}ovi iz iste grane nisu prikazani u posebnom retku (ili stupcu).
@@ -13,9 +13,9 @@ Situacija kojoj imamo samo \verb+master+ i onda stvorimo ovu granu u kojoj još 
 \input{graphs/git_merge_01}
 
 Ovdje je strelica prikazano samo zato da se vidi da smo \verb+eksperimentalna-grana+ kreirali iz $commit$a $c$.
-U biti, ta grana je trenutno ista kao i \verb+master+.
+No, ta grana je trenutno ista kao i \verb+master+.
 
-U \verb+gitk+u će ta ista situacija biti prikazana ovako:
+U \verb+gitk+u će ta ista situacija biti prikazana kao:
 
 \gitgraphics{images/gitk-001.png}{8cm}
 
@@ -25,7 +25,7 @@ Slična situacija:
 
 \input{graphs/git_merge_02}
 
-\dots{}će biti prikazana ovako:
+\dots{}će biti prikazana ovako nekako:
 
 \gitgraphics{images/gitk-002.png}{8cm}
 
@@ -36,7 +36,7 @@ Ukoliko imate dvije grane u kojima se paralelno razvijao kod:
 
 \input{graphs/git_merge_1}
 
-\dots{}\verb+gitk+ će prikazati ovako:
+\dots{}\verb+gitk+ će prikazati:
 
 \gitgraphics{images/gitk-003.png}{8cm}
 
