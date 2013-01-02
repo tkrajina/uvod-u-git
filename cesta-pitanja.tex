@@ -45,8 +45,8 @@ Riješenje je jednostavno, prvo ćemo se prebaciti u tu drugu granu:
 
 Zatim chemo preuzeti jedan po jedan ta dva $commit$a u trenutnu granu:
 
-\gitoutput{git cherry-pick master\\
-git cherry-pick master\textasciitilde{}1}
+\gitoutput{git cherry-pick master\textasciitilde{}1\\
+git cherry-pick master}
 
 Podsjetimo se da je \verb+master+ naziv grane, ali i pokazivač na njegov zadnji $commit$, tako da \verb+git cherry-pick master+ preuzima samo taj zadnji $commit$.
 Commit \verb+master~1+ se odnosi na pretposljednji u toj grani.
@@ -60,7 +60,7 @@ Idemo se prvo prešaltati na nju:
 
 I, idemo ih obrisati:
 
-\gitoutput{git reset --hard master~2}
+\gitoutput{git reset --hard master\textasciitilde{}2}
 
 \dots{}što tu granu resetira na stanje u \verb+master~2+ (a to je pred-predzadnji $commit$).
 
@@ -108,7 +108,7 @@ Treba pripaziti se da lokalno u repozitoriju nemamo nikakvih ne$commit$anih izmj
 
 \gitoutput{git reset --soft 15694d32935f07cc66dbc98fdd7b3b248d885492}
 
-Git će nas sad vratiti u povijest, ali stanje datoteka će ostaviti kakve su bile.
+Git će nas sad vratiti u povijest, ali datoteke će ostaviti u istom stanju u kakvom su bile snimljene.
 Sad ih možemo $commit$ati iznova i dobiti ćemo ono što smo tražili.
 
 \tocSection{$Push$ali smo u remote repozitorij izmjenu koju nismo htjeli}
