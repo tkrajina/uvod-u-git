@@ -138,7 +138,7 @@ Uzmimo situaciju da smo samo jednu datoteku izmijenili i spremili u indeks:
 
 \input{git_output/git_status_nakon_indeksa}
 
-Izmijenimo li tu datoteku direktno u projektu -- novo stanje će biti ovakvo:
+Izmijenimo li sad tu datoteku još jednom, novo stanje će biti ovakvo:
 
 \input{git_output/git_status_nakon_indeksa_2}
 
@@ -273,31 +273,31 @@ Otvoriti će se sljedeće:
 
 \gitgraphics{images/git-gui.png}{12cm}
 
-Program se sastoji od četiri polja. 
+Program se sastoji od četiri pravokutna polja:
 
 \begin{itemize}
-	\item Polje za datoteke koje su izmijenjene, ali nisu još u indeksu (gore lijevo).
-	\item Polje za prikaz izmjena u pojedinim datotekama (gore desno). 
-	\item Polje za datoteke koje su izmijenjene i stavljene su u indeks (dolje lijevo).
-	\item Polje za \emph{commit} (dolje lijevo).
+	\item Polje za datoteke koje su izmijenjene, ali nisu još u indeksu (označeno s \textcolor{orange}{\textbf{A}}).
+	\item Polje za prikaz izmjena u pojedinim datotekama (\textcolor{orange}{\textbf{B}}). 
+	\item Polje za datoteke koje su izmijenjene i stavljene su u indeks (\textcolor{orange}{\textbf{C}}).
+	\item Polje za \emph{commit} (\textcolor{orange}{\textbf{D}}).
 \end{itemize}
 
 Klik na neku datoteku će prikazati sve izmjene koja ta datoteka sadrži u odnosu na zadnje snimljeno stanje u repozitoriju.
 Format je isti kao i kod \verb+git diff+.
 Klik na ikonu uz naziv datoteke će istu prebaciti iz polja izmijenjenih datotka u polje s indeksom i suprotno.
-Nakon što odaberemo datoteke za koje želimo da budu dio našeg \emph{commit}a, trebamo unijeti komentar i kliknuti na "Commit" za snimanje izmjene.
+Nakon što odaberemo datoteke za koje želimo da budu dio našeg \emph{commit}a\footnote{To jest, nakon što te datoteke spremimo u $index$ iliti nakon što ih prebacimo iz gornjeg lijevog polja u donje lijevo polje.}, trebamo unijeti komentar i kliknuti na "Commit" za snimanje izmjene.
 
 Ovdje, kao i u radu s komandnom linijom ne moramo sve izmijenjene datoteke snimiti u jednom \emph{commit}u. 
-Možemo dodati nekoliko datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
+Možemo prebaciti u indeks samo dio datoteka, upisati komentar, snimiti i nakon toga dodati sljedećih nekoliko datoteka, opisati novi komentar i snimiti sljedeću izmjenu.
 Drugim riječima, izmjene možemo snimiti u nekoliko posebnih \emph{commit}ova, tako da svaki od njih čini zasebnu logičku cjelinu.
 
 S \verb+git gui+ imamo još jednu korisnu opciju -- možemo u indeks dodati \textbf{ne cijelu datoteku, nego samo nekoliko izmijenjenih linija} datoteke.
-Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želimo spremite, desni klik i:
+Za tu datoteku, u polju s izmijenjenim linijama odaberimo samo linije koje želimo spremiti, desni klik i odaberite "\verb+Stage lines to commit+":
 
 \gitgraphics{images/git-gui-stage-lines-to-commit.png}{12cm}
 
 Ako smo na nekoj datoteci napravili izmjenu koju \emph{ne} želimo snimiti -- takvu datoteku možemo resetirati, odnosno vratiti u početno stanje. 
-Jednostavno odaberemo ju u meniju \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
+Jednostavno odaberemo tu datoteku i u meniju kliknemo na \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
 
 Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
 Preporučam vam da nađete vremena i proučite sve menije i kratice s tastaturom u radu, jer to će vam značajno ubrzati daljnji rad.

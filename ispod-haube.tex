@@ -51,7 +51,7 @@ Jeste li sigurni da bi primijetili podvaljenu datoteku?
 
 Možda biste kad bi se vaš projekt sastojao od dvije-tri datoteke, ali što ako se radi o stotinama ili tisućama?
 
-Riješenje je da je vaš sustav nekako dizajniran tako da sam prepoznaje takve izmijenjene datoteke. 
+Rješenje je da je vaš sustav nekako dizajniran tako da sam prepoznaje takve izmijenjene datoteke. 
 Odnosno, da je tako dizajniran da, ako bilo tko promijeni nešto u povijesti -- sam sustav prepozna da nešto s njime ne valja.
 To se može na sljedeći način: neka jedinstveni identifikator svakog \emph{commit}a bude neki podatak koji je \textbf{izračunat} iz sadržaja i koji jedinstveno određuje sadržaj.
 Takav jedinstveni identifikator će se nalaziti u grafu projekta, i sljedeći \emph{commit}ovi će znati da im je on prethodnik.
@@ -62,7 +62,7 @@ Zlonamjernik bi trebao promijeniti sve \emph{commit}ove do zadnjeg.
 U biti, trebao bi promijeniti previše stvari da bi mu cijeli poduhvat mogao proći nezapaženo.
 
 Još ako je naš sustav distribuiran (dakle i drugi korisnici imaju povijest cijelog projekta) onda mu je još teže -- jer tu radnju mora ponoviti na računalima svih ljudi koji imaju kopije.
-S distribuiranim sustavima, nitko nikad niti ne zna tko sve ima kopije.
+S distribuiranim sustavima, nitko sa sigurnošću ne zna tko sve ima kopije.
 Svaka kopija repozitorija sadrži povijest projekta.
 Ukoliko netko zlonamjerno manipulira poviješću projekta na jednom repozitoriju -- to će se primijetiti kad se taj repozitorij "sinhronizira" s ostalima.
 
@@ -131,8 +131,8 @@ Dovoljan nam je $w$.
 Iz njega možemo, prateći reference "unazad" (suprotno od redosljeda njihovog nastajanja) doći sve do mjesta gdje je grana nastala.
 Tako, na osnovu samo jednog čvora (\emph{commit}a) možemo saznati cijelu povijest neke grane.
 
-Dakle, dovoljno nam je imati reference na zadnje \emph{commit}ove svih grana u repozitoriju -- da bi mogli saznati povijest cijelog projekta.
-Zato \textbf{gitu grane i nisu ništa drugo neki reference na njihove zadnje \emph{commit}ove}.
+Dakle, dovoljno nam je imati reference na zadnje \emph{commit}ove svih grana u repozitoriju, da bi mogli saznati povijest cijelog projekta.
+Zato \textbf{gitu grane i nisu ništa drugo nego reference na njihove zadnje \emph{commit}ove}.
 
 \section*{Reference}
 \addcontentsline{toc}{section}{Reference}
@@ -155,20 +155,36 @@ Dakle,
 Dogodi li se, kojim slučajem, da postoje dvije reference koje počinju s \verb+974ef0a+, git će vam javiti grešku da ne zna na koju od njih se naredba odnosi.
 Tada samo dodajte jedan ili dva znaka više (\verb+974ef0ad+ ili \verb+974ef0ad8+), sve dok nova skraćenica reference ne postane jedinstvena.
 
-Referenca \verb+HEAD+ je uvijek referenca na zadnji \emph{commit} u grani u kojoj se nalazimo.
+\tocSection{HEAD}
+
+\verb+HEAD+ je referenca na trenutni \emph{commit}.
+Obično je to zadnji $commit$ u grani u kojoj se nalazimo, ali može biti i bilo koji drugi.
+Ukoliko pokazuje na $commit$ koji \textbf{nije zadnji u grani} -- onda se kaže da je repozitorij u \verb+detached HEAD+ stanju.
+
 Ukoliko nam treba referenca na predzadnji \emph{commit}, mogli bi pogledati \verb+git log+ i tamo naći njegov SHA1.
 Postoji i lakši način: \verb+HEAD~1+.
 Pred-predzadnji commit je \verb+HEAD~2+, i tako dalje\dots
 
-Na primjer, želimo li pogledati koje su se izmjene dogodile između sadašnjeg stanja grana i stanja od prije $10$ \emph{commit}ova, to će ići ovako:
+Na primjer, ako se prebacimo na stanje u predzadnjem $commit$u, to možemo napraviti s:
 
-\gitoutputcommand{git diff HEAD HEAD\textasciitilde{}10}
+\gitoutputcommand{git checkout HEAD\textasciitilde{}1}
 
-Notacija kojom dodajemo \verb+~1+, \verb+~2+, \dots vrijedi i za reference na grane i na pojedine SHA1.
+\dots{}i za git smo sada u \verb+detached HEAD+ stanju.
+Na spisku grana -- dobiti ćemo:
+
+\input{git_output/git_branch_detached_state}
+
+U ovakvoj situaciji smijemo čak i $commit$ati, ali te izmjene neće biti dio ni jedne grane. 
+Ukoliko ne pripazimo -- lako ćemo te izmjene izgubiti.
+Trebamo li ih sačuvati, jednostavno kreiramo novu granu s \verb+git branch+ i repozitorij više neće biti u \verb+detached HEAD+ stanju, a izmjene koje smo napraviti su sačuvane u novoj grani.
+
+Želimo li pogledati koje su se izmjene dogodile između sadašnjeg stanja grana i stanja od prije $10$ \emph{commit}ova, to će ići ovako:
+
+\gitoutputcommand{git diff HEAD\textasciitilde{}10 HEAD}
+
+Notacija kojom dodajemo \verb+~1+, \verb+~2+, \dots vrijedi i za reference na grane i na SHA1 identifikatore $commit$ova.
 Imate li granu \verb+test+ -- već znamo da je to referenca samo na njen zadnji \emph{commit}, a referenca na predzadnji je \verb+test~1+.
 Analogno, \verb+974ef0a~11+ je referenca na $11$-ti \emph{commit} prije \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+.
-
-Zapamtite ove trikove s referencama, jer to ćete često koristiti!
 
 \section*{.git direktorij}
 \addcontentsline{toc}{section}{.git direktorij}

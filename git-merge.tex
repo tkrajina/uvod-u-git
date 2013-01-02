@@ -243,11 +243,18 @@ Nakon toga treba ju \emph{commit}ati na standardan način.
 Drugi način je da koristi \verb+git mergetool+.
 Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
 Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše rješavate ovakve konflikte.
-Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je zgodno riješenje ako znate raditi s nekim od programa za rješavanje konflikata.
 
-Na primjer, ako koristite vimdiff, onda editiranje konfliktnih datoteka izgleda ovako:
+Git, sam po sebi, nema ugrađenih alata za vizualni prikaz i riješavanje konflikata, ali postoje zasebni programi u tu svrhu. 
+Kad nađete jedan takav koji vam odgovara, postavite ga kao zadani \verb+merge.tool+ alat:
+
+\gitoutputcommand{git config --global merge.tool /putanja/do/programa}
+
+Sad, kad dođe do konflikta i pokrenete \verb+git mergetool+, git će upravo tu aplikaciju pokrenuti i olakšati vam snalaženje u konfliktnim datotekama.
+Na primjer, ako koristite \verb+vimdiff+, onda editiranje konfliktnih datoteka izgleda ovako:
 
 \gitgraphics{images/mergetool.png}{12cm}
+
+Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je praktično rješenje za sve koji su naviknuti na slične alate.
 
 Nakon što konflikt u datoteci (ili datotekama) riješite -- izmijenjene datoteke treba \emph{commit}ati.
 
@@ -342,18 +349,18 @@ Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim.
 I zbog toga povijest projekta \textbf{može} postati cirkus kojeg je teško pratiti i organizirati.
 Organizacija repozitorija zahtijeva posebnu pažnju, posebno ako radite s više ljudi na istom projektu.
 
-Postoji, ipak, način kako se može od puno grana stvoriti linearna povijest.
-Kad bi postojao trik kako da iz ovakvog stanja:
+Kad bi samo postojao trik kako da iz ovakvog stanja:
 
 \input{graphs/bez_fast_forward}
 
-\dots{}stvorimo ovo:
+\dots{}stvorimo ovo\dots
 
 \input{graphs/bez_fast_forward_rebase}
 
-To jest, da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
-Tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
-Nakon toga bi brisanjem grane \verb+varijanta+ dobili da je povijest našeg projekta postala linearna:
+\dots{}tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
+
+Drugim riječima -- treba nam način da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
+Nakon toga bi brisanjem grane \verb+varijanta+ dobili da su se svi $commit$ovi našeg projekta događali u \verb+master+:
 
 \input{graphs/bez_fast_forward_rebase_2}
 

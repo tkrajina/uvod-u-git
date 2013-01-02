@@ -34,7 +34,7 @@ Idemo sad na prvi i najjednostavniji korak -- stvoriti ćemo novi direktorij \\ 
 
 I to je to. 
 
-Ukoliko idete pogledati kakva se to čarolija desila u s tim \verb+git init+, otkriti ćete da je stvoren direktorij \verb+.git+.
+Ukoliko idete pogledati kakva se to čarolija desila s tim \verb+git init+, otkriti ćete da je stvoren direktorij \verb+.git+.
 U principu, cijela povijest, sve grane, čvorovi i komentari, apsolutno sve vezano uz repozitorij se čuva u tom direktoriju.
 Zatreba li nam ikad sigurnosna kopija cijelog repozitorija -- sve što treba napraviti je da sve lokalne promjene spremimo (\emph{commit}amo) u git i spremimo negdje arhivu (\verb+.zip+, \verb+.bz2+, \dots) s tim \verb+.git+ direktorijem.
 
@@ -102,7 +102,7 @@ S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 Prije ili kasnije će se dogoditi situacija da u direktoriju s repozitorijem imamo datoteke koje ne želimo spremati u povijest projekta.
 To su, na primjer, konfiguracijske datoteke za različite editore ili klase koje nastaju kompajliranjem (\verb+.class+ za javu, \verb+.pyc+ za python, \verb+.o+ za C, i sl.).
 U tom slučaju, trebamo nekako gitu dati do znanja da takve datoteke ne treba nikad snimati.
-Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (ne nekom od poddirektorija) i jednostavno unesimo sve ono što ne treba biti dio povijesti projekta.
+Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (ne nekom od poddirektorija) i jednostavno unesite sve ono što ne treba biti dio povijesti projekta.
 
 Ukoliko ne želimo \verb+.class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target/+ -- naša \verb+.gitignore+ datoteka će izgledati ovako:
 

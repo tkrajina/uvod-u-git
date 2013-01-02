@@ -39,11 +39,11 @@ Za primjere grafova, pogledajte poglavlje o prikazu grafova.
 Na primjer, slučajno smo commitali u \verb+master+, a trebali smo u \verb+unicode-fix+.
 Pretpostavimo da su zadnja dva $commit$a iz \verb+master+ ona koja želimo prebaciti u ovu drugu granu.
 
-Riješenje je jednostavno, prvo ćemo se prebaciti u tu drugu granu:
+Rješenje je jednostavno, prvo ćemo se prebaciti u tu drugu granu:
 
 \gitoutput{git checkout unicode-fix}
 
-Zatim chemo preuzeti jedan po jedan ta dva $commit$a u trenutnu granu:
+Zatim ćemo preuzeti jedan po jedan ta dva $commit$a u trenutnu granu:
 
 \gitoutput{git cherry-pick master\textasciitilde{}1\\
 git cherry-pick master}
@@ -101,7 +101,7 @@ Ukoliko to činimo, treba samo pripaziti da svoj "privremeni" $commit$ ne $push$
 
 \tocSection{Zadnjih $n$ $commit$ova treba "stisnuti" u jedan $commit$}
 
-S \verb+git log+ ili \verb+gitk+ nađite SHA1 identifikator zadnjeg $commit$a kojeg \textbf{želimo ostaviti netaknutog} (tj. sve $commitove$ \textbf{nakon} njega želimo "stisnuti" u jedan $commit$).
+S \verb+git log+ ili \verb+gitk+ nađimo SHA1 identifikator zadnjeg $commit$a kojeg \textbf{želimo ostaviti netaknutog} (tj. sve $commitove$ \textbf{nakon} njega želimo "stisnuti" u jedan $commit$).
 Neka je to, na primjer, \verb+15694d32935f07cc66dbc98fdd7b3b248d885492+.
 
 Treba pripaziti se da lokalno u repozitoriju nemamo nikakvih ne$commit$anih izmjena i da se nalazimo u pravoj grani, a onda:

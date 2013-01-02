@@ -24,7 +24,7 @@ clean:
 show: build
 	evince git.pdf &
 random-page: build
-	evince -p `python -c "import random as r;print r.randint(1,155)"` git.pdf
+	evince -p `python -c "import random as r;print r.randint(1,155)"` git.pdf &
 github-page: build
 	cp git.pdf /tmp
 	git checkout gh-pages

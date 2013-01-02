@@ -114,17 +114,16 @@ Pokreće se s:
 
 \dots{}a izgleda ovako:
 
-\gitgraphics{images/gitk.png}{12cm}
+\gitgraphics{images/gitk.png}{13.5cm}
 
-Sučelje ima pet osnovnih dijelova.
-Ovdje opisani redom s lijeva na desno od gore prema dolje:
+Sučelje ima pet osnovnih dijelova:
 
 \begin{itemize}
-	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom (bilo zbog grananja, \emph{merge}anja ili \emph{cherry-pick} \emph{merge}),
-	\item popis ljudi koji su \emph{commit}ali,
-	\item datum i vrijeme, 
-	\item pregled svih izmjena,
-	\item pregled datoteka koje su izmijenjene.
+	\item grafički prikaz povijesti grane i \emph{commit}ova iz drugih grana koji su imali veze s tom granom, bilo zbog grananja ili \emph{merge}anja (označeno s \textcolor{orange}{\textbf{A}}),
+	\item popis ljudi koji su to \emph{commit}ali (\textcolor{orange}{\textbf{B}}),
+	\item datum i vrijeme $commit$anja (\textcolor{orange}{\textbf{C}}), 
+	\item pregled svih izmjena u odabranom $commit$u (\textcolor{orange}{\textbf{D}}),
+	\item pregled datoteka koje su tada izmijenjene (\textcolor{orange}{\textbf{E}}).
 \end{itemize}
 
 Kad odaberete \emph{commit} dobiti ćete sve izmjene i datoteke koje su sudjelovale u izmjenama.
@@ -216,7 +215,7 @@ Zato git ispravno \emph{merge}a čak i ako u jednoj grani datoteku preimenujemo 
 \section*{Preuzimanje datoteke iz povijesti}
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
-Svima nam se ponekad desilo da smo izmijenili datoteku i kasnije shvatili da ta izmjena ne valja. 
+Svima nam se dogodilo da smo izmijenili datoteku i kasnije shvatili da ta izmjena ne valja. 
 Na primjer zaključili smo da je verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
 Kako da ju vratimo iz povijesti i \emph{commit}amo u novo stanje projekta?
 
@@ -246,7 +245,7 @@ Na primjer, otkrili smo bug, ne znamo gdje točno u kodu, ali znamo da se taj bu
 Međutim, ne znamo točno \textbf{kada} je bug zepočeo.
 
 Bilo bi zgodno kad bismo cijeli projekt mogli teleportirati na neko stanje kakvo je bilo prije $n$ \emph{commit}ova.
-Ako se tamo bug i dalje manifestira -- vratiti ćemo se još malo dalje u povijest.
+Ako se tamo bug i dalje manifestira -- vratiti ćemo se još malo dalje u povijest\footnote{Postoji i posebna naredba koja automatizira upravo taj proces traženja greške, a zove se $bisect$.}.
 Ako se tamo manifestirao -- prebaciti ćemo se u malo bližu povijest.
 I tako -- mic po mic po povijesti, sve dok ne nađemo trenutak (\emph{commit}) u povijesti repozitorija u kojem je bug stvoren.
 Ništa lakše:
