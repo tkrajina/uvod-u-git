@@ -342,18 +342,18 @@ Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim.
 I zbog toga povijest projekta \textbf{može} postati cirkus kojeg je teško pratiti i organizirati.
 Organizacija repozitorija zahtijeva posebnu pažnju, posebno ako radite s više ljudi na istom projektu.
 
-Postoji, ipak, način kako se može od puno grana stvoriti linearna povijest.
-Kad bi postojao trik kako da iz ovakvog stanja:
+Kad bi samo postojao trik kako da iz ovakvog stanja:
 
 \input{graphs/bez_fast_forward}
 
-\dots{}stvorimo ovo:
+\dots{}stvorimo ovo\dots
 
 \input{graphs/bez_fast_forward_rebase}
 
-To jest, da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
-Tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
-Nakon toga bi brisanjem grane \verb+varijanta+ dobili da je povijest našeg projekta postala linearna:
+\dots{}tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
+
+Drugim riječima -- treba nam način da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
+Nakon toga bi brisanjem grane \verb+varijanta+ dobili da su se svi $commit$ovi našeg projekta događali u \verb+master+:
 
 \input{graphs/bez_fast_forward_rebase_2}
 
