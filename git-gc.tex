@@ -24,13 +24,12 @@ Ukoliko nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena k
 \gitoutputcommand{git branch --merged master}
 
 To će nam ispisati spisak svih grana čije izmjene \textbf{su u potpunosti} \emph{merge}ane u master. 
-Analogno, postoji i naredba:
+Analogno, postoji i naredba s kojom dobijamo spisak svih onih grana koje \textbf{nisu} u potpunosti \emph{merge}ane u neku drugu granu:
 
 \gitoutputcommand{git branch --no-merged <naziv\_grane>}
 
-Da bi dobili spisak svih onih grana koje \textbf{nisu} u potpunosti \emph{merge}ane u neku drugu granu
 
-Ukoliko baš morate imati puno grana, onda se potrudite dogovoriti neki logičan način kako ih imenujete.
+Ako baš morate imati puno grana, onda se s dogovorite drugim ljudima u projektu neki logičan način kako ćete grane imenovati.
 Na primjer, ako koristite neki sustav za prijavu i praćenje grešaka, onda svaka greška ima neki svoj broj.
 Možete se odlučiti svaku grešku ispravljati u posebnoj grani. 
 Imate li veliku i kompleksnu aplikaciju -- biti će i puno prijavljenih grešaka, a posljedično i puno grana.
