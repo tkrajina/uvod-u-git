@@ -21,7 +21,7 @@ Ima prije toga nešto što trebamo znati.
 Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
 
 Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njena adresa.
-Github\footnote{Web servis koji omogućuje da držite svoje git repozitorije} omogućuje da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
+Github\footnote{Jedan od mnogih web servisa koji vam nude uslugu čuvanja (hostanja) git repozitorija.} omogućuje da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
 Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \\\verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
 
 Dalje, svaki udaljeni repozitorij s kojime namjeravamo imati posla mora imati i svoje kratko ime.
@@ -131,17 +131,16 @@ Radi se o tome da je ovaj graf:
 \input{graphs/digresija_o_grafovima_2}
 
 \dots{}zato što ima zajednički početak povijesti ($a$, $b$, $c$, $d$ i $e$).
-Zbog toga, na primjer, u sljedećoj situaciji:
+
+Slično, u sljedećoj situaciji:
 
 \input{graphs/digresija_o_grafovima_3}
 
-Trebamo si ovdje zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u čvoru $e$.
+\dots{}trebamo zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u čvoru $e$.
 Jedino što se svaka grana nalazi u zasebnom repozitoriju, a ne više u istom.
 Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je:
 
 \input{graphs/digresija_o_grafovima_4}
-
-Opisani odnos vrijedi i za \verb+master+ i \verb+origin/master+.
 
 U ilustracijama koje slijede, grafovi su prikazani kao zasebne "crte" samo zato što logički pripadaju posebnim entitetima (repozitorijima).
 Međutim, oni \textbf{su samo posebne grane istog projekta} iako se nalaze na različitim lokacijama/računalima.
