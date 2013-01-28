@@ -1,49 +1,49 @@
 \chapter*{"Higijena" repozitorija}
 \addcontentsline{toc}{chapter}{"Higijena" repozitorija}
 
-Za programere -- repozitorij je životni prostor i s njime se živi dio dana.
+Za programere repozitorij je životni prostor i s njime se živi dio dana.
 Kao što se trudimo držati stan urednim, tako bi trebalo i s našim virtualnim prostorima.
 Preko tjedna, kad rano ujutro odlazimo na posao i vraćamo se kasno popodne, ponekad se desi da nam se u stanu nagomila robe za pranje.
 Zato nekoliko puta tjedno treba uzeti pola sata vremena i počistiti nered koji je zaostao, inače će entropija zavladati, a to nikako ne želim(o).
 Nadam se.
 
-Tako i s repozitorijem -- treba ga redovito održavati i čistiti nered koji ostavljamo za sobom.
+Tako i s repozitorijem; treba ga redovito održavati i čistiti nered koji ostavljamo za sobom.
 
 \section*{Grane}
 \addcontentsline{toc}{section}{Grane}
 
-Iako nam git omogućuje da imamo neograničen broj grana, ljudski um nije sposoban vizualizirati si više od 5-10 njih\footnote{Barem moj nije, ako je vaš izuzetak, preskočite sljedećih nekoliko rečenica. Ili jednostavno zamislite da je umjesto "5-10" pisalo "500-1000".}.
-Kako stvaramo nove grane -- dešava se da imamo one u kojima smo počeli neki posao i kasnije odlučili da nam ne trebaju.
+Iako nam git omogućuje da imamo neograničen broj grana, ljudski um nije sposoban vizualizirati si više od 5 do 10 njih\footnote{Barem moj nije, ako je vaš izuzetak, preskočite sljedećih nekoliko rečenica. Ili jednostavno zamislite da je umjesto "5-10" pisalo "500-1000".}.
+Kako stvaramo nove grane, događa se da imamo one u kojima smo počeli neki posao i kasnije odlučili da nam ne trebaju.
 Ili smo napravili posao, \emph{merge}ali u \verb+master+, ali nismo obrisali granu.
-Nađemo li se s više od 10-15 grana -- \textbf{sigurno} je dio njih tu samo zato što smo ih zaboravili obrisati.
+Nađemo li se s više od 10-15 grana \textbf{sigurno} je dio njih tu samo zato što smo ih zaboravili obrisati.
 
 U svakom slučaju, predlažem vam da svakih par dana pogledate malo po lokalnim (a i udaljenim granama) i provjerite one koje više ne koristite.
 
-Ukoliko nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena koju treba vratiti u \verb+master+, možemo koristiti naredbu:
+Ako nismo sigurni je li nam u nekoj grani ostala možda još kakva izmjena koju treba vratiti u \verb+master+, možemo koristiti naredbu:
 
 \gitoutputcommand{git branch --merged master}
 
-To će nam ispisati spisak svih grana čije izmjene \textbf{su u potpunosti} \emph{merge}ane u master. 
-Analogno, postoji i naredba s kojom dobijamo spisak svih onih grana koje \textbf{nisu} u potpunosti \emph{merge}ane u neku drugu granu:
+To će nam ispisati popis svih grana čije izmjene \textbf{su u potpunosti} \emph{merge}ane u master. 
+Analogno, postoji i naredba s kojom dobijamo popis svih onih grana koje \textbf{nisu} u potpunosti \emph{merge}ane u neku drugu granu:
 
 \gitoutputcommand{git branch --no-merged <naziv\_grane>}
 
 
-Ako baš morate imati puno grana, onda se s dogovorite drugim ljudima u projektu neki logičan način kako ćete grane imenovati.
+Ako baš morate imati puno grana, onda dogovorite s drugim ljudima u projektu neki logičan način kako ćete grane imenovati.
 Na primjer, ako koristite neki sustav za prijavu i praćenje grešaka, onda svaka greška ima neki svoj broj.
 Možete se odlučiti svaku grešku ispravljati u posebnoj grani. 
-Imate li veliku i kompleksnu aplikaciju -- biti će i puno prijavljenih grešaka, a posljedično i puno grana.
-Tada možete grane imenovati prema broju prijavljene greške zajedno s kratkim opisom.
+Imate li veliku i kompleksnu aplikaciju, biti će i puno prijavljenih grešaka, a posljedično i puno grana.
+Tada grane možete imenovati prema broju prijavljene greške zajedno s kratkim opisom.
 Na primjer, \verb+123-unicode-problem+ bi bila grana u kojoj ispravljate problem prijavljen pod brojim 123, a radi se o (tko bi rekao?) nekom problemu s \emph{unicode} enkodiranjem.
-I sad, kad dobijete spisak svih grana -- odmah ćete znati koja grana čemu služi.
+Sad, kad dobijete spisak svih grana, odmah ćete znati koja grana čemu služi.
 
 \section*{Git gc}
 \addcontentsline{toc}{section}{Git gc}
 
-Druga stvar koju se preporuča ima veze s onim našim \verb+.git/objects+ direktorijem kojeg smo spominjali u "Ispod haube" poglavlju.
+Druga stvar koja se preporuča ima veze s onim našim \verb+.git/objects+ direktorijem kojeg smo spominjali u "Ispod haube" poglavlju.
 Kao što znamo, svaki \emph{commit} ima svoju referencu i svoj objekt (datoteku) u tom direktoriju.
 Kad napravimo \verb+git commit --amend+ -- git stvara \textbf{novi} \emph{commit}.
-Nije da on samo izmijeni stari\footnote{Ne bi ni mogao izmijeniti stari, jer ima drukčiji sadržaj i SHA1 bi mu se nužno morao promijeniti.}.
+Nije da on samo izmijeni stari\footnote{Ne bi ni mogao izmijeniti stari jer ima drukčiji sadržaj i SHA1 bi mu se nužno morao promijeniti.}.
 
 Grafički:
 
@@ -72,9 +72,9 @@ Ako vas zanimaju -- \verb+git help+ je uvijek na dohvat ruke.
 \section*{Povijest i brisanje grana}
 \addcontentsline{toc}{section}{Povijest i brisanje grane}
 
-Spomenuti ćemo još nešto što bi logički pripadalo u poglavlja o granama i povijesti, ali tada nismo imali dovoljno znanja.
+Spomenuti ćemo još nešto što bi logički pripadalo u poglavlja o granama i povijesti, ali tada za to nismo imali dovoljno znanja.
 
-Što se dešava s \emph{commit}ovima iz neke grane nakon što ju obrišemo?
+Što se događa s \emph{commit}ovima iz neke grane nakon što je obrišemo?
 Uzmimo tri primjera.
 U sva tri imamo dvije grane: \verb+master+ i \verb+eksperiment+.
 
@@ -82,19 +82,19 @@ Prvi primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_1}
 
-Pravilo po kojem git razlikuje čvorove koje će ostaviti u povijesti od onih koje će obrisati je jednostavno:
-\textbf{Svi čvorovi koji su dio povijesti projekta će ostati u repozitoriju i neće biti obrisati s} \verb+git gc+.
+Pravilo po kojem git razlikuje čvorove koje će ostaviti u povijesti od onih koje će obrisati jednostavno je:
+\textbf{Svi čvorovi koji su dio povijesti projekta ostat će u repozitoriju i neće biti obrisani s} \verb+git gc+.
 Kako znamo koji čvorovi su dio \textbf{povijesti projekta}?
 Po tome što postoji nešto (grana, čvor ili \emph{tag}) tko ima referencu na njih.
 
 Krenimo sad primijeniti to pravilo na naš primjer\dots
 
-Podsjetimo se da su strelice redosljed nastajanja, ali reference idu suprotnim smjerom -- sljedbenik ima referencu na prethodnika.
+Podsjetimo se da su strelice redoslijed nastajanja, ali reference idu suprotnim smjerom, sljedbenik ima referencu na prethodnika.
 Dakle, $g$ ima referencu na $f$, $f$ na $e$, itd.
 Što je sa čvorom $g$? 
-Izgleda kao da nitko nema referencu na njega, ali to nije točno -- grana \verb+eksperiment+ je referenca na njega.
+Izgleda kao da nitko nema referencu na njega, ali to nije točno; grana \verb+eksperiment+ je referenca na njega.
 
-Ako obrišemo granu \verb+eksperiment+ -- $g$ više nema nikoga da njega referencira.
+Ako obrišemo granu \verb+eksperiment+ -- $g$ više nema nikoga da se njega referencira.
 \verb+git gc+ će ga obrisati, ali onda mora obrisati i $f$, $e$ i $d$ ($b$ ne možemo, jer $c$ ima referencu na njega).
 Dakle, kad obrišemo granu koja nije \emph{merge}ana u neku drugu granu, onda se svi njeni čvorovi gube iz povijesti projekta.
 
@@ -102,7 +102,7 @@ Drugi primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_2}
 
-Ovaj primjer je isti kao i prvi, s jednom razlikom. 
+Ovaj primjer je isti kao i prvi s jednom razlikom. 
 Došlo je do \emph{merge}a.
 
 Znamo da grana nije ništa drugo nego referenca na zadnji čvor/\emph{commit}.
@@ -113,8 +113,8 @@ Treći primjer:
 
 \input{graphs/git_merge_i_brisanje_grana_3}
 
-Ukoliko u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan čvor koji će biti izgubljen, a to je $g$.
-Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$, dakle on prestaje biti dio povijesti našeg projekta.
+Ako u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan čvor koji će biti izgubljen, a to je $g$.
+Bez referencu na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$. Dakle, on prestaje biti dio povijesti našeg projekta.
 $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 
 \section*{Digresija o brisanju grana}
@@ -131,12 +131,12 @@ Uzmimo opet iste dvije situacije, onu u kojoj će se svi čvorovi grane sačuvat
 Prvu situaciju zovemo \textbf{potpuno \emph{merge}ana grana}, a drugu \textbf{djelomično \emph{merge}ana grana}.
 
 Znamo sad da postoje situacije u kojima čak i nakon brisanja grane -- njeni \emph{commit}ovi ostaju u povijesti projekta.
-Mogli bi si postaviti pitanje: Zašto uopće brisati grane?
-Odgovor je jednostavan -- brisanjem grane nećemo više tu granu imati u listi koji dobijemo s \verb+git branch+.
-Kad bi tamo imali sve grane koje smo ikad imali u povijesti projekta (a njih može biti jako puno) -- bilo bi se teško snaći u podužem ispisu.
+Mogli bi si postaviti pitanje: "Zašto uopće brisati grane?"
+Odgovor je jednostavan:  brisanjem grane nećemo više tu granu imati u listi koji dobijemo s \verb+git branch+.
+Kad bi tamo imali sve grane koje smo ikad imali u povijesti projekta (a njih može biti jako puno) bilo bi se teško snaći u podužem ispisu.
 
-Druga digresija koju ćemo ovdje napraviti se tiče brisanja grane.
-Postoje dva načina, prvog kojeg smo već spomenuli:
+Druga digresija koju ćemo ovdje napraviti tiče se brisanja grane.
+Postoje dva načina. Prvi kojeg smo već spomenuli:
 
 \gitoutputcommand{git branch -D grana}
 
@@ -145,8 +145,8 @@ Postoje dva načina, prvog kojeg smo već spomenuli:
 \gitoutputcommand{git branch -d grana}
 
 \dots{}koji će obrisati granu samo ako \textbf{jest} potpuno \emph{merge}ana.
-Ako nije -- odbiti će obrisati.
-Dakle, ako imate strah da biste slučajno obrisali granu čije izmjene još niste preuzeli u neku drugu granu -- koristite \verb+-d+ umjesto \verb+-D+ kod brisanja.
+Ako nije, odbiti će obrisati.
+Dakle, ako vas je strah da biste slučajno obrisali granu čije izmjene još niste preuzeli u neku drugu granu -- koristite \verb+-d+ umjesto \verb+-D+ kod brisanja.
 
 \section*{\emph{Squash merge} i brisanje grana}
 \addcontentsline{toc}{section}{\emph{Squash merge} i brisanje grana}
@@ -155,12 +155,12 @@ Uzmimo opet:
 
 \input{graphs/git_merge_i_brisanje_grana_4}
 
-Želimo li u povijesti projekta sačuvati izmjene iz neke grane, ali ne i njenu povijest -- to se može s \verb+git merge --squash+.
-Podsjetimo se -- tom operacijom git \textbf{hoće} preuzeti izmjene iz grane, ali \textbf{neće} u čvoru $q$ napraviti referencu na $g$.
+Želimo li u povijesti projekta sačuvati izmjene iz neke grane, ali ne i njenu povijest, to se može s \verb+git merge --squash+.
+Podsjetimo se, tom operacijom git \textbf{hoće} preuzeti izmjene iz grane, ali \textbf{neće} u čvoru $q$ napraviti referencu na $g$.
 Dakle, rezultat je kao kod klasičnog \emph{merge}a, ali bez reference (u prethodnom grafu crvenom bojom):
 
 \input{graphs/git_merge_i_brisanje_grana_5}
 
 Sad smo preuzeli izmjene iz \verb+grana+ u \verb+master+, ali \verb+git gc+ će prije ili kasnije obrisati $d$, $e$, $f$ i $g$.
 
-S \verb+git merge --squash+ cijelu granu svodimo na jedan \emph{commit} i kasnije gubimo njenu povijest\footnote{\dots{}barem ako ju kasnije ne \emph{merge}amo klasičnim putem.}.
+S \verb+git merge --squash+ cijelu granu svodimo na jedan \emph{commit} i kasnije gubimo njenu povijest\footnote{\dots{}barem ako je kasnije ne \emph{merge}amo klasičnim putem.}.
