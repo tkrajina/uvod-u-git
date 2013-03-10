@@ -1,0 +1,5 @@
+$ git branch
+* (no branch)
+  master
+  grana_1
+  grana_2
