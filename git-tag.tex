@@ -2,8 +2,8 @@
 \addcontentsline{toc}{chapter}{Tagovi}
 
 \emph{Tag}, "oznaka" iliti "ključna riječ" je naziv koji je populariziran s dolaskom takozvanih "web 2.0" sajtova. 
-Mnogi ne znaju, ali tagovi su postojali i prije toga. 
-Tag je jedan od načina klasifikacije dokumenata.
+Mnogi ne znaju, ali $tag$ovi su postojali i prije toga. 
+$Tag$ je jedan od načina klasifikacije dokumenata.
 
 Standardni način je hijerarhijsko klasifikaciranje.
 Po njemu, sve ono što kategoriziramo mora biti u nekoj kategoriji.
@@ -14,23 +14,12 @@ Dakle, postoji "stablo" kategorija i samo jedan čvor može biti "korijen" tog s
 Za razliku od toga \emph{tag}iranje je slobodnije.
 \emph{Tag}irati možete bilo što i stvari koje \emph{tag}iramo mogu imati proizvoljan broj \emph{tag}ova.
 Kad bi u knjižnicama tako označavali knjige, onda one na policama ne bi bilo podijeljene po kategorijama.
-Sve bi bile poredane po nekom proizvoljnom redosljedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio:
+Sve bi bile poredane po nekom proizvoljnom redosljedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio oznake iliti $tag$ove.
 
-\begin{itemize}
-	\item Ključne riječi (iliti \emph{tag}ove). Na primjer, za neki roman s Sherlockom Holmesom kao glavnim likom, to bi bili "ubojstvo", "krimić", "detektiv", "engleski", "sherlock\_homes", "watson", \dots
-	\item Nekakav identifikator knjige (vjerojano ISBN).
-	\item Mjesto gdje se knjiga nalazi.
-\end{itemize}
-
-Kad bi pretraživali knjige, otišli bi na računalo i utipkali "krimić" i "detektiv" i on bi nam izbacio sve knjige koje imaju oba ta \emph{tag}a.
-Tu ne bi bili samo romani Artura Conana Doylea, našli bi se i oni Agathe Christie i mnogih drugih. 
-Što više \emph{tag}ova zadamo, to će rezultati pretraživanja biti više specifični.
-Uz svaku knjigu bi pisalo na kojoj točno polici se ona nalazi.
-
-Kako mi ovdje radimo s poviješću projekata pa ćemo to i \emph{tag}irati.
-Malo preciznije, \emph{tag}irati ćemo čvorove našeg grafa povijesti projekta - \emph{commit}ove.
-Postoji samo jedna razlika, \emph{tag} ovdje mora biti jedinstven.
-Dakle, ako smo neki tag iskoristili za jedan \emph{commit} onda niti jedan drugi ne smije imati taj isti \emph{tag}.
+Mi ovdje radimo s poviješću projekata pa ćemo tu povijest i \emph{tag}irati.
+Preciznije, \emph{tag}irati ćemo čvorove našeg grafa povijesti projekta -- \emph{commit}ove.
+Za razliku od klasične klasifikacije s $tag$ovima -- \emph{tag} ovdje mora biti jedinstven.
+Dakle, jednom iskorišteni $tag$ se ne može više koristiti.
 
 Kao što znamo, u gitu svaki \emph{commit} ima neki svoj identifikator. 
 To je string od 40 znamenaka.
@@ -47,7 +36,8 @@ Bilo je riječi o primjeru programera koji radi na programu i izdaje verzije \ve
 
 \dots{}e pa, \emph{tag}ovi bi ovdje bili \verb+1.0+, \verb+1.1+, \verb+2.0+ i \verb+2.1+.
 
-Dakle, \emph{tag} nije ništa drugo nego neki kratki naziv za određeni \emph{commit}, odnosno stanje projekta u nekom trenutku njegove povijesti.
+Dakle, \emph{tag} nije ništa drugo nego neki kratki naziv za određeni \emph{commit}.
+Tag je \textbf{alias} za neki $commit$.
 
 Rad s \emph{tag}ovima je jednostavan; s \verb+git tag+ ćete dobiti popis svih tretnuno definiranih:
 
