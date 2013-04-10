@@ -11,21 +11,20 @@ Svaka aplikacija koja ima \textbf{stvarnog} korisnika kojemu rješava neki \text
 Taj korisnik možemo biti mi sami, može biti neko hipotetsko tržište (kojemu planiramo prodati rješenje) ili može biti naručitelj.
 Korisničke zahtjeve ne možemo nikad točno predvidjeti u trenutku kad krenemo pisati program.
 Možemo satima, danima i mjesecima sjediti s budućim korisnicima i planirati što će sve naša aplikacija imati, ali kad korisnik sjedne pred prvu verziju aplikacije, čak i ako je pisana točno prema njegovim specifikacijama, on će naći nešto što ne valja. 
-Radi li se o nekoj maloj izmjeni -- možda ćemo ju napraviti na licu mjesta.
+Radi li se o nekoj maloj izmjeni, možda ćemo je napraviti na licu mjesta.
 Možda ćemo trebati otići kući, potrošiti nekoliko dana i napraviti \textbf{novu verziju}.
 
 Desit će se, na primjer, da korisniku damo na testiranje verziju \texttt{1.0}.
 On će istestirati i, naravno, naći nekoliko sitnih stvari koje treba ispraviti.
 Otići ćemo kući, ispraviti ih, napraviti verziju \texttt{1.1} s kojom će klijent biti zadovoljan.
 Nekoliko dana kasnije, s malo više iskustva u radu s aplikacijom, on zaključuje kako sad ima \textbf{bolju} ideju kako je trebalo ispraviti verziju \textbf{1.0}.
-Sad, dakle, treba "baciti u smeće" posao koji smo radili za \texttt{1.1}, vratiti se na \texttt{1.0} i od nje napraviti, npr. \texttt{1.1b}.
+Sad, dakle, treba "baciti u smeće" posao koji smo radili za \texttt{1.1}, vratiti se na \texttt{1.0} i od nje napraviti npr. \texttt{1.1b}.
 
 Grafički bi to izgledalo ovako nekako:
 
 \input{graphs/primjer_s_klijentom}
 
-U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara -- trebamo se vratiti korak unazad (u povijest projekta) i započeti novu verziju -- odnosno novu \textbf{granu projekta}.
-I nastaviti projekt s tom izmjenom.
+U trenutku kad je korisnik odlučio da mu trenutna verzija ne odgovara trebamo se vratiti korak unazad (u povijest projekta) i započeti novu verziju, odnosno novu \textbf{granu projekta} te nastaviti projekt s tom izmjenom.
 
 I to je samo jedan od mnogih mogućih scenarija kakvi se događaju s aplikacijama.
 
@@ -37,41 +36,38 @@ Linearni pristup verzioniranju koda se najbolje može opisati sljedećom ilustra
 \input{graphs/linearni_model}
 
 To je idealna situacija u kojoj točno unaprijed znamo kako aplikacija treba izgledati. 
-Započnemo projekt s početnim stanjem \emph a, pa napravimo izmjene \emph b, \emph c, \dots sve dok ne zaključimo da smo spremni izdati prvu verziju za javnost.
-I proglasimo to verzijom \texttt{1.0}. 
+Započnemo projekt s početnim stanjem \emph a, pa napravimo izmjene \emph b, \emph c, \dots sve dok ne zaključimo da smo spremni izdati prvu verziju za javnost i proglasimo to verzijom \texttt{1.0}. 
 
 Postoje mnoge varijacije ovog linearnog modela, jedna česta je:
 
 \input{graphs/linearni_model_2}
 
 Ona je česta u situacijama kad nemamo kontrolu nad time koja je točno verzija programa instalirana kod klijenta. 
-S web aplikacijama to nije problem, jer vi jednostavno možete aplikaciju prebaciti na server i odmah svi klijenti koriste novu verziju.
-Međutim, ukoliko je vaš program klijentima "spržen" na CD i takav poslan klijentu -- može se dogoditi da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
+S web aplikacijama to nije problem jer vi jednostavno možete aplikaciju prebaciti na server i odmah svi klijenti koriste novu verziju.
+Međutim, ako je vaš program klijentima "spržen" na CD i takav poslan klijentu može se dogoditi da jedan ima instaliranu verziju \texttt{1.0}, a drugi \texttt{2.0}.
 
-I sad, što ako klijent koji je zadovoljan sa starijom verzijom programa otkrije \textbf{bug}?
-I zbog nekog razloga ne želi preći na novu verziju?
-U tom slučaju, morate imati neki mehanizam kako da se privremeno vratite na staru verziju, ispravite problem, izdate "novu verziju stare verzije". 
-Pošaljete je klijentu i nakon toga, vratite se na zadnju verziju i tamo nastavite rad na svojem projektu.
+I sad, što ako klijent koji je zadovoljan sa starijom verzijom programa otkrije \textbf{bug} i zbog nekog razloga ne želi prijeći na novu verziju?
+U tom slučaju morate imati neki mehanizam kako da se privremeno vratite na staru verziju, ispravite problem, izdate "novu verziju stare verzije", pošaljete je klijentu i nakon toga se vratite na zadnju verziju te tamo nastavite rad na svojem projektu.
 
 \section*{Grafovi, grananje i spajanje grana}
 \addcontentsline{toc}{section}{Grafovi, grananje i spajanje grana}
 
 Prije nego nastavimo s gitom, nekoliko riječi o grafovima. 
-U ovoj knjižici ćete vidjeti puno grafova kao što su u primjerima s linearnim verzioniranjem koda. 
+U ovoj ćete knjižici vidjeti puno grafova kao što su u primjerima s linearnim verzioniranjem koda. 
 Zato ćemo se na trenutak zadržati na jednom takvom grafu:
 
 \input{graphs/primjer_s_granama_i_spajanjima}
 
 Svaka točka grafa je stanje projekta. 
-Projekt s gornjim grafom je započeo s nekim početnim stanjem \emph a.
+Projekt s gornjim grafom započeo je s nekim početnim stanjem \emph a.
 Programer je napravio nekoliko izmjena i \textbf{snimio} novo stanje \emph b, zatim \emph c, \dots i tako sve do $h$, $w$ i $4$.
 
-Primijetite da je ovakav graf stanje povijesti projekta, ali iz njega ne možemo zaključiti kojim redom su čvorovi nastajali.
-Neke stvari možemo zaključiti -- vidi se, na primjer, da je $d$ nastao nakon $c$, $e$ nakon $d$ ili $z$ nakon $y$.
+Primijetite da je ovakav graf stanje povijesti projekta, ali iz njega ne možemo zaključiti kojim su redom čvorovi nastajali.
+Neke stvari možemo zaključiti: vidi se, na primjer, da je $d$ nastao nakon $c$, $e$ nakon $d$ ili $z$ nakon $y$.
 Ne znamo je li prije nastao $c$ ili $x$.
 Ili, čvor \emph 1 je sigurno nastao nakon $g$, no iz grafa se ne vidi je li nastao prije $x$ ili nakon $x$ (vidite li kako?).
 
-Evo, na primjer, jedan način kako je navedeni graf mogao nastati:
+Evo jedan način kako je navedeni graf mogao nastati:
 
 \input{graphs/primjer_s_granama_i_spajanjima_1}
 
@@ -79,16 +75,16 @@ Programer je započeo aplikaciju, snimio stanje \emph a, \emph b i \emph c i tad
 
 \input{graphs/primjer_s_granama_i_spajanjima_2}
 
-Zatim se sjetio izmjene koju je mogao napraviti u \emph{originalnoj} verziji; vratio se tamo i dodao \emph d:
+Zatim se sjetio izmjene koju je mogao napraviti u \emph{originalnoj} verziji, vratio se tamo i dodao \emph d:
 
 \input{graphs/primjer_s_granama_i_spajanjima_3}
 
-Nakon toga se vratio na svoj prvotni eksperiment, i odlučio da bi bilo dobro tamo imati izmjene koje je napravio u \emph c i \emph d.
+Nakon toga se vratio na svoj prvotni eksperiment i odlučio da bi bilo dobro tamo imati izmjene koje je napravio u \emph c i \emph d.
 Tada je \emph{preuzeo} te izmjene u svoju granu:
 
 \input{graphs/primjer_s_granama_i_spajanjima_4}
 
-Na eksperimentalnoj grani je napravio još jednu izmjenu \emph q.
+Na eksperimentalnoj je grani napravio još jednu izmjenu \emph q.
 Tada je odlučio privremeno napustiti taj eksperiment i posvetiti se izmjenama koje mora napraviti u glavnoj grani.
 Vratio se na originalnu granu i tamo napredovao s \emph e i \emph f. 
 
@@ -98,43 +94,43 @@ Sjetio se da bi mu sve izmjene iz eksperimentalne grane odgovarale u originalnoj
 
 \input{graphs/primjer_s_granama_i_spajanjima_6}
 
-I, zatim je nastavio, stvorio još jednu eksperimentalnu granu (\emph 1, \emph 2, \emph 3, \dots).
-Na onoj prvoj eksperimentalnoj grani je dodao još i $w$. I tako dalje\dots
+i zatim je nastavio, stvorio još jednu eksperimentalnu granu (\emph 1, \emph 2, \emph 3, \dots).
+Na onoj je prvoj eksperimentalnoj grani dodao još i $w$ i tako dalje\dots
 
 \input{graphs/primjer_s_granama_i_spajanjima}
 
-Na svim grafovima će glavna grana biti ona najdonja.
+Na svim će grafovima glavna grana biti ona najdonja.
 Uočite, na primjer, da izmjena \emph w nije nikad završila u glavnoj grani. 
 
 Jedna od velikih prednosti gita je lakoća stvaranja novih grana i preuzimanja izmjena iz jedne u drugu granu. 
-Tako je programerima jednostavno u nekom trenutku razmišljati i postupiti na sljedeći način: \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušat ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku verziju će napraviti posebnu granu i napredovati prema osjećaju.
+Tako je programerima jednostavno u nekom trenutku razmišljati i postupiti na sljedeći način: \emph{"Ovaj problem bih mogao riješiti na dva različita načina. Pokušat ću i jedan i drugi, i onda vidjeti koji mi bolje ide."}. Za svaku će verziju napraviti posebnu granu i napredovati prema osjećaju.
 
 Druga velika prednost čestog grananja u programima je kad se dodaje neka nova funkcionalnost koja zahtijeva puno izmjena, a ne želimo te izmjene odmah stavljati u glavnu granu programa:
 
 \input{graphs/primjer_s_dugotrajnom_granom}
 
-Trebamo pripaziti da redovito izmjene iz glavne grane programa preuzimamo u sporednu, tako da razlike u kodu ne budu prevelike. 
-Te izmjene su na grafu označene sivim strelicama.
+Trebamo pripaziti da redovito izmjene iz glavne grane programa preuzimamo u sporednu tako da razlike u kodu ne budu prevelike. 
+Te su izmjene na grafu označene sivim strelicama.
 
 Kad novu funkcionalnost završimo, u glavnoj granu treba preuzeti sve izmjene iz sporedne (crvena strelica).
 
-Na taj način ćemo često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
+Na taj ćemo način često imati ne samo dvije grane (glavnu i sporednu) nego nekoliko njih (pa i do nekoliko desetaka). 
 Imati ćemo posebne grane za različite nove funkcionalnosti, posebne grane za eksperimente, posebne grane u kojima ćemo isprobavati izmjene koje su napravili drugi programeri, posebne grane za ispravljanje pojedinih \emph{bug}ova, \dots
 
-Osnovna ideja ove knjižice \textbf{nije} da vas uči kako je najbolje organizirati povijest projekta -- odnosno kako granati, te kad i kako preuzimati izmjene iz pojedinih grana.
-Osnovna ideja je da vas nauči \textbf{kako} to napraviti s gitom. 
+Osnovna ideja ove knjižice \textbf{nije} učiti vas kako je najbolje organizirati povijest projekta, odnosno kako granati te kad i kako preuzimati izmjene iz pojedinih grana.
+Osnovna ideja je naučiti vas \textbf{kako} to napraviti s gitom. 
 
 \section*{Mit o timu i sustavima za verzioniranje}
 \addcontentsline{toc}{section}{Mit o timu i sustavima za verzioniranje}
 
 Prije nego nastavimo, htio bih ovdje samo srušiti jedan mit. 
-Taj mit glasi ovako nekako: "\emph{Sustavi za verzioniranje koda su potrebni kad na nekom projektu radi više ljudi}".
+Taj mit glasi ovako nekako: "\emph{Sustavi za verzioniranje koda potrebni su kad na nekom projektu radi više ljudi}".
 
 Vjerujte mi, ovo nije istina.
 
 \textbf{Posebno} to nije istina za git i druge distribuirane sustave koji su namijenjeni često grananju.
-Kad o projektu počnete razmišljati kao o jednom usmjerenom grafu i posebne stvari radite u posebnim granama -- to značajno olakšava samo razmišljanje o razvoju.
-Ako imate jedan direktorij sa cijelim projektom i u kodu imate paralelno izmjene od tri različite stvari koje radite istovremeno, onda imate problem.
+Kad o projektu počnete razmišljati kao o jednom usmjerenom grafu i posebne stvari radite u posebnim granama to značajno olakšava samo razmišljanje o razvoju.
+Ako imate jedan direktorij s cijelim projektom i u kodu imate paralelno izmjene od tri različite stvari koje radite istovremeno, onda imate problem.
 Ostatak ove knjižice bi vas trebao uvjeriti u to\dots
 
 Nemojte pročitati knjigu i reći "\emph{Nisam baš uvjeren}". 
