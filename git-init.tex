@@ -4,8 +4,8 @@
 \section*{Instalacija}
 \addcontentsline{toc}{section}{Instalacija}
 
-Instalacija gita je relativno jednostavna. Ukoliko ste na nekom od linuxoidnih operacijskih sustava -- sigurno postoji paket za instalaciju. 
-Za sve ostale, postoje jednostavne instalacije, a svi linkovi su dostupni na službenim web stranicama\footnote{http://git-scm.com/download}.
+Instalacija gita relativno je jednostavna. Ako ste na nekom od linuxoidnih operacijskih sustava sigurno postoji paket za instalaciju. 
+Za sve ostale, postoje jednostavne instalacije, a svi su linkovi dostupni na službenim web stranicama\footnote{http://git-scm.com/download}.
 
 Važno je napomenuti da su to samo \textbf{osnovni paketi}. 
 Oni će biti dovoljni za primjere koji slijede, no za mnoge specifične scenarije postoje dodaci s kojima se git naredbe "obogaćuju" i omogućuju nove stvari.
@@ -13,42 +13,42 @@ Oni će biti dovoljni za primjere koji slijede, no za mnoge specifične scenarij
 \section*{Prvi git repozitorij}
 \addcontentsline{toc}{section}{Prvi git repozitorij}
 
-Ukoliko ste naviknuti na TFS, subversion ili CVS onda si vjerojatno zamišljate da je za ovaj korak potrebno neko računalo na kojem je instaliran poseban servis (\emph{daemon}) i kojemu je potrebno dati do znanja da želite imati novi repozitorij na njemu.
+Ako ste naviknuti na TFS, subversion ili CVS onda si vjerojatno zamišljate da je za ovaj korak potrebno neko računalo na kojem je instaliran poseban servis (\emph{daemon}) i kojemu je potrebno dati doznanja da želite imati novi repozitorij na njemu.
 Vjerojatno mislite i to da je sljedeći korak preuzeti taj projekt s tog udaljenog računala/servisa.
-Neki sustavi taj korak nazivaju \emph{checkout}, neki \emph{import}, a u gitu je to \emph{clone}, iliti kloniranje projekta.
+Neki sustavi taj korak nazivaju \emph{checkout}, neki \emph{import}, a u gitu je to \emph{clone} iliti kloniranje projekta.
 
 S gitom je jednostavnije. 
 \textbf{Apsolutno svaki direktorij može postati git repozitorij.}
 Ne mora \emph{uopće} postojati udaljeni server i neki centralni repozitorij kojeg koriste (i) ostali koji rade na projektu.
-Ako vam je to neobično, onda se spremite, jer stvar je još čudnija -- ako već postoji udaljeni repozitorij s kojeg preuzimate izmjene od drugih programera on ne mora biti jedan jedini.
+Ako vam je to neobično, onda se spremite, jer stvar je još čudnija: ako već postoji udaljeni repozitorij s kojeg preuzimate izmjene od drugih programera on ne mora biti jedan jedini.
 \textbf{Mogu postojati deseci takvih udaljenih repozitorija}, sami ćete odlučiti na koje ćete "slati" svoje izmjene i s kojih preuzimati izmjene.
-I vlasnici tih udaljenih repozitorija imaju istu slobodu kao i vi, mogu sami odlučiti čije izmjene će preuzimati kod sebe i kome slati svoje izmjene.
+I vlasnici tih udaljenih repozitorija imaju istu slobodu kao i vi, mogu sami odlučiti čije će izmjene preuzimati kod sebe i kome slati svoje izmjene.
 
 Pomisliti ćete da je rezultat anarhija u kojoj se ne zna tko pije, tko plače, a tko plaća. 
 Nije tako.
 Stvari, uglavnom, funkcioniraju bez većih problema.
 
-Idemo sad na prvi i najjednostavniji korak -- stvoriti ćemo novi direktorij \\ \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
+Idemo sad na prvi i najjednostavniji korak: stvoriti ćemo novi direktorij \\ \verb+moj-prvi-projekt+ i stvoriti novi repozitorij u njemu:
 
 \input{git_output/git_init}
 
 I to je to. 
 
-Ukoliko idete pogledati kakva se to čarolija desila s tim \verb+git init+, otkriti ćete da je stvoren direktorij \verb+.git+.
-U principu, cijela povijest, sve grane, čvorovi i komentari, apsolutno sve vezano uz repozitorij se čuva u tom direktoriju.
-Zatreba li nam ikad sigurnosna kopija cijelog repozitorija -- sve što treba napraviti je da sve lokalne promjene spremimo (\emph{commit}amo) u git i spremimo negdje arhivu (\verb+.zip+, \verb+.bz2+, \dots) s tim \verb+.git+ direktorijem.
+Ako idete pogledati kakva se to čarolija desila s tim \verb+git init+, otkriti ćete da je stvoren direktorij \verb+.git+.
+U principu cijela povijest, sve grane, čvorovi i komentari, apsolutno sve vezano uz repozitorij čuva se u tom direktoriju.
+Zatreba li nam ikad sigurnosna kopija cijelog repozitorija, sve što treba napraviti je da sve lokalne promjene spremimo (\emph{commit}amo) u git i spremimo negdje arhivu (\verb+.zip+, \verb+.bz2+, \dots) s tim \verb+.git+ direktorijem.
 
 \section*{Git naredbe}
 \addcontentsline{toc}{section}{Git naredbe}
 
-U prethodnom primjeru smo u našem direktoriju inicijalizirali git repozitorij s naredbom \verb+git init+.
+U prethodnom smo primjeru u našem direktoriju inicijalizirali git repozitorij naredbom \verb+git init+.
 Općenito, git naredbe uvijek imaju sljedeći format:
 
 \gitoutput{
 \color{blue}{git $<$naredba$>$ $<$opcija1$>$ $<$opcija2$>$ \dots}
 }
 
-Izuzetak je pomoćni grafički program s kojim se može pregledavati povijest projekta, a koji dolazi u instalaciji s gitom -- \verb+gitk+.
+Izuzetak je pomoćni grafički program kojim se može pregledavati povijest projekta, a koji dolazi u instalaciji s gitom, \verb+gitk+.
 
 Za svaku git naredbu možemo dobiti \emph{help} s:
 
@@ -80,11 +80,11 @@ Zato trebamo postaviti ime i email adresu koja će u povijesti projekta biti "za
 
 \input{git_output/git_config_1}
 
-Imamo li neki repozitorij koji je vezan za posao, i možda se ne želimo identificirati sa svojom privatnom domenom, tada \emph{u tom direktoriju} trebamo postaviti drukčije postavke:
+Imamo li neki repozitorij koji je vezan za posao i možda se ne želimo identificirati sa svojom privatnom domenom, tada \emph{u tom direktoriju} trebamo postaviti drukčije postavke:
 
 \input{git_output/git_config_2}
 
-Na taj način će \emph{email} adresa \verb+ana.anic@poslodavac.hr+ figurirati samo u povijesti tog projekta.
+Na taj će se način \emph{email} adresa \verb+ana.anic@poslodavac.hr+ konfigurirati samo u povijesti tog projekta.
 
 Postoje mnoge druge konfiguracijske postavke, no ja vam preporučam da za početak postavite barem dvije \verb+color.ui+ i \verb+merge.tool+.
 
@@ -92,19 +92,19 @@ S \verb+color.ui+ možete postaviti da ispis git naredbi bude obojan:
 
 \input{git_output/git_config_3}
 
-\verb+merge.tool+ određuje koji će se program koristiti u slučaju do \textbf{konflikta} (o tome više kasnije). Ja koristim \verb+gvimdiff+:
+\verb+merge.tool+ određuje koji će se program koristiti u slučaju \textbf{konflikta} (o tome više kasnije). Ja koristim \verb+gvimdiff+:
 
 \input{git_output/git_config_4}
 
 \section*{.gitignore}
 \addcontentsline{toc}{section}{.gitignore}
 
-Prije ili kasnije će se dogoditi situacija da u direktoriju s repozitorijem imamo datoteke koje ne želimo spremati u povijest projekta.
+Prije ili kasnije dogodit će se situacija da u direktoriju s repozitorijem imamo datoteke koje ne želimo spremati u povijest projekta.
 To su, na primjer, konfiguracijske datoteke za različite editore ili klase koje nastaju kompajliranjem (\verb+.class+ za javu, \verb+.pyc+ za python, \verb+.o+ za C, i sl.).
-U tom slučaju, trebamo nekako gitu dati do znanja da takve datoteke ne treba nikad snimati.
+U tom slučaju trebamo nekako gitu dati do znanja da takve datoteke ne treba nikad snimati.
 Otvorite novu datoteku naziva \verb+.gitignore+ u glavnom direktoriju projekta (ne nekom od poddirektorija) i jednostavno unesite sve ono što ne treba biti dio povijesti projekta.
 
-Ukoliko ne želimo \verb+.class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target/+ -- naša \verb+.gitignore+ datoteka će izgledati ovako:
+Ako ne želimo \verb+.class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono što se nalazi u direktoriju \verb+target/+ , naša će \verb+.gitignore+ datoteka izgledati ovako:
 
 \gitoutputcommand{%
 \color{gray}{\# Vim privremene datoteke:}\\
@@ -116,7 +116,7 @@ Ukoliko ne želimo \verb+.class+, \verb+.swo+, \verb+.swp+ datoteke i sve ono š
 \color{black}{target/*}%
 }
 
-Linije koje započinju sa znakom \verb+#+ su komentari i git će se ponašati kao da ne postoje.
+Linije koje započinju znakom \verb+#+ su komentari i git će se ponašati kao da ne postoje.
 
 \dots{}i sad smo spremni početi nešto i raditi s našim projektom\dots
 
