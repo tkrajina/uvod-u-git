@@ -240,11 +240,11 @@ Na primjer, \\\verb+bf4fc495fc926050fb10260a6a9ae66c96aaf908+ je jedan takav.
 \section*{Ispravljanje zadnjeg \emph{commit}a}
 \addcontentsline{toc}{section}{Ispravljanje zadnjeg \emph{commit}a}
 
-Meni se, prije gita, događalo da \emph{commit}am neku izmjenu u repozitorij, a nakon toga shvatim da sam mogao još jednu sitnicu ispraviti.
-Logično bi bilo da je ta "sitnica" dio prethodnog \emph{commit}a, ali \emph{commit} sam već napravio.
-Nisam ga mogao naknadno promijeniti.
+Meni se, prije gita, događalo da \emph{commit}am neku izmjenu u repozitorij, a nakon toga shvatim da sam trebao još nešto promijeniti.
+I činilo mi se logično da ta izmjena bude dio prethodnog \emph{commit}a, ali \emph{commit} sam već napravio.
+Nisam ga mogao naknadno promijeniti, tako da je na kraju jedna logička izmjena bila snimljena u dva $commit$a.
 
-S gitom se to može.
+S gitom se to može riješiti elegantnije: novu izmjenu možete \textbf{dodati} u već postojeći $commit$.
 
 Prvo učinimo tu izmjenu u radnoj verziji projekta. 
 Recimo da je to bilo na datoteci \verb+README.md+.
