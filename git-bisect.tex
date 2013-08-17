@@ -1,14 +1,14 @@
 \tocChapter{Git $bisect$}
 
-\emph{Bisect} je git naredba koja se koristi kad imamo grešku ($bug$) u programu koji je nastao u nekom trenutku u povijesti.
+\emph{Bisect} je git naredba koja se koristi kad tražimo izmjenu u kodu koja je uzrokovala grešku ($bug$) u programu.
 Da bi mogli koristiti $bisect$ važno je da:
 
 \begin{itemize}
-    \item imamo način kako utvrditi da li se bug manifestira u kodu kojeg trenutno imamo,
-    \item znamo da je $bug$ nastao u nekom trenutku u povijesti projekta (tj. sigurni smo da se nije manifestirao u ranijim verzijama aplikacije)
+    \item Imamo način kako utvrditi da li se bug manifestira u kodu kojeg trenutno imamo. Na primjer neki $unit$ test ili shell skriptu koja provjerava postojanje buga.
+    \item Znamo da je $bug$ nastao u nekom trenutku u povijesti projekta (tj. sigurni smo da se nije manifestirao u ranijim verzijama aplikacije).
 \end{itemize}
 
-Ukoliko su oba kriterija zadovoljena gitu trebamo dati do znanja koji je točno raspon commitova u kojima tražimo $bug$.
+Ukoliko su oba kriterija zadovoljena, gitu trebamo dati do znanja koji je točno raspon commitova u kojima tražimo $bug$.
 Uzmimo na primjer da naš projekt ima povijest:
 
 \input{graphs/bisect_1}
@@ -33,8 +33,8 @@ Dajemo mu do znanja da je to "\textbf{dobar} $commit$"\footnote{Naravno, ako nis
 
 \input{git_output/git_bisect_3}
 
-Git nas sad prebacuje na neki $commit$ između naša dva.
-Nama je potpuno irelevantno koji je točno.
+Git nas sad prebacuje na neki $commit$ između ta dva.
+Nama je irelevantno koji je točno.
 Jedino što trebamo je isprobati pojavljuje li se $bug$ u kodu koji je trenutno $checkout$an.
 
 Na primjer, kod mene se $bug$ manifestirao, dakle pišem:
