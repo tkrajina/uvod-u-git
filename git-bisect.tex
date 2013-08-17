@@ -1,0 +1,75 @@
+\tocChapter{Git $bisect$}
+
+\emph{Bisect} je git naredba koja se koristi kad imamo grešku ($bug$) u programu koji je nastao u nekom trenutku u povijesti.
+Da bi mogli koristiti $bisect$ važno je da:
+
+\begin{itemize}
+    \item imamo način kako utvrditi da li se bug manifestira u kodu kojeg trenutno imamo,
+    \item znamo da je $bug$ nastao u nekom trenutku u povijesti projekta (tj. sigurni smo da se nije manifestirao u ranijim verzijama aplikacije)
+\end{itemize}
+
+Ukoliko su oba kriterija zadovoljena gitu trebamo dati do znanja koji je točno raspon commitova u kojima tražimo $bug$.
+Uzmimo na primjer da naš projekt ima povijest:
+
+\input{graphs/bisect_1}
+
+Znamo li da je $c$ commit u kojemu se $bug$ nije manifestirao, a zadnje stanje u našem $branch$u $k$ je pozicija gdje se bug manifestirao, onda znamo i da je bug nastao negdje u $commit$ovima između ta dva.
+
+$Bisect$ nije ništa drugo nego binarno pretraživanje po povijesti projekta. 
+U prvom koraku moramo dati do znanja koji je $commit$ dobar (tj. u kojemu se $bug$ \textbf{nije manifestirao}), a koji je loš (tj. u kojemu se $bug$ \textbf{manifestira}).
+I nakon toga slijedi niz iteracija pri čemu nas git prebacuje na $commit$ između zadnjeg dobrog i lošeg.
+U svakom koraku se interval suzuje sve dok ne dođemo do mjesta kad je problem nastao.
+
+Uzmimo, na primjer, da se trenutno nalazimo u grani u kojoj imamo bug (\textbf{loš} commit).
+Gitu dajemo do znanja da želimo započeti $bisect$ i da je trenutni $commit$ \textbf{loš}:
+
+\input{git_output/git_bisect_1}
+
+Prebacujemo se na stanje za koje smo sigurni da se stanje nije manifestiralo:
+
+\input{git_output/git_bisect_2}
+
+Dajemo mu do znanja da je to "\textbf{dobar} $commit$"\footnote{Naravno, ako niste sigurni probajte otići još malo dalje u povijest sve dok ne dođete do $commit$a gdje se $bug$ sigurno ne manifestira}:
+
+\input{git_output/git_bisect_3}
+
+Git nas sad prebacuje na neki $commit$ između naša dva.
+Nama je potpuno irelevantno koji je točno.
+Jedino što trebamo je isprobati pojavljuje li se $bug$ u kodu koji je trenutno $checkout$an.
+
+Na primjer, kod mene se $bug$ manifestirao, dakle pišem:
+
+\input{git_output/git_bisect_4}
+
+U sljedećem koraku sam na $commit$u gdje $bug$a nema:
+
+\input{git_output/git_bisect_5}
+
+\dots{}i dalje\dots
+
+\input{git_output/git_bisect_6}
+
+\dots{}sve dok u nekom trenutku ne dođemo do krivca:
+
+\input{git_output/git_bisect_7}
+
+Dakle, krivac je $commit$ \verb+b87db36d71038074a1c478c9f9a329d5c1685a02+.
+Da bi točno pogledali što je tada promijenjeno, možemo:
+
+\gitoutputcommand{git diff b87db36d7\textasciitilde{}1 b87db36d7}
+
+Ili:
+
+\gitoutputcommand{gitk b87db36d7}
+
+\tocSection{Digresija o atomarnim $commit$ovima}
+
+$Bisect$ vam neće otkriti točan uzrok problema, samo će vamo točno reći koje su točno izmijene uzrokovale problem.
+Ukoliko radite $commit$ove koji imaju tisuće i tisuće promijenjenih linija, to vam neće pomoći.
+No, to je ionako kriv pristup.
+Ne bi nikad smjeli snimati više od jedne izmjene u koraku.
+Svaki $commit$ bi uvijek trebao predstavljati jednu jedinu logičku cjelinu.
+
+To jest, treba raditi \textbf{atomarne $commit$ove}.
+
+Na taj način će vam izmjene u kodu uvijek biti male, a i $bisect$ će nam s puno većom preciznošću moći pomoći kod traženja uzroka problema.

@@ -1,0 +1,10 @@
+$ git bisect bad
+b87db36d71038074a1c478c9f9a329d5c1685a02 is the first bad commit
+commit b87db36d71038074a1c478c9f9a329d5c1685a02
+Author: Tomo Krajina <tkrajina@gmail.com>
+Date:   Fri Aug 2 06:50:39 2013 +0200
+
+    add_missing_points() fixed + tests
+
+:040000 040000 444ac64d4e0052562fce0cbe367dbb98b471680b 13b1bbffce34bb025d8eb2e9b946295457b03977 M	gpxpy
+:100644 100644 ca8d95ca4c070fc1885680dea305a7ffdf3e594d 8776678abe3d8c9faef0b9e8b8395a4328cbb28c M	test.py

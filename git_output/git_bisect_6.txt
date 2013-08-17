@@ -1,0 +1,3 @@
+$ git bisect good
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[b87db36d71038074a1c478c9f9a329d5c1685a02] add_missing_points() fixed + tests

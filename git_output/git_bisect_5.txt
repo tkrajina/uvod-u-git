@@ -1,0 +1,3 @@
+$ git bisect good
+Bisecting: 1 revision left to test after this (roughly 1 step)
+[5f217903832edec04d9dd267e5bf78b0f7275b49] + add_missing_*() methods [tmp]

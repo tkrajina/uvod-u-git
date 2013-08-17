@@ -1503,6 +1503,27 @@ def graph_amend():
 
     return graph
 
+def graph_bisect_1():
+    graph = mod_graph.Graph()
+
+    graph.add_branch(mod_graph.Branch(
+            nodes = [
+                    'a',
+                    'b',
+                    mod_graph.Node(label='c', color=BLUE),
+                    'd',
+                    'e',
+                    '1.0',
+                    'f',
+                    'g',
+                    'h',
+                    'i',
+                    '2.0',
+                    'j',
+                    mod_graph.Node(label='k', color=RED)]))
+
+    return graph
+
 for v in vars().keys():
     # create graphs/ director if not exists:
     try:

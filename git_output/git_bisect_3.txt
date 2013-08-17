@@ -1,0 +1,3 @@
+$ git bisect good
+Bisecting: 6 revisions left to test after this (roughly 3 steps)
+[a63ad54907b5247a7f507fc769df2c5794d93d7c] Started implementing add_elevations [tmp]
