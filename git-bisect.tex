@@ -17,7 +17,7 @@ Znamo li da je $c$ commit u kojemu se $bug$ nije manifestirao, a zadnje stanje u
 
 $Bisect$ nije ništa drugo nego binarno pretraživanje po povijesti projekta. 
 U prvom koraku moramo dati do znanja koji je $commit$ dobar (tj. u kojemu se $bug$ \textbf{nije manifestirao}), a koji je loš (tj. u kojemu se $bug$ \textbf{manifestira}).
-I nakon toga slijedi niz iteracija pri čemu nas git prebacuje na $commit$ između zadnjeg dobrog i lošeg.
+I nakon toga slijedi niz iteracija pri čemu nas git prebacuje na neki $commit$ između zadnjeg dobrog i lošeg.
 U svakom koraku se interval suzuje sve dok ne dođemo do mjesta kad je problem nastao.
 
 Uzmimo, na primjer, da se trenutno nalazimo u grani u kojoj imamo bug (\textbf{loš} commit).
@@ -61,6 +61,10 @@ Da bi točno pogledali što je tada promijenjeno, možemo:
 Ili:
 
 \gitoutputcommand{gitk b87db36d7}
+
+Ukoliko u bilo kojem trenutku $bisect$ želimo prekinuti i vratiti se na mjesto ($commit$) gdje smo bili kad smo započeli, naredba je:
+
+\gitoutputcommand{git bisect reset}
 
 \tocSection{Digresija o atomarnim $commit$ovima}
 
