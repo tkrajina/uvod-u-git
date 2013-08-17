@@ -16,8 +16,6 @@ init:
 	# Za svaki slučaj, ako submodul nije inicijaliziran:
 	git submodule init
 	git submodule update
-edit:
-	gvim -U etc/vimrc &
 clean:
 	rm -f *.dvi *.log *.aux *.swp *.swo *.toc *.idx *.pdf
 	rm -f graphs/*
