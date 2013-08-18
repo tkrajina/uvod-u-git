@@ -4,11 +4,11 @@
 Da bi mogli koristiti $bisect$ važno je da:
 
 \begin{itemize}
-    \item Imamo način kako utvrditi da li se bug manifestira u kodu kojeg trenutno imamo. Na primjer neki $unit$ test ili shell skriptu koja provjerava postojanje buga.
+    \item Imamo način kako utvrditi da li se bug manifestira u kodu kojeg trenutno imamo. Na primjer, $unit$ test ili shell skriptu koja provjerava postojanje buga.
     \item Znamo da je $bug$ nastao u nekom trenutku u povijesti projekta (tj. sigurni smo da se nije manifestirao u ranijim verzijama aplikacije).
 \end{itemize}
 
-Ukoliko su oba kriterija zadovoljena, gitu trebamo dati do znanja koji je točno raspon commitova u kojima tražimo $bug$.
+Ukoliko su oba kriterija zadovoljena, moramo znati koji je točno raspon commitova u kojima tražimo $bug$.
 Uzmimo na primjer da naš projekt ima povijest:
 
 \input{graphs/bisect_1}
@@ -16,12 +16,12 @@ Uzmimo na primjer da naš projekt ima povijest:
 Znamo li da je $c$ commit u kojemu se $bug$ nije manifestirao, a zadnje stanje u našem $branch$u $k$ je pozicija gdje se bug manifestirao, onda znamo i da je bug nastao negdje u $commit$ovima između ta dva.
 
 $Bisect$ nije ništa drugo nego binarno pretraživanje po povijesti projekta. 
-U prvom koraku moramo dati do znanja koji je $commit$ dobar (tj. u kojemu se $bug$ \textbf{nije manifestirao}), a koji je loš (tj. u kojemu se $bug$ \textbf{manifestira}).
+U prvom koraku moramo gitu dati do znanja koji je $commit$ dobar (tj. u kojemu se $bug$ \textbf{nije manifestirao}), a koji je loš (tj. u kojemu se $bug$ \textbf{manifestira}).
 I nakon toga slijedi niz iteracija pri čemu nas git prebacuje na neki $commit$ između zadnjeg dobrog i lošeg.
 U svakom koraku se interval suzuje sve dok ne dođemo do mjesta kad je problem nastao.
 
-Uzmimo, na primjer, da se trenutno nalazimo u grani u kojoj imamo bug (\textbf{loš} commit).
-Gitu dajemo do znanja da želimo započeti $bisect$ i da je trenutni $commit$ \textbf{loš}:
+Uzmimo, na primjer, da se trenutno nalazimo u grani u kojoj imamo bug.
+Gitu dajemo do znanja da želimo započeti $bisect$ i da je trenutni $commit$ "\textbf{loš}":
 
 \input{git_output/git_bisect_1}
 
