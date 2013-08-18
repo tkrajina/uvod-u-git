@@ -11,3 +11,4 @@ graphs/*
 git_output/*.tex
 current_commit.tex
 git.out
+tags
