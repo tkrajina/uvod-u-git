@@ -1,3 +1,5 @@
+pdf_pages=$(shell pdfinfo "git.pdf" | grep "Pages" | sed -e "s/[^0-9]*//")
+
 build: init
 	git log -1 --format=\\verb+%H+ > current_commit.tex
 	
@@ -22,7 +24,7 @@ clean:
 show: build
 	evince git.pdf &
 random-page: build
-	evince -p `python -c "import random as r;print r.randint(1,155)"` git.pdf &
+	evince -p `python -c "import random as r;print r.randint(1,$(pdf_pages))"` git.pdf &
 github-page: build
 	cp git.pdf /tmp
 	git checkout gh-pages
