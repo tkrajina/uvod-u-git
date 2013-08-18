@@ -31,5 +31,5 @@ github-page: build
 	cp /tmp/git.pdf .
 	git add git.pdf
 	git commit --amend -m "git.pdf"
-	echo Now:       git push -f origin gh-pages
-	echo And then:  git checkout master
+	git push -f origin gh-pages
+	git checkout master
