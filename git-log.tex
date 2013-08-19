@@ -184,7 +184,7 @@ U trenutku kad je Haso \emph{commit}ao svoju izmjenu -- sustav za verzioniranje 
 Problem je što je novu datoteku \verb+proljeće-u-mom-gradu.txt+ dodao Haso.
 Ispada kao da je on \textbf{napisao} tu pjesmu, iako je samo preimenovao datoteku.
 
-Zbog ovakve situacije neki sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih naredbi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij\footnote{Na primjer, u mercuriralu morate upisati \texttt{hg mv početna\_datoteka krajnja\_datoteka}, a ni slučajno \texttt{mv početna\_datoteka krajnja\_datoteka} ili \texttt{move početna\_datoteka krajnja\_datoteka}}.
+Zbog takvih situacija neki sustavi za verzioniranje (kao subversion ili mercurial) zahtijevaju od korisnika da \textbf{preko njihovih naredbi} radi preimenovanje datoteke ili njeno micanje u neki drugi repozitorij\footnote{Na primjer, u mercuriralu morate upisati \texttt{hg mv početna\_datoteka krajnja\_datoteka}, a ni slučajno \texttt{mv početna\_datoteka krajnja\_datoteka} ili \texttt{move početna\_datoteka krajnja\_datoteka}}.
 Tako oni znaju da je Haso \textbf{preimenovao} postojeću datoteku, ali sadržaj je napisao Mujo.
 Ukoliko to ne učinite preko njegovih naredbi -- nego datoteke preimenujete standardnim putem (naredbe \verb+mv+ ili \verb+move+) -- sustav za verzioniranje neće imati informaciju o tome da je preimenovana. 
 
