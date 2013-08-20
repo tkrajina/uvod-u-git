@@ -351,3 +351,44 @@ Naravno, ako malo o tome razmislite, složiti ćete se da sve to radi idealno sa
 Teško će, ako ikako, \emph{revert}ati stvari koje smo mijenjali prije dvije godine u kodu koji je, nakon toga, puno puta bio mijenjan.
 Ukoliko to i pokušamo, git će javiti grešku i tražiti nas da mu sami damo do znanja kako bi \emph{revert} trebao izgledati.
 
+\tocSection{Izrazi s referencama}
+
+Imamo li ovakvu povijest:
+
+\input{graphs/izrazi_s_referencama}
+
+Već znamo da je \verb+HEAD+ referenca na trenutni $commit$.
+Dakle, \verb+HEAD+ je ovdje isto što i \verb+master+.
+
+Znamo i da je \verb+HEAD~1+ referenca na predzadnji $commit$ ($f$ iz primjera), a \verb+HEAD~2+ referenca na pred-pred-zadnji ($q$).
+
+Dakle, ovaj znak \verb+~+ je u principu operacija između reference na $commit$ i nekog broja ($n$), a rezultat je $commit$ koji se desio $n$ koraka u povijesti.
+Te operacije možemo i konkatenirati, dakle \verb+HEAD~2~3+ je ekvivalentno \verb+HEAD~5+.
+
+Druga korisna operacija je \verb+^+.
+Za razliku od \verb+~+ koja ide na $n$-ti korak \textbf{prije} trenutnog, \verb+^+ nam daje $n$-tog \textbf{roditelja}.
+
+U primjeru, $commit$ $g$ ima dva roditelja i zbog toga bi nam \verb+HEAD^1+ dalo referencu na $f$, a \verb+HEAD^2+ na $q$.
+
+I ovdje, operacije možemo konkatenirati.
+Na primjer, u repozitoriju s poviješću\dots
+
+\input{graphs/izrazi_s_referencama_2}
+
+\dots{}će biti\dots
+
+\begin{itemize}
+    \item \verb+master~1+ je $g$,
+    \item \verb+master~1^1+ je isto što i \verb+master~2+, a to je $f$,
+    \item \verb+master~1^2+ je isto što i \verb+HEAD~1^2+, a to je $q$,
+    \item itd.
+\end{itemize}
+
+I gdje god neka git naredba traži referencu na $commit$ možete koristiti ovakve izraze umjesti SHA1 stringa.
+Npr:
+
+\gitoutputcommand{gitk master\textasciitilde{}1\textasciicircum{}2}
+
+\gitoutputcommand{git cherry-pick master\textasciitilde{}3}
+
+\gitoutputcommand{git log HEAD\textasciicircum{}2}

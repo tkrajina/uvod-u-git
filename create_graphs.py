@@ -1524,6 +1524,40 @@ def graph_bisect_1():
 
     return graph
 
+def graph_izrazi_s_referencama():
+    graph = mod_graph.Graph(column=3)
+
+    graph.add_branch(mod_graph.Branch(
+            nodes = 'abcdefg', label='master'))
+
+    graph.add_branch(mod_graph.Branch(
+            row=1,
+            nodes='xyzq',
+            label='test',
+            branch_from = graph.find_node('b')))
+
+    graph.add_arrow('d', 'z', color = GRAY)
+    graph.add_arrow('q', 'g', color = GRAY)
+
+    return graph
+
+def graph_izrazi_s_referencama_2():
+    graph = mod_graph.Graph(column=3)
+
+    graph.add_branch(mod_graph.Branch(
+            nodes = 'abcdefgh', label='master'))
+
+    graph.add_branch(mod_graph.Branch(
+            row=1,
+            nodes='xyzq',
+            label='test',
+            branch_from = graph.find_node('b')))
+
+    graph.add_arrow('d', 'z', color = GRAY)
+    graph.add_arrow('q', 'g', color = GRAY)
+
+    return graph
+
 for v in vars().keys():
     # create graphs/ director if not exists:
     try:
