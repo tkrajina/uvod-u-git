@@ -128,3 +128,12 @@ Alternativa je da napravimo:
 git push -f origin <grana>}
 
 \dots{}međutim, to može biti problem ako je naše neželjene izmjene na udaljenom repozitoriju netko već preuzeo ($fetch$ao) kod sebe lokalno.
+
+\tocSection{$Merge$ali smo, a nismo htjeli}
+
+Ukoliko svoje izmjene niste $push$ali na udaljeni repozitorij, jednostavno nađite $commit$ prije vašeg $merge$a i napravite $reset$ na to mjesto.
+Najčešće će biti dovoljno:
+
+\gitoutputcommand{git reset --hard HEAD\^{}1}
+
+Naravno, provjerite za svaki slučaj je li \verb+HEAD^1+ upravo onaj $commit$ na kojeg želite vratiti vaš $branch$.
