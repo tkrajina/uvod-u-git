@@ -276,6 +276,15 @@ Ukoliko taj sample maknete, one će se početi izvršavati na tim događajima (\
 
 Na primjer, želite li da se prije svakog \emph{commit}a izvrše \emph{unit} testovi i pošalje mejl s rezultatima, napraviti ćete skriptu \verb+pre-commit+ koja to radi.
 
-%\section*{}
-%\addcontentsline{toc}{section}{}
+\tocSection{$Reflog$}
 
+$Reflog$ je povijest svih $commit$ova na koje je pokazivao \verb+HEAD+.
+S naredbom:
+
+\gitoutputcommand{git reflog}
+
+\dots{}ćete vidjete SHA1 identifikatore svih commitova na kojima je vaš repozitorij bio do sada. 
+
+Dakle, svaki put kad se prebacite na novu granu ili neki $commit$, git pamti gdje ste točno bili.
+Ukoliko ste neki $branch$ obrisali, a kasnije shvatili da to niste htjeli -- njegovi $commit$ovi su (vjerojatno!\footnote{Detalji u poglavlju o "higijeni" repozitorija.}) još uvijek u lokalnom repozitoriju. 
+S ovom naredbom ih možete naći i iz njih ponovno napraviti novu lokalnu granu.
