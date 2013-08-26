@@ -105,6 +105,10 @@ Ako nam pretraživanje nađe da je \emph{commit} \\ \verb+76cf802d23834bc7447337
 
 Podsjetimo se \verb+76cf8+ je kratica za \emph{commit}, a \verb+76cf8~1+ je referenca na njegovog \textbf{prethodnika} (zbog \verb+~1+).
 
+Drugi način kako pogledati što se točno desilo u određenom $commit$u je:
+
+\gitoutputcommand{gitk 76cf8}
+
 \tocSection{Gitk}
 
 U standardnoj instalaciji gita dolazi i pomoćni programčić koji nam grafički prikazuje povijest trenutne grane.
@@ -152,6 +156,11 @@ Možemo dobiti i prikaz graf sa samo određenim granama:
 
 \dots{}i to je dobro koristiti u kombinanciji s \verb+git diff grana1 grana2+.
 Jer, kao što smo već spomenuli, \verb+diff+ nam daje samo informaciju o razlikama između dvije grane, ali ne i njihove povijesti.
+
+\verb+gitk+ ima puno korisnih opcija.
+Jedna je mogućnost da $diff$ (tj. razlike između $commit$ova) ne prikazuje linijama nego dijelovima linija.
+Na taj način možete točno vidjeti koju ste riječ izmijenili umjesto standardnog prikaza u kojem se vidi da je izmijenjena cijela linija.
+To ćete dobiti tako da odaberete \verb+Markup words+ ili \verb+Color words+ u izborniku iznad \textcolor{orange}{\textbf{D}} (kad tek otvorite, postavljeno je na \verb+Line diff+).
 
 Kao \verb+git gui+ vjerojatno će vam se i \verb+gitk+ na prvi pogled učiniti neintuitivan, ali brz je i praktičan za rad kad se naučite na njegovo sučelje.
 S njime možete vrlo brzo pogledati tko je, što i kada $commit$ao u vašem projektu.
