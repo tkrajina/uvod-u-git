@@ -137,3 +137,21 @@ Najčešće će biti dovoljno:
 \gitoutputcommand{git reset --hard HEAD\^{}1}
 
 Naravno, provjerite za svaki slučaj je li \verb+HEAD^1+ upravo onaj $commit$ na kojeg želite vratiti vaš $branch$.
+
+\tocSection{Ne znamo gdje smo $commit$ali}
+
+Napravili smo $commit$, prebacili se na neku drugu granu i malo se izgubili tako da sad više ne znamo gdje su te izmjene završile.
+
+Jednu stvar koju možemo napraviti je pokrenuti \verb+gitk --all+ i pogledati možemo li naći taj $commit$ u nekoj od postojećih grana.
+Ukoliko ga nađemo -- možemo ga $cherry-pick$ati u našu granu i revertati u grani u kojoj je greškom završio.
+
+No, ima jedan poseban slučaj na kojeg treba pripaziti.
+Ukoliko smo se $checkout$ali na neku $remote$ granu (npr. \verb+origin/master+) git nam neće javiti grešku ukoliko tamo i $commit$amo iako takve grane nisu zamišljene da na njima radimo, nego samo da preuzimamo izmjene iz njih u naše lokalne grane.
+
+Na sreću, novije verzije gita će vas upozoriti kad se s takve grane želite vratiti na neku postojeću lokalnu i odmah vam sugerira što da učinite.
+Konkretno on vam predlaže da taj $commit$ sačuvate kao novu granu koju ćete napraviti iz trenutnog stanja:
+
+\input{git_output/git_checkout_iz_origin_master}
+
+No, ako ste zanemarili tu poruku (ili koristite IDE koji vam neće dati tu istu poruku) prisjetite se naredbe $reflog$.
+S njome možete naći SHA1 "izgubljenog $commit$a" i napraviti \verb+cherry-pick+ u tekuću granu ili novi branch.

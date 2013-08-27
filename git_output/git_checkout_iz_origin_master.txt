@@ -1,0 +1,13 @@
+$ git checkout master 
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  cec17e8 Tekst commita
+
+If you want to keep them by creating a new branch, this may be a good time
+to do so with:
+
+ git branch new_branch_name cec17e8044b15092e7e85daf4f25240a418eb54b
+
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 3 commits.
