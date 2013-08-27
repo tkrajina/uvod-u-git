@@ -374,7 +374,7 @@ Znamo i da je \verb+HEAD~1+ referenca na predzadnji $commit$ ($f$ iz primjera), 
 Dakle, ovaj znak \verb+~+ je u principu operacija između reference na $commit$ i nekog broja ($n$), a rezultat je $commit$ koji se desio $n$ koraka u povijesti.
 Te operacije možemo i konkatenirati, dakle \verb+HEAD~2~3+ je ekvivalentno \verb+HEAD~5+.
 
-Druga korisna operacija je \verb+^+.
+Postoji još jedna operacija koju možemo izvršavati nad $commit$ovima, a to je \verb+^+.
 Za razliku od \verb+~+ koja ide na $n$-ti korak \textbf{prije} trenutnog, \verb+^+ nam daje $n$-tog \textbf{roditelja}.
 
 U primjeru, $commit$ $g$ ima dva roditelja i zbog toga bi nam \verb+HEAD^1+ dalo referencu na $f$, a \verb+HEAD^2+ na $q$.
@@ -399,6 +399,8 @@ Npr:
 \gitoutputcommand{gitk master\textasciitilde{}1\textasciicircum{}2}
 
 \gitoutputcommand{git cherry-pick master\textasciitilde{}3}
+
+\gitoutputcommand{git checkout ebab9a46829b8d19ebe1a826571e7803ae723c3b\textasciitilde{}1\textasciicircum{}2}
 
 \gitoutputcommand{git log HEAD\textasciicircum{}2}
 
