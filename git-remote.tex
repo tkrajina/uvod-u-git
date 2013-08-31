@@ -190,7 +190,7 @@ Možemo se prebaciti na \verb+origin/master+, ali\dots
 Git nam ovdje dopušta prebacivanje na \verb+origin/master+, ali nam jasno daje do znanja da je ta grana ipak po nečemu posebna.
 Kao što već znamo, ona nije zamišljena da s njome radimo direktno.
 Nju možemo samo osvježavati stanjem iz udaljenog repozitorija.
-U \verb+origin/master+ ne smijemo \emph{commit}ati.
+U \verb+origin/master+ ne bi smjeli \emph{commit}ati.
 
 Ima, ipak, jedna radnja koju trebamo raditi s \verb+origin/master+, a to je da izmjene iz nje preuzimamo u naš lokalni \verb+master+.
 Prebacimo se na njega s \verb+git checkout master+ i\dots{}
@@ -506,7 +506,7 @@ Naredba je ista:
 
 \gitoutputcommand{git fetch karlin-repo\\git fetch bojanov-repo}
 
-I sad, kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih još preuzeli u naš repozitorij), jednostavno:
+Sad kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih još preuzeli u naš repozitorij), jednostavno:
 
 \gitoutputcommand{git checkout karlin-repo/master}
 
