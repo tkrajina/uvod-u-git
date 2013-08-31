@@ -423,12 +423,28 @@ Prekid \emph{rebase}a i vraćanje repozitorija u stanje prije nego što smo ga p
 \section*{\emph{Rebase} ili ne \emph{rebase}?}
 \addcontentsline{toc}{section}{\emph{Rebase} ili ne \emph{rebase}?}
 
-Rebase nije nužno raditi.
 Na vama je odluka želite li jednostavniju (linearnu) povijest projekta ili ne.
+Ukoliko želite -- raditi ćete $rebase$.
 
-Postoji jedan način korištenja gita u kojem je \emph{rebase} važan.
+Treba imati na umu jednu važnu stvar: \textbf{$rebase$ mijenja povijest projekta}:
+
+\input{graphs/fast_forward_4}
+
+Kad ste prvi put $commit$ali $x$, u vašem kodu nije bilo izmjena koje su nastale u $d$, $e$ i $f$. 
+Ali, kad netko kasnije bude gledao $commit$ $x'$, izgledati će mu da su izmjene iz $d$, $e$ i $f$ bile tamo \textbf{prije} njega.
+Drugim riječima, kad ste $x$ "preselili" u $x'$ vi ste promijenili \textbf{kontekst} tog $commit$a.
+
+Zbog toga postoji par nepisanih pravila kad se rebase može raditi:
+\begin{itemize}
+    \item \textbf{$Rebase$ radite ako su svi $commit$ovi koji će biti mijenjani vaši vlasititi $commit$ovi}. Dakle, ako ste vi autor od $x$, $y$ i $z$ onda se možete odlučiti raditi $rebase$. Ako je neka druga osoba autor npr. od $y$ onda nemojte raditi $rebase$.
+    \item Ako je ikako moguće, $rebase$ radite na branchevima koje još niste $push$ali na udaljene repozitorije\footnote{Više o udaljenim repozitorijima kasnije}.
+\end{itemize}
+
+\tocSubSection{Rebase i rad sa standardnim sustavima za verzioniranje}
+
+Postoji jedan način korištenja gita u kojem je \emph{rebase} nužan.
 To je \textbf{ako koristite git kao CVS, subversion ili TFS klijent}.
-Nećemo ovdje u detalje, ali recimo to ovako -- da, moguće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
+Nećemo ovdje u detalje, ali ukratko: moguće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
 
 \emph{Commit}ovi koji su slika udaljenog repozitorija se, u takvim slučajevima, uvijek čuvaju u posebnoj grani.
 Dakle, jedna grana je doslovna kopija udaljenog repozitorija (CVS, subversion ili TFS).
