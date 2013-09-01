@@ -320,9 +320,9 @@ Da bi rekonstruirao svoj graf, on uvijek kreće od \verb+HEAD+, dakle $f$, $g$, 
 \addcontentsline{toc}{section}{\emph{Revert}}
 
 Svaki \emph{commit} mijenja povijest projekta tako da izmjene \textbf{dodaje na kraju grane}.
-Treba imati na umu jednu stvar -- \verb+git reset+ \textbf{mijenja povijest projekta retrogradno}.
-Ne dodaje samo čvor na kraj grane, on mijenja postojeću granu tako da obriše nekoliko njegovih zadnjih čvorova.
-To može biti problem, a posebno u situacijama kad radite s drugim ljudima, o tome više u sljedećem poglavlju.
+Treba imati na umu da \verb+git reset+ \textbf{mijenja postojeću povijest projekta}.
+Ne dodaje čvor na kraj grane, on mijenja postojeću granu tako da obriše nekoliko njegovih zadnjih čvorova.
+To može biti problem, posebno u situacijama kad radite s drugim ljudima, o tome više u sljedećem poglavlju.
 
 To se može riješiti s \verb+git revert+. Uzmimo, na primjer, ovakvu situaciju:
 
