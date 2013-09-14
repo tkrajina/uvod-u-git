@@ -6,7 +6,6 @@ Samo smo spomenuli da je git distribuirani sustav za verzioniranje koda.
 Složiti ćete se da je već krajnje vrijeme da krenemo pomalo obrađivati interakciju s udaljenim repozitorijima.
 
 Postoji puno situacija kako može funkcionirati ta interakcija.
-Koncentrirajmo se sada na sam trenutak kad repozitorij "dođe" ili "nastane" na našem lokalnom računalu.
 Moguće je da smo ga stvorili od nule s \verb+git init+, na način kako smo to radili do sada i onda, na neki način, "poslali" na neku udaljenu lokaciju.
 Ili smo takav repozitorij ponudili drugim ljudima da ga preuzmu (kloniraju).
 
@@ -24,7 +23,7 @@ Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.g
 Github\footnote{Jedan od mnogih web servisa koji vam nude uslugu čuvanja (hostanja) git repozitorija.} omogućuje da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
 Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \\\verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
 
-Dalje, svaki udaljeni repozitorij s kojime namjeravamo imati posla mora imati i svoje kratko ime.
+Svaki udaljeni repozitorij s kojime ćemo imati posla mora imati i svoje kratko ime ($alias$).
 Nešto kao: \verb+origin+ ili \verb+vanjin-repozitorij+ ili \verb+slobodan+ ili \verb+dalenov-repo+.
 Nazivi su naš slobodan izbor. 
 Tako, ako nas četvero radi na istom projektu, njihove udaljene repozitorije možemo nazvati \verb+marina+, \verb+ivan+, \verb+karla+.
@@ -43,7 +42,7 @@ I onda na novoj (kopiranoj) lokaciji izvršiti \verb+git checkout HEAD+.
 Pravo kloniranje je za nijansu drukčije.
 Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
 Klonirani repozitorij čuva informaciju o repozitoriju is kojeg je kloniran.
-Ta informacija će mu kasnije olakšati da u udaljeni repozitorij šalje svoje izmjene i da od njega preuzima izmjene.
+Ta informacija će mu kasnije olakšati da na udaljeni repozitorij šalje svoje izmjene i da od njega preuzima izmjene.
 
 Postupak je jednostavan. Moramo znati adresu udaljenog repozitorija, i tada će nam git s naredbom\dots
 
@@ -55,11 +54,10 @@ Sad u njemu možemo gledati povijest, granati, \emph{commit}ati, \dots Ukratko, 
 
 Jasno, ne može bilo tko kasnije svoje izmjene poslati nazad na originalnu lokaciju. 
 Za to moramo imati ovlasti, ili moramo vlasnika tog repozitorija pitati je li voljan naše izmjene preuzeti kod sebe.
-O tome malo kasnije.
+O tome kasnije.
 
-Još nešto: Sjećate se kad sam napisao da su nazivi udaljenih repozitorija vaš slobodan izbor?
-Nisam baš bio $100\%$ iskren. 
-Kloniranje je izuzetak.
+Sjećate se kad sam napisao da su nazivi udaljenih repozitorija vaš slobodan izbor?
+Kloniranje je ipak izuzetak.
 Ukoliko kloniramo udaljeni repozitorij, on se za nas zove \verb+origin+.
 Ostali repozitoriji koje ćemo dodavati mogu imati nazive kakve god želimo.
 
@@ -94,7 +92,7 @@ Udaljeni ima samo granu \verb+master+, a lokalni ima dvije kopije te grane.
 U lokalnom \verb+master+ ćemo mi \emph{commit}ati naše izmjene, a u \verb+origin/master+ se nalazi kopija udaljenog \verb+origin/master+ u koju \textbf{nećemo} \emph{commit}ati.
 Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da imamo ažurno stanje (sliku) udaljenog repozitorija.
 
-Ako vam ovo zvuči zbunjujuće -- nemojte se zabrinjavati.
+Ako vam ovo zvuči zbunjujuće -- nemojte se zabrinuti.
 Sve će sjesti na svoje mjesto kad to počnete koristiti.
 
 \subsection*{Djelomično kloniranje povijesti repozitorija}
@@ -116,17 +114,17 @@ No, postoji trik.
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
 To će biti puno brže, no s takvim klonom nemamo pristup cijeloj povijesti i ne bi mogli raditi sve ono što teorijski možeomo s pravim klonom. 
-Djelomično kloniranje je više zamišljeno da bismo skinuli kod nekog projekta samo da ga proučimo, a ne da bi se na njemu nešto ozbiljno radilo.
+Djelomično kloniranje je zamišljeno da bismo skinuli kod nekog projekta samo da ga proučimo, a ne da bi se na njemu nešto ozbiljno radilo.
 
 \section*{Digresija o grafovima, repozitorijima i granama}
 \addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
 
 Nastaviti ćemo još jednu digresiju važnu za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
-Radi se o tome da je ovaj graf:
+Radi se o tome da je ovaj graf\dots
 
 \input{graphs/digresija_o_grafovima_1}
 
-\dots{}je ekvivalentan grafu\dots
+\dots{}ekvivalentan grafu\dots
 
 \input{graphs/digresija_o_grafovima_2}
 
@@ -153,7 +151,7 @@ Stanje bi bilo ovakvo:
 
 \input{graphs/origin_master_2}
 
-Naš, lokalni, \verb+master+ je radna verzija s kojom ćemo mi raditi -- tj. na koju ćemo \emph{commit}ati.
+Naš, lokalni, \verb+master+ je radna verzija s kojom ćemo mi raditi tj. na koju ćemo \emph{commit}ati.
 \verb+origin/master+ bi trebao biti lokalna kopija udaljenog \verb+master+, međutim -- ona se ne ažurira automatski.
 To što je vlasnik udaljenog repozitorija dodao dva \emph{commit}a ($e$ i $f$) ne znači da će naš repozitorij nekom čarolijom to odmah saznati.
 
@@ -214,7 +212,7 @@ I onda\dots
 
 \dots{}da bi te izmjene unijeli u naš lokalni repozitorij.
 
-Malo složenija situacije je sljedeća -- recimo da smo nakon\dots{}
+Malo složenija situacija je sljedeća: recimo da smo nakon\dots{}
 
 \input{graphs/origin_master_2}
 
@@ -271,7 +269,7 @@ Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih
 Ukoliko nemamo ovlasti, sve što možemo napraviti je zamoliti njegovog vlasnika da pogleda naše izmjene ($f$ i $g$) i da ih preuzme kod sebe, ako mu odgovaraju.
 Taj process se zove \textbf{\emph{pull request}} iliti zahtjev za \emph{pull} s njegove strane.
 
-Ukoliko, ipak, imamo ovlasti, onda je ono što treba napraviti:
+Ukoliko imamo ovlasti onda je ono što treba napraviti:
 
 \input{git_output/git_push_origin_master}
 
@@ -319,8 +317,7 @@ Sad možemo uredno napraviti:
 
 \input{graphs/push_2_4}
 
-Iako nam se može učiniti da udaljeni projekt nema izmjene koje smo mi uveli u $f$ i $g$ -- to nije točno.
-Naime, $h$ je rezultat preuzimanja izmjena (\emph{merge}) iz \verb+origin/master+ i on u sebi sadrži kombinaciju i $x$ i $y$ i (naših) $f$ i $g$.
+Naše izmjene se sad nalaze na udaljenom repozitoriju.
 
 \subsection*{\emph{Push} tagova}
 \addcontentsline{toc}{subsection}{\emph{Push} tagova}
