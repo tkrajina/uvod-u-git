@@ -9,7 +9,7 @@ Vratimo se na trenutak na naša dva primjera, linearni model verzioniranja koda:
 
 \input{graphs/primjer_s_granama_i_spajanjima}
 
-Svaki čvor grafa predstavlja stanje projekta u nekom trenutku, a sam graf je redosljed kako je naš projekt "evoluirao".
+Svaki čvor grafa predstavlja stanje projekta u nekom trenutku, a sam graf je redoslijed kako je naš projekt "evoluirao".
 Na primjer, kad smo prvi put inicirali projekt s \verb+git init+, dodali smo nekoliko datoteka i \textbf{spremili ih}. 
 U tom je trenutku nastao čvor \emph a.
 Nakon toga smo možda izmijenili neke od tih datoteka, možda neke obrisali, neke nove dodali te opet spremili novo stanje i dobili stanje \emph b.
@@ -42,14 +42,14 @@ Primjer ispisa te naredbe je:
 
 \input{git_output/git_diff_1}
 
-Linije koje počinju si \verb+diff+ govore o kojim datotekama se radi.
+Linije koje počinju s \verb+diff+ govore o kojim datotekama se radi.
 Nakon njih slijedi nekoliko linija s općenitim podacima i zatim kod \textbf{oko} dijela datoteke koji je izmijenjen i onda ono najvažnije: linije obojene u crveno i one obojene u plavo.
 
 Linije koje započinju s "-" (crvene) su linije koje su obrisane, a one koje počinju s "+" (u plavom) su one koje su dodane. 
 Primijetite da git ne zna da smo neku liniju izmijenili. 
 Ako jesmo, on se ponaša kao da smo staru obrisali, a novu dodali.
 
-Rezultat \verb+diff+ su naredbe samo linije koda koje smo izmijenili i nekoliko linija \textbf{oko njih}.
+Rezultat \verb+diff+ naredbe su samo linije koda koje smo izmijenili i nekoliko linija \textbf{oko njih}.
 Ako želimo malo veću "okolinu" oko naših izmjena, možemo je izmijeniti opcijom \verb+-U<broj_linija>+.
 Na primjer, ako želimo $10$ linija oko izmjenjenih dijelova koda, to ćemo dobiti s:
 
@@ -300,7 +300,7 @@ Ako smo na nekoj datoteci napravili izmjenu koju \emph{ne} želimo snimiti, takv
 Jednostavno odaberemo tu datoteku i u meniju kliknemo na \verb+Commit+ $\rightarrow$ \verb+Revert changes+.
 
 Osim ovoga, \verb+git gui+ ima puno korisnih mogućnosti koje nisu predmet ovog poglavlja.
-Preporučam vam da nađete vremena i proučite sve menije i kratice s tastaturom u radu jer to će vam značajno ubrzati daljnji rad.
+Preporučam vam da nađete vremena i proučite sve menije i kratice s tipkovnicom u radu jer to će vam značajno ubrzati daljnji rad.
 
 \section*{Clean}
 \addcontentsline{toc}{section}{Clean}
