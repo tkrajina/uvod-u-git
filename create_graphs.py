@@ -1205,6 +1205,14 @@ def graph_push_2_4():
             label = 'master',
             row = 3,
             nodes = 'abcdexyh'))
+    graph.add_branch(mod_graph.Branch(
+            label = 'master',
+            row = 4,
+            branch_from = graph.get_branch(2).get_node(4),
+            nodes = 'fg'))
+    graph.add_arrow(graph.get_branch(3).get_node(1),
+                    graph.get_branch(2).get_node(7),
+                    color=GRAY)
 
     brackets_column = 12
 
@@ -1217,7 +1225,7 @@ def graph_push_2_4():
     graph.add_square_bracket(
             column = brackets_column,
             row = 3,
-            rows = 1,
+            rows = 2,
             label = 'udaljeni repozitorij')
 
     graph.add_arrow(
