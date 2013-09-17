@@ -57,7 +57,7 @@ U principu, vjerujte mi, git najčešće napravi točno ono što treba.
 Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
 Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja u to da ijedan sustav za verzioniranje koda zna ovu radnju izvršiti kako treba.
 Nakon svakog \emph{merge}a sam išao proučavati je li rezultat ispravan i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
-Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (mašinska) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
+Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (strojna) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
 
 Umjesto beskonačnih hipotetskih situacija tipa "Što će git napraviti ako sam u grani $A$ izmijenio $x$, a u grani $B$ izmijenio $y$\dots" -- najbolje je da to jednostavno isprobate. 
 U ostatku ovog poglavlja ćemo samo proći nekoliko posebnih situacija.
@@ -263,7 +263,7 @@ Nakon što konflikt u datoteci (ili datotekama) riješite -- izmijenjene datotek
 
 Kad radimo s nekim projektom, onda nam je važno da imamo sačuvanu cijelu njegovu povijest.
 To nam omogućava da saznamo tko je originalni autor koda kojeg možda slabije razumijemo.
-Ili želimo vidjeti kojim redosljedom je neka datoteka nastajala.
+Ili želimo vidjeti kojim redoslijedom je neka datoteka nastajala.
 
 Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
 Grananje i preuzimanje izmjena iz jedne u drugu granu je bilo komplicirano i rijetko se radilo. 
@@ -401,7 +401,7 @@ Negdje u čvorovima $d$, $e$ i $f$ je mijenjan isti kod koji smo mi mijenjali u 
 Mi ovdje želimo zadržati povijest iz svih \emph{commit}ova: $d$, $e$, $f$, $x$, $y$ i $z$.
 To treba imati na umu dok odlučujemo kako ćemo ispraviti konflikt.
 
-U slučaju konflikta, često ćemo htjeti zadržati obje verzije konfliktnog koda, treba samo pripaziti na njihov redosljed i potencijalne sitne bugove koji mogu nastati.
+U slučaju konflikta, često ćemo htjeti zadržati obje verzije konfliktnog koda, treba samo pripaziti na njihov redoslijed i potencijalne sitne bugove koji mogu nastati.
 
 Nakon što smo konflikt ispravili, \textbf{ne smijemo izmjene \emph{commit}ati, nego samo spremiti u indeks s} \verb+git add+.
 Nastavljamo s:
@@ -510,7 +510,7 @@ Ukoliko koristite noviju verziju gita, onda će on nakon \emph{merge}a otvoriti 
 Ako se već odlučimo da ne želimo \emph{rebase} -- u povijesti ćemo imati puno grana i čvorova u kojima se one spajaju.
 Bilo bi lijepo u kad bi umjesto \texttt{Merge branch 'eksperimentalna-grana'} imali smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
 
-To se može tako da, umjesto \verb+git merge eksperimentalna-grana+ \emph{merge}, izvršimo s:
+To se može tako da, umjesto \verb+git merge eksperimentalna-grana+, \emph{merge} izvršimo s:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-commit}
 
