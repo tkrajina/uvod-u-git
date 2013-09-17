@@ -85,7 +85,7 @@ Izgleda poznato?
 SHA1 ima sljedeća svojstva:
 
 \begin{itemize}
-	\item \emph{Nije} jedinstvena. Dakle, sigurno postoje različiti ulazni stringovi koji daju isti rezultat, no \textbf{praktički ih je nemoguće naći}\footnote{Ovdje treba napomenuti kako SHA1 nije \emph{potpuno} siguran. Ukoliko se nađe algoritam s kojime je moguće naći različite stringove za prizvoljne SHA1 stringove, onda on prestaje biti jednosmjerna funkcija. I tada cijela sigurnost potencijalno pada u vodu, jer netko može podvaliti drukčiji string u povijest za isti SHA1 string. Postoje istraživanja koja naznačuju da se to može. Moguće je da će git u budućnosti preći na SHA-256.}. 
+	\item \emph{Nije} jedinstvena. Dakle, sigurno postoje različiti ulazni stringovi koji daju isti rezultat, no \textbf{praktički ih je nemoguće naći}\footnote{Ovdje treba napomenuti kako SHA1 nije \emph{potpuno} siguran. Ukoliko se nađe algoritam s kojime je moguće naći različite stringove kojima je rezultat funkcije SHA1 isti -- tada cijela sigurnost potencijalno pada u vodu. Netko može podvaliti drukčiji string u povijest za isti SHA1. Postoje istraživanja koja naznačuju da se to može i zato je moguće da će git u budućnosti preći na SHA-256.}. 
 	\item Kad dobijete rezultat funkcije (npr. \verb+974ef0ad8351ba7b4d402b8ae3942c96d667e199+) iz njega je \textbf{praktički nemoguće izračunati string iz kojeg je nastala}.
 \end{itemize}
 
