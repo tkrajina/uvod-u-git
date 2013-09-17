@@ -98,7 +98,7 @@ Sve će sjesti na svoje mjesto kad to počnete koristiti.
 \subsection*{Djelomično kloniranje povijesti repozitorija}
 \addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
 
-Recimo da ste na internetu našli zanimljiv $open source$ projekt i sad želite klonirati njegov git repozitorij bi proučiti kod. 
+Recimo da ste na internetu našli zanimljiv $open source$ projekt i sad želite klonirati njegov git repozitorij da bi proučiti kod. 
 Ništa lakše; \verb+git clone ...+.
 
 E, ali\dots
@@ -159,7 +159,7 @@ Git je zamišljen kao sustav koji ne zahtijeva stalni pristup internetu.
 U većini operacija -- \textbf{od nas se očekuje da iniciramo interakciju s drugim repozitorijima}.
 Bez da mi pokrenemo neku radnju, git neće nikad kontaktirati udaljene repozitorije.
 Slično, drugi repozitorij ne može našeg natjerati da osvježi svoju sliku (odnosno \verb+origin/+ grane).
-Najviše što što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da to učinimo.
+Najviše što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da to učinimo.
 
 Kao što smo mi inicirali kloniranje, tako i mi moramo inicirati ažuriranje grane \verb+origin/master+.
 To se radi s \verb+git fetch+:
@@ -234,11 +234,11 @@ Rezultat \emph{merge}a je novi čvor $z$:
 \section*{\emph{Pull}}
 \addcontentsline{toc}{section}{\emph{Pull}}
 
-U prethodnom poglavlju smo opisali tipični redosljed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
+U prethodnom poglavlju smo opisali tipični redoslijed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
 
 \gitoutputcommand{git fetch\\git merge origin/master}
 
-Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe skoro uvijek izvršiti u tom redosljedu.
+Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe skoro uvijek izvršiti u tom redoslijedu.
 
 Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
 
@@ -487,7 +487,7 @@ Međutim, mi želimo imati posla i sa repozitorijem drugog korisnika, za to ćem
 \gitoutputcommand{git remote add bojanov-repo git@domena.com:projekt}
 
 \dots{}i sad imamo dva udaljena repozitorija \verb+origin+ i \verb+bojanov-repo+.
-S obzirom da smo drugi nazvali prema imenu njegovo vlasnika, možda ćemo htjeti i \verb+origin+ nazvati tako.
+S obzirom da smo drugi nazvali prema imenu njegovog vlasnika, možda ćemo htjeti i \verb+origin+ nazvati tako.
 Recimo da je to Karlin repozitoriji, pa ćemo ga i nazvati tako:
 
 \gitoutputcommand{git remote rename origin karlin-repo}

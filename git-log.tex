@@ -4,7 +4,7 @@
 Već smo se upoznali s naredbom \verb+git log+ s kojom se može vidjeti povijest \emph{commit}ova grane u kojoj se trenutno nalazimo, no ona nije dovoljna za proučavanje povijesti projekta.
 Posebno s git projektima, čija povijest zna biti dosta kompleksna (puno grana, \emph{merge}anja, i sl.).
 
-Sigurno će vam se desiti da želite vidjeti koje su se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_size+ u projektu\dots 
+Sigurno će vam se desiti da želite vidjeti koje su se izmjene desile između predzadnjeg i pred-predzanjeg \emph{commit}a ili da vratite neku datoteku u stanje kakvo je bilo prije mjesec dana ili da proučite tko je zadnji napravio izmjenu na trinaestoj liniji nekog programa ili tko je prvi uveo funkciju koja se naziva \verb+get_image_x_size+ u projektu\dots 
 Čak i ako vam se neki od navedenih scenarija čine malo vjerojatnim, vjerujte mi, trebati će vam.
 
 U ovom poglavlju ćemo proći neke često korištene naredbe za proučavanje povijesti projekta.
@@ -20,7 +20,7 @@ Na primjer:
 \gitoutputcommand{git diff master testna-grana}
 
 \dots{}će nam ispisati razliku između te dvije grane. 
-Treba paziti na redosljed jer je ovdje bitan.
+Treba paziti na redoslijed jer je ovdje bitan.
 Ukoliko isprobamo s:
 
 \gitoutputcommand{git diff testna-grana master}
@@ -225,7 +225,7 @@ Zato git ispravno \emph{merge}a čak i ako u jednoj grani datoteku preimenujemo 
 \addcontentsline{toc}{section}{Preuzimanje datoteke iz povijesti}
 
 Svima nam se dogodilo da smo izmijenili datoteku i kasnije shvatili da ta izmjena ne valja. 
-Na primjer zaključili smo da je verzija od prije 5 \emph{commit}ova je bila bolja nego ova trenutno.
+Na primjer, zaključili smo da je verzija od prije 5 \emph{commit}ova bila bolja nego ova trenutno.
 Kako da ju vratimo iz povijesti i \emph{commit}amo u novo stanje projekta?
 
 Znamo već da s \verb+git checkout <naziv_grane> -- <datoteka1> <datoteka2>...+ možemo lokalno dobiti stanje datoteka iz te grane.
@@ -281,7 +281,7 @@ Htjeli bi se nekako vratiti na:
 \input{graphs/linearni_model_za_reset_2}
 
 \dots{}i od tamo nastaviti cijeli posao, ali ovaj put drukčije.
-E sad, lako je "teleportirati se" s \verb+git checkout ...+, to to ne mijenja stanje grafa -- $f$, $g$, $h$ i $i$ bi i dalje ostali u grafu.
+E sad, lako je "teleportirati se" s \verb+git checkout ...+, to ne mijenja stanje grafa -- $f$, $g$, $h$ i $i$ bi i dalje ostali u grafu.
 Mi bi ovdje htjeli baš obrisati dio grafa, odnosno zadnjih nekoliko \emph{commit}ova.
 
 Naravno da se i to može, a naredba je \verb+git reset --hard <referenca_na_commit>+.

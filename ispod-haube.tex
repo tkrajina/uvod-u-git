@@ -14,7 +14,7 @@ Svaki direktorij predstavlja neko stanje projekta (dakle to je \emph{commit}).
 I to je nekakvo verzioniranje koda, ali s puno nedostataka.
 
 Na primjer, nemate komentare uz \emph{commit}ove, ali to bi se moglo srediti tako da u svaki direktorij spremite datoteku naziva \verb+komentar.txt+.
-Nemate niti graf, odnosno redosljed nastajanja \emph{commit}ova.
+Nemate niti graf, odnosno redoslijed nastajanja \emph{commit}ova.
 I to bi se moglo riješit tako da u svakom direktoriju u nekoj posebnoj datoteci, npr. \verb+parents+ nabrojite nazive direktorija koji su "roditelji" trenutnom direktoriju.
 
 Sve je to prilično neefikasno što se tiče diskovnog prostora. 
@@ -23,7 +23,7 @@ Imate li u repozitoriju jednu datoteku veličine 100 kilobajta koju \textbf{nika
 
 Zato bi možda bilo bolje da umjesto \textbf{kopije direktorija} za \emph{commit} napravimo novi u kojeg ćemo staviti \textbf{samo one datoteke koje su izmijenjene}.
 Zahtijevalo bi malo više posla jer morate točno znati koje su datoteke izmijenjene, ali i to se može riješiti.
-Mogli bi napraviti neku jednostavno \emph{shell} skriptu koja bi to napravila za nas. 
+Mogli bi napraviti neku jednostavnu \emph{shell} skriptu koja bi to napravila za nas. 
 
 S time bi se problem diskovnog prostora drastično smanjio. 
 Rezultat bi mogli još malo poboljšati tako da datoteke kompresiramo.
@@ -64,7 +64,7 @@ U biti, trebao bi promijeniti previše stvari da bi mu cijeli poduhvat mogao pro
 Još ako je naš sustav distribuiran (dakle i drugi korisnici imaju povijest cijelog projekta) onda mu je još teže -- jer tu radnju mora ponoviti na računalima svih ljudi koji imaju kopije.
 S distribuiranim sustavima, nitko sa sigurnošću ne zna tko sve ima kopije.
 Svaka kopija repozitorija sadrži povijest projekta.
-Ukoliko netko zlonamjerno manipulira poviješću projekta na jednom repozitoriju -- to će se primijetiti kad se taj repozitorij "sinhronizira" s ostalima.
+Ukoliko netko zlonamjerno manipulira poviješću projekta na jednom repozitoriju -- to će se primijetiti kad se taj repozitorij "sinkronizira" s ostalima.
 
 Nakon ovog početnog razmatranja, idemo pogledati koje od tih ideja su programeri gita uzeli kad su krenuli dizajnirati svoj sustav.
 Krenimo s problemom konzistentnosti.
@@ -128,7 +128,7 @@ Radi se o tome da git upravo tako i "pamti" veze između čvorova.
 Naime, čvor \emph h ima referencu na \emph g, \emph g ima reference na \emph f i na \emph q, itd.
 Uočite da nam uopće nije potrebno znati da se grana \verb+novi-feature+ sastoji od \emph x, \emph y, \emph z, \emph q i \emph w.
 Dovoljan nam je $w$.
-Iz njega možemo, prateći reference "unazad" (suprotno od redosljeda njihovog nastajanja) doći sve do mjesta gdje je grana nastala.
+Iz njega možemo, prateći reference "unazad" (suprotno od redoslijeda njihovog nastajanja) doći sve do mjesta gdje je grana nastala.
 Tako, na osnovu samo jednog čvora (\emph{commit}a) možemo saznati cijelu povijest neke grane.
 
 Dakle, dovoljno nam je imati reference na zadnje \emph{commit}ove svih grana u repozitoriju, da bi mogli saznati povijest cijelog projekta.
