@@ -1206,7 +1206,7 @@ def graph_push_2_4():
             row = 3,
             nodes = 'abcdexyh'))
     graph.add_branch(mod_graph.Branch(
-            label = 'master',
+            label = '',
             row = 4,
             branch_from = graph.get_branch(2).get_node(4),
             nodes = 'fg'))
