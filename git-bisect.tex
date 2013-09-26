@@ -68,9 +68,12 @@ Ukoliko u bilo kojem trenutku $bisect$ želimo prekinuti i vratiti se na mjesto 
 
 \tocSection{Digresija o atomarnim $commit$ovima}
 
-$Bisect$ vam neće otkriti točan uzrok problema, samo će vamo točno reći koje su točno izmijene uzrokovale problem, ali i to je često dovoljno kod traženja pravog uzroka. 
+$Bisect$ vam neće otkriti točan uzrok problema, samo će vamo točno reći koje su se izmijene dogodile kad je problem nastao, ali i to je često dovoljno kod traženja pravog uzroka. 
 
-Ukoliko radite $commit$ove koji imaju tisuće promijenjenih linija, to vam neće pomoći.
+Nađe li vam $bisect$ da ste u tom $commit$u promijenili 5 linija koda tada barem jedna od tih linija koda nužno mora biti krivac.
+Ako ste u tom $commit$u promijenili 100 linija koda među njima je krivac, ali lakše je bug tražiti u 5 nego u 100 izmijenjenih linija.
+
+Radite li $commit$ove koji imaju tisuće promijenjenih linija, onda je puno teže naći uzrok.
 No, to je ionako kriv pristup.
 Ne bi nikad smjeli snimati više od jedne izmjene u koraku.
 Svaki $commit$ bi uvijek trebao predstavljati jednu jedinu logičku cjelinu.
