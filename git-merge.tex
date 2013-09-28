@@ -18,7 +18,7 @@ U gitu, to se naziva \emph{merge}.
 Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
 Rezultat spajanja bi bila samo jedna grana. 
 Nakon \emph{merge}a dvije grane -- one nastavljaju svoj život. 
-Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj granu preuzimaju u drugoj grani.
+Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj grani preuzimaju u drugu granu.
 
 \section*{Git \emph{merge}}
 \addcontentsline{toc}{section}{Git \emph{merge}}
@@ -497,7 +497,7 @@ To već znamo riješiti, nadam se.
 \addcontentsline{toc}{section}{Merge bez \emph{commit}a}
 
 Vratimo se opet na klasični \emph{merge}.
-Ukoliko je prošao bez ikakvih problema, onda ćemo nakon \verb+git merge eksperimentalna-grana+ u\dots
+Ukoliko je prošao bez ikakvih problema, onda ćemo nakon \verb+git merge eksperimentalna-grana+:
 
 \input{graphs/git_merge_2}
 
@@ -508,7 +508,7 @@ Ukoliko je prošao bez ikakvih problema, onda ćemo nakon \verb+git merge eksper
 Ukoliko koristite noviju verziju gita, onda će on nakon \emph{merge}a otvoriti editor i ponuditi vam da sami upišete poruku za taj \emph{commit}.
 
 Ako se već odlučimo da ne želimo \emph{rebase} -- u povijesti ćemo imati puno grana i čvorova u kojima se one spajaju.
-Bilo bi lijepo u kad bi umjesto \texttt{Merge branch 'eksperimentalna-grana'} imali smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
+Bilo bi lijepo kad bi umjesto \texttt{Merge branch 'eksperimentalna-grana'} imali smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
 
 To se može tako da, umjesto \verb+git merge eksperimentalna-grana+, \emph{merge} izvršimo s:
 
@@ -532,7 +532,7 @@ Radi se o sljedećem, klasični \emph{merge} stvara commit kao $d$ u grafu:
 
 \input{graphs/git_merge_2}
 
-Čvor $d$ ima dva prethodnika: $q$ i $d$.
+Čvor $d$ ima dva prethodnika: $q$ i $g$.
 Ukoliko želimo da $d$ \textbf{ima} izmjene iz grane \verb+eksperimentalna-grana+, ali \textbf{ne želimo} da $d$ ima referencu na tu granu, to se dobije s\footnote{Ne brinite se ako vam ne pada na pamet scenarij u kojem bi to moglo trebati. Ni meni nije do jutros :)}:
 
 \gitoutputcommand{git merge --squash eksperimentalna-grana}
