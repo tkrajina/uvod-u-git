@@ -66,6 +66,36 @@ Ukoliko u bilo kojem trenutku $bisect$ želimo prekinuti i vratiti se na mjesto 
 
 \gitoutputcommand{git bisect reset}
 
+\tocSection{Automatski $bisect$}
+
+$Bisect$ se radi u koracima, a u svakom koraku morate provjeriti je li $bug$ prisutan ili nije.
+Ponekad će ta provjera zahtijevati da restartate web server i provjerite u pregledniku ($browser$u), a u drugim slučajevima ćete jednostavno izvrtiti test.
+Ukoliko imate spremne integracijske ili $unit$ testove ili pak neku naredbu koju možete pokrenuti u komandnoj liniji onda se postupak traženja $bug$a može automatizirati naredbom \verb+git bisect run+.
+
+Sintaksa je sljedeća:
+
+\gitoutputcommand{git bisect run <naredba>}
+
+Pretpostavka je da ste prethodno već odredili početni \verb+bad+ i \verb+good+ $commit$.
+
+Važno je da naredba koju pokrećete završava sa statusom \verb+0+ ukoliko je stanje ispravno ili brojem od $1$ do $127$ ukoliko nije.
+Na primjer, ako testove vrtite s \verb+make test+, koristiti ćete: 
+
+\gitoutputcommand{git bisect run make test}
+
+\dots{}a koristite li javu i \verb+maven+ možete:
+
+\gitoutputcommand{git bisect run mvn test}
+
+\dots{}ili se bug manifestira na samo jednom testu:
+
+\gitoutputcommand{git bisect run mvn test -Dtest=MojUnitTest}
+
+Nakon toga će git potpuno sam izvrtiti sve korake i naći prvi $commit$ u kojemu je skripta završila sa statusom između 1 i 127\footnote{To su standardni statusi s kojima programi operativnom sustavu daju do znanja da su završili s nekom greškom}.
+
+Ukoliko se bug nije manifestirao u postojećim testovima, nego ste test napisali naknadno tada vam \verb+make test+ neće pomoći
+Tada možete sami napisati novu skriptu koja će u svakom koraku $bisect$a dodati taj test i izvrtiti ga\footnote{Možete na primjer napraviti posebnu granu s novim testom i onda u svakom koraju napraviti $cherry-pick$ tog testa prije nego izvrtite testove.}.
+
 \tocSection{Digresija o atomarnim $commit$ovima}
 
 $Bisect$ vam neće otkriti točan uzrok problema, samo će vamo točno reći koje su se izmijene dogodile kad je problem nastao, ali i to je često dovoljno kod traženja pravog uzroka. 
