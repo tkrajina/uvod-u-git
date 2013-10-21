@@ -79,7 +79,8 @@ Sintaksa je sljedeća:
 Pretpostavka je da ste prethodno već odredili početni \verb+bad+ i \verb+good+ $commit$.
 
 Važno je da naredba koju pokrećete završava sa statusom \verb+0+ ukoliko je stanje ispravno ili brojem od $1$ do $127$ ukoliko nije.
-Na primjer, ako testove vrtite s \verb+make test+, koristiti ćete: 
+
+Vrtite li testove s \verb+make test+, možete koristiti: 
 
 \gitoutputcommand{git bisect run make test}
 
@@ -91,9 +92,9 @@ Na primjer, ako testove vrtite s \verb+make test+, koristiti ćete:
 
 \gitoutputcommand{git bisect run mvn test -Dtest=MojUnitTest}
 
-Nakon toga će git potpuno sam izvrtiti sve korake i naći prvi $commit$ u kojemu je skripta završila sa statusom između 1 i 127\footnote{To su standardni statusi s kojima programi operativnom sustavu daju do znanja da su završili s nekom greškom}.
+Nakon toga će git samostalno izvrtiti sve $bisect$ korake i naći prvi $commit$ u kojemu je skripta završila sa statusom između 1 i 127\footnote{To su standardni statusi s kojima programi operativnom sustavu daju do znanja da su završili s nekom greškom}.
 
-Ukoliko se bug nije manifestirao u postojećim testovima, nego ste test napisali naknadno tada vam \verb+make test+ neće pomoći
+Ukoliko se bug nije manifestirao u postojećim testovima, nego ste test napisali naknadno tada vam \verb+make test+ neće pomoći.
 Tada možete sami napisati novu skriptu koja će u svakom koraku $bisect$a dodati taj test i izvrtiti ga\footnote{Možete na primjer napraviti posebnu granu s novim testom i onda u svakom koraju napraviti $cherry-pick$ tog testa prije nego izvrtite testove.}.
 
 \tocSection{Digresija o atomarnim $commit$ovima}
