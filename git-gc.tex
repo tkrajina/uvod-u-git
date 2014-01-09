@@ -9,8 +9,7 @@ Nadam se.
 
 Tako i s repozitorijem; treba ga redovito održavati i čistiti nered koji ostavljamo za sobom.
 
-\section*{Grane}
-\addcontentsline{toc}{section}{Grane}
+\tocSection{Grane}
 
 Iako nam git omogućuje da imamo neograničen broj grana, ljudski um nije sposoban vizualizirati si više od 5 do 10 njih\footnote{Barem moj nije, ako je vaš izuzetak, preskočite sljedećih nekoliko rečenica. Ili jednostavno zamislite da je umjesto "5-10" pisalo "500-1000".}.
 Kako stvaramo nove grane, događa se da imamo one u kojima smo počeli neki posao i kasnije odlučili da nam to neće trebati.
@@ -37,8 +36,7 @@ Tada grane možete imenovati prema broju prijavljene greške zajedno s kratkim o
 Na primjer, \verb+123-unicode-problem+ bi bila grana u kojoj ispravljate problem prijavljen pod brojim 123, a radi se o (tko bi rekao?) nekom problemu s \emph{unicode} enkodiranjem.
 Sad, kad dobijete spisak svih grana, odmah ćete znati koja grana čemu služi.
 
-\section*{Git gc}
-\addcontentsline{toc}{section}{Git gc}
+\tocSection{Git gc}
 
 Druga stvar koja se preporuča ima veze s onim našim \verb+.git/objects+ direktorijem kojeg smo spominjali u "Ispod haube" poglavlju.
 Kao što znamo, svaki \emph{commit} ima svoju referencu i svoj objekt (datoteku) u tom direktoriju.
@@ -69,8 +67,7 @@ Naredba je \verb+git gc+:
 Osim \verb+gc+, postoji još nekoliko sličnih naredbi kao \verb+git repack+, \verb+git prune+, no one su manje važne za početnika.
 Ako vas zanimaju -- \verb+git help+ je uvijek na dohvat ruke.
 
-\section*{Povijest i brisanje grana}
-\addcontentsline{toc}{section}{Povijest i brisanje grane}
+\tocSection{Povijest i brisanje grana}
 
 Spomenuti ćemo još nešto što bi logički pripadalo u poglavlja o granama i povijesti, ali tada za to nismo imali dovoljno znanja.
 
@@ -117,8 +114,7 @@ Ako u ovom primjeru obrišemo \verb+eksperiment+, postoji samo jedan čvor koji 
 Bez reference na granu, niti jedan čvor niti \emph{tag} ne pokazuje na $g$. Dakle, on prestaje biti dio povijesti našeg projekta.
 Za razliku od njega, $z$ ima referencu na $f$, a s $f$ nam garantira da i $e$ i $d$ ostaju dio povijesti projekta.
 
-\section*{Digresija o brisanju grana}
-\addcontentsline{toc}{section}{Digresija o brisanju grana}
+\tocSection{Digresija o brisanju grana}
 
 Uzmimo opet iste dvije situacije, onu u kojoj će se svi čvorovi grane sačuvati:
 
@@ -148,8 +144,7 @@ Postoje dva načina. Prvi kojeg smo već spomenuli:
 Ako nije, odbiti će obrisati.
 Dakle, ako vas je strah da biste slučajno obrisali granu čije izmjene još niste preuzeli u neku drugu granu -- koristite \verb+-d+ umjesto \verb+-D+ kod brisanja.
 
-\section*{\emph{Squash merge} i brisanje grana}
-\addcontentsline{toc}{section}{\emph{Squash merge} i brisanje grana}
+\tocSection{\emph{Squash merge} i brisanje grana}
 
 Uzmimo opet:
 
