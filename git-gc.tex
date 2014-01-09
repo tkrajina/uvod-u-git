@@ -159,3 +159,21 @@ Dakle, rezultat je kao kod klasičnog \emph{merge}a, ali bez reference (u pretho
 Sad smo preuzeli izmjene iz \verb+grana+ u \verb+master+, ali \verb+git gc+ će prije ili kasnije obrisati $d$, $e$, $f$ i $g$.
 
 S \verb+git merge --squash+ cijelu granu svodimo na jedan \emph{commit} i kasnije gubimo njenu povijest\footnote{\dots{}barem ako je kasnije ne \emph{merge}amo klasičnim putem.}.
+
+\tocSection{Brisanje udaljenih grana}
+
+Pretpostavimo da imamo dva korisnika (Tonka i Zvonko) i da rade na zajedničkom repozitoriju.
+Kad Tonka napravi $branch$ \verb+tonkin-branch+ i $push$a ga, Zvonko će nakon $fetch$anja vidjeti Tonkin $branch$ kao \verb+origin/tonkin-branch+.
+
+Kad je Tonka gotova s poslom može obrisati $branch$ i $push$ati brisanje (\verb+git push origin :tonkin-branch+).
+Sad je on obrisan i tamo ga više nema, ali on će i dalje ostati dostupan u Zvonkovom lokalnom repozitoriju kao \verb+origin/tonkin-branch+ i od njega može lokalno napraviti kopiju istog i $push$ati ga nazad.
+
+Dakle, brisanjem udaljenog $branch$a niste automatski obrisali i sve njegove kopije u svim klonovima tog repozitorija!
+To je namjerno tako napravljeno da bi bilo ekstremno teško izgubiti bilo kakav kod. 
+Što više korisnika ima, to je manja vjerojatnost da ćete slučajno obrisati neki $branch$, jer čim ga $push$ate -- svi koji će naknadno $fetch$ati će spremiti njegovu kopiju.
+Kad slučajno obrišete neki svoj branch, dovoljno je zamoliti kolegu da napravi lokalni $checkout$ i da ga $push$a nazad.
+
+Želite li baš lokalno obrisati i sve kopije udaljenih $branch$eva koji su obrisani?
+U tom slučaju, naredba je:
+
+\gitoutputcommand{git fetch --prune}
