@@ -430,8 +430,7 @@ I, na kraju\dots
 
 \dots{}da bi svoje izmjene "poslali" u granu \verb+grana+ udaljenong repozitorija.
 
-\subsection*{Brisanje udaljene grane}
-\addcontentsline{toc}{subsection}{Brisanje udaljene grane}
+\tocSubSection{Brisanje udaljene grane}
 
 Želimo li obrisati granu na udaljenom repozitoriju -- to radimo posebnom varijantom naredbe \verb+git push+:
 
@@ -441,12 +440,12 @@ Isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočk
 
 Ukoliko imamo granu \verb+test+ i \emph{push}amo ju na udaljeni repozitorij -- naši kolege će tu granu nakon \emph{fetch}anja vidjeti kao \verb+origin/test+.
 Međutim, ukoliko \textbf{obrišemo} granu na udaljenom repozitoriju, kolegama se neće automatski obrisati \verb+origin/test+.
-To je ponekad malo zbunjujuće, ali s druge strane, barem nam osigurava da ne možemo greškom obrisati granu.
-Jer, ukoliko smo ju greškom obrisali -- referenca se i dalje nalazi u drugim kloniram repozitorijima.
+To je ponekad malo zbunjujuće, ali s druge strane, barem nam je osiguranje da možemo skoro uvijek spasiti granu koju smo greškom obrisali.
+Ukoliko je to bilo slučaj -- referenca na granu se i dalje nalazi u drugim kloniram repozitorijima.
 
 Ukoliko uz \emph{fetch} želite da vam se i obrišu sve grane koje je netko drugi obrisao na udaljenom repozitoriju, naredba je:
 
-\gitoutputcommand{git fetch -p}
+\gitoutputcommand{git fetch --prune}
 
 %\subsection*{Git \emph{push} i \emph{tracking} grana}
 %\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
