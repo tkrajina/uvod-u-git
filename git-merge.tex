@@ -58,7 +58,7 @@ Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja 
 Nakon svakog \emph{merge}a sam išao proučavati je li rezultat ispravan i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
 Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (strojna) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
 
-Ne brinite se, git će napravi ono što treba. 
+Ne brinite se, git će napraviti ono što treba. 
 
 Umjesto beskonačnih hipotetskih situacija tipa "Što će git napraviti ako sam u grani $A$ izmijenio $x$, a u grani $B$ izmijenio $y$\dots" -- najbolje je da to jednostavno isprobate. 
 U ostatku ovog poglavlja ćemo samo proći nekoliko posebnih situacija.
@@ -145,7 +145,7 @@ U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
 
-S obzirom da je bio zadovoljan s oba riješenja, odlučio je izmjene iz varijante \verb+varijanta+ preuzeti u \verb+master+.
+S obzirom da je bio zadovoljan s oba riješenja, odlučio je izmjene iz grane \verb+varijanta+ preuzeti u \verb+master+.
 Nakon \verb+git checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
 \input{graphs/ab_simic_2}
@@ -281,7 +281,7 @@ Pogledajte, na primjer, ovakav projekt:
 
 \input{graphs/git_merge_2}
 
-Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph d.
+Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph h.
 Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu.
 U drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
 
@@ -393,7 +393,7 @@ Promotrimo, zato, još jednom grafički prikaz onoga što pokušavamo napraviti:
 \input{graphs/fast_forward_4}
 
 Naš cilj je preseliti \textcolor{gray}{sivi} dio tako da postane \textcolor{blue}{plavi}.
-Drugim riječim, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
+Drugim riječima, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
 Tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
 
 Konflikt se može dogoditi u trenutku kad git "seli" $x$ u $x'$, ili $y$ u $y'$ ili $z$ u $z'$.
