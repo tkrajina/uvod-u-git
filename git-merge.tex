@@ -529,11 +529,11 @@ Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjeg \emph{commit}a m
 \addcontentsline{toc}{section}{\emph{Squash merge}}
 
 Još jedna ponekad korisna opcija kod \emph{merge}a je, takozvani \emph{squash merge}.
-Radi se o sljedećem, klasični \emph{merge} stvara commit kao $d$ u grafu:
+Radi se o sljedećem, klasični \emph{merge} stvara commit kao $h$ u grafu:
 
 \input{graphs/git_merge_2}
 
-Čvor $d$ ima dva prethodnika: $q$ i $g$.
-Ukoliko želimo da $d$ \textbf{ima} izmjene iz grane \verb+eksperimentalna-grana+, ali \textbf{ne želimo} da $d$ ima referencu na tu granu, to se dobije s\footnote{Ne brinite se ako vam ne pada na pamet scenarij u kojem bi to moglo trebati. Ni meni nije do jutros :)}:
+Čvor $h$ ima dva prethodnika: $q$ i $g$.
+Ukoliko želimo da $h$ \textbf{ima} izmjene iz grane \verb+eksperimentalna-grana+, ali \textbf{ne želimo} da $h$ ima referencu na tu granu, to se dobije s\footnote{Ne brinite se ako vam ne pada na pamet scenarij u kojem bi to moglo trebati. Ni meni nije do jutros :)}:
 
 \gitoutputcommand{git merge --squash eksperimentalna-grana}
