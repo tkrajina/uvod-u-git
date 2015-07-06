@@ -20,7 +20,7 @@ Ima prije toga nešto što trebamo znati.
 Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
 
 Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njena adresa.
-Github\footnote{Jedan od mnogih web servisa koji vam nude uslugu čuvanja (hostanja) git repozitorija.} omogućuje da se istim repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
+Github\footnote{Jedan od mnogih web servisa koji vam nude uslugu čuvanja (hostanja) git repozitorija.} omogućuje da se istom repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
 Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \\\verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
 
 Svaki udaljeni repozitorij s kojime ćemo imati posla mora imati i svoje kratko ime ($alias$).
@@ -41,7 +41,7 @@ I onda na novoj (kopiranoj) lokaciji izvršiti \verb+git checkout HEAD+.
 
 Pravo kloniranje je za nijansu drukčije.
 Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
-Klonirani repozitorij čuva informaciju o repozitoriju is kojeg je kloniran.
+Klonirani repozitorij čuva informaciju o repozitoriju iz kojeg je kloniran.
 Ta informacija će mu kasnije olakšati da na udaljeni repozitorij šalje svoje izmjene i da od njega preuzima izmjene.
 
 Postupak je jednostavan. Moramo znati adresu udaljenog repozitorija, i tada će nam git s naredbom\dots
@@ -113,7 +113,7 @@ No, postoji trik.
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
-To će biti puno brže, no s takvim klonom nemamo pristup cijeloj povijesti i ne bi mogli raditi sve ono što teorijski možeomo s pravim klonom. 
+To će biti puno brže, no s takvim klonom nemamo pristup cijeloj povijesti i ne bi mogli raditi sve ono što teorijski možemo s pravim klonom. 
 Djelomično kloniranje je zamišljeno da bismo skinuli kod nekog projekta samo da ga proučimo, a ne da bi se na njemu nešto ozbiljno radilo.
 
 \section*{Digresija o grafovima, repozitorijima i granama}
