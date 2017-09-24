@@ -27,7 +27,7 @@ Pokretanje lokalno
 
 Da bi sami lokalno "kompajlirali" LaTeX kod uvoda u git, trebate imati instalirano:
 
- * latex i pdflatex, podršku za hrvatski jezik (na debian baziranim linuxima, to su paketi texlive, pdflatex i texlive-lang-croatian)
+ * latex i pdflatex, podršku za hrvatski jezik (na debian baziranim linuxima, to su paketi texlive-latex-base, texlive-lang-european)
  * git
  * python
  * make
