@@ -1,4 +1,7 @@
 pdf_pages=$(shell pdfinfo "git.pdf" | grep "Pages" | sed -e "s/[^0-9]*//")
+# Uz docker image s: https://gist.github.com/tkrajina/1b12fcc6c48fb3e582ac803a9f517146
+pdflatex_cmd=docker run -v $(shell pwd):/latex -it latex pdflatex
+#pdflatex_cmd=pdflatex
 
 build: init
 	git log -1 --format=\\verb+%H+ > current_commit.tex
@@ -10,8 +13,8 @@ build: init
 	python create_git_outputs.py
 	
 	# 2 puta da bi sadržaj bio ažuran:
-	pdflatex git.tex
-	pdflatex git.tex
+	$(pdflatex_cmd) git.tex
+	$(pdflatex_cmd) git.tex
 	
 	echo "git.pdf created"
 init:
