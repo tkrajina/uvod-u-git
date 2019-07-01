@@ -1,150 +1,32 @@
 \chapter*{Udaljeni repozitoriji}
-\addcontentsline{toc}{chapter}{Udaljeni repozitoriji}
-
-Sve ono što smo do sada proučavali smo radili isključivo na lokalnom repozitoriju.
-Samo smo spomenuli da je git distribuirani sustav za verzioniranje koda. 
-Složiti ćete se da je već krajnje vrijeme da krenemo pomalo obrađivati interakciju s udaljenim repozitorijima.
-
-Postoji puno situacija kako može funkcionirati ta interakcija.
-Moguće je da smo ga stvorili od nule s \verb+git init+, na način kako smo to radili do sada i onda, na neki način, "poslali" na neku udaljenu lokaciju.
-Ili smo takav repozitorij ponudili drugim ljudima da ga preuzmu (kloniraju).
-
-Moguće je i da smo saznali za neki već postojeći repozitorij, negdje na internetu, i sad želimo i mi preuzeti taj kod.
-Bilo da je to zato što želimo pomoći u razvoju ili samo proučiti nečiji kod.
 
 \section*{Naziv i adresa repozitorija}
-\addcontentsline{toc}{section}{Naziv i adresa repozitorija}
-
-Prvu stvar koju ćemo obraditi je kloniranje udaljenog repozitorija.
-Ima prije toga nešto što trebamo znati.
-Svaki udaljeni repozitorij s kojime će git "komunicirati" mora imati svoju adresu.
-
-Na primjer, ova knjiga "postoji" na \verb+git://github.com/tkrajina/uvod-u-git.git+, i to je jedna njena adresa.
-Github\footnote{Jedan od mnogih web servisa koji vam nude uslugu čuvanja (hostanja) git repozitorija.} omogućuje da se istom repozitoriju pristupi i preko \\ \verb+https://tkrajina@github.com/tkrajina/uvod-u-git.git+.
-Osim na Githubu, ona živi i na mom lokalnom računalu i u tom slučaju je njena adresa \\\verb+/home/puzz/projects/uvod-u-git+ (direktorij u kojemu se nalazi).
-
-Svaki udaljeni repozitorij s kojime ćemo imati posla mora imati i svoje kratko ime ($alias$).
-Nešto kao: \verb+origin+ ili \verb+vanjin-repozitorij+ ili \verb+slobodan+ ili \verb+dalenov-repo+.
-Nazivi su naš slobodan izbor. 
-Tako, ako nas četvero radi na istom projektu, njihove udaljene repozitorije možemo nazvati \verb+marina+, \verb+ivan+, \verb+karla+.
-I sa svakim od njih možemo imati nekakvu interakciju. 
-Na neke ćemo slati svoje izmjene (ako imamo ovlasti), a s nekih ćemo izmjene preuzimati u svoj repozitorij.
 
 \section*{Kloniranje repozitorija}
-\addcontentsline{toc}{section}{Kloniranje repozitorija}
-
-Kloniranje je postupak kojim kopiramo cijeli repozitorij s udaljene lokacije na naše lokalno računalo.
-S tako kloniranim repozitorijem možemo nastaviti rad kao s repozitorijem kojeg smo inicirali lokalno.
-
-\textbf{Kopirati repozitorij} je jednostavno, dovoljno je u neki direktorij kopirati \verb+.git+ direktorij drugog repozitorija.
-I onda na novoj (kopiranoj) lokaciji izvršiti \verb+git checkout HEAD+.
-
-Pravo kloniranje je za nijansu drukčije.
-Recimo to ovako, \textbf{kloniranje je kopiranje udaljenog repozitorija, ali tako da novi (lokalni) repozitorij ostaje "svjestan" da je on kopija nekog udaljenog repozitorija}.
-Klonirani repozitorij čuva informaciju o repozitoriju iz kojeg je kloniran.
-Ta informacija će mu kasnije olakšati da na udaljeni repozitorij šalje svoje izmjene i da od njega preuzima izmjene.
-
-Postupak je jednostavan. Moramo znati adresu udaljenog repozitorija, i tada će nam git s naredbom\dots
 
 \input{git_output/git_clone}
 
-\dots{}\textbf{kopirati projekt, zajedno sa cijelom poviješću} na naše računalo.
-I to u direktorij \verb+uvod-u-git+.
-Sad u njemu možemo gledati povijest, granati, \emph{commit}ati, \dots Ukratko, raditi što god nas je volja s tim projektom.
-
-Jasno, ne može bilo tko kasnije svoje izmjene poslati nazad na originalnu lokaciju. 
-Za to moramo imati ovlasti, ili moramo vlasnika tog repozitorija pitati je li voljan naše izmjene preuzeti kod sebe.
-O tome kasnije.
-
-Sjećate se kad sam napisao da su nazivi udaljenih repozitorija vaš slobodan izbor?
-Kloniranje je ipak izuzetak.
-Ukoliko kloniramo udaljeni repozitorij, on se za nas zove \verb+origin+.
-Ostali repozitoriji koje ćemo dodavati mogu imati nazive kakve god želimo.
-
 \subsection*{Struktura kloniranog repozitorija}
-\addcontentsline{toc}{subsection}{Struktura kloniranog repozitorija}
-
-Od trenutka kad smo klonirali svoj repozitorij pa dalje -- za nas postoje \textbf{dva repozitorija}.
-Možda negdje na svijetu postoji još netko tko je klonirao taj isti repozitorij i na njemu nešto radi (a da mi o tome ništa ne znamo).
-Naš dio svijeta su samo ova dva s kojima direktno imamo posla. 
-Jedan je udaljeni kojeg smo klonirali, a drugi je lokalni koji se nalazi pred nama.
-
-Prije nego li počnemo s pričom o tome kako slati ili primati izmjene iz jednog repozitorija u drugi, trebamo nakratko spomenuti kakva je točno struktura lokalnog repozitorija.
-Već znamo za naredbu \verb+git branch+, koja nam ispisuje popis svih grana na našem repozitoriju.
-Sad imamo posla i s udaljenim repozitorijem -- njega smo klonirali.
-
-S \verb+git branch -a+ ispisujemo \textbf{sve grane koje su nam trenutno dostupne u lokalnom repozitoriju}.
-Naime, kad smo klonirali repozitorij -- postale su nam dostupne i grane udaljenog repozitorija:
 
 \input{git_output/git_branch_all_1}
 
-Novost ovdje je \verb+remotes/origin/master+.
-Ovo \verb+remotes/+ znači da, iako imamo pristup toj grani na lokalnom repozitoriju, ona je \textbf{samo kopija grane} \verb+master+ \textbf{u repozitoriju} \verb+origin+.
-Takve kopije udaljenih repozitorija ćemo uvijek označavati s \\ \verb+<naziv_repozitorija>/<naziv_grane>+.
-Konkretno, ovdje je to \verb+origin/master+.
-
-Dakle, grafički bi to mogli prikazati ovako:
-
 \input{graphs/origin_master}
 
-Imamo dva repozitorija -- lokalni i udaljeni.
-Udaljeni ima samo granu \verb+master+, a lokalni ima dvije kopije te grane. 
-U lokalnom \verb+master+ ćemo mi \emph{commit}ati naše izmjene, a u \verb+origin/master+ se nalazi kopija udaljenog \verb+origin/master+ u koju \textbf{nećemo} \emph{commit}ati.
-Ovaj \verb+origin/master+ ćemo, s vremenena na vrijeme, osvježavati tako da imamo ažurno stanje (sliku) udaljenog repozitorija.
-
-Ako vam ovo zvuči zbunjujuće -- nemojte se zabrinuti.
-Sve će sjesti na svoje mjesto kad to počnete koristiti.
-
 \subsection*{Djelomično kloniranje povijesti repozitorija}
-\addcontentsline{toc}{subsection}{Djelomično kloniranje povijesti repozitorija}
-
-Recimo da ste na internetu našli zanimljiv $open source$ projekt i sad želite klonirati njegov git repozitorij da bi proučiti kod. 
-Ništa lakše; \verb+git clone ...+.
-
-E, ali\dots
-Tu imamo mali problem.
-Git repozitorij sadrži cijelu povijest projekta. 
-To znači da sadrži sve \emph{commit}ove koje su radili programeri i koji mogu sezati i preko deset godina unazad\footnote{Ako ste zbunjeni kako je moguće da \emph{commit}ovi u git repozitoriju sežu dulje u prošlost negoli uopće postoji git -- radi se repozitorijima koji su prije bili na subversionu ili CVS-u, a koji su kasnije konvertirani u git tako da su svi \emph{commit}ovi sačuvani.}.
-I zato \verb+git clone+ ponekad može potrajati dosta dugo. 
-Posebno ako imate sporu vezu.
-
-No, postoji trik.
-Želimo li skinuti projekt samo zato da bi pogledali njegov kod, a ne zanima nas cijela povijest, moguće je klonirati samo nekoliko zadnjih \emph{commit}ova s:
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
 
-To će biti puno brže, no s takvim klonom nemamo pristup cijeloj povijesti i ne bi mogli raditi sve ono što teorijski možemo s pravim klonom. 
-Djelomično kloniranje je zamišljeno da bismo skinuli kod nekog projekta samo da ga proučimo, a ne da bi se na njemu nešto ozbiljno radilo.
-
 \section*{Digresija o grafovima, repozitorijima i granama}
-\addcontentsline{toc}{section}{Digresija o grafovima, repozitorijima i granama}
-
-Nastaviti ćemo još jednu digresiju važnu za razumijevanje grafova projekata i udaljenih projekata koji će slijediti.
-Radi se o tome da je ovaj graf\dots
 
 \input{graphs/digresija_o_grafovima_1}
 
-\dots{}ekvivalentan grafu\dots
-
 \input{graphs/digresija_o_grafovima_2}
-
-\dots{}zato što ima zajednički početak povijesti ($a$, $b$, $c$, $d$ i $e$).
-
-Slično, u sljedećoj situaciji:
 
 \input{graphs/digresija_o_grafovima_3}
 
-\dots{}trebamo zamisliti da je odnos između našeg lokalnog \verb+master+ i udaljenog \verb+master+ -- kao da imamo jedan graf koji se granao u čvoru $e$.
-Jedino što se svaka grana nalazi u zasebnom repozitoriju, a ne više u istom.
-Zanemarimo li na trenutak \verb+origin/master+, odnos između naša dva \verb+master+a je:
-
 \input{graphs/digresija_o_grafovima_4}
 
-U ilustracijama koje slijede, grafovi su prikazani kao zasebne "crte" samo zato što logički pripadaju posebnim entitetima (repozitorijima).
-Međutim, oni \textbf{su samo posebne grane istog projekta} iako se nalaze na različitim lokacijama/računalima.
-
 \section*{\emph{Fetch}}
-\addcontentsline{toc}{section}{\emph{Fetch}}
 
 Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+?
 Stanje bi bilo ovakvo:
@@ -232,7 +114,6 @@ Rezultat \emph{merge}a je novi čvor $z$:
 \input{graphs/origin_master_2_4}
 
 \section*{\emph{Pull}}
-\addcontentsline{toc}{section}{\emph{Pull}}
 
 U prethodnom poglavlju smo opisali tipični redoslijed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
 
@@ -247,7 +128,6 @@ Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
 \verb+git pull+ je upravo kombinacija \verb+git fetch+ i \verb+git merge origin/master+.
 
 \section*{\emph{Push}}
-\addcontentsline{toc}{section}{\emph{Push}}
 
 Sve što smo do sada radili s gitom su bile radnje koje smo mi radili na našem lokalnom repozitoriju.
 Čak i kloniranje je nešto što mi iniciramo i ničim nismo promijenili udaljeni repozitorij.
@@ -320,7 +200,6 @@ Sad možemo uredno napraviti:
 Naše izmjene se sad nalaze na udaljenom repozitoriju.
 
 \subsection*{\emph{Push} tagova}
-\addcontentsline{toc}{subsection}{\emph{Push} tagova}
 
 Naredba \verb+git push origin master+ šalje na udaljeni (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
 Slično bi napravili s bilo kojom drugom granom, no ima još nešto što ponekad želimo s lokalnog repozitorija poslati na udaljeni.
@@ -341,7 +220,6 @@ Ukoliko smo ga mi tada obrisali, nastati će komplikacije.
 Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 
 \subsection*{\emph{Rebase} origin/master}
-\addcontentsline{toc}{subsection}{\emph{Rebase} origin/master}
 
 Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta kao zasebni čvorovi -- i to se može s:
 
@@ -350,7 +228,6 @@ Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
 Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
 
 \subsection*{Prisilan \emph{push}}
-\addcontentsline{toc}{subsection}{Prisilan \emph{push}}
 
 Vratimo se na ovu situaciju:
 
@@ -380,7 +257,6 @@ Zbog dva razloga:
 \end{itemize}
 
 \section*{Rad s granama}
-\addcontentsline{toc}{section}{Rad s granama}
 
 Svi primjeri do sada su bili relativno jednostavni utoliko što su oba repozitorija (udaljeni i naš lokalni) imali samo jednu granu -- \verb+master+.
 Idemo to sad (još) malo zakomplicirati i pogledati što se dešava ako kloniramo udaljeni repozitorij koji ima više grana:
@@ -448,12 +324,10 @@ Ukoliko uz \emph{fetch} želite da vam se i obrišu sve grane koje je netko drug
 \gitoutputcommand{git fetch --prune}
 
 %\subsection*{Git \emph{push} i \emph{tracking} grana}
-%\addcontentsline{toc}{subsection}{Git \emph{push} i \emph{tracking} grana}
 %
 %\TODO
 
 \section*{Udaljeni repozitoriji}
-\addcontentsline{toc}{section}{Udaljeni repozitoriji}
 
 Kloniranjem na našem lokalnom računalu dobijamo kopiju udaljenog repozitorija s jednim dodatkom -- ta kopija je pupčanom vrpcom vezana za originalni repozitorij.
 Dobijamo referencu na \verb+origin+ repozitorij (onaj kojeg smo klonirali).
@@ -466,7 +340,6 @@ Odnosno, što ako imamo više programera s kojima želimo surađivati od kojih s
 Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sustavu za verzioniranje.
 
 \subsection*{Dodavanje i brisanje udaljenih repozitorija}
-\addcontentsline{toc}{subsection}{Dodavanje i brisanje udaljenih repozitorija}
 
 Svi udaljeni repozitoriji bi trebali biti repozitorij istog projekta\footnote{Git dopušta čak i da udaljeni repozitorij bude repozitorij nekog drugog projekta, ali rezultati \emph{merge}anja će biti čudni.}. 
 Bilo da su nastali kloniranjem ili kopiranjem nečijeg projekta (tj. kopiranjem \verb+.git+ direktorijia i \emph{checkout}anjem projekta).
@@ -525,7 +398,6 @@ Naravno, to ne mora biti tako -- Puno češća situacija će biti da svaki udalj
 \input{git_output/git_branch_a_s_granama}
 
 \subsection*{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
-\addcontentsline{toc}{subsection}{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
 
 \emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima je potpuno isto kao i s \verb+origin+ repozitorijem.
 U stvari, rad s njime i nije ništa drugo nego rad s udaljenim repozitorijem. 
@@ -571,7 +443,6 @@ Najbolje bi bilo da mu jednostavno pošaljemo adresu našeg git repozitorija i k
 Napravimo li tako, upravo smo poslali \emph{pull request}.
 
 \section*{\emph{Pull request}}
-\addcontentsline{toc}{section}{\emph{Pull request}}
 
 \emph{Pull request} nije ništa drugo nego kratka poruka vlasniku nekog udaljenog repozitorija koja sadržava adresu \textbf{našeg} repozitorija, opis izmjena koje smo napravili i prijedlog da on te izmjene preuzme u svoj repozitorij.
 
@@ -580,7 +451,6 @@ U suprotnom, trebate doslovno poslati email vlasniku repozitorija s porukom.
 Postoji i naredba (\verb+git request-pull+) koja priprema sve detalje izmjena koje ste napravili za tu poruku.
 
 \section*{\emph{Bare} repozitorij}
-\addcontentsline{toc}{section}{\emph{Bare} repozitorij}
 
 U koje i kakve repozitorije smijemo \emph{push}ati? 
 Jedino što znamo je da udaljeni repozitorij treba tako biti konfiguriran da imamo \textbf{ovlast \emph{push}ati}, ali ima još jedan detalj kojeg treba spomenuti.
@@ -652,7 +522,3 @@ Rješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom i
 \gitoutputcommand{git config --bool core.bare true}
 
 I to će gitu na udaljenom računalu reći: "ovom repozitoriju je namijena da ljudi na njega \emph{push}aju, s njega \emph{pull}aju i \emph{fetch}aju -- dopusti im to!".
-
-%\section*{}
-%\addcontentsline{toc}{section}{}
-
