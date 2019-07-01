@@ -1,4 +1,5 @@
-\documentclass[11pt,twoside,a4paper]{report}
+\documentclass[11pt,twoside,a5paper]{report}
+\usepackage{lscape}
 
 \linespread{1.2}
 
@@ -96,6 +97,7 @@
 
 \setcounter{page}{1}
 
+\begin{landscape}
 \include{uvod}
 \include{verzioniranje-koda}
 \include{git-init}
@@ -108,5 +110,6 @@
 \include{git-remote}
 \include{git-bisect}
 \include{prikaz-povijesti}
+\end{landscape}
 
 \end{document}
