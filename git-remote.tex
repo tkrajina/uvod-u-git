@@ -28,497 +28,148 @@
 
 \section*{\emph{Fetch}}
 
-Što ako je vlasnik udaljenog repozitorija \emph{commit}ao u svoj \verb+master+?
-Stanje bi bilo ovakvo:
-
 \input{graphs/origin_master_2}
-
-Naš, lokalni, \verb+master+ je radna verzija s kojom ćemo mi raditi tj. na koju ćemo \emph{commit}ati.
-\verb+origin/master+ bi trebao biti lokalna kopija udaljenog \verb+master+, međutim -- ona se ne ažurira automatski.
-To što je vlasnik udaljenog repozitorija dodao dva \emph{commit}a ($e$ i $f$) ne znači da će naš repozitorij nekom čarolijom to odmah saznati.
-
-Git je zamišljen kao sustav koji ne zahtijeva stalni pristup internetu.
-U većini operacija -- \textbf{od nas se očekuje da iniciramo interakciju s drugim repozitorijima}.
-Bez da mi pokrenemo neku radnju, git neće nikad kontaktirati udaljene repozitorije.
-Slično, drugi repozitorij ne može našeg natjerati da osvježi svoju sliku (odnosno \verb+origin/+ grane).
-Najviše što vlasnik udaljenog repozitorija može napraviti je da nas \textbf{zamoli} da to učinimo.
-
-Kao što smo mi inicirali kloniranje, tako i mi moramo inicirati ažuriranje grane \verb+origin/master+.
-To se radi s \verb+git fetch+:
 
 \input{git_output/git_fetch}
 
-Nakon toga, stanje naših repozitorija je:
-
 \input{graphs/origin_master_3}
-
-Dakle, \verb+origin/master+ je osvježen tako da mu je stanje isto kao i \verb+master+ udaljenog repozitorija.
-
-S \verb+origin/master+ možemo raditi skoro sve kao i s ostalim lokalnim granama.
-Možemo, na primjer, pogledati njegovu povijest s:
 
 \gitoutputcommand{git log origin/master}
 
-Možemo pogledati razlike između njega i naše trenutne grane:
-
 \gitoutputcommand{git diff origin/master}
-
-Možemo se prebaciti na \verb+origin/master+, ali\dots
 
 \input{git_output/git_checkout_origin_master}
 
-Git nam ovdje dopušta prebacivanje na \verb+origin/master+, ali nam jasno daje do znanja da je ta grana ipak po nečemu posebna.
-Kao što već znamo, ona nije zamišljena da s njome radimo direktno.
-Nju možemo samo osvježavati stanjem iz udaljenog repozitorija.
-U \verb+origin/master+ ne bi smjeli \emph{commit}ati.
-
-Ima, ipak, jedna radnja koju trebamo raditi s \verb+origin/master+, a to je da izmjene iz nje preuzimamo u naš lokalni \verb+master+.
-Prebacimo se na njega s \verb+git checkout master+ i\dots{}
-
 \gitoutputcommand{git merge origin/master}
-
-\dots{}i sad je stanje:
 
 \input{graphs/origin_master_4}
 
-I sad smo tek u \verb+master+ dobili stanje udaljenog \verb+master+.
-Općenito, to je postupak kojeg ćemo često ponavljati:
-
 \gitoutputcommand{git fetch}
-
-\dots{}da bismo osvježili svoj lokalni \verb+origin/master+.
-Sad tu možemo malo proučiti njegovu povijest i izmjene koje uvodi u povijest.
-I onda\dots
 
 \gitoutputcommand{git merge origin/master}
 
-\dots{}da bi te izmjene unijeli u naš lokalni repozitorij.
-
-Malo složenija situacija je sljedeća: recimo da smo nakon\dots{}
-
 \input{graphs/origin_master_2}
-
-\dots{}mi \emph{commit}ali u naš lokalni repozitorij svoje izmjene. Recimo da su to $x$ i $y$:
 
 \input{graphs/origin_master_2_2}
 
-Nakon \verb+git fetch+, stanje je:
-
 \input{graphs/origin_master_2_3}
-
-Sad \verb+origin/master+ nakon $e$ ima $f$ i $g$, a \verb+master+ nakon $e$ ima $x$ i $y$.
-U biti je to kao da imamo dvije grane koje su nastale nakon $e$. Jedna ima $f$ i $g$, a druga $x$ i $y$.
-Ovo je, u biti, najobičniji \emph{merge} koji će, eventualno, imati i neke konflikte koje znamo riješiti.
-Rezultat \emph{merge}a je novi čvor $z$:
 
 \input{graphs/origin_master_2_4}
 
 \section*{\emph{Pull}}
 
-U prethodnom poglavlju smo opisali tipični redoslijed naredbi koje ćemo izvršiti svaki put kad želimo preuzeti izmjene iz udaljenog repozitorija:
-
 \gitoutputcommand{git fetch\\git merge origin/master}
-
-Obično ćemo nakon \verb+git fetch+ malo pogledati koje izmjene su došle s udaljenog repozitorija, no u konačnici ćemo ove dvije naredbe skoro uvijek izvršiti u tom redoslijedu.
-
-Zbog toga postoji "kratica" koja je ekvivalentna toj kombinaciji:
 
 \gitoutputcommand{git pull}
 
-\verb+git pull+ je upravo kombinacija \verb+git fetch+ i \verb+git merge origin/master+.
-
 \section*{\emph{Push}}
-
-Sve što smo do sada radili s gitom su bile radnje koje smo mi radili na našem lokalnom repozitoriju.
-Čak i kloniranje je nešto što mi iniciramo i ničim nismo promijenili udaljeni repozitorij.
-Krenimo sad s prvom radnjom s kojom aktivno mijenjamo neki udaljeni repozitorij.
-
-Uzmimo, kao prvo, najjednostavniji mogući scenarij.
-Klonirali smo repozitorij i stanje je, naravno:
 
 \input{graphs/push_1}
 
-Nakon toga smo \emph{commit}ali par izmjena\dots
-
 \input{graphs/push_2}
-
-\dots{}i sad bismo htjeli te izmjene "prebaciti" na udaljeni repozitorij.
-Prvo i osnovno što nam treba svima biti jasno -- "prebacivanje" naših lokalnih izmjena na udaljeni repozitorij ovisi o tome imamo li ovlasti za to ili ne.
-\textbf{Udaljeni repozitorij mora biti tako konfiguriran da bismo mogli raditi} \verb+git push+.
-
-Ukoliko nemamo ovlasti, sve što možemo napraviti je zamoliti njegovog vlasnika da pogleda naše izmjene ($f$ i $g$) i da ih preuzme kod sebe, ako mu odgovaraju.
-Taj process se zove \textbf{\emph{pull request}} iliti zahtjev za \emph{pull} s njegove strane.
-
-Ukoliko imamo ovlasti onda je ono što treba napraviti:
 
 \input{git_output/git_push_origin_master}
 
-Stanje će sad biti:
-
 \input{graphs/push_3}
-
-To je bila situacija u kojoj smo u našem \verb+master+ \emph{commit}ali, ali na udaljeni \verb+master+ nije nitko drugi \emph{commit}ao.
-Što da nije tako?
-Dakle, dok smo mi radili na $e$ i $f$, vlasnik udaljenog repozitorija je \emph{commit}ao svoje $x$ i $y$:
 
 \input{graphs/push_2_1}
 
-Kad pokušamo \verb+git push origin master+, dogoditi će se ovakvo nešto:
-
 \input{git_output/git_push_origin_master_rejected}
-
-Kod nas lokalno $e$ slijede $f$ i $g$, a na udaljenom repozitoriju $e$ slijede $x$ i $y$. 
-I git ovdje ne zna što točno napraviti, i traži da mu netko pomogne.
-Kao i do sada, pomoć se očekuje od nas, a tu radnju trebamo izvršiti na lokalnom repozitoriju.
-Tek onda ćemo moći \emph{push}ati na udaljeni.
-
-Rješenje je standardno:
 
 \gitoutputcommand{git fetch}
 
-\dots{}i stanje je sad:
-
 \input{graphs/push_2_2}
-
-Sad ćemo, naravno:
 
 \gitoutputcommand{git merge origin/master}
 
-Na ovom koraku se može desiti da imate konflikata koje eventualno treba ispraviti s \verb+git mergetool+.
-Nakon toga, stanje je:
-
 \input{graphs/push_2_3}
-
-Sad možemo uredno napraviti:
 
 \gitoutputcommand{git push origin master}
 
-\dots{}a stanje naših repozitorija će biti:
-
 \input{graphs/push_2_4}
-
-Naše izmjene se sad nalaze na udaljenom repozitoriju.
 
 \subsection*{\emph{Push} tagova}
 
-Naredba \verb+git push origin master+ šalje na udaljeni (\verb+origin+) repozitorij samo izmjene u grani \verb+master+.
-Slično bi napravili s bilo kojom drugom granom, no ima još nešto što ponekad želimo s lokalnog repozitorija poslati na udaljeni.
-To su tagovi.
-
-Ukoliko imamo lokalni tag kojeg treba \emph{push}ati, to se radi s:
-
 \gitoutputcommand{git push origin --tags}
-
-To će na udaljeni repozitorij poslati sve tagove.
-Želimo li tamo obrisati neki tag:
 
 \gitoutputcommand{git push origin :refs/tags/moj-tag}
 
-Treba samo imati na umu da je moguće da su drugi korisnici istog udaljenog repozitorija možda već \emph{fetch}ali naš tag u svoje repozitorije.
-Ukoliko smo ga mi tada obrisali, nastati će komplikacije.
-
-Treba zato pripaziti da se \emph{push}aju samo tagovi koji su sigurno ispravni.
-
 \subsection*{\emph{Rebase} origin/master}
-
-Želimo li da se naši $f$ i $g$ (iz prethodnog primjera) vide u povijesti udaljenog projekta kao zasebni čvorovi -- i to se može s:
 
 \gitoutputcommand{git checkout master\\git rebase origin/master\\git push origin master}
 
-Ukoliko vam se ovo čini zbunjujuće -- još jednom dobro proučite "Digresiju o grafovima" koja se nalazi par stranica unazad.
-
 \subsection*{Prisilan \emph{push}}
-
-Vratimo se na ovu situaciju:
 
 \input{graphs/push_2_2}
 
-Standardni postupak je \verb+git fetch+ (što je u gornjem primjeru već učinjeno) i \\ \verb+git merge origin/master+.
-Međutim, postoji još jedna mogućnost.
-Nakon što smo proučili ono što je vlasnik udaljenog repozitorija napravio u \emph{commit}ovima $x$ i $y$, ponekad ćemo zaključiti da to jednostavno ne valja. 
-I najradije bi sada "pregazili" njegove \emph{commit}ove s našim.
-
-To se može, naredba je:
-
 \gitoutputcommand{git push -f origin master}
-
-\dots{}a rezultat će biti:
 
 \input{graphs/push_2_2_1}
 
-I sad s \verb+git fetch+ možemo još i osvježiti stanje \verb+origin/master+.
-
-Treba, međutim, imati na umu da ovakvo ponašanje nije baš uvijek poželjno. 
-Zbog dva razloga:
-
-\begin{itemize}
-	\item \textbf{Mi} smo zaključili da \emph{commit}ovi $x$ i $y$ ne valjaju. Možda smo pogriješili. Koliko god nam to bilo teško priznati, sasvim moguće je da jednostavno nismo dobro shvatili tuđi kod.
-	\item Nitko ne voli da mu se pregaze njegove izmjene kao što smo to mi ovdje napravili vlasniku ovog udaljenog repozitorija. Bilo bi bolje javiti se njemu, objasniti mu što ne valja, predložiti bolje rješenje i dogovoriti da \textbf{on} \emph{revert}a, \emph{reset}ira ili ispravi svoje izmjene.
-\end{itemize}
-
 \section*{Rad s granama}
-
-Svi primjeri do sada su bili relativno jednostavni utoliko što su oba repozitorija (udaljeni i naš lokalni) imali samo jednu granu -- \verb+master+.
-Idemo to sad (još) malo zakomplicirati i pogledati što se dešava ako kloniramo udaljeni repozitorij koji ima više grana:
-
-Nakon \verb+git clone+ rezultat će biti:
 
 \input{graphs/origin_master_s_granama}
 
-Kloniranjem dobijamo samo kopiju lokalnog \verb+master+, dok se sve grane čuvaju pod \verb+origin/+. Dakle imamo \verb+origin/master+ i \verb+origin/grana+.
-Da je bilo više grana u repozitoriju kojeg kloniramo, imali bi više ovih \verb+origin/+ grana.
-To lokalno možemo vidjeti s:
-
 \input{git_output/git_branch_all_2}
-
-Već znamo da se možemo "prebaciti" s \verb+git checkout origin/master+, ali se ne očekuje da tamo stvari i \emph{commit}amo.
-Trebamo tu "\verb+remote+" granu granati u naš lokalni repozitorij i tek onda s njom počet raditi.
-Dakle, u našem testnom slučaju, napravili bi:
 
 \gitoutputcommand{git checkout origin/grana\\
 git branch grana\\
 git checkout grana}
 
-Zadnje dvije naredbe smo mogli skratiti u \verb+git checkout -b grana+.
-
-Sad je stanje:
-
 \input{graphs/origin_master_s_granama_2}
-
-\dots{}odnosno:
 
 \input{git_output/git_branch_all_3}
 
-Sad u tu lokalnu \verb+grana+ možemo \emph{commit}ati koliko nas je volja.
-Kad se odlučimo poslati svoje izmjene na udaljenu granu, postupak je isti kao i do sada, jedino što radimo s novom granom umjesto master.
-Dakle,
-
 \gitoutputcommand{git fetch}
-
-\dots{}za osvježavanje \textbf{i} \verb+origin/master+ i \verb+origin/grana+.
-Zatim\dots
 
 \gitoutputcommand{git merge origin/grana}
 
-I, na kraju\dots
-
 \gitoutputcommand{git push origin grana}
-
-\dots{}da bi svoje izmjene "poslali" u granu \verb+grana+ udaljenong repozitorija.
 
 \tocSubSection{Brisanje udaljene grane}
 
-Želimo li obrisati granu na udaljenom repozitoriju -- to radimo posebnom varijantom naredbe \verb+git push+:
-
 \gitoutputcommand{git push origin :grana-koju-zelimo-obrisati}
-
-Isto kao i kad \emph{push}amo izmjene na tu granu, jedino što dodajemo dvotočku izpred naziva grane.
-
-Ukoliko imamo granu \verb+test+ i \emph{push}amo ju na udaljeni repozitorij -- naši kolege će tu granu nakon \emph{fetch}anja vidjeti kao \verb+origin/test+.
-Međutim, ukoliko \textbf{obrišemo} granu na udaljenom repozitoriju, kolegama se neće automatski obrisati \verb+origin/test+.
-To je ponekad malo zbunjujuće, ali s druge strane, barem nam je osiguranje da možemo skoro uvijek spasiti granu koju smo greškom obrisali.
-Ukoliko je to bilo slučaj -- referenca na granu se i dalje nalazi u drugim kloniram repozitorijima.
-
-Ukoliko uz \emph{fetch} želite da vam se i obrišu sve grane koje je netko drugi obrisao na udaljenom repozitoriju, naredba je:
 
 \gitoutputcommand{git fetch --prune}
 
-%\subsection*{Git \emph{push} i \emph{tracking} grana}
-%
-%\TODO
-
 \section*{Udaljeni repozitoriji}
-
-Kloniranjem na našem lokalnom računalu dobijamo kopiju udaljenog repozitorija s jednim dodatkom -- ta kopija je pupčanom vrpcom vezana za originalni repozitorij.
-Dobijamo referencu na \verb+origin+ repozitorij (onaj kojeg smo klonirali).
-Dobijamo i one \verb+origin/+ brancheve, koji su kopija udaljenih grana i mogućnost osvježavanja njihovog stanja s \verb+git fetch+.
-
-Imamo i neka ograničenja, a najvažnije je to što možemo imati samo jedan \verb+origin+.
-Što ako želimo imati posla s više udaljenih repozitorija?
-Odnosno, što ako imamo više programera s kojima želimo surađivati od kojih svatko ima \textbf{svoj} repozitorij?
-
-Drugim riječima, sad pomalo ulazimo u onu priču o gitu kao distribuiranom sustavu za verzioniranje.
 
 \subsection*{Dodavanje i brisanje udaljenih repozitorija}
 
-Svi udaljeni repozitoriji bi trebali biti repozitorij istog projekta\footnote{Git dopušta čak i da udaljeni repozitorij bude repozitorij nekog drugog projekta, ali rezultati \emph{merge}anja će biti čudni.}. 
-Bilo da su nastali kloniranjem ili kopiranjem nečijeg projekta (tj. kopiranjem \verb+.git+ direktorijia i \emph{checkout}anjem projekta).
-Dakle, svi udaljeni repozitoriji s kojima ćemo imati posla su u nekom trenutku svoje povijesti nastali iz jednog jedinog projekta.
-
-Sve naredbe s administracijom udaljenih (\emph{remote}) repozitorija se rade s naredbom \\ \verb+git remote+.
-
-Novi udaljeni repozitorij možemo dodati s \verb+git remote add <naziv> <adresa>+.
-Na primjer, uzmimo da radimo s dva programera od kojih je jednome repozitorij na \\\verb+https://github.com/korisnik/projekt.git+, a drugome \verb+git@domena.com:projekt+.
-Ukoliko tek krećemo u suradnju s njima, prvi korak koji možemo (ali i ne moramo) napraviti je klonirati jedan od njihovih repozitorija:
-
 \gitoutputcommand{git clone https://github.com/korisnik/projekt.git}
-
-\dots{}i time smo dobili udaljeni repozitorij \verb+origin+ s tom adresom.
-Međutim, mi želimo imati posla i sa repozitorijem drugog korisnika, za to ćemo i njega dodati kao \emph{remote}:
 
 \gitoutputcommand{git remote add bojanov-repo git@domena.com:projekt}
 
-\dots{}i sad imamo dva udaljena repozitorija \verb+origin+ i \verb+bojanov-repo+.
-S obzirom da smo drugi nazvali prema imenu njegovog vlasnika, možda ćemo htjeti i \verb+origin+ nazvati tako.
-Recimo da je to Karlin repozitoriji, pa ćemo ga i nazvati tako:
-
 \gitoutputcommand{git remote rename origin karlin-repo}
-
-Popis svih repozitorija s kojima imamo posla dobijemo s:
 
 \input{git_output/git_remote_show}
 
-Kao i s \verb+origin+, gdje smo kloniranjem dobili lokalne kopije udaljenih grana (one \verb+origin/master+, \dots). 
-I ovdje ćemo ih imati, ali ovaj put će lokacije biti \verb+bojanov-repo/master+ i \verb+karlin-repo/master+.
-Njih ćemo isto tako morati osvježavati da bi bile ažurne.
-Naredba je ista:
-
 \gitoutputcommand{git fetch karlin-repo\\git fetch bojanov-repo}
-
-Sad kad želimo isprobati neke izmjene koje je Karla napravila (a nismo ih još preuzeli u naš repozitorij), jednostavno:
 
 \gitoutputcommand{git checkout karlin-repo/master}
 
-\dots{}i isprobamo kako radi njena verzija aplikacije. Želimo li preuzeti njene izmjene:
-
 \gitoutputcommand{git checkout master\\git merge karlin-repo/master}
-
-I, općenito, sve ono što smo govorili za \emph{fetch}, \emph{push}, \emph{pull} i \emph{merge} kad smo govorili o kloniranju vrijedi i ovdje.
-
-Sve do sada se odnosilo na jednostavan scenarij u kojemu svi repozitoriji imaju samo jednu granu:
 
 \input{graphs/remote_s_granama}
 
-Naravno, to ne mora biti tako -- Puno češća situacija će biti da svaki udaljeni repozitorij ima neke svoje grane:
-
 \input{graphs/remote_s_granama_2}
-
-\dots{}a rezultat od \verb+git branch -a+ je:
 
 \input{git_output/git_branch_a_s_granama}
 
 \subsection*{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
 
-\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima je potpuno isto kao i s \verb+origin+ repozitorijem.
-U stvari, rad s njime i nije ništa drugo nego rad s udaljenim repozitorijem. 
-Specifičnost je što u kloniranom repozitoriju možemo uvijek računati da imamo referencu na \verb+origin+ (dobijemo ju implicitno pri kloniranju), a druge udaljene repozitorije moramo "ručno" dodati s \verb+git remote add+.
-
-Recimo da nam je udaljeni repozitorij \verb+ivanov-repo+.
-\emph{Fetch} se radi ovako:
-
 \gitoutputcommand{git fetch ivanov-repo}
-
-Nakon što smo osvježili lokalne kopije grana u \verb+ivanov-repo+, \emph{merge} radimo:
 
 \gitoutputcommand{git merge ivanov-repo/master}
 
-\dots{}ili\dots
-
 \gitoutputcommand{git merge ivanov-repo/grana}
-
-\emph{Pull}:
 
 \gitoutputcommand{git pull ivanov-repo master}
 
-\dots{}ili\dots
-
 \gitoutputcommand{git pull ivanov-repo grana}
-
-\dots{}a \emph{push}:
 
 \gitoutputcommand{git push ivanov-repo master}
 
-\dots{}ili\dots
-
 \gitoutputcommand{git push ivanov-repo grana}
 
-Naravno, na Ivanovom repozitoriju moramo imati postavljene ovlasti da bi mogli te operacije raditi.
-
-Ukoliko s njegovog repozitorija možemo \emph{fetch}ati, a ne možemo na njega \emph{push}ati (dakle, pristup nam je \emph{read-only}) -- može se dogoditi ovakva situacija:
-Napravili smo izmjenu za koju mislimo da bi poboljšala aplikaciju koja je u Ivanovom repozitoriju.
-No, nemamo ovlasti \emph{push}ati.
-Htjeli bi Ivanu nekako dati do znanja da mi imamo nešto što bi njega zanimalo.
-
-Najbolje bi bilo da mu jednostavno pošaljemo adresu našeg git repozitorija i kratku poruku s objašnjenjem što smo točno izmijenili i prijedlogom da on te izmjene \emph{pull}a (ili \emph{fetch}a i \emph{merge}a) u svoj repozitorij.
-Napravimo li tako, upravo smo poslali \emph{pull request}.
-
 \section*{\emph{Pull request}}
-
-\emph{Pull request} nije ništa drugo nego kratka poruka vlasniku nekog udaljenog repozitorija koja sadržava adresu \textbf{našeg} repozitorija, opis izmjena koje smo napravili i prijedlog da on te izmjene preuzme u svoj repozitorij.
-
-Ukoliko koristite Github za svoje projekte -- tamo postoji vrlo jednostavan i potpuno automatizirani proces za \emph{pull request}e\footnote{Treba ovdje napomenuti da Linus Torvalds ima neke prigovore na Githubov \emph{pull request} proces.}.
-U suprotnom, trebate doslovno poslati email vlasniku repozitorija s porukom.
-Postoji i naredba (\verb+git request-pull+) koja priprema sve detalje izmjena koje ste napravili za tu poruku.
-
-\section*{\emph{Bare} repozitorij}
-
-U koje i kakve repozitorije smijemo \emph{push}ati? 
-Jedino što znamo je da udaljeni repozitorij treba tako biti konfiguriran da imamo \textbf{ovlast \emph{push}ati}, ali ima još jedan detalj kojeg treba spomenuti.
-
-Pretpostavimo da postoji Ivanov i naš repozitorij.
-Ivan ima svoju radnu verziju projekta koja je ista kao i zadnja verzija u njegovom repozitoriju.
-Isto je i s našim repozitorijem (dakle, i nama i njemu \verb+git status+ pokazuje da nemamo lokalno nikakvih ne\emph{commit}anih izmjena).
-
-Sad recimo mi napravimo izmjenu, \emph{push}amo u Ivanov repozitorij i tako, a da on toga uopće nije svjestan, mijenjamo status radne verzije njegovog projekta.
-Njemu će se činiti kao da mu, u jednom trenutku \verb+git status+ kaže da nema nikakvih izmjena, a sekundu kasnije (bez da je išta editirao) -- \verb+git status+ kaže da se njegova radna verzija razlikuje od zadnjeg stanja u repozitoriju.
-\verb+git status+, naime pokazuje razlike između radne verzije repozitorija i \textbf{zadnjeg \emph{commit}a} u repozitoriju.
-S našim \emph{push}em -- mi smo upravo promijenili taj zadnji \emph{commit} u njegovom repozitoriju.
-
-Git nam to neće dopustiti, a odgovoriti će dugom i kriptičnom porukom koja počinje ovako:
-
-\gitoutputcommand{remote: error: refusing to update checked out branch: refs/heads/master\\
-remote: error: By default, updating the current branch in a non-bare repository\\
-remote: error: is denied, because it will make the index and work tree inconsistent\\
-remote: error: with what you pushed, and will require 'git reset --hard' to match\\
-remote: error: the work tree to HEAD.}
-
-Ako malo razmislite, to izgleda kao kontradikcija sa cijelom pričom o udaljenim repozitorijima.
-Kako to da nam git ne da \emph{push}ati u nečiji repozitorij, čak i ako imamo ovlasti?
-Čemu onda uopće \emph{push}?
-
-Rješenje je sljedeće: postoji posebna vrsta repozitorija koji \textbf{nemaju radnu verziju projekta}.
-To jest, oni nisu nikad \emph{checkout}ani, a sadrže samo \verb+.git+ direktorij.
-I to je \emph{bare}\footnote{Engleski: gol. Npr. \emph{barefoot} -- bosonog.} repozitorij.
-Kod takvih -- čak i kad \emph{push}amo -- nećemo nikad promijeniti status radne verzije.
-Radna verzija je tu irelevantna.
-
-Kako se to uklapa u priču da ponekad moramo \emph{push}ati u nečiji repozitorij?
-
-Jednostavno, svatko bi trebao imati svoj lokalni repozitorij na svom lokalnom računalu na kojeg \textbf{nitko ne smije \emph{push}ati}.
-Trebao bi imati i \textbf{svoj udaljeni repozitorij} na kojeg će onda \emph{push}ati svoje izmjene.
-Na tom udaljenom repozitoriju bi on mogao/trebao postaviti ovlasti drugim programerima u koje ima povjerenje da imaju ovlasti \emph{push}ati.
-
-Na taj način nitko nikada ne može promijeniti status lokalnog (radnog) repozitorija bez da je njegov vlasnik toga svjestan.
-To može na udaljenom repozitoriju, a onda vlasnik iz njega može \emph{fetch}ati, \emph{pull}ati i \emph{push}ati.
-
-\textbf{\emph{Bare} repozitorij je repozitorij koji je zamišljen da bude na nekom serveru, a ne da se na njemu direktno \emph{commit}a}.
-Drugim riječima, nisu svi direktoriji jednaki: 
-postoje oni lokalni na kojima programiramo i radimo stvari i postoje oni udaljeni (\emph{bare}) na koje \emph{push}amo i s kojih \emph{fetch}amo i \emph{pull}amo.
-
-Konvertirati neki repozitorij u \emph{bare} je jednostavno:
-
-\gitoutputcommand{git config --bool core.bare true}
-
-Još jedan scenarij u kojem će nam ova naredba biti korisna je sljedeći: recimo da smo krenuli pisati aplikaciju na lokalnom git repozitoriju.
-I nismo imali nikakvih drugih udaljenih repozitorija.
-U jednom trenutku se odlučimo da smo već dosta toga napisali i želimo imati sigurnosnu kopiju na nekom udaljenom računalu.
-Kreiramo tamo doslovnu kopiju našeg direktorija.
-Na lokalnom računalu napravimo:
-
-\gitoutputcommand{git remote add origin login@server:staza/do/repozitorija}
-
-Ovdje smo išli suprotnim putem -- nismo klonirali repozitorij i tako dobili referencu na \verb+origin+, nego smo lokalni repozitorij kopirali na udaljeno računalo i tek sada postavili da nam je \verb+origin+ taj udaljeni repozitorij.
-Pokušamo li sada \emph{push}ati svoj \verb+master+:
-
-\gitoutputcommand{git push origin master}
-
-Dobiti ćemo \textbf{onu} grešku:
-
-\gitoutputcommand{remote: error: refusing to update checked out branch: refs/heads/master\\
-...}
-
-Rješenje je da se još jednom spojimo na udaljeno računalo\footnote{Telnetom ili (još bolje) koristeći ssh.} i tamo izvršimo:
-
-\gitoutputcommand{git config --bool core.bare true}
-
-I to će gitu na udaljenom računalu reći: "ovom repozitoriju je namijena da ljudi na njega \emph{push}aju, s njega \emph{pull}aju i \emph{fetch}aju -- dopusti im to!".
