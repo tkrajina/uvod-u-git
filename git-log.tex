@@ -1,129 +1,193 @@
 \chapter*{Povijest}
+\clearpage
 
 \section*{\emph{Diff}}
+\clearpage
 
 \gitoutputcommand{git diff master testna-grana}
+\clearpage
 
 \gitoutputcommand{git diff testna-grana master}
+\clearpage
 
 \gitoutputcommand{git diff HEAD\textasciitilde{}2 HEAD\textasciitilde{}1}
+\clearpage
 
 \gitoutputcommand{git diff HEAD\textasciitilde{}2}
+\clearpage
 
 \gitoutputcommand{git diff 974ef testna-grana}
+\clearpage
 
 \section*{\emph{Log}}
+\clearpage
 
 \gitoutputcommand{git log HEAD\textasciitilde{}5}
+\clearpage
 
 \gitoutputcommand{git log testna-grana\textasciitilde{}10}
+\clearpage
 
 \gitoutputcommand{git log -10 testna-grana}
+\clearpage
 
 \gitoutputcommand{git log -10}
+\clearpage
 
 \subsection*{\emph{Whatchanged}}
+\clearpage
 
 \input{git_output/git_whatchanged}
+\clearpage
 
 \subsection*{Pretraživanje povijesti}
+\clearpage
 
 \gitoutputcommand{git log --grep=graph}
+\clearpage
 
 \gitoutputcommand{git log -Sget\_image\_x\_size}
+\clearpage
 
 \gitoutputcommand{git log -S"get image width"}
+\clearpage
 
 \gitoutputcommand{git diff 76cf8\textasciitilde{}1 76cf8}
+\clearpage
 
 \gitoutputcommand{gitk 76cf8}
+\clearpage
 
 \tocSection{Gitk}
+\clearpage
 
 \gitoutputcommand{gitk}
+\clearpage
 
 \gitgraphics{images/gitk.png}{13.5cm}
+\clearpage
 
 \gitoutputcommand{gitk HEAD\textasciitilde{}10}
+\clearpage
 
 \gitoutputcommand{gitk 974ef0ad8351ba7b4d402b8ae3942c96d667e199}
+\clearpage
 
 \gitoutputcommand{gitk testna-grana}
+\clearpage
 
 \gitoutputcommand{gitk --all}
+\clearpage
 
 \gitoutputcommand{gitk grana1 grana2}
+\clearpage
 
 \section*{\emph{Blame}}
+\clearpage
 
 \input{git_output/git_blame}
+\clearpage
 
 \gitoutputcommand{git blame -C <datoteka>}
+\clearpage
 
 \section*{Digresija o premještanju datoteka}
+\clearpage
 
 \gitoutputcommand{git mv <stara\_datoteka> <nova\_datoteka>}
+\clearpage
 
 \section*{Preuzimanje datoteke iz povijesti}
+\clearpage
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{5} -- pjesma.txt}
+\clearpage
 
 \gitoutputcommand{git checkout test\textasciitilde{}1 -- pjesma.txt}
+\clearpage
 
 \section*{"Teleportiranje" u povijest}
+\clearpage
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{}10}
+\clearpage
 
 \gitoutputcommand{git checkout HEAD\textasciitilde{}20}
+\clearpage
 
 \section*{\emph{Reset}}
+\clearpage
 
 \input{graphs/linearni_model_za_reset}
+\clearpage
 
 \input{graphs/linearni_model_za_reset_2}
+\clearpage
 
 \gitoutputcommand{git reset --hard HEAD\textasciitilde{}1}
+\clearpage
 
 \gitoutputcommand{git reset --hard 974ef0a}
+\clearpage
 
 \input{graphs/linearni_model_za_reset_HEAD_1}
+\clearpage
 
 \input{graphs/linearni_model_za_reset_HEAD_2}
+\clearpage
 
 \section*{\emph{Revert}}
+\clearpage
 
 \input{graphs/linearni_model_za_revert_1}
+\clearpage
 
 \gitoutputcommand{git revert HEAD}
+\clearpage
 
 \input{graphs/linearni_model_za_revert_1_revertano}
+\clearpage
 
 \input{graphs/linearni_model_za_revert_2}
+\clearpage
 
 \gitoutputcommand{git revert 402b8ae39}
+\clearpage
 
 \input{graphs/linearni_model_za_revert_2_revertano}
+\clearpage
 
 \tocSection{Izrazi s referencama}
+\clearpage
 
 \input{graphs/izrazi_s_referencama}
+\clearpage
 
 \input{graphs/izrazi_s_referencama_2}
+\clearpage
 
 \gitoutputcommand{gitk master\textasciitilde{}1\textasciicircum{}2}
+\clearpage
 
 \gitoutputcommand{git cherry-pick master\textasciitilde{}3}
+\clearpage
 
 \gitoutputcommand{git checkout ebab9a46829b8d19ebe1a826571e7803ae723c3b\textasciitilde{}1\textasciicircum{}2}
+\clearpage
 
 \gitoutputcommand{git log HEAD\textasciicircum{}2}
+\clearpage
 
 \gitoutputcommand{git log master@\{"1 day ago"\}}
+\clearpage
 
 \gitoutputcommand{git log ebab9a46829b8d19ebe1a826571e7803ae723c3b@\{"5 months ago"\}}
+\clearpage
 
 \gitoutputcommand{git log branch@\{2010-05-05\}}
+\clearpage
 
 \tocSection{$Reflog$}
+\clearpage
 
 \gitoutputcommand{git reflog}

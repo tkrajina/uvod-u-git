@@ -1,175 +1,261 @@
 \chapter*{Udaljeni repozitoriji}
+\clearpage
 
 \section*{Naziv i adresa repozitorija}
+\clearpage
 
 \section*{Kloniranje repozitorija}
+\clearpage
 
 \input{git_output/git_clone}
+\clearpage
 
 \subsection*{Struktura kloniranog repozitorija}
+\clearpage
 
 \input{git_output/git_branch_all_1}
+\clearpage
 
 \input{graphs/origin_master}
+\clearpage
 
 \subsection*{Djelomično kloniranje povijesti repozitorija}
+\clearpage
 
 \gitoutputcommand{git clone --depth 5 --no-hardlinks git://github.com/tkrajina/uvod-u-git.git}
+\clearpage
 
 \section*{Digresija o grafovima, repozitorijima i granama}
+\clearpage
 
 \input{graphs/digresija_o_grafovima_1}
+\clearpage
 
 \input{graphs/digresija_o_grafovima_2}
+\clearpage
 
 \input{graphs/digresija_o_grafovima_3}
+\clearpage
 
 \input{graphs/digresija_o_grafovima_4}
+\clearpage
 
 \section*{\emph{Fetch}}
+\clearpage
 
 \input{graphs/origin_master_2}
+\clearpage
 
 \input{git_output/git_fetch}
+\clearpage
 
 \input{graphs/origin_master_3}
+\clearpage
 
 \gitoutputcommand{git log origin/master}
+\clearpage
 
 \gitoutputcommand{git diff origin/master}
+\clearpage
 
 \input{git_output/git_checkout_origin_master}
+\clearpage
 
 \gitoutputcommand{git merge origin/master}
+\clearpage
 
 \input{graphs/origin_master_4}
+\clearpage
 
 \gitoutputcommand{git fetch}
+\clearpage
 
 \gitoutputcommand{git merge origin/master}
+\clearpage
 
 \input{graphs/origin_master_2}
+\clearpage
 
 \input{graphs/origin_master_2_2}
+\clearpage
 
 \input{graphs/origin_master_2_3}
+\clearpage
 
 \input{graphs/origin_master_2_4}
+\clearpage
 
 \section*{\emph{Pull}}
+\clearpage
 
 \gitoutputcommand{git fetch\\git merge origin/master}
+\clearpage
 
 \gitoutputcommand{git pull}
+\clearpage
 
 \section*{\emph{Push}}
+\clearpage
 
 \input{graphs/push_1}
+\clearpage
 
 \input{graphs/push_2}
+\clearpage
 
 \input{git_output/git_push_origin_master}
+\clearpage
 
 \input{graphs/push_3}
+\clearpage
 
 \input{graphs/push_2_1}
+\clearpage
 
 \input{git_output/git_push_origin_master_rejected}
+\clearpage
 
 \gitoutputcommand{git fetch}
+\clearpage
 
 \input{graphs/push_2_2}
+\clearpage
 
 \gitoutputcommand{git merge origin/master}
+\clearpage
 
 \input{graphs/push_2_3}
+\clearpage
 
 \gitoutputcommand{git push origin master}
+\clearpage
 
 \input{graphs/push_2_4}
+\clearpage
 
 \subsection*{\emph{Push} tagova}
+\clearpage
 
 \gitoutputcommand{git push origin --tags}
+\clearpage
 
 \gitoutputcommand{git push origin :refs/tags/moj-tag}
+\clearpage
 
 \subsection*{\emph{Rebase} origin/master}
+\clearpage
 
 \gitoutputcommand{git checkout master\\git rebase origin/master\\git push origin master}
+\clearpage
 
 \subsection*{Prisilan \emph{push}}
+\clearpage
 
 \input{graphs/push_2_2}
+\clearpage
 
 \gitoutputcommand{git push -f origin master}
+\clearpage
 
 \input{graphs/push_2_2_1}
+\clearpage
 
 \section*{Rad s granama}
+\clearpage
 
 \input{graphs/origin_master_s_granama}
+\clearpage
 
 \input{git_output/git_branch_all_2}
+\clearpage
 
 \gitoutputcommand{git checkout origin/grana\\
 git branch grana\\
 git checkout grana}
+\clearpage
 
 \input{graphs/origin_master_s_granama_2}
+\clearpage
 
 \input{git_output/git_branch_all_3}
+\clearpage
 
 \gitoutputcommand{git fetch}
+\clearpage
 
 \gitoutputcommand{git merge origin/grana}
+\clearpage
 
 \gitoutputcommand{git push origin grana}
+\clearpage
 
 \tocSubSection{Brisanje udaljene grane}
+\clearpage
 
 \gitoutputcommand{git push origin :grana-koju-zelimo-obrisati}
+\clearpage
 
 \gitoutputcommand{git fetch --prune}
+\clearpage
 
 \section*{Udaljeni repozitoriji}
+\clearpage
 
 \subsection*{Dodavanje i brisanje udaljenih repozitorija}
+\clearpage
 
 \gitoutputcommand{git clone https://github.com/korisnik/projekt.git}
+\clearpage
 
 \gitoutputcommand{git remote add bojanov-repo git@domena.com:projekt}
+\clearpage
 
 \gitoutputcommand{git remote rename origin karlin-repo}
+\clearpage
 
 \input{git_output/git_remote_show}
+\clearpage
 
 \gitoutputcommand{git fetch karlin-repo\\git fetch bojanov-repo}
+\clearpage
 
 \gitoutputcommand{git checkout karlin-repo/master}
+\clearpage
 
 \gitoutputcommand{git checkout master\\git merge karlin-repo/master}
+\clearpage
 
 \input{graphs/remote_s_granama}
+\clearpage
 
 \input{graphs/remote_s_granama_2}
+\clearpage
 
 \input{git_output/git_branch_a_s_granama}
+\clearpage
 
 \subsection*{\emph{Fetch}, \emph{merge}, \emph{pull} i \emph{push} s udaljenim repozitorijima}
+\clearpage
 
 \gitoutputcommand{git fetch ivanov-repo}
+\clearpage
 
 \gitoutputcommand{git merge ivanov-repo/master}
+\clearpage
 
 \gitoutputcommand{git merge ivanov-repo/grana}
+\clearpage
 
 \gitoutputcommand{git pull ivanov-repo master}
+\clearpage
 
 \gitoutputcommand{git pull ivanov-repo grana}
+\clearpage
 
 \gitoutputcommand{git push ivanov-repo master}
+\clearpage
 
 \gitoutputcommand{git push ivanov-repo grana}
+\clearpage
 
 \section*{\emph{Pull request}}

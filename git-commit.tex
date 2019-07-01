@@ -1,88 +1,130 @@
 \chapter*{Spremanje izmjena}
-\addcontentsline{toc}{chapter}{Spremanje izmjena}
+\clearpage
 
 \input{graphs/linearni_model}
+\clearpage
 
 \dots{}i primjer s granama:
+\clearpage
 
 \input{graphs/primjer_s_granama_i_spajanjima}
+\clearpage
 
 \section*{Status}
+\clearpage
 
 \input{git_output/git_status_0}
+\clearpage
 
 \input{git_output/git_status_1}
+\clearpage
 
 \input{git_output/git_diff_1}
+\clearpage
 
 \gitoutputcommand{git diff -U10}
+\clearpage
 
 \section*{Indeks}
+\clearpage
 
 \input{git_output/git_status_prije_indeksa}
+\clearpage
 
 \subsection*{Spremanje u indeks}
+\clearpage
 
 \gitoutputcommand{git add uvod.tex}
+\clearpage
 
 \input{git_output/git_status_nakon_indeksa}
+\clearpage
 
 \gitoutputcommand{git add naziv\_direktorija/*}
+\clearpage
 
 \gitoutputcommand{git add .}
+\clearpage
 
 \subsection*{Micanje iz indeksa}
+\clearpage
 
 \gitoutputcommand{git reset HEAD -- <datoteka1> <datoteka2> \dots}
+\clearpage
 
 \gitoutputcommand{git checkout HEAD -- <datoteka1> <datoteka2> \dots}
+\clearpage
 
 \subsection*{O indeksu i stanju datoteka}
+\clearpage
 
 \input{git_output/git_status_nakon_indeksa}
+\clearpage
 
 \input{git_output/git_status_nakon_indeksa_2}
+\clearpage
 
 \gitoutputcommand{git add $<$datoteka$>$}
+\clearpage
 
 \section*{Prvi commit}
+\clearpage
 
 \gitoutputcommand{git commit -m "Nova verzija"}
+\clearpage
 
 \input{git_output/git_status_0}
+\clearpage
 
 \subsection*{Indeks i \emph{commit} grafički}
+\clearpage
 
 \input{graphs/linearni_bez_zadnjeg_cvora_0}
+\clearpage
 
 \input{graphs/linearni_bez_zadnjeg_cvora_1}
+\clearpage
 
 \input{graphs/linearni_sa_zadnjim_cvorom}
+\clearpage
 
 \subsection*{Datoteke koje ne želimo u repozitoriju}
+\clearpage
 
 \gitoutputcommand{git rm --cached test.pyc}
+\clearpage
 
 \section*{Povijest projekta}
+\clearpage
 
 \input{git_output/git_log_0}
+\clearpage
 
 \section*{Ispravljanje zadnjeg \emph{commit}a}
+\clearpage
 
 \gitoutputcommand{git commit --amend -m "Nova verzija, promijenjen README.md"}
+\clearpage
 
 \section*{Git gui}
+\clearpage
 
 \gitoutputcommand{git gui}
+\clearpage
 
 \gitgraphics{images/git-gui.png}{12cm}
+\clearpage
 
 \gitgraphics{images/git-gui-stage-lines-to-commit.png}{12cm}
+\clearpage
 
 \section*{Clean}
+\clearpage
 
 \input{git_output/git_clean}
+\clearpage
 
 \gitoutputcommand{git clean -f}
+\clearpage
 
 \gitoutputcommand{git clean -f -- <direktorij>}

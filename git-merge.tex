@@ -1,18 +1,26 @@
 \chapter*{Preuzimanje izmjena iz jedne grane u drugu}
+\clearpage
 
 \input{graphs/git_merge_1}
+\clearpage
 
 \section*{Git \emph{merge}}
+\clearpage
 
 \input{git_output/git_merge_1}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \section*{Što \emph{merge} radi kada\dots}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \section*{Što se dogodi kad\dots}
+\clearpage
 
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
@@ -25,8 +33,10 @@
 	Naslonivši uho\\%
 	na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
+\clearpage
 
 \input{graphs/ab_simic_1}
+\clearpage
 
 	\gitoutput{%
 	\textcolor{blue}{PJESNICI}\\%
@@ -39,6 +49,7 @@
 	Naslonivši uho\\%
 	na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
+\clearpage
 
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
@@ -51,8 +62,10 @@
 	Naslonivši uho\\%
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
+\clearpage
 
 \input{graphs/ab_simic_2}
+\clearpage
 
 	\gitoutput{%
 	\textcolor{blue}{PJESNICI}\\%
@@ -65,10 +78,13 @@
 	Naslonivši uho\\%
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
+\clearpage
 
 \section*{Konflikti}
+\clearpage
 
 \input{graphs/ab_simic_1}
+\clearpage
 
 	\gitoutput{%
 	PJESNICI\\%
@@ -81,6 +97,7 @@
 	Naslonivši uho\\%
 	na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}
+\clearpage
 
 	\gitoutput{%
 	PJESNICI\\%
@@ -93,8 +110,10 @@
 	Naslonivši uho\\%
 	na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}
+\clearpage
 
 \input{git_output/git_merge_konflikt}
+\clearpage
 
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
@@ -111,83 +130,123 @@
 	\\%
 	Naslonivši uho na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
+\clearpage
 
 \input{git_output/git_merge_konflikt_2}
+\clearpage
 
 \gitoutputcommand{git config --global merge.tool /putanja/do/programa}
+\clearpage
 
 \gitgraphics{images/mergetool.png}{12cm}
+\clearpage
 
 \section*{\emph{Merge}, \emph{branch} i povijest projekta}
+\clearpage
 
 \input{graphs/linearni_model}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \section*{\emph{Fast forward}}
+\clearpage
 
 \input{graphs/bez_fast_forward}
+\clearpage
 
 \input{graphs/fast_forward}
+\clearpage
 
 \input{graphs/fast_forward_2}
+\clearpage
 
 \dots{}git izvršava takozvani \emph{fast-forward merge}:
+\clearpage
 
 \input{graphs/fast_forward_3}
+\clearpage
 
 \gitoutputcommand{git merge --no-ff varijanta}
+\clearpage
 
 \section*{\emph{Rebase}}
+\clearpage
 
 \input{graphs/linearni_model}
+\clearpage
 
 \input{graphs/bez_fast_forward}
+\clearpage
 
 \input{graphs/bez_fast_forward_rebase}
+\clearpage
 
 \input{graphs/bez_fast_forward_rebase_2}
+\clearpage
 
 \gitoutputcommand{git rebase master}
+\clearpage
 
 \input{git_output/git_rebase}
+\clearpage
 
 \input{git_output/git_rebase_konflikt}
+\clearpage
 
 \input{graphs/fast_forward_4}
+\clearpage
 
 \gitoutputcommand{git rebase --continue}
+\clearpage
 
 \input{git_output/git_rebase_konflikt_continue}
+\clearpage
 
 \gitoutputcommand{git rebase --abort}
+\clearpage
 
 \section*{\emph{Rebase} ili ne \emph{rebase}?}
+\clearpage
 
 \input{graphs/fast_forward_4}
+\clearpage
 
 \section*{\emph{Cherry-pick}}
+\clearpage
 
 \input{graphs/git_merge_1}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \input{git_output/git_log_za_cherry_pick}
+\clearpage
 
 \input{git_output/git_cherry_pick}
+\clearpage
 
 \section*{Merge bez \emph{commit}a\footnote{Ovaj naslov se odnosi samo na starije git klijente.}}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \input{git_output/git_merge_log}
+\clearpage
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-commit}
+\clearpage
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
+\clearpage
 
 \section*{\emph{Squash merge}}
+\clearpage
 
 \input{graphs/git_merge_2}
+\clearpage
 
 \gitoutputcommand{git merge --squash eksperimentalna-grana}
