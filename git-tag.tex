@@ -1,59 +1,11 @@
 \chapter*{Tagovi}
-\addcontentsline{toc}{chapter}{Tagovi}
-
-\emph{Tag}, "oznaka" iliti "ključna riječ" je naziv koji je populariziran s dolaskom takozvanih "web 2.0" sajtova. 
-Mnogi ne znaju, ali $tag$ovi su postojali i prije toga. 
-$Tag$ je jedan od načina klasifikacije dokumenata.
-
-Standardni način je hijerarhijsko klasificiranje.
-Po njemu, sve ono što kategoriziramo mora biti u nekoj kategoriji.
-Svaka kategorija može imati podkategorije i svaka kategorija može imati najviše jednu nadkategoriju.
-Tako klasificiramo životinje, biljke, knjige u knjižnici.
-Dakle, postoji "stablo" kategorija i samo jedan čvor može biti "korijen" tog stabla.
-
-Za razliku od toga \emph{tag}iranje je slobodnije.
-\emph{Tag}irati možete bilo što i stvari koje \emph{tag}iramo mogu imati proizvoljan broj \emph{tag}ova.
-Kad bi u knjižnicama tako označavali knjige, onda one na policama ne bi bilo podijeljene po kategorijama.
-Sve bi bile poredane po nekom proizvoljnom redoslijedu (na primjer, vremenu kako su stizale u knjižicu), a neki \emph{software} bi za svaku pamtio oznake iliti $tag$ove.
-
-Mi ovdje radimo s poviješću projekata pa ćemo tu povijest i \emph{tag}irati.
-Preciznije, \emph{tag}irati ćemo čvorove našeg grafa povijesti projekta -- \emph{commit}ove.
-Za razliku od klasične klasifikacije s $tag$ovima -- \emph{tag} ovdje mora biti jedinstven.
-Dakle, jednom iskorišteni $tag$ se ne može više koristiti.
-
-Kao što znamo, u gitu svaki \emph{commit} ima svoj identifikator\footnote{To je onaj string od 40 alfanumeričkih znakova.}. 
-Međutim, taj string je nama ljudima besmislen.
-
-Nama su smisleni komentari uz kod, međutim, ovi \textbf{komentari nisu jedinstveni}.
-Projekt možemo pretraživati po riječima iz komentara, ali nema smisla od gita tražiti "Daj mi stanje projekta kakvo je bilo u trenutku kad je komentar \emph{commit}a bio 'Ispravljen bug s izračunom kamate'".
-Jer, moglo se desiti da smo imali dva (ili više) \emph{commit}a s istim komentarom.
-
-Sjećate li se priče o verzioniranju koda?
-Bilo je riječi o primjeru programera koji radi na programu i izdaje verzije \verb+1.0+, \verb+1.1+, \verb+2.0+, \verb+2.1+\dots svoje aplikacije:
 
 \input{graphs/linearni_model_2}
 
-\dots{}e pa, \emph{tag}ovi bi ovdje bili \verb+1.0+, \verb+1.1+, \verb+2.0+ i \verb+2.1+.
-
-Dakle, \emph{tag} nije ništa drugo nego neki kratki naziv za određeni \emph{commit}.
-Tag je \textbf{alias} za neki $commit$.
-
-Rad s \emph{tag}ovima je jednostavan; s \verb+git tag+ ćete dobiti popis svih tretnuno definiranih:
-
 \input{git_output/git_tag}
-
-S \verb+git tag <naziv_taga>+ dodajete novi tag:
 
 \gitoutputcommand{git tag testni-tag}
 
-\dots{}dok s \verb+git tag -d <naziv_taga>+ brišete neki od postojećih tagova:
-
 \gitoutputcommand{git tag -d testni-tag}
 
-Rad s tagovima je jednostavan, a ima samo jedna komplikacija koja se može dogoditi u radu s udaljenim projektima, no o tome ćemo malo kasnije.
-
-Želimo li projekt privremeno vratiti na stanje kakvo je bilo u trenutku kad smo definirali \emph{tag} \verb+1.0+:
-
 \gitoutputcommand{git checkout 1.0}
-
-I sad tu možete stvoriti novu granu s \verb+git branch <grana>+ ili vratiti projekt u zadnje stanje s \verb+git checkout HEAD+.

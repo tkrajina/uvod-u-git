@@ -1,150 +1,51 @@
 \chapter*{Grananje}
-\addcontentsline{toc}{chapter}{Grananje}
-
-Početi ćemo s otprije poznatim grafom:
 
 \input{graphs/primjer_s_imenovanim_granama_i_spajanjima}
 
-Ovaj put s jednom izmjenom, svaka "grana" ima svoj naziv: \verb+novi-feature+, \\ \verb+ispravak-problema-x+ i \verb+master+.
-U uvodnom je poglavlju opisan jedan od mogućih scenarija koji je mogao dovesti do ovog grafa.
-Ono što je ovdje važno još jednom spomenuti je sljedeće: svaki je čvor grafa stanje projekta u nekom trenutku njegove povijesti. 
-Svaka strelica iz jednog u drugi čvor izmjena je koju je programer napravio i snimio u nadi da će dovesti do željenog ponašanja aplikacije.
-
 \section*{Popis grana projekta}
-\addcontentsline{toc}{section}{Popis grana projekta}
-
-Jedna od velikih prednosti gita je što omogućuje jednostavan i brz rad s višestrukim granama.
-Želimo li vidjeti koje točno grane našeg projekta trenutno postoje naredba je \verb+git branch+.
-U većini će slučajeva rezultat te naredbe biti:
 
 \input{git_output/git_branch_s_jednom_granom}
-
-To znači da naš projekt trenutno ima samo jednu granu.
-\textbf{Svaki git repozitorij u početku ima jednu jedinu granu i ona se uvijek zove} \verb+master+.
-
-Ako smo naslijedili projekt kojeg je netko prethodno već granao, dobiti ćemo nešto kao:
 
 \input{git_output/git_branch_s_vise_grana}
 
-Ili na primjer ovako:
-
 \input{git_output/git_branch_s_vise_grana_2}
 
-Svaki redak predstavlja jednu granu, a redak koji počinje zvjezdicom (*) \textbf{grana je u kojoj se trenutno nalazimo}.
-U toj grani tada možemo raditi sve što i na \verb+master+ -- commitati, gledati njenu povijest, \dots
-
 \section*{Nova grana}
-\addcontentsline{toc}{section}{Nova grana}
-
-Ako je trenutni ispis naredbe \verb+git branch+ ovakav:
 
 \input{git_output/git_branch_s_jednom_granom}
 
-\dots{} to znači da je graf našeg projekta ovakav:
-
 \input{graphs/kreiranje_grane_1}
-
-Sad se može desiti da nakon stanja \emph c želimo isprobati dva različita pristupa.
-Novu granu možemo stvoriti naredbom \verb+git branch <naziv_grane>+.
-Na primjer:
 
 \gitoutputcommand{git branch eksperimentalna-grana}
 
-Sad je novo stanje projekta:
-
 \input{graphs/kreiranje_grane_2}
-
-Imamo granu \verb+eksperimentalna-grana+, ali u njoj nemamo još ni jednog čvora (\emph{commit}a).
-U toj grani sad možemo raditi točno onako kako smo se do sada naučili raditi s \verb+master+: mijenjati (dodavati, brisati) datoteke, spremati ih u indeks s \verb+git add+ i \emph{commit}aati s \verb+git commit+.
-Sad bismo dobili da naša nova grana ima svoj prvi čvor: 
 
 \input{graphs/kreiranje_grane_2_1}
 
 \section*{Prebacivanje s grane na granu}
-\addcontentsline{toc}{section}{Prebacivanje s grane na granu}
-
-Primijetimo da se i dalje "nalazimo" na \verb+master+ grani:
 
 \input{git_output/git_branch_primjer}
-
-Naime, \verb+git branch+ stvorit će nam samo novu granu.
-Prebacivanje s jedne grane na drugu granu radi se naredbom \verb+git checkout <naziv_grane>+:
 
 \input{git_output/git_checkout}
 
-Analogno, na glavnu se granu vraćamo s \verb+git checkout master+.
-
-Sada kad smo se prebacili na novu granu, možemo tu uredno \emph{commit}ati svoje izmjene. 
-Sve što tu radimo neće biti vidljivo u \verb+master+ grani.
-
 \input{graphs/kreiranje_grane_3}
-
-Kad god želimo, možemo se prebaciti na \verb+master+ i tamo nastaviti rad koji nije nužno vezan uz izmjene u drugoj grani:
 
 \input{graphs/kreiranje_grane_4}
 
-Nakon prebacivanja na \verb+master+, izmjene koje smo napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g neće nam biti vidljive.
-Kad se prebacimo na \verb+eksperimentalna-grana+, neće nam biti vidljive izmjene iz \emph x, \emph y i \emph z.
-
-Ako ste ikad radili grane na nekom drugom, klasičnom, sustavu za verzioniranje koda, onda ste vjerojatno naviknuti da to grananje potraje malo duže (od nekoliko sekundi do nekoliko minuta).
-Stvar je u tome što u većini ostalih sustava \emph{proces} grananja u stvari podrazumijeva \textbf{kopiranje svih datoteka} na mjesto gdje se čuva nova grana.
-To em traje neko vrijeme, em zauzima više memorije na diskovima.
-
-Kod gita je to puno jednostavnije. Nakon što kreiramo novu granu nema nikakvog kopiranja na disku. 
-Čuva se samo informacija da smo kreirali novu granu i \textbf{posebne verzije datoteka koje su specifične za tu granu} (o tome više u posebnom poglavlju).
-Svaki put kad spremite izmjenu čuva se samo ta izmjena.
-Zahvaljujući tome postupak grananja je izuzetno brz i zauzima malo mjesta na disku.
-
 \subsection*{Prebacivanje na granu i tekuće izmjene}
-\addcontentsline{toc}{subsection}{Prebacivanje na granu i tekuće izmjene}
-
-Kod prebacivanja s grane na granu s \verb+git checkout+ može nastati manji problem ako imamo ne\emph{commit}anih izmjena.
-Postoji nekoliko situacija u kojima nam git neće dopustiti prebacivanje.
-Najčešća je kada u dvije grane imamo dvije različite verzije iste datoteke, a tu smo datoteku u tekućoj grani izmijenili i ostavili ne\emph{commit}anu.
-
-Zapamtite, \textbf{najbolje je prebacivati se s grane na granu tek nakon što smo \emph{commit}ali sve izmjene}. Tako će nas u novoj grani dočekati čista situacija, a ne datoteke koje smo izmijenili dok smo radili na prethodnoj grani. 
 
 \section*{Brisanje grane}
-\addcontentsline{toc}{section}{Brisanje grane}
-
-Zato što je grananje memorijski i procesorski nezahtjevno i brzo, pripremite se na situacije kad ćete se naći s \textbf{previše} grana.
-Možda smo neke grane napravili da bismo isprobali nešto novo, a to se na kraju pokazalo kao loša ideja pa smo granu napustili.
-Ili smo je započeli da bismo riješili neki problem, ali taj problem je prije nas riješio netko drugi.
-
-U tom slučaju granu možemo obrisati s \verb+git branch -D <naziv_grane>+. 
-Dakle, ako je stanje grana na našem projektu:
 
 \input{git_output/git_branch_primjer}
 
-\dots{}nakon:
-
 \input{git_output/git_branch_D}
-
-\dots{}novo stanje će biti:
 
 \input{git_output/git_branch_s_jednom_granom}
 
-Primijetimo samo da sad ne možemo obrisati \verb+master+:
-
 \input{git_output/git_branch_D_trenutne_grane}
 
-To vrijedi i općenito, ne možemo obrisati granu na kojoj se trenutnačno nalazimo.
-
-Treba znati i to da brisanjem grane ne brišemo njene \emph{commit}ove.
-Oni ostaju dio povijesti do daljnjega.
-Više detalja o tome koji točno \emph{commit}ovi i u kojim se uvijetima brišu iz povijesti će biti u poglavlju o "higijeni" projekta.
-
 \section*{Preuzimanje datoteke iz druge grane}
-\addcontentsline{toc}{section}{Preuzimanje datoteke iz druge grane}
-
-S puno grana, događati će se svakakve situacije.
-Relativno česta situacija je da želimo preuzeti samo jednu ili više datoteka iz druge grane, ali ne želimo \textbf{preći} na tu drugu granu.
-Znamo da su neke datoteke u drugoj grani izmijenjene i želimo ih preuzeti u trenutnu granu.
-To se može ovako:
 
 \gitoutputcommand{git checkout <naziv\_grane> -- <datoteka1> <datoteka2> ...}
 
-Na primjer, ako smo u \verb+master+, a treba nam datoteka \verb+.classpath+ koju smo izmijenili u \verb+eksperiment+, onda ćemo je dobiti s:
-
 \gitoutputcommand{git checkout eksperiment -- .classpath}
-

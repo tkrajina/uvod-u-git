@@ -1,104 +1,18 @@
 \chapter*{Preuzimanje izmjena iz jedne grane u drugu}
-\addcontentsline{toc}{chapter}{Preuzimanje izmjena iz jedne grane u drugu}
-
-Vratimo se opet na već viđenu ilustraciju:
 
 \input{graphs/git_merge_1}
 
-Prebacivanjem na granu \verb+master+, izmjene koje smo napravili u \emph{commit}ovima \emph d, \emph e, \emph f i \emph g nam neće više biti dostupne.
-Slično, prebacivanjem na \verb+eksperimentalna-grana+ -- neće nam biti dostupne izmjene iz \emph x, \emph y i \emph z.
-
-To je u redu dok svoje izmjene želimo raditi u izolaciji od ostatka koda. 
-Što ako smo u \verb+eksperimentalna-grana+ ispravili veliki bug i htjeli bismo sad tu ispravku preuzeti u \verb+master+?
-
-Ili, što ako zaključimo kako je rezultat eksperimenta kojeg smo isprobali u \\
-\verb+eksperimentalna-grana+ uspješan i želimo to sad imati u \verb+master+?
-Ono što nam sad treba je da nekako \textbf{izmjene iz jedne grane preuzmemo u drugu granu}.
-U gitu, to se naziva \emph{merge}.
-Iako bi merge mogli doslovno prevesti kao "spajanje", to nije ispravna riječ. 
-Rezultat spajanja bi bila samo jedna grana. 
-Nakon \emph{merge}a dvije grane -- one nastavljaju svoj život. 
-Jedino što se sve izmjene koje su do tog trenutka rađene u jednoj grani preuzimaju u drugu granu.
-
 \section*{Git \emph{merge}}
-\addcontentsline{toc}{section}{Git \emph{merge}}
-
-Pretpostavimo, na primjer, da sve izmjene iz \verb+eksperimentalna-grana+ želimo u \verb+master+. 
-To se radi s naredbom \verb+git merge+, a da bi to napravili \textbf{trebamo se nalaziti u onoj grani u koju želimo preuzeti izmjene} (u našem slučaju \verb+master+).
-Tada:
 
 \input{git_output/git_merge_1}
 
-Rezultat naredbe \verb+git merge+ je rekapitulacija procesa preuzimanja izmjena: koliko je linija dodano, koliko obrisano, koliko je datoteka dodano, koliko obrisano, itd\dots
-Sve tu piše.
-
-Još nešto je važno napomenuti -- ako je \verb+git merge+ proveden bez grešaka, to automatski dodaje novi \emph{commit} u grafu. 
-Ne moramo "ručno" \emph{commit}ati.
-
-Grafički se \verb+git merge+ može prikazati ovako:
-
 \input{graphs/git_merge_2}
-
-Za razliku od svih ostalih \emph{commit}ova, ovaj ima dva "roditelja" iliti "prethodnika"\footnote{Ostali \emph{commit}ovi imaju ili jednog prethodnika ili nijednog -- ako se radi o prvom \emph{commit}u u repozitoriju.} -- jednog iz grane u kojoj se nalazi i drugog iz grane iz koje su izmjene preuzete.
-Odnosno, na grafu čvor \emph h jedini ima dvije strelice koje idu "u njega".
-
-Kad smo preuzeli izmjene iz jednog grafa u drugi -- obje grane mogu uredno nastaviti svoj dosadašnji "život".
-U obje možemo uredno \emph{commit}ati, preuzimati izmjene iz jedne grane u drugu, i sl.
-Kasnije možemo i ponoviti preuzimanje izmjena, odnosno \emph{merge}anje.
-I, eventualno, jednog dana kad odlučimo da nam grana više ne treba, možemo ju obrisati.
 
 \section*{Što \emph{merge} radi kada\dots}
-\addcontentsline{toc}{section}{Što \emph{merge} radi kada\dots}
-
-Vjerojatno se pitate što je rezultat \emph{merge}anja u nekim situacijama.
-Na primjer u jednoj grani smo dodali datoteku, a u drugoj editirali ili u jednoj editirali početak datoteke, a u drugoj kraj iste ili\dots
-
-Kad sam ga ja počeo koristiti imao sam malu tremu prije svakog \verb+git merge+.
-Jednostavno, iskustvo CVS-om, SVN-om i TFS-om mi nije baš ulijevalo povjerenja u to da ijedan sustav za verzioniranje koda zna ovu radnju izvršiti kako treba.
-Nakon svakog \emph{merge}a sam išao proučavati je li rezultat ispravan i provjeravao bih da mi nije možda pregazio neku datoteku ili važan komad koda.
-Rezultat tog neformalnog istraživanja je: Moja (ljudska) i gitova (strojna) intuicija o tome što treba napraviti se skoro uvijek poklapaju.
-
-Ne brinite se, git će napraviti ono što treba. 
-
-Umjesto beskonačnih hipotetskih situacija tipa "Što će git napraviti ako sam u grani $A$ izmijenio $x$, a u grani $B$ izmijenio $y$\dots" -- najbolje je da to jednostavno isprobate. 
-U ostatku ovog poglavlja ćemo samo proći nekoliko posebnih situacija.
-
-Uzmimo poznati slučaj:
 
 \input{graphs/git_merge_2}
 
-Dakle, što će biti rezultat \emph{merge}anja, ako\dots
-
-\begin{itemize}
-	\item \dots{}u eksperimentalnoj grani smo izmijenili datoteku, a u \verb+master+ nismo -- izmjene iz eksperimentalne će se dodati u \verb+master+.
-	\item \dots{}u eksperimentalnoj grani smo dodali datoteku -- ta datoteka će biti dodana i u \verb+master+.
-	\item \dots{}u eksperimentalnoj grani smo izbrisali datoteku -- datoteka će biti obrisana u glavnoj.
-	\item \dots{}u eksperimentalnoj grani smo \textbf{izmijenili i preimenovali} datoteku, a u \verb+master+ ste samo izmijenili datoteku -- ako izmjene na kodu nisu bile \textbf{konfliktne}, onda će se u \verb+master+ datoteka preimenovati i sadržavati će izmjene iz obje grane.
-	\item \dots{}u eksperimentaloj grani smo obrisali datoteku, a u glavnoj ju izmijenili -- \textbf{konflikt}.
-	\item itd\dots
-\end{itemize}
-
-Vjerojatno slutite što znači ova riječ koja je ispisana masnim slovima: \textbf{konflikt}.
-Postoje slučajevi u kojima git ne zna što napraviti. 
-I tada se očekuje od korisnika da sam riješi problem. 
-
 \section*{Što se dogodi kad\dots}
-\addcontentsline{toc}{section}{Što se dogodi kad\dots}
-
-Stvar nije uvijek tako jednostavna.
-Dogoditi će se da u jednoj grani napravite izmjenu u jednoj datoteci, a u drugoj grani napravite izmjenu na \emph{istoj} datoteci.
-I što onda?
-
-Pokušat ću to ilustrirati na jednom jednostavnom primjeru\dots
-Uzmimo hipotetski scenarij -- neka je Antun Branko Šimić još živ i piše pjesme.
-Napiše pjesmu, pa s njome nije baš zadovoljan, pa malo križa po papiru, pa izmijeni prvi stih, pa izmijeni zadnji stih.
-Ponekad mu se rezultat sviđa, ponekad ne.
-Ponekad krene iznova.
-Ponekad ima ideju, napiše nešto nabrzinu, i onda kasnije napravi dvije verzije iste pjesme.
-Ponekad\dots
-Kao stvoreno za git, nije li?
-
-Recimo da je autor krenuo sa sljedećom verzijom pjesme:
 
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
@@ -112,12 +26,7 @@ Recimo da je autor krenuo sa sljedećom verzijom pjesme:
 	na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
 
-I sad ovdje nije baš bio zadovoljan sa cjelinom i htio bi isprobati dvije varijante.
-Budući da ga je netko naučio git, iz početnog stanja (\emph a) napravio je dvije verzije.
-
 \input{graphs/ab_simic_1}
-
-U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 
 	\gitoutput{%
 	\textcolor{blue}{PJESNICI}\\%
@@ -131,8 +40,6 @@ U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 	na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
 
-\dots{}dok je u drugoj varijanti (\emph c) izmijenio zadnji stih:
-
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
 	\\%
@@ -144,14 +51,9 @@ U prvoj varijanti (\emph b), izmijenio je naslov, tako da je sad pjesma glasila:
 	Naslonivši uho\\%
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
-
-S obzirom da je bio zadovoljan s oba riješenja, odlučio je izmjene iz grane \verb+varijanta+ preuzeti u \verb+master+.
-Nakon \verb+git checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 
 \input{graphs/ab_simic_2}
 
-\dots{}odnosno, pjesnikovim riječima:
-
 	\gitoutput{%
 	\textcolor{blue}{PJESNICI}\\%
 	\\%
@@ -164,20 +66,9 @@ Nakon \verb+git checkout master+ i \verb+git merge varijanta+, rezultat je bio:
 	\textcolor{blue}{na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}}
 
-I to je jednostavno.
-U obje grane je mijenjao istu datoteku, ali u jednoj je dirao početak, a u drugoj kraj.
-I rezultat \emph{merge}anja je bio očekivan -- datoteka u kojoj je izmijenjen i početak i kraj.
-
 \section*{Konflikti}
-\addcontentsline{toc}{section}{Konflikti}
-
-Što da je u obje grane dirao isti dio pjesme?
-Što da je nakon:
 
 \input{graphs/ab_simic_1}
-
-\dots{}stanje bilo ovakvo:
-U verziji \emph a je pjesma sad glasila:
 
 	\gitoutput{%
 	PJESNICI\\%
@@ -191,8 +82,6 @@ U verziji \emph a je pjesma sad glasila:
 	na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}
 
-\dots{}a u verziji \emph b:
-
 	\gitoutput{%
 	PJESNICI\\%
 	\\%
@@ -205,12 +94,7 @@ U verziji \emph a je pjesma sad glasila:
 	na ćutanje sto ih okružuje i muči\\%
 	pjesnici su vječno treptanje u svijetu}
 
-Sad je rezultat naredbe \verb+git merge varijanta+:
-
 \input{git_output/git_merge_konflikt}
-
-To znači da git nije znao kako automatski preuzeti izmjene iz \emph b u \emph a.
-Idete li sad editirati datoteku s pjesmom naći ćete:
 
 	\gitoutput{%
 	PJESNICI U SVIJETU\\%
@@ -228,97 +112,23 @@ Idete li sad editirati datoteku s pjesmom naći ćete:
 	Naslonivši uho na tišinu sto ih okružuje i muči\\%
 	oni su vječno treptanje u svijetu}
 
-Dakle, dogodio se \textbf{konflikt}. 
-U crveno je obojan dio za kojeg git ne zna kako ga \emph{merge}ati.
-S \verb+HEAD+ je označeno stanje iz trenutne grane, a s \verb+eksperimentalna-grana+ stanje iz druge grane.
-
-Za razliku od standardnog \emph{merge}, ovdje niti jedna datoteka nije \emph{commit}ana. 
-To možete lako provjeriti sa \verb+git status+:
-
 \input{git_output/git_merge_konflikt_2}
-
-Sad se od autora očekuje da sam odluči kako će izgledati datoteka nakon \emph{merge}a.
-Jednostavan način je da editira tu datoteku i sam ju izmijeni kako želi.
-Nakon toga treba ju \emph{commit}ati na standardan način.
-
-Drugi način je da koristi \verb+git mergetool+.
-Ako se sjećate početka ove knjige, govorilo se o standardnoj konfiguraciji. 
-Jedna od opcija je tamo bila i "mergetool", a to je program s kojim lakše rješavate ovakve konflikte.
-
-Git, sam po sebi, nema ugrađenih alata za vizualni prikaz i riješavanje konflikata, ali postoje zasebni programi u tu svrhu. 
-Kad nađete jedan takav koji vam odgovara, postavite ga kao zadani \verb+merge.tool+ alat:
 
 \gitoutputcommand{git config --global merge.tool /putanja/do/programa}
 
-Sad, kad dođe do konflikta i pokrenete \verb+git mergetool+, git će upravo tu aplikaciju pokrenuti i olakšati vam snalaženje u konfliktnim datotekama.
-Na primjer, ako koristite \verb+vimdiff+, onda editiranje konfliktnih datoteka izgleda ovako:
-
 \gitgraphics{images/mergetool.png}{12cm}
 
-Iako to nije nužno (možete uvijek sami editirati konfliktne datoteke) -- to je praktično rješenje za sve koji su naviknuti na slične alate.
-
-Nakon što konflikt u datoteci (ili datotekama) riješite -- izmijenjene datoteke treba \emph{commit}ati.
-
 \section*{\emph{Merge}, \emph{branch} i povijest projekta}
-\addcontentsline{toc}{section}{\emph{Merge}, \emph{branch} i povijest projekta}
-
-Kad radimo s nekim projektom, onda nam je važno da imamo sačuvanu cijelu njegovu povijest.
-To nam omogućava da saznamo tko je originalni autor koda kojeg možda slabije razumijemo.
-Ili želimo vidjeti kojim redoslijedom je neka datoteka nastajala.
-
-Sa standardnim sustavima za verzioniranje, stvar je jednostavna. 
-Grananje i preuzimanje izmjena iz jedne u drugu granu je bilo komplicirano i rijetko se radilo. 
-Posljedica je da su projekti najčešće imali linearnu povijest:
 
 \input{graphs/linearni_model}
 
-S gitom često imamo po nekoliko grana.
-Svaka od tih grana ima svoju povijest, a kako se povećava broj grana tako organizacija projekta postaje veći izazov.
-I zato programeri grane koje više ne koriste brišu\footnote{Treba biti jasno da se brisanjem grane ne brišu nužno i \emph{commit}ovi od kojih se sastojala. Koji se točno \emph{commit}ovi gube brisanjem će biti opisano u poglavlju o "higijeni" repozitorija.}.
-
-Tu sad imamo mali problem.
-Pogledajte, na primjer, ovakav projekt:
-
 \input{graphs/git_merge_2}
 
-Eksperimentalna grana ima svoju povijest, a u trenutku \emph{merge}a, sve izmjene iz te grane su se "prelile" u \verb+master+ i to u \emph{commit} \emph h.
-Postoje situacije u kojima moramo gitovu "razgranatu" povijest svesti na linearnu.
-U drugim situacijama, jednostavno želimo imati ljepši (linearni!) pregled povijesti projekta.
-
-To se može riješiti nečime što se zove \emph{rebase}.
-Da bi to mogli malo bolje objasniti, potrebno je napraviti digresiju u jednu posebnu vrstu \emph{merge}a -- \emph{fast forward}\dots
-
 \section*{\emph{Fast forward}}
-\addcontentsline{toc}{section}{\emph{Fast forward}}
-
-Nakon objašnjenja s prethodnih nekoliko stranica, trebalo bi biti jasno što će se dogoditi ako želimo preuzeti izmjene iz \verb+varijanta+ u \verb+master+ u projektu koji ima ovakvu povijest:
 
 \input{graphs/bez_fast_forward}
 
-To je najobičniji \emph{merge} dvije grane.
-Razmislimo samo, na trenutak, o jednom očitom detalju;
-osnovna pretpostavka i smisao preuzimanja izmjena iz jedne grane u drugu je to da uopće imamo dvije grane.
-To su ove dvije crte u gornjem grafu.
-Dakle, sve to ima smisla u projektu koji ima nelinearnu povijest (više grana).
-
-Postoji jedan slučaj koji zahtijeva pojašnjenje.
-Uzmimo da je povijest projekta bila slična gornjem grafu, ali s jednom malom izmjenom:
-
 \input{graphs/fast_forward}
-
-Programer je napravio novu granu \verb+varijanta+ i na njoj je nastavio rad.
-I svo to vrijeme nije radio nikakve izmjene na \verb+master+.
-Što kad sad želi preuzeti sve izmjene u \verb+master+?
-
-Uočavate li što je ovdje neobično?
-Smisao \emph{merge}anja je u tome da neke izmjene iz jedne grane preuzmemo u drugu.
-Međutim, iako ovdje imamo dvije grane, \textbf{te dvije grane čine jednu crtu}. 
-One imaju jednu povijest. 
-I to linearnu povijest.
-Jedino što se ta linearna povijest proteže kroz obje grane.
-
-Tako su razmišljali i originalni autori gita.
-U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto standardnog \emph{merge}a, koji bi izgledao ovako:
 
 \input{graphs/fast_forward_2}
 
@@ -326,214 +136,58 @@ U git su ugradili automatsko prepoznavanje ovakve situacije i zato, umjesto stan
 
 \input{graphs/fast_forward_3}
 
-Dakle, kopira cijelu povijest (ovdje je to \emph x, \emph y i \emph z) u novu granu%
-\footnote{Preciznije, čvorovi $x$, $y$ i $z$ se sad nalaze u dvije grane. U gitu jedan \emph{commit} može biti dio više različitih grana.}%
-.
-Čak i ako sad obrišete \verb+varijanta+, cijela njegova povijest se nalazi u \verb+master+.
-
-Git sam odlučuje je li potrebno izvršiti \emph{fast-forward merge} i izvršava ga.
-Želimo li ga izbjeći -- to se radi tako da dodamo opciju \verb+--no-ff+ naredbi \verb+git merge+:
-
 \gitoutputcommand{git merge --no-ff varijanta}
 
 \section*{\emph{Rebase}}
-\addcontentsline{toc}{section}{\emph{Rebase}}
-
-Idemo, još jednom, pogledati linearni model:
 
 \input{graphs/linearni_model}
 
-Do sada bi svima trebalo biti jasno da on ima svoje nedostatke, ali ima i pozitivnih strana -- jednostavna i pregledna povijest projekta i privid da je sve skupa teklo po nekom točno određenom rasporedu.
-Korak po korak, do trenutne verzije.
-
-Git nas ne tjera da radimo grane, no postupak grananja čini bezbolnim. 
-I zbog toga povijest projekta \textbf{može} postati cirkus kojeg je teško pratiti i organizirati.
-Organizacija repozitorija zahtijeva posebnu pažnju, posebno ako radite s više ljudi na istom projektu.
-
-Kad bi samo postojao trik kako da iz ovakvog stanja:
-
 \input{graphs/bez_fast_forward}
-
-\dots{}stvorimo ovo\dots
 
 \input{graphs/bez_fast_forward_rebase}
 
-\dots{}tada bi \emph{fast-forward} samo kopirao cijelu našu granu u \verb+master+.
-
-Drugim riječima -- treba nam način da \emph{pomaknemo mjesto od kud smo granali} neku granu. 
-Nakon toga bi brisanjem grane \verb+varijanta+ dobili da su se svi $commit$ovi našeg projekta događali u \verb+master+:
-
 \input{graphs/bez_fast_forward_rebase_2}
-
-Taj trik postoji i zove se \emph{rebase}.
-
-Radi se na sljedeći način; trebamo biti postavljeni u grani koju želimo "pomaknuti". Zatim \verb+git rebase <grana>+, gdje je \verb+<grana>+ ona grana na kojoj kasnije treba izvršiti \emph{fast-forward}. 
-Želimo li granu \verb+test+ "pomaknuti" na kraj grane \verb+master+, (to jest, izvršiti \emph{rebase}):
 
 \gitoutputcommand{git rebase master}
 
-U idealnoj situaciji, git će znati riješiti sve probleme i rezultat naredbe će izgledati ovako:
-
 \input{git_output/git_rebase}
-
-Međutim, ovdje mogu nastati problemi slični klasičnom \emph{merge}u.
-Tako da će se ponekad dogoditi:
 
 \input{git_output/git_rebase_konflikt}
 
-Pogledate li konfliktne datoteke, vidjeti ćete da je njihov format isti kao kod konflikta pri \emph{merge}u.
-Na isti način se od nas očekuje da konflikte riješimo.
-Bilo koristeći \verb+git mergetool+, bilo tako da editiramo datoteku i ispravimo ju tako da dobijemo željeno stanje.
-
-Kod grananja su konflikti vjerojatno malo jasniji -- točno znamo da jedna izmjena dolazi iz jedne grane, a druga iz druge.
-Ovdje će nam se možda dogoditi\footnote{Meni jest, puno puta} da nismo točno sigurni koju konfliktnu izmjenu uzeti.
-Ili ostaviti obje.
-Promotrimo, zato, još jednom grafički prikaz onoga što pokušavamo napraviti:
-
 \input{graphs/fast_forward_4}
-
-Naš cilj je preseliti \textcolor{gray}{sivi} dio tako da postane \textcolor{blue}{plavi}.
-Drugim riječima, izmjene koje smo napravili u \emph d, \emph e i \emph f treba nekako "ugurati" prije \emph x, \emph y i \emph z.
-Tako ćemo stvoriti novu granu koja se sastoji \emph{x'}, \emph{y'} i \emph{z'}.
-
-Konflikt se može dogoditi u trenutku kad git "seli" $x$ u $x'$, ili $y$ u $y'$ ili $z$ u $z'$.
-Recimo da je konflikt nastao u prvom slučaju ($x$ u $x'$).
-Negdje u čvorovima $d$, $e$ i $f$ je mijenjan isti kod koji smo mi mijenjali u $x$\footnote{Primijetite da bi do ovog konflikta došli i s klasičnim \emph{merge}om.}.
-Mi ovdje želimo zadržati povijest iz svih \emph{commit}ova: $d$, $e$, $f$, $x$, $y$ i $z$.
-To treba imati na umu dok odlučujemo kako ćemo ispraviti konflikt.
-
-U slučaju konflikta, često ćemo htjeti zadržati obje verzije konfliktnog koda, treba samo pripaziti na njihov redoslijed i potencijalne sitne bugove koji mogu nastati.
-
-Nakon što smo konflikt ispravili, \textbf{ne smijemo izmjene \emph{commit}ati, nego samo spremiti u indeks s} \verb+git add+.
-Nastavljamo s:
 
 \gitoutputcommand{git rebase --continue}
 
-Ponekad će git znati izvršiti ostatak procesa automatski, a može se dogoditi i da ne zna i opet od nas traži da ispravimo sljedeći konflikt.
-U boljem slučaju (sve automatski), rezultat će biti:
-
 \input{git_output/git_rebase_konflikt_continue}
-
-\dots{}i sad smo slobodni izvesti \emph{merge}, koji će u ovom slučaju sigurno biti \emph{fast-forward}, a to je upravo ono što smo htjeli.
-
-Ako \emph{rebase} ima previše konflikata -- možda se odlučimo odustati od nastavka.
-Prekid \emph{rebase}a i vraćanje repozitorija u stanje prije nego što smo ga pokrenuli možemo obaviti s:
 
 \gitoutputcommand{git rebase --abort}
 
 \section*{\emph{Rebase} ili ne \emph{rebase}?}
-\addcontentsline{toc}{section}{\emph{Rebase} ili ne \emph{rebase}?}
-
-Na vama je odluka želite li jednostavniju (linearnu) povijest projekta ili ne.
-Ukoliko želite -- raditi ćete $rebase$.
-
-Treba imati na umu jednu važnu stvar: \textbf{$rebase$ mijenja povijest projekta}:
 
 \input{graphs/fast_forward_4}
 
-Kad ste prvi put $commit$ali $x$, u vašem kodu nije bilo izmjena koje su nastale u $d$, $e$ i $f$. 
-Ali, kad netko kasnije bude gledao $commit$ $x'$, izgledati će mu da su izmjene iz $d$, $e$ i $f$ bile tamo \textbf{prije} njega.
-Drugim riječima, kad ste $x$ "preselili" u $x'$ vi ste promijenili \textbf{kontekst} tog $commit$a.
-
-Zbog toga postoji par nepisanih pravila kad se rebase može raditi:
-\begin{itemize}
-    \item \textbf{$Rebase$ radite ako su svi $commit$ovi koji će biti mijenjani vaši vlasititi $commit$ovi}. Dakle, ako ste vi autor od $x$, $y$ i $z$ onda se možete odlučiti raditi $rebase$. Ako je neka druga osoba autor npr. od $y$ onda nemojte raditi $rebase$.
-    \item Ako je ikako moguće, $rebase$ radite na branchevima koje još niste $push$ali na udaljene repozitorije\footnote{Više o udaljenim repozitorijima kasnije}.
-\end{itemize}
-
-\tocSubSection{Rebase i rad sa standardnim sustavima za verzioniranje}
-
-Postoji jedan način korištenja gita u kojem je \emph{rebase} nužan.
-To je \textbf{ako koristite git kao CVS, subversion ili TFS klijent}.
-Nećemo ovdje u detalje, ali ukratko: moguće je koristiti git kao klijent za druge (standardne) sustave za verzioniranje\footnote{Uz instalaciju posebnih \emph{plugin}ova, naravno.}.
-
-\emph{Commit}ovi koji su slika udaljenog repozitorija se, u takvim slučajevima, uvijek čuvaju u posebnoj grani.
-Dakle, jedna grana je doslovna kopija udaljenog repozitorija (CVS, subversion ili TFS).
-Tu granu možemo osvježavati s novim \emph{commit}ovima iz centralnog repozitorija.
-
-Našu gitovsku čudnovatu i razgranatu povijest treba svesti na povijest kakvu ti repozitoriji najbolje razumiju, a to je linearna.
-Zato, kad treba \emph{commit}ati naše izmjene -- sve što smo radili u drugim granama treba "preseliti" na kraj grane koja je kopija centralnog repozitorija.
-Taj postupak nije ništa drugo nego \emph{rebase}.
-Tek tada možemo \emph{commit}ati.
-
-S obzirom da centralizirani sustavi za verzioniranje više vole linearnu od razgranate povijesti -- moramo igrati po njihovim pravilima, a \emph{rebase} je jedini način da to učinimo.
-
 \section*{\emph{Cherry-pick}}
-\addcontentsline{toc}{section}{\emph{Cherry-pick}}
-
-Ima još jedna posebna vrsta \emph{merge}a, a nosi malo neobičan naziv \emph{cherry-pick}\footnote{Engleski: branje trešanja. U prenesenom značenju: ispričati priču samo sa onim detaljima koji su pripovjedaču važni. Iliti, izbjegavanje onih dijelova priče koje pripovjedač ne želi.}.
-
-Pretpostavimo da imamo dvije grane:
 
 \input{graphs/git_merge_1}
 
-U \verb+eksperimentalna-grana+ smo napravili nekoliko izmjena i sve te izmjene \emph{nisu} još spremne da bismo ih prebacili u \verb+master+.
-Međutim, ima jedan \emph{commit} (recimo da je to \emph g) s kojim smo ispravili mali bug koji se manifestirao i u \verb+master+ grani.
-Klasični \emph{merge} oblika:
-
 \input{graphs/git_merge_2}
-
-\dots{}ne dolazi u obzir, jer bi on u \verb+master+ prebacio sve izmjene koje smo napravili u \emph d, \emph e, \emph f i \emph g.
-Mi želimo samo i isključivo \emph g.
-To se, naravno, može i to je (naravno) taj \emph{cherry-pick}.
-
-Postupak je sljedeći: prvo promotrimo povijest grane \verb+eksperimentalna-grana+:
 
 \input{git_output/git_log_za_cherry_pick}
 
-Kao što ste vjerojatno već primijetili, svaki \emph{commit} u povijesti ima svoj string kao npr. \verb+5c843fbfb09382c272ae88315eea9d77ed699083+.
-Taj string jedinstveno određuje svaki \emph{commit} (više riječi o tome u posebnom poglavlju).
-
-Sad trebamo naći takav identifikator za onaj commit kojeg želite prebaciti u \verb+master+. Recimo da je to \verb+2b9ef6d02e51a890d508413e83495c11184b37fb+.
-
-Prebacimo se u granu u koju želimo preuzeti samo izmjene iz tog \emph{commit}a i utipkajmo \verb+git cherry-pick <commit>+.
-Ako nema konflikata, rezultat će biti:
-
 \input{git_output/git_cherry_pick}
 
-\dots{}a, ako imamo konflikata onda\dots 
-To već znamo riješiti, nadam se.
-
 \section*{Merge bez \emph{commit}a\footnote{Ovaj naslov se odnosi samo na starije git klijente.}}
-\addcontentsline{toc}{section}{Merge bez \emph{commit}a}
-
-Vratimo se opet na klasični \emph{merge}.
-Ukoliko je prošao bez ikakvih problema, onda ćemo nakon \verb+git merge eksperimentalna-grana+:
 
 \input{graphs/git_merge_2}
-
-\dots{}u povijesti projekta vidjeti nešto kao:
 
 \input{git_output/git_merge_log}
 
-Ukoliko koristite noviju verziju gita, onda će on nakon \emph{merge}a otvoriti editor i ponuditi vam da sami upišete poruku za taj \emph{commit}.
-
-Ako se već odlučimo da ne želimo \emph{rebase} -- u povijesti ćemo imati puno grana i čvorova u kojima se one spajaju.
-Bilo bi lijepo kad bi umjesto \texttt{Merge branch 'eksperimentalna-grana'} imali smisleniji komentar koji bi bolje opisao što smo točno u toj grani napravili.
-
-To se može tako da, umjesto \verb+git merge eksperimentalna-grana+, \emph{merge} izvršimo s:
-
 \gitoutputcommand{git merge eksperimentalna-grana --no-commit}
-
-Na taj naćin će se \emph{merge} izvršiti, ali neće se sve \emph{commit}ati. 
-Sad možemo \emph{commit}ati sa svojim komentarom ili eventualno napraviti još koju izmjenu prije nego se odlučimo snimiti novo stanje.
-
-Jedini detalj na kojeg treba pripaziti je što, ako je došlo do \emph{fast-forward} \emph{merge}anja, onda \verb+--no-commit+ nema efekta.
-Zato je, za svaki slučaj, bolje koristiti sljedeću sintaksu:
 
 \gitoutputcommand{git merge eksperimentalna-grana --no-ff --no-commit}
 
-Ukoliko ste zaboravili \verb+--no-commit+, tekst poruke zadnjeg \emph{commit}a možete ispraviti i s \emph{amend commit}om.
-
 \section*{\emph{Squash merge}}
-\addcontentsline{toc}{section}{\emph{Squash merge}}
-
-Još jedna ponekad korisna opcija kod \emph{merge}a je, takozvani \emph{squash merge}.
-Radi se o sljedećem, klasični \emph{merge} stvara commit kao $h$ u grafu:
 
 \input{graphs/git_merge_2}
-
-Čvor $h$ ima dva prethodnika: $q$ i $g$.
-Ukoliko želimo da $h$ \textbf{ima} izmjene iz grane \verb+eksperimentalna-grana+, ali \textbf{ne želimo} da $h$ ima referencu na tu granu, to se dobije s\footnote{Ne brinite se ako vam ne pada na pamet scenarij u kojem bi to moglo trebati. Ni meni nije do jutros :)}:
 
 \gitoutputcommand{git merge --squash eksperimentalna-grana}
