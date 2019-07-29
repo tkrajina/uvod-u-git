@@ -1,7 +1,7 @@
 pdf_pages=$(shell pdfinfo "git.pdf" | grep "Pages" | sed -e "s/[^0-9]*//")
 # Uz docker image s: https://gist.github.com/tkrajina/1b12fcc6c48fb3e582ac803a9f517146
-#pdflatex_cmd=docker run -v $(shell pwd):/latex -it latex pdflatex
-pdflatex_cmd=pdflatex
+pdflatex_cmd=docker run -v $(shell pwd):/latex -it latex pdflatex
+#pdflatex_cmd=pdflatex
 
 build: init
 	git log -1 --format=\\verb+%H+ > current_commit.tex
@@ -17,6 +17,8 @@ build: init
 	$(pdflatex_cmd) git.tex
 	
 	echo "git.pdf created"
+docker-linux:
+	docker build -t latex .
 init:
 	# Za svaki slučaj, ako submodul nije inicijaliziran:
 	git submodule init
