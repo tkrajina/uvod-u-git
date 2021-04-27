@@ -1,7 +1,7 @@
 Uvod u git
 ==========
 
-Zadnja verzija (pdf) "Uvoda u git" je [ovdje](http://tkrajina.github.com/uvod-u-git/git.pdf).
+Zadnja verzija (pdf) "Uvoda u git" je [ovdje](https://tkrajina.github.io/uvod-u-git/git.pdf).
 
 Našla/našao sam grešku
 ----------------------
